@@ -1,1 +1,5 @@
-<p>experience works!</p>
+<ul class="experience">
+  <li *ngFor="let xp of experience">
+    <span class="badge">{{xp.id}}</span> {{xp.company}}
+  </li>
+</ul>
