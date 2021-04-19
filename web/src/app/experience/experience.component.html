@@ -1,5 +1,18 @@
 <ul class="experience">
-  <li *ngFor="let xp of experience">
-    <span class="badge">{{xp.id}}</span> {{xp.company}}
+  <li *ngFor="let i of experience">
+    <div class="record">
+      <div class="record-primary">
+        <span class="bold">{{i.company}}</span>
+        <span class="bold">{{i.role}} ({{i.type}})</span>
+        <span>{{i.project}}</span>
+        <span>{{i.start | formatDate }} &mdash; {{i.end | formatDate }}</span>
+        <span>{{i.location | formatLocation }}</span>
+      </div>
+      <br/>
+      <div class="record-secondary">
+        <span>{{i.description}}</span>
+      </div>
+    </div>
+    <br/>
   </li>
 </ul>

@@ -20,5 +20,4 @@ export class ExperienceComponent implements OnInit {
   getExperience(): void {
     this.experienceService.getExperience().subscribe(experience => this.experience = experience);
   }
-
 }

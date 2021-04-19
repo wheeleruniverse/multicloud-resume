@@ -9,13 +9,14 @@ export interface Experience {
   end: Date;
   image: Image;
   location: Location;
+  project: string;
   role: string;
   start: Date;
   type: EmploymentType;
 }
 
 export enum EmploymentType {
-  Contract,
-  FullTime,
-  Seasonal
+  Contract = "Contract",
+  FullTime = "Full-time",
+  Seasonal = "Seasonal",
 }

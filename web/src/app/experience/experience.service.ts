@@ -16,7 +16,7 @@ export class ExperienceService {
       {
         id: 1,
         company: 'Bravo LT',
-        description: 'Work Work Work',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices urna diam, eget sodales urna volutpat non. Sed vulputate tortor ut molestie commodo. Praesent aliquam magna quis mauris luctus molestie. Quisque sed libero quis justo malesuada ultricies. Cras venenatis, quam in bibendum congue, leo purus lobortis nibh, sit amet varius ante arcu sed diam. Vivamus auctor ipsum in sem dignissim, quis dapibus nulla ultrices. Sed a eros sed mi condimentum facilisis.',
         end: null,
         image: null,
         location: {
@@ -25,6 +25,7 @@ export class ExperienceService {
           state: 'Michigan',
           zip: '49503'
         },
+        project: 'Gordon Ordering',
         role: 'Senior Software Developer',
         start: {
           month: Month.Apr,
@@ -35,13 +36,14 @@ export class ExperienceService {
       {
         id: 2,
         company: 'Verizon',
-        description: 'Work Work Work',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices urna diam, eget sodales urna volutpat non. Sed vulputate tortor ut molestie commodo. Praesent aliquam magna quis mauris luctus molestie. Quisque sed libero quis justo malesuada ultricies. Cras venenatis, quam in bibendum congue, leo purus lobortis nibh, sit amet varius ante arcu sed diam. Vivamus auctor ipsum in sem dignissim, quis dapibus nulla ultrices. Sed a eros sed mi condimentum facilisis.',
         end: {
           month: Month.Apr,
           year: 2021
         },
         image: null,
         location: null,
+        project: 'Network Planning Platform',
         role: 'Cloud Architect',
         start: {
           month: Month.Oct,

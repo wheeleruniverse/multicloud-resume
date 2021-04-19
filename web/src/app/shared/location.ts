@@ -4,7 +4,3 @@ export interface Location {
   state: string;
   zip: string;
 }
-
-export function format(location: Location){
-  return `${location.address}, ${location.city}, ${location.state} ${location.zip}`;
-}
