@@ -18,7 +18,13 @@ export class ExperienceService {
         company: 'Bravo LT',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices urna diam, eget sodales urna volutpat non. Sed vulputate tortor ut molestie commodo. Praesent aliquam magna quis mauris luctus molestie. Quisque sed libero quis justo malesuada ultricies. Cras venenatis, quam in bibendum congue, leo purus lobortis nibh, sit amet varius ante arcu sed diam. Vivamus auctor ipsum in sem dignissim, quis dapibus nulla ultrices. Sed a eros sed mi condimentum facilisis.',
         end: null,
-        image: null,
+        image: {
+          alt: 'Bravo LT Logo',
+          height: null,
+          name: 'Bravo LT Logo',
+          src: 'assets/experience/bravo-logo.png',
+          width: null
+        },
         location: {
           address: '40 Monroe Center St NW',
           city: 'Grand Rapids',
@@ -41,7 +47,13 @@ export class ExperienceService {
           month: Month.Apr,
           year: 2021
         },
-        image: null,
+        image: {
+          alt: 'Verizon Logo',
+          height: null,
+          name: 'Verizon Logo',
+          src: 'assets/experience/verizon-logo.jpg',
+          width: null
+        },
         location: null,
         project: 'Network Planning Platform',
         role: 'Cloud Architect',
@@ -59,7 +71,13 @@ export class ExperienceService {
           month: Month.Apr,
           year: 2021
         },
-        image: null,
+        image: {
+          alt: 'Verizon Logo',
+          height: null,
+          name: 'Verizon Logo',
+          src: 'assets/experience/verizon-logo.jpg',
+          width: null
+        },
         location: null,
         project: 'Network Planning Platform',
         role: 'Cloud Architect',
@@ -77,7 +95,13 @@ export class ExperienceService {
           month: Month.Apr,
           year: 2021
         },
-        image: null,
+        image: {
+          alt: 'Verizon Logo',
+          height: null,
+          name: 'Verizon Logo',
+          src: 'assets/experience/verizon-logo.jpg',
+          width: null
+        },
         location: null,
         project: 'Network Planning Platform',
         role: 'Cloud Architect',
@@ -90,7 +114,6 @@ export class ExperienceService {
     ];
     return of(experience);
   }
-
 }
 
 

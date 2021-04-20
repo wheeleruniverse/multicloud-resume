@@ -4,14 +4,12 @@ carousel {
 }
 
 .carousel-cell {
-  background-color: #e0e0e0;
-  border: 0.1em solid #000000;
   border-radius: 1em;
-  /*margin: 1em;*/
-  /*padding: 0.5em;*/
+  opacity: 0.5;
 }
 
 .carousel-cell div {
+  margin-left: 0.3em;
   margin-top: 0.5em;
 }
 
@@ -21,15 +19,16 @@ carousel {
 }
 
 .carousel-cell:hover  {
-  background-color: #c0c0c0;
+  background-color: #22303c;
 }
 
 .record-primary {
+  color: #ffffff;
   font-size: large;
 }
 
 .record-secondary {
+  color: #8899a6;
   padding: 0.5em;
 }
-
 

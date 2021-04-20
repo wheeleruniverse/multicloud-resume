@@ -1,5 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+/*
+
+  background     : #15202b;
+  menu           : #192734;
+  hover          : #22303c;
+  primary-text   : #ffffff;
+  secondary-text : #8899a6;
+
+*/
+
+body {
+  background-color: #15202b;
+}
+
+h1 {
+  color: #ffffff;
+}
 
 .bold {
   font-weight: bold;
+}
+
+.menu {
+  background-color: #192734;
+}
+
+.hover {
+  background-color: #22303c;
+}
+
+.text-1 {
+  color: #ffffff;
+}
+
+.text-2 {
+  color: #8899a6;
 }
