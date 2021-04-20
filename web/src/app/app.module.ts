@@ -9,6 +9,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import {FormatDatePipe} from "./shared/pipe/format-date.pipe";
 import {FormatLocationPipe} from "./shared/pipe/format-location.pipe";
+import {IvyCarouselModule} from "angular-responsive-carousel";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {FormatLocationPipe} from "./shared/pipe/format-location.pipe";
     FormatLocationPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    IvyCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

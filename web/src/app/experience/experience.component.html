@@ -1,18 +1,23 @@
-<ul class="experience">
-  <li *ngFor="let i of experience">
-    <div class="record">
-      <div class="record-primary">
-        <span class="bold">{{i.company}}</span>
-        <span class="bold">{{i.role}} ({{i.type}})</span>
-        <span>{{i.project}}</span>
-        <span>{{i.start | formatDate }} &mdash; {{i.end | formatDate }}</span>
-        <span>{{i.location | formatLocation }}</span>
-      </div>
-      <br/>
-      <div class="record-secondary">
-        <span>{{i.description}}</span>
-      </div>
+<carousel
+  [arrowsOutside]="true"
+  [cellsToScroll]="2"
+  [cellsToShow]="3"
+  [cellWidth]=400
+  [dots]="true"
+  [height]=350
+  [loop]="true"
+  [width]=1200
+>
+  <div *ngFor="let i of experience" class="carousel-cell">
+    <div class="record-primary">
+      <span class="bold">&#9;{{i.company}}</span>
+      <span class="bold">&#9;{{i.role}} ({{i.type}})</span>
+      <span>&#9;{{i.project}}</span>
+      <span>&#9;{{i.start | formatDate }} &mdash; {{i.end | formatDate }}</span>
+      <span>&#9;{{i.location | formatLocation }}</span>
     </div>
-    <br/>
-  </li>
-</ul>
+    <div class="record-secondary">
+      <span>{{i.description}}</span>
+    </div>
+  </div>
+</carousel>

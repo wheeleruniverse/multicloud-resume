@@ -1,25 +1,27 @@
 
-.experience {
-  padding: 1em;
+carousel {
+  margin: 0 auto;
 }
 
-.experience li {
-  list-style-type: none;
-}
-
-.record {
+.carousel-cell {
+  background-color: #e0e0e0;
   border: 0.1em solid #000000;
-  border-radius: 4px;
-  padding: 1em;
+  border-radius: 1em;
+  /*margin: 1em;*/
+  /*padding: 0.5em;*/
 }
 
-.record span {
+.carousel-cell div {
+  margin-top: 0.5em;
+}
+
+.carousel-cell span {
   display: block;
   margin-bottom: 0.2em;
 }
 
-.record:hover  {
-  background-color: #e0e0e0;
+.carousel-cell:hover  {
+  background-color: #c0c0c0;
 }
 
 .record-primary {
@@ -27,8 +29,6 @@
 }
 
 .record-secondary {
-  border: 0.1em solid #000000;
-  border-radius: 4px;
   padding: 0.5em;
 }
 
