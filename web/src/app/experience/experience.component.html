@@ -9,11 +9,11 @@
 >
   <div *ngFor="let i of experience" class="carousel-cell">
     <div class="record-primary">
-      <span class="bold">&#9;{{i.company}}</span>
-      <span class="bold">&#9;{{i.role}} ({{i.type}})</span>
-      <span>&#9;{{i.project}}</span>
-      <span>&#9;{{i.start | formatDate }} &mdash; {{i.end | formatDate }}</span>
-      <span>&#9;{{i.location | formatLocation }}</span>
+      <span class="bold">{{i.company}}</span>
+      <span class="bold">{{i.role}} ({{i.type}})</span>
+      <span>{{i.project}}</span>
+      <span>{{i.start | formatDate }} &mdash; {{i.end | formatDate }}</span>
+      <span>{{i.location | formatLocation }}</span>
     </div>
     <div class="record-secondary">
       <span>{{i.description}}</span>
