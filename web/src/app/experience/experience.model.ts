@@ -1,7 +1,6 @@
-
-import {MonthYear} from "../shared/models/month-year";
-import {Image} from "../shared/models/image";
-import {Location} from "../shared/models/location";
+import {Image} from "../shared/image.model";
+import {Location} from "../shared/location.model";
+import {MonthYear} from "../shared/month-year.model";
 
 export interface Experience {
   id: number;

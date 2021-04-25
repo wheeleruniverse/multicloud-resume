@@ -5,24 +5,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {IvyCarouselModule} from "angular-responsive-carousel";
 import {MatDividerModule} from '@angular/material/divider';
-import {CertificationsComponent} from "./certifications/certifications.component";
 import {EducationComponent} from "./education/education.component";
 import {ExperienceComponent} from "./experience/experience.component";
 import {ProjectsComponent} from "./projects/projects.component";
 import {SkillsComponent} from "./skills/skills.component";
-import {FormatDatePipe} from "./shared/pipe/format-date.pipe";
-import {FormatLocationPipe} from "./shared/pipe/format-location.pipe";
+import {MonthYearPipe} from "./shared/month-year.pipe";
+import {LocationPipe} from "./shared/location.pipe";
+import { CarouselComponent } from './shared/carousel.component';
+import {CertificationComponent} from "./certification/certification.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CertificationsComponent,
+    CertificationComponent,
     EducationComponent,
     ExperienceComponent,
     ProjectsComponent,
     SkillsComponent,
-    FormatDatePipe,
-    FormatLocationPipe,
+    MonthYearPipe,
+    LocationPipe,
+    CarouselComponent,
   ],
   imports: [
     BrowserAnimationsModule,

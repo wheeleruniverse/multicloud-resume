@@ -1,11 +1,11 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {Location} from "../models/location";
+import {Location} from "./location.model";
 
 @Pipe({
-  name: 'formatLocation',
+  name: 'location',
   pure: true
 })
-export class FormatLocationPipe implements PipeTransform {
+export class LocationPipe implements PipeTransform {
 
   transform(value: Location, args?: any): string {
     return value != null ? `${value.address}, ${value.city}, ${value.state} ${value.zip}` : '';

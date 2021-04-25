@@ -1,11 +1,11 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {MonthYear} from "../models/month-year";
+import {MonthYear} from "./month-year.model";
 
 @Pipe({
-  name: 'formatDate',
+  name: 'monthYear',
   pure: true
 })
-export class FormatDatePipe implements PipeTransform {
+export class MonthYearPipe implements PipeTransform {
 
   transform(value: MonthYear, args?: any): string {
     return value != null ? `${value.month} ${value.year}` : 'Current';

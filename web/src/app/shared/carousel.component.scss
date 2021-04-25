@@ -1,0 +1,35 @@
+
+carousel {
+  margin: 0 auto;
+}
+
+.carousel-cell {
+  border-radius: 1em;
+}
+
+.carousel-cell:hover  {
+  background-color: #22303c;
+}
+
+.carousel-cell:focus  {
+  background-color: #2e4152;
+}
+
+.carousel-cell div {
+  margin-left: 0.3em;
+  margin-top: 0.5em;
+}
+
+.carousel-cell span {
+  display: block;
+  margin-bottom: 0.2em;
+}
+
+.carousel-cell-primary {
+}
+
+.carousel-cell-secondary {
+  color: #8899a6;
+  padding: 0.5em;
+}
+

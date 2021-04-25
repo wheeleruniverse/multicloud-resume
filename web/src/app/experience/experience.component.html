@@ -1,20 +1,16 @@
-<carousel
-  [arrowsOutside]="true"
-  [cellsToShow]=3
-  [cellWidth]=700
-  [height]=400
-  [width]=1400
->
+<br/>
+<h1>Experience</h1>
+<app-carousel>
   <div *ngFor="let i of experience" class="carousel-cell" tabindex="-1">
-    <div class="record-primary">
+    <div class="carousel-cell-primary">
       <span class="large">{{i.company}}</span>
       <span class="large">{{i.role}} ({{i.type}})</span>
-      <span>{{i.start | formatDate }} &mdash; {{i.end | formatDate }}</span>
+      <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
       <span>{{i.project}}</span>
-      <span>{{i.location | formatLocation }}</span>
+      <span>{{i.location | location }}</span>
     </div>
-    <div class="record-secondary">
+    <div class="carousel-cell-secondary">
       <span>{{i.description}}</span>
     </div>
   </div>
-</carousel>
+</app-carousel>

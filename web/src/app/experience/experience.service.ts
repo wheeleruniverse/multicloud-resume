@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {EmploymentType, Experience} from "./experience";
+import {EmploymentType, Experience} from "./experience.model";
 import {Observable, of} from "rxjs";
-import {Month} from "../shared/models/month-year";
+import {Month} from "../shared/month-year.model";
 
 @Injectable({
   providedIn: 'root'
