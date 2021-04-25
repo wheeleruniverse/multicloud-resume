@@ -10,9 +10,9 @@ export class ExperienceService {
 
   constructor() { }
 
-  getExperience(): Observable<Experience[]> {
+  get(): Observable<Experience[]> {
 
-    const experience: Experience[] = [
+    const experiences: Experience[] = [
       {
         id: 1,
         company: 'Bravo LT',
@@ -112,7 +112,7 @@ export class ExperienceService {
         type: EmploymentType.FullTime
       }
     ];
-    return of(experience);
+    return of(experiences);
   }
 }
 

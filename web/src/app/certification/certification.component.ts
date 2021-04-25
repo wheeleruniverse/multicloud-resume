@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CertificationService} from "./certification.service";
-import {Certification} from "./certification.model";
+import {Certification, CertificationLevel} from "./certification.model";
 
 @Component({
   selector: 'app-certification',
@@ -17,10 +17,10 @@ export class CertificationComponent implements OnInit {
   certifications: Certification[] = [];
 
   ngOnInit(): void {
-    this.getCertification();
+    this.certificationService.get().subscribe(data => this.certifications = data);
   }
 
-  getCertification(): void {
-    this.certificationService.getCertification().subscribe(data => this.certifications = data);
+  getLevel(level: CertificationLevel){
+    return Object.keys(CertificationLevel).find(key => CertificationLevel[key] === level);
   }
 }

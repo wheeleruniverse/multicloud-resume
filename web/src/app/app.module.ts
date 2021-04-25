@@ -13,6 +13,7 @@ import {MonthYearPipe} from "./shared/month-year.pipe";
 import {LocationPipe} from "./shared/location.pipe";
 import { CarouselComponent } from './shared/carousel.component';
 import {CertificationComponent} from "./certification/certification.component";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {CertificationComponent} from "./certification/certification.component";
     BrowserAnimationsModule,
     BrowserModule,
     IvyCarouselModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

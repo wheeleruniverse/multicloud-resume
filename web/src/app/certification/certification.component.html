@@ -3,8 +3,21 @@
 <app-carousel>
   <div *ngFor="let i of certifications" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
-      <span class="large">{{i.id}}</span>
+      <span class="large">{{i.vendor}}</span>
       <span class="large">{{i.name}}</span>
+      <span>{{i.issued | monthYear}} &mdash; {{i.expiry | monthYear}}</span>
+      <span>Credential ID: {{i.credentialId}}</span>
+      <span>
+        <mat-slider
+          aria-label="units"
+          [disabled]="true"
+          [max]="4"
+          [min]="0"
+          [value]="i.level"
+        >
+        </mat-slider>
+        {{getLevel(i.level)}}
+      </span>
     </div>
     <div class="carousel-cell-secondary">
       <span>{{i.description}}</span>
