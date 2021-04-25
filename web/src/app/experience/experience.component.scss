@@ -5,7 +5,6 @@ carousel {
 
 .carousel-cell {
   border-radius: 1em;
-  opacity: 0.5;
 }
 
 .carousel-cell div {
@@ -22,9 +21,15 @@ carousel {
   background-color: #22303c;
 }
 
-.record-primary {
-  color: #ffffff;
+.carousel-cell:focus  {
+  background-color: #2e4152;
+}
+
+.large {
   font-size: large;
+}
+
+.record-primary {
 }
 
 .record-secondary {

@@ -1,18 +1,16 @@
 <carousel
-  [arrowsOutside]=true
+  [arrowsOutside]="true"
   [cellsToShow]=3
   [cellWidth]=700
-  [dots]=true
-  [freeScroll]=true
   [height]=400
   [width]=1400
 >
-  <div *ngFor="let i of experience" class="carousel-cell">
+  <div *ngFor="let i of experience" class="carousel-cell" tabindex="-1">
     <div class="record-primary">
-      <span class="bold">{{i.company}}</span>
-      <span class="bold">{{i.role}} ({{i.type}})</span>
-      <span>{{i.project}}</span>
+      <span class="large">{{i.company}}</span>
+      <span class="large">{{i.role}} ({{i.type}})</span>
       <span>{{i.start | formatDate }} &mdash; {{i.end | formatDate }}</span>
+      <span>{{i.project}}</span>
       <span>{{i.location | formatLocation }}</span>
     </div>
     <div class="record-secondary">

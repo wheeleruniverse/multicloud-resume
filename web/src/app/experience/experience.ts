@@ -1,17 +1,18 @@
-import {Date} from "../shared/date";
-import {Image} from "../shared/image";
-import {Location} from "../shared/location";
+
+import {MonthYear} from "../shared/models/month-year";
+import {Image} from "../shared/models/image";
+import {Location} from "../shared/models/location";
 
 export interface Experience {
   id: number;
   company: string;
   description: string;
-  end: Date;
+  end: MonthYear;
   image: Image;
   location: Location;
   project: string;
   role: string;
-  start: Date;
+  start: MonthYear;
   type: EmploymentType;
 }
 

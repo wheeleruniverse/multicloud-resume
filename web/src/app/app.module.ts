@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { CertificationsComponent } from './certifications/certifications.component';
-import { EducationComponent } from './education/education.component';
-import { ExperienceComponent } from './experience/experience.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { SkillsComponent } from './skills/skills.component';
+import {IvyCarouselModule} from "angular-responsive-carousel";
+import {MatDividerModule} from '@angular/material/divider';
+import {CertificationsComponent} from "./certifications/certifications.component";
+import {EducationComponent} from "./education/education.component";
+import {ExperienceComponent} from "./experience/experience.component";
+import {ProjectsComponent} from "./projects/projects.component";
+import {SkillsComponent} from "./skills/skills.component";
 import {FormatDatePipe} from "./shared/pipe/format-date.pipe";
 import {FormatLocationPipe} from "./shared/pipe/format-location.pipe";
-import {IvyCarouselModule} from "angular-responsive-carousel";
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import {IvyCarouselModule} from "angular-responsive-carousel";
     ProjectsComponent,
     SkillsComponent,
     FormatDatePipe,
-    FormatLocationPipe
+    FormatLocationPipe,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
