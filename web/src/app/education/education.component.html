@@ -1,3 +1,19 @@
-<div>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices urna diam, eget sodales urna volutpat non. Sed vulputate tortor ut molestie commodo. Praesent aliquam magna quis mauris luctus molestie. Quisque sed libero quis justo malesuada ultricies. Cras venenatis, quam in bibendum congue, leo purus lobortis nibh, sit amet varius ante arcu sed diam. Vivamus auctor ipsum in sem dignissim, quis dapibus nulla ultrices. Sed a eros sed mi condimentum facilisis.
-</div>
+<br/>
+<h1>Education</h1>
+<app-carousel
+  [cellsToShow]=1
+>
+  <div *ngFor="let i of educations" class="carousel-cell" tabindex="-1">
+    <div class="carousel-cell-primary">
+      <span class="large">{{i.school}}</span>
+      <span class="large">{{i.degree}}</span>
+      <span class="large">{{i.field}}</span>
+      <span>{{i.start}} &mdash; {{i.end}}</span>
+      <span>{{i.location | location }} {{i.location.remote ? '(Remote)' : ''}}</span>
+    </div>
+    <div class="carousel-cell-secondary">
+      <span>{{i.description}}</span>
+    </div>
+  </div>
+</app-carousel>
+

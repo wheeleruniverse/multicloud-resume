@@ -7,7 +7,7 @@
       <span class="large">{{i.role}} ({{i.type}})</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
       <span>{{i.project}}</span>
-      <span>{{i.location | location }}</span>
+      <span>{{i.location | location }} {{i.location.remote ? '(Remote)' : ''}}</span>
     </div>
     <div class="carousel-cell-secondary">
       <span>{{i.description}}</span>

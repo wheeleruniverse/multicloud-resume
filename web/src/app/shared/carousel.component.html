@@ -1,17 +1,9 @@
 <carousel
   [arrowsOutside]="true"
-  [cellsToShow]=3
+  [cellsToShow]="cellsToShow"
   [cellWidth]=700
   [height]=400
   [width]=1400
 >
   <ng-content></ng-content>
-<!--  <div *ngFor="let i of data" class="carousel-cell" tabindex="-1">-->
-<!--    <div class="carousel-cell-primary">-->
-<!--      <ng-content select="[primaryContent]"></ng-content>-->
-<!--    </div>-->
-<!--    <div class="carousel-cell-secondary">-->
-<!--      <ng-content select="[secondaryContent]"></ng-content>-->
-<!--    </div>-->
-<!--  </div>-->
 </carousel>

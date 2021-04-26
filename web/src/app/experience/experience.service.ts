@@ -28,6 +28,7 @@ export class ExperienceService {
         location: {
           address: '40 Monroe Center St NW',
           city: 'Grand Rapids',
+          remote: true,
           state: 'Michigan',
           zip: '49503'
         },
@@ -54,7 +55,13 @@ export class ExperienceService {
           src: 'assets/experience/verizon-logo.jpg',
           width: null
         },
-        location: null,
+        location: {
+          address: '7701 E Telecom Pkwy',
+          city: 'Temple Terrace',
+          remote: true,
+          state: 'Florida',
+          zip: '33637'
+        },
         project: 'Network Planning Platform',
         role: 'Cloud Architect',
         start: {
@@ -78,7 +85,13 @@ export class ExperienceService {
           src: 'assets/experience/verizon-logo.jpg',
           width: null
         },
-        location: null,
+        location: {
+          address: '7701 E Telecom Pkwy',
+          city: 'Temple Terrace',
+          remote: false,
+          state: 'Florida',
+          zip: '33637'
+        },
         project: 'Network Planning Platform',
         role: 'Cloud Architect',
         start: {
@@ -102,7 +115,13 @@ export class ExperienceService {
           src: 'assets/experience/verizon-logo.jpg',
           width: null
         },
-        location: null,
+        location: {
+          address: '7701 E Telecom Pkwy',
+          city: 'Temple Terrace',
+          remote: false,
+          state: 'Florida',
+          zip: '33637'
+        },
         project: 'Network Planning Platform',
         role: 'Cloud Architect',
         start: {

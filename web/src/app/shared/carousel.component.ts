@@ -9,11 +9,8 @@ export class CarouselComponent implements OnInit {
 
   constructor() { }
 
-  // @Input() data;
-  // @Input() primaryContent;
-  // @Input() secondaryContent;
+  @Input() cellsToShow : number = 3;
 
   ngOnInit(): void {
   }
-
 }
