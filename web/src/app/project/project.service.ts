@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
-import {EmploymentType, Experience} from "../experience/experience.model";
 import {Month} from "../shared/month-year.model";
 import {Project} from "./project.model";
 
@@ -16,13 +15,27 @@ export class ProjectService {
     const data: Project[] = [
       {
         id: 1,
-        blog: null,
-        code: null,
-        description: null,
-        end: null,
-        name: null,
-        skills: [],
-        start: null
+        blog: 'https://dev.to/wheelerswebsites/my-september-cloud-guru-challenge-experience-l2j',
+        code: 'https://github.com/wheelers-websites/CloudGuruChallenge_20.09',
+        description: 'Automate an ETL processing pipeline for COVID-19 data using Python and cloud services.',
+        end: {
+          month: Month.Sep,
+          year: 2020
+        },
+        name: '#CloudGuruChallenge Sep, 20',
+        skills: [
+          'AWS DynamoDB',
+          'AWS Lambda',
+          'AWS QuickSight',
+          'AWS S3',
+          'AWS SNS',
+          'Python',
+          'Serverless'
+        ],
+        start: {
+          month: Month.Sep,
+          year: 2020
+        }
       }
     ];
     return of(data);

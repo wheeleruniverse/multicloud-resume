@@ -1,3 +1,19 @@
-<div>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices urna diam, eget sodales urna volutpat non. Sed vulputate tortor ut molestie commodo. Praesent aliquam magna quis mauris luctus molestie. Quisque sed libero quis justo malesuada ultricies. Cras venenatis, quam in bibendum congue, leo purus lobortis nibh, sit amet varius ante arcu sed diam. Vivamus auctor ipsum in sem dignissim, quis dapibus nulla ultrices. Sed a eros sed mi condimentum facilisis.
-</div>
+<br/>
+<h1>Projects</h1>
+<app-carousel
+  [cellsToShow]=2
+  [height]=200
+>
+  <div *ngFor="let i of projects" class="carousel-cell" tabindex="-1">
+    <div class="carousel-cell-primary">
+      <span class="large">{{i.name}}</span>
+      <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
+      <span>Blog: <a href="{{i.blog}}">{{i.blog}}</a></span>
+      <span>Code: <a href="{{i.code}}">{{i.code}}</a></span>
+      <!-- TODO: i.skills Material chips -->
+    </div>
+    <div class="carousel-cell-secondary">
+      <span>{{i.description}}</span>
+    </div>
+  </div>
+</app-carousel>

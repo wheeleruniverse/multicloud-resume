@@ -10,6 +10,7 @@ export class CarouselComponent implements OnInit {
   constructor() { }
 
   @Input() cellsToShow : number = 3;
+  @Input() height: number = 400;
 
   ngOnInit(): void {
   }
