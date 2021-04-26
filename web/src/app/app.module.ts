@@ -7,7 +7,7 @@ import {IvyCarouselModule} from "angular-responsive-carousel";
 import {MatDividerModule} from '@angular/material/divider';
 import {EducationComponent} from "./education/education.component";
 import {ExperienceComponent} from "./experience/experience.component";
-import {ProjectsComponent} from "./projects/projects.component";
+import {ProjectComponent} from "./project/project.component";
 import {SkillsComponent} from "./skills/skills.component";
 import {MonthYearPipe} from "./shared/month-year.pipe";
 import {LocationPipe} from "./shared/location.pipe";
@@ -21,7 +21,7 @@ import {MatSliderModule} from "@angular/material/slider";
     CertificationComponent,
     EducationComponent,
     ExperienceComponent,
-    ProjectsComponent,
+    ProjectComponent,
     SkillsComponent,
     MonthYearPipe,
     LocationPipe,

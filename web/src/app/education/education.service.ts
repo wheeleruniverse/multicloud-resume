@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Education} from "./education.model";
-import {Month} from "../shared/month-year.model";
-import {EmploymentType} from "../experience/experience.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +11,7 @@ export class EducationService {
 
   get(): Observable<Education[]> {
 
-    const educations: Education[] = [
+    const data: Education[] = [
       {
         id: 1,
         degree: 'Bachelor of Science',
@@ -32,6 +30,6 @@ export class EducationService {
         start: 2013
       }
     ];
-    return of(educations);
+    return of(data);
   }
 }

@@ -12,12 +12,12 @@ import {Certification, CertificationLevel} from "./certification.model";
 })
 export class CertificationComponent implements OnInit {
 
-  constructor(private certificationService: CertificationService) {}
+  constructor(private service: CertificationService) {}
 
   certifications: Certification[] = [];
 
   ngOnInit(): void {
-    this.certificationService.get().subscribe(data => this.certifications = data);
+    this.service.get().subscribe(data => this.certifications = data);
   }
 
   getLevel(level: CertificationLevel){

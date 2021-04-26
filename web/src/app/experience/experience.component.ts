@@ -12,11 +12,11 @@ import {Experience} from "./experience.model";
 })
 export class ExperienceComponent implements OnInit {
 
-  constructor(private experienceService: ExperienceService) {}
+  constructor(private service: ExperienceService) {}
 
   experiences: Experience[] = [];
 
   ngOnInit(): void {
-    this.experienceService.get().subscribe(data => this.experiences = data);
+    this.service.get().subscribe(data => this.experiences = data);
   }
 }

@@ -12,7 +12,7 @@ export class CertificationService {
 
   get(): Observable<Certification[]> {
 
-    const certifications: Certification[] = [
+    const data: Certification[] = [
       {
         id: 1,
         badge: null,
@@ -167,7 +167,7 @@ export class CertificationService {
         vendor: CertificationVendor.AWS
       },
     ];
-    return of(certifications.sort((n1, n2) => {
+    return of(data.sort((n1, n2) => {
       if (n1.level < n2.level) {
         return 1;
       }
