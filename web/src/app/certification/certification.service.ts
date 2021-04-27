@@ -17,7 +17,7 @@ export class CertificationService {
         id: 1,
         badge: null,
         credentialId: 'R9P1ZDJC2BEE1LS4',
-        description: 'The AWS Certified Cloud Practitioner examination is intended for individuals who have the knowledge and skills necessary to effectively demonstrate an overall understanding of the AWS Cloud, independent of specific technical roles addressed by other AWS Certifications.',
+        description: 'The AWS Certified Cloud Practitioner examination is intended for individuals who have the knowledge and skill necessary to effectively demonstrate an overall understanding of the AWS Cloud, independent of specific technical roles addressed by other AWS Certifications.',
         expiry: {
           month: Month.Jul,
           year: 2023
@@ -168,13 +168,17 @@ export class CertificationService {
       },
     ];
     return of(data.sort((n1, n2) => {
-      if (n1.level < n2.level) {
-        return 1;
-      }
-      if (n1.level > n2.level) {
-        return -1;
-      }
-      return 0;
+      const c1 = this.compareLevel(n1, n2, false);
+      const c2 = this.compareName(n1, n2, true);
+      return c1 == 0 ? c2 : c1;
     }));
+  }
+
+  private compareLevel(n1: Certification, n2: Certification, asc: boolean) : number {
+    return (n1.level == n2.level ? 0 : n1.level > n2.level ? 1 : -1) * (asc ? 1 : -1);
+  }
+
+  private compareName(n1: Certification, n2: Certification, asc: boolean) : number {
+    return (n1.name == n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1);
   }
 }

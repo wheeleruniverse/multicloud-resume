@@ -8,12 +8,17 @@ import {MatDividerModule} from '@angular/material/divider';
 import {EducationComponent} from "./education/education.component";
 import {ExperienceComponent} from "./experience/experience.component";
 import {ProjectComponent} from "./project/project.component";
-import {SkillsComponent} from "./skills/skills.component";
+import {SkillComponent} from "./skill/skill.component";
 import {MonthYearPipe} from "./shared/month-year.pipe";
 import {LocationPipe} from "./shared/location.pipe";
 import { CarouselComponent } from './shared/carousel.component';
 import {CertificationComponent} from "./certification/certification.component";
 import {MatSliderModule} from "@angular/material/slider";
+import {MatTableModule} from "@angular/material/table";
+import { MatPaginatorModule} from "@angular/material/paginator";
+import {MatFormFieldControl, MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -22,7 +27,7 @@ import {MatSliderModule} from "@angular/material/slider";
     EducationComponent,
     ExperienceComponent,
     ProjectComponent,
-    SkillsComponent,
+    SkillComponent,
     MonthYearPipe,
     LocationPipe,
     CarouselComponent,
@@ -32,7 +37,12 @@ import {MatSliderModule} from "@angular/material/slider";
     BrowserModule,
     IvyCarouselModule,
     MatDividerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
