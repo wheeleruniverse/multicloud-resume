@@ -23,15 +23,7 @@ export class ProjectService {
           year: 2020
         },
         name: '#CloudGuruChallenge Sep, 20',
-        skills: [
-          'AWS DynamoDB',
-          'AWS Lambda',
-          'AWS QuickSight',
-          'AWS S3',
-          'AWS SNS',
-          'Python',
-          'Serverless'
-        ],
+        skillIds: [3, 7, 20, 21, 22, 23],
         start: {
           month: Month.Sep,
           year: 2020

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {BehaviorSubject, Observable, of} from "rxjs";
 import {Skill, SkillLevel} from "./skill.model";
-import {Certification} from "../certification/certification.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,21 @@ export class SkillService {
 
   constructor() { }
 
+
+
+  getById(id: number): Skill {
+    return Object.assign({}, this.load().find(s => s.id == id));
+  }
+
+  getByIds(ids: number[]): Skill[] {
+    return Object.assign([], this.load().filter(s => ids.includes(s.id)));
+  }
+
   get(): Observable<Skill[]> {
+    return of(this.load());
+  }
+
+  private load(): Skill[] {
 
     const data: Skill[] = [
       {
@@ -132,13 +145,37 @@ export class SkillService {
         level: SkillLevel.Expert,
         skill: 'Virtual Private Cloud (VPC)',
         type: 'Amazon Web Services (AWS)'
+      },
+      {
+        id: 20,
+        level: SkillLevel.Expert,
+        skill: 'Event Bridge',
+        type: 'Amazon Web Services (AWS)'
+      },
+      {
+        id: 21,
+        level: SkillLevel.Proficient,
+        skill: 'DynamoDB',
+        type: 'Amazon Web Services (AWS)'
+      },
+      {
+        id: 22,
+        level: SkillLevel.Master,
+        skill: 'Simple Notification Service (SNS)',
+        type: 'Amazon Web Services (AWS)'
+      },
+      {
+        id: 23,
+        level: SkillLevel.Competent,
+        skill: 'Quick Sight',
+        type: 'Amazon Web Services (AWS)'
       }
     ];
-    return of(data.sort((n1, n2) => {
+    return data.sort((n1, n2) => {
       const c1 = this.compareType(n1, n2, true);
       const c2 = this.compareSkill(n1, n2, true);
       return c1 == 0 ? c2 : c1;
-    }));
+    })
   }
 
   private compareSkill(n1: Skill, n2: Skill, asc: boolean) : number {

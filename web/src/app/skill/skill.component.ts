@@ -3,8 +3,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Skill, SkillLevel} from "./skill.model";
 import {SkillService} from "./skill.service";
 import {MatPaginator} from "@angular/material/paginator";
-import {CertificationLevel} from "../certification/certification.model";
 import {MatSort} from "@angular/material/sort";
+import {FilterService} from "../shared/filter.service";
 
 @Component({
   selector: 'app-skills',
@@ -20,13 +20,26 @@ export class SkillComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Skill>;
   skills: Skill[] = [];
 
-  constructor(private service: SkillService) { }
+  constructor(private service: SkillService, private filter: FilterService) { }
 
   ngOnInit(): void {
     this.service.get().subscribe(data => {
       this.dataSource = new MatTableDataSource<Skill>(data);
       this.skills = data
     });
+
+    this.filter.currentSearch$.subscribe(
+      searchTerm => {
+        console.log("searchTerm: ", searchTerm);
+        this.dataSource.filter = searchTerm;
+      },
+      error => {
+        console.log("error: ", error);
+      },
+      () => {
+        console.log("complete!");
+      }
+    );
   }
 
   ngAfterViewInit() {
@@ -36,7 +49,7 @@ export class SkillComponent implements OnInit, AfterViewInit {
 
   setFilter(event: Event) {
     const value = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = value.trim().toLowerCase();
+    this.filter.setCurrentSearch(value);
   }
 
   getLevel(level: SkillLevel){

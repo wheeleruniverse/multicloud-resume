@@ -4,13 +4,21 @@
   [cellsToShow]=2
   [height]=200
 >
-  <div *ngFor="let i of projects" class="carousel-cell" tabindex="-1">
+  <div *ngFor="let i of projects" (click)="filterSkills(i.id)" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
       <span class="large">{{i.name}}</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
       <span>Blog: <a href="{{i.blog}}">{{i.blog}}</a></span>
       <span>Code: <a href="{{i.code}}">{{i.code}}</a></span>
-      <!-- TODO: i.skill Material chips -->
+      <mat-chip-list>
+        <mat-chip
+          *ngFor="let s of i.skillIds"
+          (click)="filterSkill(s)"
+          [ngClass]="selectedSkill != null && selectedSkill.id == s ? 'selected-skill' : ''"
+        >
+          {{getSkill(s).skill}}
+        </mat-chip>
+      </mat-chip-list>
     </div>
     <div class="carousel-cell-secondary">
       <span>{{i.description}}</span>
