@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from "rxjs";
+import {Observable, of} from "rxjs";
 import {Skill, SkillLevel} from "./skill.model";
 
 @Injectable({
@@ -9,14 +9,8 @@ export class SkillService {
 
   constructor() { }
 
-
-
   getById(id: number): Skill {
     return Object.assign({}, this.load().find(s => s.id == id));
-  }
-
-  getByIds(ids: number[]): Skill[] {
-    return Object.assign([], this.load().filter(s => ids.includes(s.id)));
   }
 
   get(): Observable<Skill[]> {
@@ -172,17 +166,17 @@ export class SkillService {
       }
     ];
     return data.sort((n1, n2) => {
-      const c1 = this.compareType(n1, n2, true);
-      const c2 = this.compareSkill(n1, n2, true);
+      const c1 = SkillService.compareType(n1, n2, true);
+      const c2 = SkillService.compareSkill(n1, n2, true);
       return c1 == 0 ? c2 : c1;
     })
   }
 
-  private compareSkill(n1: Skill, n2: Skill, asc: boolean) : number {
+  private static compareSkill(n1: Skill, n2: Skill, asc: boolean) : number {
     return (n1.skill == n2.skill ? 0 : n1.skill > n2.skill ? 1 : -1) * (asc ? 1 : -1);
   }
 
-  private compareType(n1: Skill, n2: Skill, asc: boolean) : number {
+  private static compareType(n1: Skill, n2: Skill, asc: boolean) : number {
     return (n1.type == n2.type ? 0 : n1.type > n2.type ? 1 : -1) * (asc ? 1 : -1);
   }
 }

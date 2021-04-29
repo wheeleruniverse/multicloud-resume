@@ -168,17 +168,17 @@ export class CertificationService {
       },
     ];
     return of(data.sort((n1, n2) => {
-      const c1 = this.compareLevel(n1, n2, false);
-      const c2 = this.compareName(n1, n2, true);
+      const c1 = CertificationService.compareLevel(n1, n2, false);
+      const c2 = CertificationService.compareName(n1, n2, true);
       return c1 == 0 ? c2 : c1;
     }));
   }
 
-  private compareLevel(n1: Certification, n2: Certification, asc: boolean) : number {
+  private static compareLevel(n1: Certification, n2: Certification, asc: boolean) : number {
     return (n1.level == n2.level ? 0 : n1.level > n2.level ? 1 : -1) * (asc ? 1 : -1);
   }
 
-  private compareName(n1: Certification, n2: Certification, asc: boolean) : number {
+  private static compareName(n1: Certification, n2: Certification, asc: boolean) : number {
     return (n1.name == n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1);
   }
 }

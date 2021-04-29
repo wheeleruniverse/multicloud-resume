@@ -14,10 +14,10 @@ export class CertificationComponent implements OnInit {
 
   constructor(private service: CertificationService) {}
 
-  certifications: Certification[] = [];
+  data: Certification[] = [];
 
   ngOnInit(): void {
-    this.service.get().subscribe(data => this.certifications = data);
+    this.service.get().subscribe(data => this.data = data);
   }
 
   getLevel(level: CertificationLevel){

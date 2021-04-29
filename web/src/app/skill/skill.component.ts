@@ -11,48 +11,40 @@ import {FilterService} from "../shared/filter.service";
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.scss']
 })
-export class SkillComponent implements OnInit, AfterViewInit {
+export class SkillComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['skill', 'type', 'level'];
-  dataSource: MatTableDataSource<Skill>;
-  skills: Skill[] = [];
+  data: Skill[] = [];
+  tableFields: string[] = ['skill', 'type', 'level'];
+  tableSource: MatTableDataSource<Skill>;
 
-  constructor(private service: SkillService, private filter: FilterService) { }
+  constructor(
+    private service: SkillService,
+    private filter: FilterService) {}
+
+  ngAfterViewInit() {
+    this.tableSource.paginator = this.paginator;
+    this.tableSource.sort = this.sort;
+  }
 
   ngOnInit(): void {
     this.service.get().subscribe(data => {
-      this.dataSource = new MatTableDataSource<Skill>(data);
-      this.skills = data
+      this.data = data
+      this.tableSource = new MatTableDataSource<Skill>(data);
     });
 
-    this.filter.currentSearch$.subscribe(
-      searchTerm => {
-        console.log("searchTerm: ", searchTerm);
-        this.dataSource.filter = searchTerm;
-      },
-      error => {
-        console.log("error: ", error);
-      },
-      () => {
-        console.log("complete!");
-      }
-    );
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  setFilter(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.filter.setCurrentSearch(value);
+    this.filter.target$.subscribe(target => {
+      this.tableSource.filter = target;
+    });
   }
 
   getLevel(level: SkillLevel){
     return Object.keys(SkillLevel).find(key => SkillLevel[key] === level);
+  }
+
+  setFilter(event: Event) {
+    this.filter.setTarget((event.target as HTMLInputElement).value);
   }
 }

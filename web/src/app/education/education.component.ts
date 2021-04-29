@@ -15,9 +15,9 @@ export class EducationComponent implements OnInit {
 
   constructor(private service: EducationService) {}
 
-  educations: Education[] = [];
+  data: Education[] = [];
 
   ngOnInit(): void {
-    this.service.get().subscribe(data => this.educations = data);
+    this.service.get().subscribe(data => this.data = data);
   }
 }

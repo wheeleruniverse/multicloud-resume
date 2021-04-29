@@ -6,11 +6,11 @@ import {BehaviorSubject} from "rxjs";
 })
 export class FilterService {
 
-  public currentSearch$ : BehaviorSubject<string> = new BehaviorSubject('');
+  public target$ : BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor() {}
 
-  public setCurrentSearch(searchTerm: string): void {
-    this.currentSearch$.next(searchTerm.trim().toLowerCase());
+  public setTarget(target: string): void {
+    this.target$.next(target.trim().toLowerCase());
   }
 }
