@@ -1,18 +1,37 @@
 <div id="header">
   <h1>Justin Wheeler the {{role}}</h1>
 </div>
-<h1>About</h1>
+
 <div>
+  <mat-card>About</mat-card>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices urna diam, eget sodales urna volutpat non. Sed vulputate tortor ut molestie commodo. Praesent aliquam magna quis mauris luctus molestie. Quisque sed libero quis justo malesuada ultricies. Cras venenatis, quam in bibendum congue, leo purus lobortis nibh, sit amet varius ante arcu sed diam. Vivamus auctor ipsum in sem dignissim, quis dapibus nulla ultrices. Sed a eros sed mi condimentum facilisis.
 </div>
+
 <div>
-  <mat-card (click)="toggleExperience()">Experience</mat-card>
-  <app-experience *ngIf="showExperience"></app-experience>
+  <mat-card (click)="toggleView('experience')">Experience</mat-card>
+  <app-experience *ngIf="view.get('experience')"></app-experience>
 </div>
-<app-certification></app-certification>
-<app-skills></app-skills>
-<app-project></app-project>
-<app-education></app-education>
+
+<div>
+  <mat-card (click)="toggleView('certifications')">Certifications</mat-card>
+  <app-certifications *ngIf="view.get('certifications')"></app-certifications>
+</div>
+
+<div>
+  <mat-card (click)="toggleView('skills')">Skills</mat-card>
+  <app-skills *ngIf="view.get('skills')"></app-skills>
+</div>
+
+<div>
+  <mat-card (click)="toggleView('projects')">Projects</mat-card>
+  <app-projects *ngIf="view.get('projects')"></app-projects>
+</div>
+
+<div>
+  <mat-card (click)="toggleView('education')">Education</mat-card>
+  <app-education *ngIf="view.get('education')"></app-education>
+</div>
+
 <div id="footer">
   <br/><br/>
   <mat-divider></mat-divider>

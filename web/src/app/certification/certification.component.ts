@@ -3,7 +3,7 @@ import {CertificationService} from "./certification.service";
 import {Certification, CertificationLevel} from "./certification.model";
 
 @Component({
-  selector: 'app-certification',
+  selector: 'app-certifications',
   templateUrl: './certification.component.html',
   styleUrls: [
     './certification.component.scss',

@@ -6,7 +6,7 @@ import {Skill} from "../skill/skill.model";
 import {FilterService} from "../shared/filter.service";
 
 @Component({
-  selector: 'app-project',
+  selector: 'app-projects',
   templateUrl: './project.component.html',
   styleUrls: [
     './project.component.scss',
