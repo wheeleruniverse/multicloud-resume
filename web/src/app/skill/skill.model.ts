@@ -4,6 +4,9 @@ export interface Skill {
   level: SkillLevel;
   skill: string;
   type: string;
+
+  // foreign
+  _filterByProjectIds: string[];
 }
 
 export enum SkillLevel {

@@ -15,11 +15,12 @@ import { CarouselComponent } from './shared/carousel.component';
 import {CertificationComponent} from "./certification/certification.component";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTableModule} from "@angular/material/table";
-import { MatPaginatorModule} from "@angular/material/paginator";
-import {MatFormFieldControl, MatFormFieldModule} from "@angular/material/form-field";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatChipsModule} from "@angular/material/chips";
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

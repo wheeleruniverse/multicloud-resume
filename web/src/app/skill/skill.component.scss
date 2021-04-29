@@ -1,13 +1,4 @@
 
-#skill-filter {
-  margin-left: 1em;
-}
-
-#skill-table {
-  margin: 0 auto;
-  width: 75%;
-}
-
 table {
   table-layout: fixed;
   width: 100%;
@@ -21,6 +12,11 @@ tr:focus {
   background-color: #2e4152;
 }
 
-//.mat-form-field {
-//  font-size: 14px;
-//}
+#skill-filter {
+  margin-left: 1em;
+}
+
+#skill-table {
+  margin: 0 auto;
+  width: 75%;
+}

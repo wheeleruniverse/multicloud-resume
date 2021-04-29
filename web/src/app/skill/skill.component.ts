@@ -45,6 +45,6 @@ export class SkillComponent implements AfterViewInit, OnInit {
   }
 
   setFilter(event: Event) {
-    this.filter.setTarget((event.target as HTMLInputElement).value);
+    this.filter.setTarget(event != null ? (event.target as HTMLInputElement).value : '');
   }
 }

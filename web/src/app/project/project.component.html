@@ -2,9 +2,9 @@
 <h1>Projects</h1>
 <app-carousel
   [cellsToShow]=2
-  [height]=200
+  [height]=250
 >
-  <div *ngFor="let i of data" class="carousel-cell" tabindex="-1">
+  <div *ngFor="let i of data" (click)="filterProject(i.id)" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
       <span class="large">{{i.name}}</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
@@ -14,7 +14,7 @@
         <mat-chip
           *ngFor="let s of i.skillIds"
           (click)="filterSkill(s)"
-          [ngClass]="{'active': selectedSkill !== null && selectedSkill.id === s}"
+          [ngClass]="{'active': targetSkill !== null && targetSkill.id === s}"
         >
           {{getSkill(s).skill}}
         </mat-chip>

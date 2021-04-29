@@ -17,25 +17,42 @@ export class ProjectComponent implements OnInit {
 
   constructor(
     private service: ProjectService,
-    private skillService: SkillService,
-    private filter: FilterService) { }
+    private filter: FilterService,
+    private skillService: SkillService) {}
 
   data: Project[] = [];
-  selectedSkill: Skill | null = null;
+  targetProject: Project | null = null;
+  targetSkill: Skill | null = null;
 
   ngOnInit(): void {
     this.service.get().subscribe(data => this.data = data);
   }
 
-  filterSkill(id: number): void {
+  filterProject(id: number): void {
 
-    if(this.selectedSkill != null && this.selectedSkill.id == id){
-      this.selectedSkill = null;
+    this.targetSkill = null;
+
+    if(this.targetProject != null && this.targetProject.id == id){
+      this.targetProject = null;
       this.filter.setTarget('');
     }
     else {
-      this.selectedSkill = this.getSkill(id);
-      this.filter.setTarget(this.selectedSkill.skill);
+      this.targetProject = this.data.find(p => p.id == id);
+      this.filter.setTarget(`project.${id}`);
+    }
+  }
+
+  filterSkill(id: number): void {
+
+    this.targetProject = null;
+
+    if(this.targetSkill != null && this.targetSkill.id == id){
+      this.targetSkill = null;
+      this.filter.setTarget('');
+    }
+    else {
+      this.targetSkill = this.getSkill(id);
+      this.filter.setTarget(this.targetSkill.skill);
     }
   }
 

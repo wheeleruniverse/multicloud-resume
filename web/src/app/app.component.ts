@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   role = 'Cloud Architect';
+  showExperience: boolean = false;
+
+  toggleExperience(): void {
+    this.showExperience = !this.showExperience;
+  }
 }
