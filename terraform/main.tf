@@ -21,7 +21,7 @@ variable "project" {
 }
 
 variable "tables" {
-  default     = ["certification", "education", "experience", "project", "skill"]
+  default     = ["certification", "education", "experience", "project", "skill", "visitor"]
   description = "sql tables to create"
   type        = list(string)
 }
