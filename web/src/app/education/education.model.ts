@@ -9,6 +9,6 @@ export interface Education {
   image: Image;
   field: string;
   location: Location;
-  school: string;
+  name: string;
   start: number;
 }

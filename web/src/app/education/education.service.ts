@@ -26,7 +26,7 @@ export class EducationService {
           state: 'Florida',
           zip: '32792'
         },
-        school: 'Full Sail University',
+        name: 'Full Sail University',
         start: 2013
       }
     ];

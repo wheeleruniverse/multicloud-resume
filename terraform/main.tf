@@ -26,23 +26,32 @@ variable "tables" {
   type        = list(string)
 }
 
-resource "azurerm_resource_group" "rg" {
-  name     = "CloudGuruChallenge_21.04"
-  location = "East US 2"
-
+resource "azurerm_app_service_plan" "asp" {
+  kind                = "FunctionApp"
+  location            = azurerm_resource_group.rg.location
+  name                = "resume-asp"
+  resource_group_name = azurerm_resource_group.rg.name
   tags = {
     Project = var.project
   }
+
+  sku {
+    size = "Y1"
+    tier = "Dynamic"
+  }
 }
 
-resource "azurerm_cosmosdb_account" "cosmos_account" {
-  name                      = "resume-cosmos-db"
-  resource_group_name       = azurerm_resource_group.rg.name
+resource "azurerm_cosmosdb_account" "db" {
   enable_automatic_failover = false
   enable_free_tier          = true
   kind                      = "GlobalDocumentDB"
   location                  = azurerm_resource_group.rg.location
+  name                      = "resume-cosmos-db"
   offer_type                = "Standard"
+  resource_group_name       = azurerm_resource_group.rg.name
+  tags = {
+    Project = var.project
+  }
 
   capabilities {
     name = "EnableServerless"
@@ -53,25 +62,46 @@ resource "azurerm_cosmosdb_account" "cosmos_account" {
   }
 
   geo_location {
-    location          = azurerm_resource_group.rg.location
     failover_priority = 0
+    location          = azurerm_resource_group.rg.location
   }
+}
 
+resource "azurerm_cosmosdb_sql_container" "tables" {
+  account_name        = azurerm_cosmosdb_account.db.name
+  count               = length(var.tables)
+  database_name       = azurerm_cosmosdb_sql_database.prd.name
+  name                = var.tables[count.index]
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_cosmosdb_sql_database" "prd" {
+  account_name        = azurerm_cosmosdb_account.db.name
+  name                = "prd"
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_function_app" "query_db_func" {
+  app_service_plan_id        = azurerm_app_service_plan.asp.id
+  location                   = azurerm_resource_group.rg.location
+  name                       = "resume-query-db"
+  resource_group_name        = azurerm_resource_group.rg.name
+  storage_account_access_key = azurerm_storage_account.sa.primary_access_key
+  storage_account_name       = azurerm_storage_account.sa.name
+}
+
+resource "azurerm_resource_group" "rg" {
+  location = "East US 2"
+  name     = "CloudGuruChallenge_21.04"
   tags = {
     Project = var.project
   }
 }
 
-resource "azurerm_cosmosdb_sql_database" "cosmos_database_prd" {
-  name                = "prd"
-  resource_group_name = azurerm_resource_group.rg.name
-  account_name        = azurerm_cosmosdb_account.cosmos_account.name
-}
-
-resource "azurerm_cosmosdb_sql_container" "cosmos_tables" {
-  count               = length(var.tables)
-  name                = var.tables[count.index]
-  resource_group_name = azurerm_resource_group.rg.name
-  account_name        = azurerm_cosmosdb_account.cosmos_account.name
-  database_name       = azurerm_cosmosdb_sql_database.cosmos_database_prd.name
+resource "azurerm_storage_account" "sa" {
+  account_replication_type = "LRS"
+  account_tier             = "Standard"
+  location                 = azurerm_resource_group.rg.location
+  name                     = "wheelerresume"
+  resource_group_name      = azurerm_resource_group.rg.name
 }
