@@ -169,7 +169,7 @@ resource "azurerm_storage_blob" "code_for_query_func" {
   source                 = var.query_func
   storage_account_name   = azurerm_storage_account.sa.name
   storage_container_name = azurerm_storage_container.deployments.name
-  type                   = "block"
+  type                   = "Block"
 }
 
 resource "azurerm_storage_container" "deployments" {
