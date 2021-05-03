@@ -26,9 +26,15 @@ variable "project" {
   type        = string
 }
 
-variable "query_func" {
-  default     = "./code/query-func.jar"
-  description = "query function code"
+variable "query_func_dst" {
+  default     = "query-func.zip"
+  description = "query function code destination"
+  type        = string
+}
+
+variable "query_func_src" {
+  default     = "./code/query-func.zip"
+  description = "query function code source"
   type        = string
 }
 
@@ -72,6 +78,10 @@ resource "azurerm_application_insights" "insights" {
   location            = azurerm_resource_group.rg.location
   name                = "${var.prefix}insights"
   resource_group_name = azurerm_resource_group.rg.name
+  retention_in_days   = 30
+  tags = {
+    Project = var.project
+  }
 }
 
 resource "azurerm_app_service_plan" "asp" {
@@ -127,11 +137,11 @@ resource "azurerm_cosmosdb_sql_database" "prd" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_function_app" "functions" {
+resource "azurerm_function_app" "query_func" {
   app_service_plan_id        = azurerm_app_service_plan.asp.id
   https_only                 = true
   location                   = azurerm_resource_group.rg.location
-  name                       = "${var.prefix}functions"
+  name                       = "${var.prefix}query-func"
   resource_group_name        = azurerm_resource_group.rg.name
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
   storage_account_name       = azurerm_storage_account.sa.name
@@ -143,14 +153,15 @@ resource "azurerm_function_app" "functions" {
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
     FUNCTIONS_WORKER_RUNTIME       = "java"
     FUNCTION_APP_EDIT_MODE         = "readonly"
-    HASH                           = base64encode(filesha256(var.query_func))
-    WEBSITE_RUN_FROM_PACKAGE       = "https://${azurerm_storage_account.sa.name}.blob.core.windows.net/${azurerm_storage_container.deployments.name}/${azurerm_storage_blob.code_for_query_func.name}${data.azurerm_storage_account_sas.sas.sas}"
+    FUNCTIONS_EXTENSION_VERSION    = "~3"
+    HASH                           = base64encode(filesha256(var.query_func_src))
+    WEBSITE_RUN_FROM_PACKAGE       = "1"
   }
 }
 
 resource "azurerm_resource_group" "rg" {
   location = "East US 2"
-  name     = "CloudGuruChallenge_21.04"
+  name     = var.project
   tags = {
     Project = var.project
   }
@@ -164,9 +175,9 @@ resource "azurerm_storage_account" "sa" {
   resource_group_name      = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_storage_blob" "code_for_query_func" {
-  name                   = "${var.prefix}query.zip"
-  source                 = var.query_func
+resource "azurerm_storage_blob" "query_func_code" {
+  name                   = var.query_func_dst
+  source                 = var.query_func_src
   storage_account_name   = azurerm_storage_account.sa.name
   storage_container_name = azurerm_storage_container.deployments.name
   type                   = "Block"
