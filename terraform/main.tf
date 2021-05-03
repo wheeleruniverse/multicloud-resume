@@ -27,7 +27,7 @@ variable "project" {
 }
 
 variable "query_func" {
-  default     = "./code/query-func.zip"
+  default     = "./code/query-func.jar"
   description = "query function code"
   type        = string
 }
@@ -67,10 +67,17 @@ data "azurerm_storage_account_sas" "sas" {
   }
 }
 
+resource "azurerm_application_insights" "insights" {
+  application_type    = "java"
+  location            = azurerm_resource_group.rg.location
+  name                = "${var.prefix}insights"
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
 resource "azurerm_app_service_plan" "asp" {
   kind                = "FunctionApp"
   location            = azurerm_resource_group.rg.location
-  name                = "wheeler-resume-asp"
+  name                = "${var.prefix}asp"
   resource_group_name = azurerm_resource_group.rg.name
   tags = {
     Project = var.project
@@ -133,10 +140,11 @@ resource "azurerm_function_app" "functions" {
   }
 
   app_settings = {
-    FUNCTIONS_WORKER_RUNTIME = "java"
-    FUNCTION_APP_EDIT_MODE   = "readonly"
-    HASH                     = base64encode(filesha256(var.query_func))
-    WEBSITE_RUN_FROM_PACKAGE = "https://${azurerm_storage_account.sa.name}.blob.core.windows.net/${azurerm_storage_container.deployments.name}/${azurerm_storage_blob.code_for_query_func.name}${data.azurerm_storage_account_sas.sas.sas}"
+    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
+    FUNCTIONS_WORKER_RUNTIME       = "java"
+    FUNCTION_APP_EDIT_MODE         = "readonly"
+    HASH                           = base64encode(filesha256(var.query_func))
+    WEBSITE_RUN_FROM_PACKAGE       = "https://${azurerm_storage_account.sa.name}.blob.core.windows.net/${azurerm_storage_container.deployments.name}/${azurerm_storage_blob.code_for_query_func.name}${data.azurerm_storage_account_sas.sas.sas}"
   }
 }
 
