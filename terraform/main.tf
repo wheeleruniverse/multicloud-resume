@@ -139,6 +139,14 @@ resource "azurerm_cosmosdb_sql_database" "prd" {
 
 resource "azurerm_function_app" "query_func" {
   app_service_plan_id        = azurerm_app_service_plan.asp.id
+  app_settings = {
+    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
+    FUNCTIONS_WORKER_RUNTIME       = "java"
+    FUNCTION_APP_EDIT_MODE         = "readonly"
+    FUNCTIONS_EXTENSION_VERSION    = "~3"
+    HASH                           = base64encode(filesha256(var.query_func_src))
+    WEBSITE_RUN_FROM_PACKAGE       = "1"
+  }
   https_only                 = true
   location                   = azurerm_resource_group.rg.location
   name                       = "${var.prefix}query-func"
@@ -147,15 +155,6 @@ resource "azurerm_function_app" "query_func" {
   storage_account_name       = azurerm_storage_account.sa.name
   tags = {
     Project = var.project
-  }
-
-  app_settings = {
-    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
-    FUNCTIONS_WORKER_RUNTIME       = "java"
-    FUNCTION_APP_EDIT_MODE         = "readonly"
-    FUNCTIONS_EXTENSION_VERSION    = "~3"
-    HASH                           = base64encode(filesha256(var.query_func_src))
-    WEBSITE_RUN_FROM_PACKAGE       = "1"
   }
 }
 
