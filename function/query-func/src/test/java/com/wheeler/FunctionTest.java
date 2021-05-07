@@ -1,13 +1,13 @@
 package com.wheeler;
 
 import com.microsoft.azure.functions.*;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
+import com.wheeler.controller.CertificationController;
+import com.wheeler.dao.filter.QueryFilter;
+import org.junit.jupiter.api.Disabled;
 
-import java.util.*;
+import java.util.Optional;
 import java.util.logging.Logger;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
@@ -17,37 +17,29 @@ import static org.mockito.Mockito.*;
  * Unit test for Function class.
  */
 public class FunctionTest {
+
+
     /**
      * Unit test for HttpTriggerJava method.
      */
-    @Test
-    public void testHttpTriggerJava() throws Exception {
+    @Disabled("until further notice")
+    public void retrieveCertification() {
+
         // Setup
-        @SuppressWarnings("unchecked")
-        final HttpRequestMessage<Optional<String>> req = mock(HttpRequestMessage.class);
+        final HttpRequestMessage<Optional<QueryFilter>> req = mock(HttpRequestForQueryFilter.class);
 
-        final Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("name", "Azure");
-        doReturn(queryParams).when(req).getQueryParameters();
-
-        final Optional<String> queryBody = Optional.empty();
-        doReturn(queryBody).when(req).getBody();
-
-        doAnswer(new Answer<HttpResponseMessage.Builder>() {
-            @Override
-            public HttpResponseMessage.Builder answer(InvocationOnMock invocation) {
-                HttpStatus status = (HttpStatus) invocation.getArguments()[0];
-                return new HttpResponseMessageMock.HttpResponseMessageBuilderMock().status(status);
-            }
+        doAnswer(invocation -> {
+            HttpStatus status = (HttpStatus) invocation.getArguments()[0];
+            return new HttpResponseMessageMock.HttpResponseMessageBuilderMock().status(status);
         }).when(req).createResponseBuilder(any(HttpStatus.class));
 
         final ExecutionContext context = mock(ExecutionContext.class);
         doReturn(Logger.getGlobal()).when(context).getLogger();
 
         // Invoke
-        final HttpResponseMessage ret = new Function().retrieveCertification(req, context);
+        final HttpResponseMessage response = new CertificationController().retrieve(req, context);
 
         // Verify
-        assertEquals(HttpStatus.valueOf(200), ret.getStatus());
+        assertEquals(HttpStatus.valueOf(200), response.getStatus());
     }
 }

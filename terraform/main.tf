@@ -26,51 +26,10 @@ variable "project" {
   type        = string
 }
 
-variable "query_func_dst" {
-  default     = "query-func.zip"
-  description = "query function code destination"
-  type        = string
-}
-
-variable "query_func_src" {
-  default     = "./code/query-func.zip"
-  description = "query function code source"
-  type        = string
-}
-
 variable "tables" {
   default     = ["certification", "education", "experience", "project", "skill", "visitor"]
   description = "sql tables to create"
   type        = list(string)
-}
-
-data "azurerm_storage_account_sas" "sas" {
-  connection_string = azurerm_storage_account.sa.primary_connection_string
-  expiry            = "2021-06-01"
-  https_only        = true
-  start             = "2021-05-01"
-
-  resource_types {
-    container = false
-    object    = true
-    service   = false
-  }
-  permissions {
-    add     = false
-    create  = false
-    delete  = false
-    list    = false
-    process = false
-    read    = true
-    update  = false
-    write   = false
-  }
-  services {
-    blob  = true
-    file  = false
-    queue = false
-    table = false
-  }
 }
 
 resource "azurerm_application_insights" "insights" {
@@ -137,19 +96,18 @@ resource "azurerm_cosmosdb_sql_database" "prd" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_function_app" "query_func" {
+resource "azurerm_function_app" "app" {
   app_service_plan_id        = azurerm_app_service_plan.asp.id
   app_settings = {
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
     FUNCTIONS_WORKER_RUNTIME       = "java"
     FUNCTION_APP_EDIT_MODE         = "readonly"
     FUNCTIONS_EXTENSION_VERSION    = "~3"
-    HASH                           = base64encode(filesha256(var.query_func_src))
     WEBSITE_RUN_FROM_PACKAGE       = "1"
   }
   https_only                 = true
   location                   = azurerm_resource_group.rg.location
-  name                       = "${var.prefix}query-func"
+  name                       = "${var.prefix}app"
   resource_group_name        = azurerm_resource_group.rg.name
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
   storage_account_name       = azurerm_storage_account.sa.name
@@ -172,14 +130,6 @@ resource "azurerm_storage_account" "sa" {
   location                 = azurerm_resource_group.rg.location
   name                     = replace(var.prefix, "-", "")
   resource_group_name      = azurerm_resource_group.rg.name
-}
-
-resource "azurerm_storage_blob" "query_func_code" {
-  name                   = var.query_func_dst
-  source                 = var.query_func_src
-  storage_account_name   = azurerm_storage_account.sa.name
-  storage_container_name = azurerm_storage_container.deployments.name
-  type                   = "Block"
 }
 
 resource "azurerm_storage_container" "deployments" {

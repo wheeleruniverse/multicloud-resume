@@ -2,28 +2,44 @@ package com.wheeler.dao.repository;
 
 import com.azure.cosmos.CosmosContainer;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
-import com.wheeler.dao.CosmosConnector;
+import com.wheeler.dao.connection.CosmosConnector;
 import com.wheeler.dao.model.Certification;
-import lombok.experimental.UtilityClass;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@UtilityClass
+@Repository
 public class CertificationRepository {
 
-    private static final CosmosQueryRequestOptions OPTIONS = new CosmosQueryRequestOptions();
-    private static final CosmosContainer TABLE = CosmosConnector.getTable("certification");
-    private static final String FIND_ALL_SQL = "select * from certification";
-    private static final String FIND_ONE_SQL = "select * from certification where id = %s";
+    private final CosmosConnector cosmosConnector;
 
+    private CosmosContainer table;
 
-    public static List<Certification> findAll() {
-        return TABLE.queryItems(FIND_ALL_SQL, OPTIONS, Certification.class).stream().collect(Collectors.toList());
+    public CertificationRepository(final CosmosConnector cosmosConnector){
+        this.cosmosConnector = cosmosConnector;
     }
 
-    public static Certification findOne(String id) {
-        final String sql = String.format(FIND_ONE_SQL, id);
-        return TABLE.queryItems(sql, OPTIONS, Certification.class).stream().findAny().orElse(null);
+    public List<Certification> findAll() {
+        final String sql = "select * from certification";
+        final CosmosQueryRequestOptions options = cosmosConnector.getQueryOptions();
+        return getTable()
+                .queryItems(sql, options, Certification.class)
+                .stream().collect(Collectors.toList());
+    }
+
+    public Certification findOne(String id) {
+        final String sql = String.format("select * from certification where id = %s", id);
+        final CosmosQueryRequestOptions options = cosmosConnector.getQueryOptions();
+        return getTable()
+                .queryItems(String.format(sql, id), options, Certification.class)
+                .stream().findAny().orElse(null);
+    }
+
+    private CosmosContainer getTable(){
+        if (table == null){
+            table = cosmosConnector.getTable("certification");
+        }
+        return table;
     }
 }
