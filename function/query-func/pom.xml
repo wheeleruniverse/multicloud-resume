@@ -7,7 +7,14 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Azure Java Functions</name>
+    <name>Resume Functions</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.4</version>
+        <relativePath/>
+    </parent>
 
     <properties>
         <azure.functions.java.library.version>1.4.2</azure.functions.java.library.version>
@@ -17,17 +24,12 @@
         <functionRegion>eastus2</functionRegion>
         <functionResourceGroup>CloudGuruChallenge_21.04</functionResourceGroup>
         <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionName}</stagingDirectory>
-        <start-class>com.wheeler.app.Main</start-class>
+        <start-class>com.wheeler.Main</start-class>
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.4</version>
-        <relativePath/>
-    </parent>
 
     <dependencies>
         <!-- Azure -->
@@ -151,7 +153,7 @@
                     <resourceGroup>${functionResourceGroup}</resourceGroup>
                     <runtime>
                         <javaVersion>11</javaVersion>
-                        <os>windows</os>
+                        <os>linux</os>
                     </runtime>
                     <appSettings>
                         <property>
@@ -161,6 +163,10 @@
                         <property>
                             <name>FUNCTIONS_WORKER_RUNTIME</name>
                             <value>java</value>
+                        </property>
+                        <property>
+                            <name>WEBSITE_RUN_FROM_PACKAGE</name>
+                            <value>1</value>
                         </property>
                     </appSettings>
                 </configuration>
