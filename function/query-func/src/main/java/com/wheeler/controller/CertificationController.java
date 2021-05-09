@@ -7,13 +7,13 @@ import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.wheeler.dao.filter.QueryFilter;
 import com.wheeler.dao.model.Certification;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
-public class CertificationController extends AzureSpringBootRequestHandler<QueryFilter, Object> {
+@Controller
+public class CertificationController extends AzureSpringBootRequestHandler<QueryFilter, List<Certification>> {
 
     /**
      * retrieves certification data
@@ -25,23 +25,19 @@ public class CertificationController extends AzureSpringBootRequestHandler<Query
     @FunctionName("certificationRetrieve")
     public HttpResponseMessage retrieve(
             @HttpTrigger(
-                    name = "req",
+                    authLevel = AuthorizationLevel.ANONYMOUS,
                     methods = {HttpMethod.GET, HttpMethod.POST},
-                    authLevel = AuthorizationLevel.ANONYMOUS)
+                    name = "req",
+                    route = "certification/retrieve")
                     HttpRequestMessage<Optional<QueryFilter>> request,
             final ExecutionContext context) {
 
-        try {
-            QueryFilter filter = request.getBody().orElse(new QueryFilter());
-            context.getLogger().info(String.format("'context': '%s'", context));
-            context.getLogger().info(String.format("'filter' : '%s'", filter));
+        QueryFilter filter = request.getBody().orElse(new QueryFilter());
+        context.getLogger().info(String.format("'context': '%s'", context));
+        context.getLogger().info(String.format("'filter' : '%s'", filter));
 
-            Object data = handleRequest(filter, context);
-            return request.createResponseBuilder(HttpStatus.valueOf(200)).body(data).build();
-        }
-        catch(Exception e){
-            context.getLogger().severe(String.format("ERROR: '%s'", e));
-            return request.createResponseBuilder(HttpStatus.valueOf(500)).body(e).build();
-        }
+        List<Certification> data = handleRequest(filter, context);
+        context.getLogger().info(String.format("received %d certification records", data.size()));
+        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(data).build();
     }
 }
