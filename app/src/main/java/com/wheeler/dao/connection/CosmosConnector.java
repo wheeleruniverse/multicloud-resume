@@ -26,7 +26,7 @@ public class CosmosConnector {
     }
 
     public CosmosClient getClient() {
-        if(client == null){
+        if (client == null){
             client = new CosmosClientBuilder()
                     .consistencyLevel(ConsistencyLevel.EVENTUAL)
                     .endpoint(cosmosHost)
@@ -37,7 +37,7 @@ public class CosmosConnector {
     }
 
     public CosmosDatabase getDatabase() {
-        if(database == null){
+        if (database == null){
             database = getClient().getDatabase(cosmosName);
         }
         return database;
@@ -48,7 +48,7 @@ public class CosmosConnector {
     }
 
     public CosmosContainer getTable(String name){
-        if(TABLES.containsKey(name)){
+        if (TABLES.containsKey(name)){
             return TABLES.get(name);
         }
         CosmosContainer container = getDatabase().getContainer(name);
