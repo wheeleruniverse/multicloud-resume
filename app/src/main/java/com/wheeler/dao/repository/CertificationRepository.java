@@ -29,7 +29,7 @@ public class CertificationRepository {
     }
 
     public Certification findOne(String id) {
-        final String sql = String.format("select * from certification where id = %s", id);
+        final String sql = String.format("select * from certification as i where i.id = '%s'", id);
         final CosmosQueryRequestOptions options = cosmosConnector.getQueryOptions();
         return getTable()
                 .queryItems(String.format(sql, id), options, Certification.class)
