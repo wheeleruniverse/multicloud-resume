@@ -1,4 +1,4 @@
-package com.wheeler.dao.model;
+package com.wheeler.dao.model.partial;
 
 import lombok.Data;
 

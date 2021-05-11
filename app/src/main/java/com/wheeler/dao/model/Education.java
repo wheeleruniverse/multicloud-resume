@@ -1,8 +1,7 @@
 package com.wheeler.dao.model;
 
+import com.wheeler.dao.model.partial.Location;
 import lombok.Data;
-
-import java.time.LocalDate;
 
 @Data
 public class Education {

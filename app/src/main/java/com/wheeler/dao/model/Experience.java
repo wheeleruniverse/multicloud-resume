@@ -1,6 +1,8 @@
 package com.wheeler.dao.model;
 
 import com.wheeler.dao.constant.ExperienceType;
+import com.wheeler.dao.model.partial.Location;
+import com.wheeler.dao.model.partial.MonthYear;
 import lombok.Data;
 
 @Data
