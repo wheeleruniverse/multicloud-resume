@@ -4,7 +4,7 @@ import {MonthYear} from "../shared/month-year.model";
 
 export interface Experience {
   id: number;
-  company: string;
+  name: string;
   description: string;
   end: MonthYear;
   image: Image;

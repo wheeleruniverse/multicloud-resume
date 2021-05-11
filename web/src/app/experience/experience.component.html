@@ -2,7 +2,7 @@
 <app-carousel>
   <div *ngFor="let i of data" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
-      <span class="large">{{i.company}}</span>
+      <span class="large">{{i.name}}</span>
       <span class="large">{{i.role}} ({{i.type}})</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
       <span>{{i.project}}</span>
