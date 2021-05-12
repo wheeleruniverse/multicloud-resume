@@ -1,0 +1,222 @@
+[
+    {
+        "name":"Amazon Machine Image (AMI)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"API Gateway",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Athena",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Aurora",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Auto Scaling Group (ASG)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"AWS Certificate Manager (ACM)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Cloud Formation",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Cloud Front",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Cloud Watch",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Command Line Interface (CLI)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"DynamoDB",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Elastic Block Store (EBS)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Elastic Compute Cloud (EC2)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Elastic Container Registry (ECR)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Elastic File System (EFS)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Event Bridge",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Identity and Access Management (IAM)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Lambda",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Launch Configuration",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Private Link",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Quick Sight",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Relational Database Service (RDS)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Route 53",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Sage Maker",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Simple Notifcation Service (SNS)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Simple Queue Service (SQS)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Simple Storage Service (S3)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"Virtual Private Cloud (VPC)",
+        "level":"PROFICIENT",
+        "type":"Amazon Web Services (AWS)"
+    },
+    {
+        "name":"App Service",
+        "level":"PROFICIENT",
+        "type":"Azure"
+    },
+    {
+        "name":"Blob",
+        "level":"PROFICIENT",
+        "type":"Azure"
+    },
+    {
+        "name":"Cosmos Database",
+        "level":"PROFICIENT",
+        "type":"Azure"
+    },
+    {
+        "name":"Front Door",
+        "level":"PROFICIENT",
+        "type":"Azure"
+    },
+    {
+        "name":"Resource Manager",
+        "level":"PROFICIENT",
+        "type":"Azure"
+    },
+    {
+        "name":"Pipelines",
+        "level":"PROFICIENT",
+        "type":"Azure DevOps"
+    },
+    {
+        "name":"Cloud Vision",
+        "level":"PROFICIENT",
+        "type":"Google Cloud Platform (GCP)"
+    },
+    {
+        "name":"Terraform",
+        "level":"PROFICIENT",
+        "type":"Infrastructure as Code"
+    },
+    {
+        "name":"C#",
+        "level":"PROFICIENT",
+        "type":"Programming Language"
+    },
+    {
+        "name":"Java",
+        "level":"PROFICIENT",
+        "type":"Programming Language"
+    },
+    {
+        "name":"PHP",
+        "level":"PROFICIENT",
+        "type":"Programming Language"
+    },
+    {
+        "name":"Ruby",
+        "level":"PROFICIENT",
+        "type":"Programming Language"
+    },
+    {
+        "name":"Hibernate",
+        "level":"PROFICIENT",
+        "type":"Programming Language Framework"
+    },
+    {
+        "name":"Rails",
+        "level":"PROFICIENT",
+        "type":"Programming Language Framework"
+    },
+    {
+        "name":"Spring",
+        "level":"PROFICIENT",
+        "type":"Programming Language Framework"
+    },
+    {
+        "name":"Spring Boot",
+        "level":"PROFICIENT",
+        "type":"Programming Language Framework"
+    }
+]
