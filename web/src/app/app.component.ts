@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
     this.view.set('certifications', false);
     this.view.set('projects', false);
     this.view.set('skills', false);
+
+    console.log(window.navigator.userAgent);
   }
 
   toggleView(key: string): void {

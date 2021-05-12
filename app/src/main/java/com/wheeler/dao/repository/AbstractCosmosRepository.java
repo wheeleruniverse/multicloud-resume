@@ -1,6 +1,8 @@
 package com.wheeler.dao.repository;
 
 import com.azure.cosmos.CosmosContainer;
+import com.azure.cosmos.models.CosmosItemRequestOptions;
+import com.azure.cosmos.models.CosmosItemResponse;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import com.wheeler.dao.connection.CosmosConnector;
 
@@ -26,6 +28,10 @@ public abstract class AbstractCosmosRepository<T> {
         return getTable()
                 .queryItems(sql, options, getTableType())
                 .stream().collect(Collectors.toList());
+    }
+
+    public CosmosItemResponse<T> save(T item){
+        return getTable().createItem(item);
     }
 
     private CosmosContainer getTable() {
