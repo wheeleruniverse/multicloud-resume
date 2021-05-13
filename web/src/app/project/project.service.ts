@@ -19,13 +19,13 @@ export class ProjectService {
         code: 'https://github.com/wheelers-websites/CloudGuruChallenge_20.09',
         description: 'Automate an ETL processing pipeline for COVID-19 data using Python and cloud services.',
         end: {
-          month: Month.Sep,
+          month: 9,
           year: 2020
         },
         name: '#CloudGuruChallenge Sep, 20',
         skillIds: [3, 7, 20, 21, 22, 23],
         start: {
-          month: Month.Sep,
+          month: 9,
           year: 2020
         }
       }

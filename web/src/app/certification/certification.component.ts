@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {CertificationService} from "./certification.service";
 import {Certification, CertificationLevel} from "./certification.model";
+import {Observable, Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-certifications',
@@ -10,17 +12,33 @@ import {Certification, CertificationLevel} from "./certification.model";
     '../shared/carousel.component.scss'
   ]
 })
-export class CertificationComponent implements OnInit {
+export class CertificationComponent implements OnDestroy, OnInit {
 
   constructor(private service: CertificationService) {}
 
-  data: Certification[] = [];
+  data: Certification[];
+  destroyed$ = new Subject<void>();
 
-  ngOnInit(): void {
-    this.service.get().subscribe(data => this.data = data);
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
-  getLevel(level: CertificationLevel){
-    return Object.keys(CertificationLevel).find(key => CertificationLevel[key] === level);
+  ngOnInit(): void {
+    this.service.get()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(data => {
+        this.data = data;
+      });
+  }
+
+  getLevelValue(level: string){
+    switch(level){
+      case "ASSOCIATE": return 2;
+      case "FOUNDATIONAL": return 1;
+      case "PROFESSIONAL": return 4;
+      case "SPECIALTY": return 3;
+      default: return 0;
+    }
   }
 }

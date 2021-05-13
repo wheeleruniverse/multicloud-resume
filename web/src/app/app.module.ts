@@ -21,6 +21,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSortModule} from "@angular/material/sort";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatCardModule} from "@angular/material/card";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -46,9 +48,11 @@ import {MatCardModule} from "@angular/material/card";
     MatInputModule,
     MatSortModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressBarModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

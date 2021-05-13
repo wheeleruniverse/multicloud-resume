@@ -1,5 +1,5 @@
 export interface MonthYear {
-  month: Month;
+  month: number;
   year: number;
 }
 

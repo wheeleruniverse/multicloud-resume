@@ -1,4 +1,5 @@
-<app-carousel>
+<!--<app-carousel>-->
+<app-carousel *ngIf="data?.length > 0; else loading">
   <div *ngFor="let i of data" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
       <span class="large">{{i.vendor}}</span>
@@ -11,10 +12,10 @@
           [disabled]="true"
           [max]="4"
           [min]="0"
-          [value]="i.level"
+          [value]="getLevelValue(i.level)"
         >
         </mat-slider>
-        {{getLevel(i.level)}}
+        {{ i.level | titlecase }}
       </span>
     </div>
     <div class="carousel-cell-secondary">
@@ -22,3 +23,8 @@
     </div>
   </div>
 </app-carousel>
+
+<ng-template #loading>
+  <br/>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

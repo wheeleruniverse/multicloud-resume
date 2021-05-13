@@ -8,9 +8,9 @@ export interface Certification {
   description: string;
   expiry: MonthYear;
   issued: MonthYear;
-  level: CertificationLevel,
+  level: string,
   name: string;
-  vendor: CertificationVendor;
+  vendor: string;
 }
 
 export enum CertificationVendor {
