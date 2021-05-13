@@ -1,17 +1,17 @@
 package com.wheeler.dao.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 public class Visitor {
 
     private String id;
     private String name;
 
-    public Visitor(final String name){
+    public Visitor(){
         super();
-        this.name = name;
+        this.id = UUID.randomUUID().toString();
     }
 }

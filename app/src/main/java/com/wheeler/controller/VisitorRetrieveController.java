@@ -34,9 +34,6 @@ public class VisitorRetrieveController extends AzureSpringBootRequestHandler<Que
 
         List<Visitor> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
         context.getLogger().info(String.format("received %d visitor records", data.size()));
-        return request
-                .createResponseBuilder(HttpStatus.valueOf(200))
-                .body(data)
-                .build();
+        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(data).build();
     }
 }

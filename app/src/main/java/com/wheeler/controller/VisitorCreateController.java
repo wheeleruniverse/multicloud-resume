@@ -9,6 +9,8 @@ import com.wheeler.dao.model.Visitor;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
+import java.util.Optional;
+
 @Controller
 public class VisitorCreateController extends AzureSpringBootRequestHandler<Visitor, CosmosItemResponse<Visitor>> {
 
@@ -26,19 +28,16 @@ public class VisitorCreateController extends AzureSpringBootRequestHandler<Visit
                     methods = {HttpMethod.POST},
                     name = "req",
                     route = "visitor/create")
-                    HttpRequestMessage<Visitor> request,
+                    HttpRequestMessage<Optional<Visitor>> request,
             final ExecutionContext context) {
 
-        Visitor visitor = request.getBody();
+        Visitor visitor = request.getBody().orElse(null);
         context.getLogger().info(String.format("visitor: %s", visitor));
 
-        if (visitor.getName() == null){
+        if (visitor == null || visitor.getName() == null){
             return request.createResponseBuilder(HttpStatus.valueOf(400)).build();
         }
         CosmosItemResponse<Visitor> data = handleRequest(visitor, context);
-        return request
-                .createResponseBuilder(HttpStatus.valueOf(200))
-                .body(data)
-                .build();
+        return request.createResponseBuilder(HttpStatus.valueOf(data.getStatusCode())).build();
     }
 }

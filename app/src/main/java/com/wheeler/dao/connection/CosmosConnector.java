@@ -1,6 +1,7 @@
 package com.wheeler.dao.connection;
 
 import com.azure.cosmos.*;
+import com.azure.cosmos.models.CosmosItemRequestOptions;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,10 @@ public class CosmosConnector {
             database = getClient().getDatabase(cosmosName);
         }
         return database;
+    }
+
+    public CosmosItemRequestOptions getItemOptions(){
+        return new CosmosItemRequestOptions();
     }
 
     public CosmosQueryRequestOptions getQueryOptions(){

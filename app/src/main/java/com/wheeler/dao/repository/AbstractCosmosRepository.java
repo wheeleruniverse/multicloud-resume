@@ -30,8 +30,9 @@ public abstract class AbstractCosmosRepository<T> {
                 .stream().collect(Collectors.toList());
     }
 
-    public CosmosItemResponse<T> save(T item){
-        return getTable().createItem(item);
+    public CosmosItemResponse<T> save(T item) {
+        final CosmosItemRequestOptions options = cosmosConnector.getItemOptions();
+        return getTable().createItem(item, options);
     }
 
     private CosmosContainer getTable() {
