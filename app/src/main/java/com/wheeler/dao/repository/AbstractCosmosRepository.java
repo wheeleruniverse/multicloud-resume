@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public abstract class AbstractCosmosRepository<T> {
 
-    private final CosmosConnector cosmosConnector;
+    protected final CosmosConnector cosmosConnector;
     private CosmosContainer table;
 
     public AbstractCosmosRepository(final CosmosConnector cosmosConnector) {
@@ -35,7 +35,7 @@ public abstract class AbstractCosmosRepository<T> {
         return getTable().createItem(item, options);
     }
 
-    private CosmosContainer getTable() {
+    protected CosmosContainer getTable() {
         if (table == null) {
             table = cosmosConnector.getTable(getTableName());
         }
