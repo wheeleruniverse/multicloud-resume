@@ -1,15 +1,20 @@
 package com.wheeler.dto.model;
 
+import com.wheeler.dao.constant.SkillLevel;
 import com.wheeler.dao.model.Skill;
-import lombok.AllArgsConstructor;
+import com.wheeler.dto.model.partial.SkillMetaDto;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 public class SkillDto {
 
-    private List<SkillLevelDto> levels;
-    private List<Skill> skills;
+    private List<Skill> data;
+    private SkillMetaDto meta;
+
+    public SkillDto(final List<Skill> data) {
+        this.data = data;
+        this.meta = new SkillMetaDto(SkillLevel.dto());
+    }
 }

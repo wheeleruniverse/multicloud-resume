@@ -38,7 +38,7 @@ public class SkillController extends AzureSpringBootRequestHandler<QueryFilter, 
         context.getLogger().info(String.format("received %d skill records", data.size()));
         return request
                 .createResponseBuilder(HttpStatus.valueOf(200))
-                .body(new SkillDto(SkillLevel.getValues(), data))
+                .body(new SkillDto(data))
                 .build();
     }
 }
