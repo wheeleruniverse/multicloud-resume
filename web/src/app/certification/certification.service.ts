@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {Certification} from "./certification.model";
+import {Certification, CertificationDto} from "./certification.model";
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
+import {MetaData} from "../shared/meta-data.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,26 +12,37 @@ export class CertificationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  get(): Observable<Certification[]> {
+  get(): Observable<CertificationDto> {
     const url = "https://wheeler-resume-app.azurewebsites.net/api/certification/retrieve";
     return this.httpClient
-      .get<Certification[]>(url)
-      .pipe(tap(data => CertificationService.sort(data)));
+      .get<CertificationDto>(url)
+      .pipe(tap(dto => CertificationService.sort(dto)));
   }
 
-  private static sort(data: Certification[]) : Certification[] {
-    return data.sort((n1, n2) => {
-      const c1 = CertificationService.compareLevel(n1, n2, false);
-      const c2 = CertificationService.compareName(n1, n2, true);
-      return c1 == 0 ? c2 : c1;
+  private static sort(dto: CertificationDto): CertificationDto {
+
+    const lookupLevel = (i: Certification) => dto.meta.levels.find(meta => meta.name === i.level);
+
+    dto.data.sort((n1, n2) => {
+      const c1 = CertificationService.compareVendor(n1, n2, true);
+      const c2 = CertificationService.compareLevel(n1, n2, false, lookupLevel);
+      const c3 = CertificationService.compareName(n1, n2, true);
+      return c1 == 0 ? c2 == 0 ? c3 : c2 : c1;
     });
+    return dto;
   }
 
-  private static compareLevel(n1: Certification, n2: Certification, asc: boolean) : number {
-    return (n1.level == n2.level ? 0 : n1.level > n2.level ? 1 : -1) * (asc ? 1 : -1);
+  private static compareLevel(
+    n1: Certification, n2: Certification, asc: boolean, lookup: (i:Certification) => MetaData): number {
+
+    const v1 = lookup(n1);
+    const v2 = lookup(n2);
+    return (v1.rank == v2.rank ? 0 : v1.rank > v2.rank ? 1 : -1) * (asc ? 1 : -1);
   }
 
-  private static compareName(n1: Certification, n2: Certification, asc: boolean) : number {
-    return (n1.name == n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1);
-  }
+  private static compareName = (n1: Certification, n2: Certification, asc: boolean):
+    number => (n1.name == n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1);
+
+  private static compareVendor = (n1: Certification, n2: Certification, asc: boolean):
+    number => (n1.vendor == n2.vendor ? 0 : n1.vendor > n2.vendor ? 1 : -1) * (asc ? 1 : -1);
 }

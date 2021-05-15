@@ -1,10 +1,9 @@
 import {MonthYear} from "../shared/month-year.model";
-import {Image} from "../shared/image.model";
+import {MetaData} from "../shared/meta-data.model";
 
 export interface Certification {
   id: number;
-  badge: Image;
-  credentialId: string;
+  credential: string;
   description: string;
   expiry: MonthYear;
   issued: MonthYear;
@@ -13,17 +12,12 @@ export interface Certification {
   vendor: string;
 }
 
-export enum CertificationVendor {
-  AWS = "Amazon Web Services",
-  Azure = "Azure",
-  GCP = "Google Cloud Platform",
-  Oracle = "Oracle",
-  SAFe = "Scaled Agile Framework"
+export interface CertificationDto {
+  data: Certification[]
+  meta: CertificationMeta
 }
 
-export enum CertificationLevel {
-  Foundational = 1,
-  Associate = 2,
-  Specialty = 3,
-  Professional = 4
+export interface CertificationMeta {
+  levels: MetaData[]
+  vendors: MetaData[]
 }

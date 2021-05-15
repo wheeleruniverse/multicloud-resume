@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CertificationService} from "./certification.service";
-import {Certification, CertificationLevel} from "./certification.model";
-import {Observable, Subject} from "rxjs";
+import {CertificationDto} from "./certification.model";
+import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import {MetaData} from "../shared/meta-data.model";
 
 @Component({
   selector: 'app-certifications',
@@ -16,7 +17,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
 
   constructor(private service: CertificationService) {}
 
-  data: Certification[];
+  dto: CertificationDto;
   destroyed$ = new Subject<void>();
 
   ngOnDestroy(): void {
@@ -27,18 +28,16 @@ export class CertificationComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.service.get()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(data => {
-        this.data = data;
+      .subscribe(dto => {
+        this.dto = dto;
       });
   }
 
-  getLevelValue(level: string){
-    switch(level){
-      case "ASSOCIATE": return 2;
-      case "FOUNDATIONAL": return 1;
-      case "PROFESSIONAL": return 4;
-      case "SPECIALTY": return 3;
-      default: return 0;
-    }
+  getMetaForLevel(value: string): MetaData {
+    return this.dto.meta.levels.find(meta => meta.name === value);
+  }
+
+  getMetaForVendor(value: string): MetaData {
+    return this.dto.meta.vendors.find(meta => meta.name === value);
   }
 }
