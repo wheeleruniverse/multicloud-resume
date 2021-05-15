@@ -8,6 +8,6 @@ export interface Project {
   description: string;
   end: MonthYear;
   name: string;
-  skillIds: number[]; //TODO: Associate to Skill Model
   start: MonthYear;
+  skillIds: number[]; //TODO:
 }

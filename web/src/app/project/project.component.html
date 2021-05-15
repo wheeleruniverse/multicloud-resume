@@ -1,4 +1,5 @@
 <app-carousel
+  *ngIf="!!data; else loading"
   [cellsToShow]=2
   [height]=250
 >
@@ -14,7 +15,7 @@
           (click)="filterSkill(s)"
           [ngClass]="{'active': targetSkill !== null && targetSkill.id === s}"
         >
-          {{getSkill(s).skill}}
+<!--          {{getSkill(s).skill}}-->
         </mat-chip>
       </mat-chip-list>
     </div>
@@ -23,3 +24,8 @@
     </div>
   </div>
 </app-carousel>
+
+<ng-template #loading>
+  <br/>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

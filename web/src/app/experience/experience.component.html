@@ -1,9 +1,8 @@
-<br/><br/>
-<app-carousel>
+<app-carousel *ngIf="!!data; else loading">
   <div *ngFor="let i of data" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
       <span class="large">{{i.name}}</span>
-      <span class="large">{{i.role}} ({{i.type}})</span>
+      <span class="large">{{i.role}} ({{i.type | titlecase}})</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
       <span>{{i.project}}</span>
       <span>{{i.location | location }} {{i.location.remote ? '(Remote)' : ''}}</span>
@@ -13,3 +12,8 @@
     </div>
   </div>
 </app-carousel>
+
+<ng-template #loading>
+  <br/>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

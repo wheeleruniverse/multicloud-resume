@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ExperienceService} from "./experience.service";
 import {Experience} from "./experience.model";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-experience',
@@ -10,13 +12,21 @@ import {Experience} from "./experience.model";
     '../shared/carousel.component.scss'
   ]
 })
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent implements OnDestroy, OnInit {
 
   constructor(private service: ExperienceService) {}
 
-  data: Experience[] = [];
+  data: Experience[];
+  destroyed$ = new Subject<void>();
+
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
 
   ngOnInit(): void {
-    this.service.get().subscribe(data => this.data = data);
+    this.service.get()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(data => this.data = data);
   }
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProjectService} from "./project.service";
 import {Project} from "./project.model";
 import {SkillService} from "../skill/skill.service";
 import {Skill} from "../skill/skill.model";
 import {FilterService} from "../shared/filter.service";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-projects',
@@ -13,16 +14,23 @@ import {FilterService} from "../shared/filter.service";
     '../shared/carousel.component.scss'
   ]
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnDestroy, OnInit {
 
   constructor(
     private service: ProjectService,
     private filter: FilterService,
     private skillService: SkillService) {}
 
-  data: Project[] = [];
+  data: Project[];
+  destroyed$ = new Subject<void>();
   targetProject: Project | null = null;
   targetSkill: Skill | null = null;
+
+
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
 
   ngOnInit(): void {
     this.service.get().subscribe(data => this.data = data);
@@ -51,12 +59,12 @@ export class ProjectComponent implements OnInit {
       this.filter.setTarget('');
     }
     else {
-      this.targetSkill = this.getSkill(id);
-      this.filter.setTarget(this.targetSkill.skill);
+      // this.targetSkill = this.getSkill(id);
+      // this.filter.setTarget(this.targetSkill.skill);
     }
   }
 
-  getSkill(id: number): Skill {
-    return this.skillService.getById(id);
-  }
+  // getSkill(id: number): Skill {
+  //   return this.skillService.getById(id);
+  // }
 }

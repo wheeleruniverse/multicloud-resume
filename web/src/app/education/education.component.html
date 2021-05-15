@@ -1,4 +1,5 @@
 <app-carousel
+  *ngIf="!!data; else loading"
   [cellsToShow]=2
   [height]=250
 >
@@ -15,4 +16,9 @@
     </div>
   </div>
 </app-carousel>
+
+<ng-template #loading>
+  <br/>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
 

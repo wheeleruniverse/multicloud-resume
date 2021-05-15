@@ -13,11 +13,11 @@ export interface Certification {
 }
 
 export interface CertificationDto {
-  data: Certification[]
-  meta: CertificationMeta
+  data: Certification[];
+  meta: CertificationMeta;
 }
 
 export interface CertificationMeta {
-  levels: MetaData[]
-  vendors: MetaData[]
+  levels: MetaData[];
+  vendors: MetaData[];
 }

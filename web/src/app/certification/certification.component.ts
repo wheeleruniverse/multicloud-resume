@@ -28,9 +28,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.service.get()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(dto => {
-        this.dto = dto;
-      });
+      .subscribe(dto => this.dto = dto);
   }
 
   getMetaForLevel(value: string): MetaData {

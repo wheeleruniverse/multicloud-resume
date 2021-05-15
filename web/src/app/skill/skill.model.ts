@@ -1,18 +1,20 @@
+import {MetaData} from "../shared/meta-data.model";
 
 export interface Skill {
   id: number;
-  level: SkillLevel;
-  skill: string;
+  level: string;
+  name: string;
   type: string;
 
   // foreign
-  _filterByProjectIds: string[];
+  _filterByProjectIds: string[]; //TODO:
 }
 
-export enum SkillLevel {
-  Novice = 1,
-  Competent = 2,
-  Proficient = 3,
-  Expert = 4,
-  Master = 5
+export interface SkillDto {
+  data: Skill[];
+  meta: SkillMeta;
+}
+
+export interface SkillMeta {
+  levels: MetaData[];
 }

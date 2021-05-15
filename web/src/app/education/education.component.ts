@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Education} from "./education.model";
 import {EducationService} from "./education.service";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 
 @Component({
@@ -11,13 +13,21 @@ import {EducationService} from "./education.service";
     '../shared/carousel.component.scss'
   ]
 })
-export class EducationComponent implements OnInit {
+export class EducationComponent implements OnDestroy, OnInit {
 
   constructor(private service: EducationService) {}
 
-  data: Education[] = [];
+  data: Education[];
+  destroyed$ = new Subject<void>();
+
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
 
   ngOnInit(): void {
-    this.service.get().subscribe(data => this.data = data);
+    this.service.get()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(data => this.data = data);
   }
 }

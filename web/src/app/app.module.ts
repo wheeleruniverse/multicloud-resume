@@ -23,6 +23,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatCardModule} from "@angular/material/card";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatChipsModule,
     MatCardModule,
     MatProgressBarModule,
+    MatTooltipModule,
     HttpClientModule
   ],
   providers: [HttpClient],

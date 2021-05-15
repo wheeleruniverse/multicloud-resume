@@ -6,6 +6,32 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  private static readonly root = "https://wheeler-resume-app.azurewebsites.net/api";
+
+  static readonly api = {
+    certification: {
+      retrieve: `${AppComponent.root}/certification/retrieve`
+    },
+    education: {
+      retrieve: `${AppComponent.root}/education/retrieve`
+    },
+    experience: {
+      retrieve: `${AppComponent.root}/experience/retrieve`
+    },
+    project: {
+      retrieve: `${AppComponent.root}/project/retrieve`
+    },
+    skill: {
+      retrieve: `${AppComponent.root}/skill/retrieve`
+    },
+    visitor: {
+      count: `${AppComponent.root}/visitor/count`,
+      create: `${AppComponent.root}/visitor/create`,
+      retrieve: `${AppComponent.root}/visitor/retrieve`
+    }
+  }
+
   role = 'Cloud Architect';
   view = new Map<string, boolean>();
 

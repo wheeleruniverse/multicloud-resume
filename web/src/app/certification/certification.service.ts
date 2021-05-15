@@ -4,18 +4,18 @@ import {Certification, CertificationDto} from "./certification.model";
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
 import {MetaData} from "../shared/meta-data.model";
+import {AppComponent} from "../app.component";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CertificationService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   get(): Observable<CertificationDto> {
-    const url = "https://wheeler-resume-app.azurewebsites.net/api/certification/retrieve";
     return this.httpClient
-      .get<CertificationDto>(url)
+      .get<CertificationDto>(AppComponent.api.certification.retrieve)
       .pipe(tap(dto => CertificationService.sort(dto)));
   }
 
