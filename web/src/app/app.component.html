@@ -3,8 +3,8 @@
 </div>
 
 <div>
-  <mat-card>About</mat-card>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices urna diam, eget sodales urna volutpat non. Sed vulputate tortor ut molestie commodo. Praesent aliquam magna quis mauris luctus molestie. Quisque sed libero quis justo malesuada ultricies. Cras venenatis, quam in bibendum congue, leo purus lobortis nibh, sit amet varius ante arcu sed diam. Vivamus auctor ipsum in sem dignissim, quis dapibus nulla ultrices. Sed a eros sed mi condimentum facilisis.
+  <mat-card (click)="toggleView('about')">About</mat-card>
+  <app-about *ngIf="view.get('about')"></app-about>
 </div>
 
 <div>
@@ -35,6 +35,6 @@
 <div id="footer">
   <br/><br/>
   <mat-divider></mat-divider>
-  <br/><br/><br/><br/><br/>
+  <app-visitor></app-visitor>
 </div>
 

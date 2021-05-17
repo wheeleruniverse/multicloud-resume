@@ -36,13 +36,12 @@ export class AppComponent implements OnInit {
   view = new Map<string, boolean>();
 
   ngOnInit(): void {
+    this.view.set('about', false);
     this.view.set('education', false);
     this.view.set('experience', false);
     this.view.set('certifications', false);
     this.view.set('projects', false);
     this.view.set('skills', false);
-
-    console.log(window.navigator.userAgent);
   }
 
   toggleView(key: string): void {

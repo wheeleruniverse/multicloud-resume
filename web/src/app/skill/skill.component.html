@@ -48,6 +48,11 @@
     </tr>
   </table>
 
+  <!-- Loading -->
+  <div *ngIf="dto == null" class="skill-loading">
+    <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
+  </div>
+
   <!-- Paginator -->
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>

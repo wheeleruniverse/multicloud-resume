@@ -10,8 +10,8 @@ public class Education {
     private String name;
     private String degree;
     private String description;
-    private Integer endYear;
+    private Integer end;
     private String field;
     private Location location;
-    private Integer startYear;
+    private Integer start;
 }

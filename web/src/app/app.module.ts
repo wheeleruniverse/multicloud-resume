@@ -24,6 +24,10 @@ import {MatCardModule} from "@angular/material/card";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { VisitorComponent } from './visitor/visitor.component';
+import { AboutComponent } from './about/about.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MonthYearPipe,
     LocationPipe,
     CarouselComponent,
+    VisitorComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -52,6 +58,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatCardModule,
     MatProgressBarModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
     HttpClientModule
   ],
   providers: [HttpClient],

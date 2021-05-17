@@ -97,7 +97,7 @@ resource "azurerm_cosmosdb_sql_database" "prd" {
 }
 
 resource "azurerm_function_app" "app" {
-  app_service_plan_id        = azurerm_app_service_plan.asp.id
+  app_service_plan_id = azurerm_app_service_plan.asp.id
   app_settings = {
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
     FUNCTIONS_WORKER_RUNTIME       = "java"
@@ -109,10 +109,17 @@ resource "azurerm_function_app" "app" {
   location                   = azurerm_resource_group.rg.location
   name                       = "${var.prefix}app"
   resource_group_name        = azurerm_resource_group.rg.name
-  storage_account_access_key = azurerm_storage_account.sa.primary_access_key
-  storage_account_name       = azurerm_storage_account.sa.name
+  storage_account_access_key = azurerm_storage_account.sa_app.primary_access_key
+  storage_account_name       = azurerm_storage_account.sa_app.name
   tags = {
     Project = var.project
+  }
+
+  site_config {
+    cors {
+      allowed_origins     = ["*"]
+      support_credentials = false
+    }
   }
 }
 
@@ -124,16 +131,22 @@ resource "azurerm_resource_group" "rg" {
   }
 }
 
-resource "azurerm_storage_account" "sa" {
+resource "azurerm_storage_account" "sa_app" {
   account_replication_type = "LRS"
   account_tier             = "Standard"
   location                 = azurerm_resource_group.rg.location
-  name                     = replace(var.prefix, "-", "")
+  name                     = "${replace(var.prefix, "-", "")}app"
   resource_group_name      = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_storage_container" "deployments" {
-  container_access_type = "private"
-  name                  = "deployments"
-  storage_account_name  = azurerm_storage_account.sa.name
+resource "azurerm_storage_account" "sa_web" {
+  account_replication_type = "LRS"
+  account_tier             = "Standard"
+  location                 = azurerm_resource_group.rg.location
+  name                     = "${replace(var.prefix, "-", "")}web"
+  resource_group_name      = azurerm_resource_group.rg.name
+
+  static_website {
+    index_document = "index.html"
+  }
 }

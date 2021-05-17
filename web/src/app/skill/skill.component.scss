@@ -1,4 +1,8 @@
 
+mat-spinner {
+  background-color: #49caff;
+}
+
 table {
   table-layout: fixed;
   width: 100%;
@@ -19,4 +23,8 @@ tr:focus {
 #skill-table {
   margin: 0 auto;
   width: 75%;
+}
+
+.skill-loading {
+  margin: 3% 44% 3% 44%;
 }
