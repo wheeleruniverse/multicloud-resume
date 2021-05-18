@@ -58,6 +58,31 @@ resource "azurerm_app_service_plan" "asp" {
   }
 }
 
+resource "azurerm_cdn_endpoint" "web_origin" {
+  location            = azurerm_resource_group.rg.location
+  name                = "${azurerm_storage_account.sa_web.name}-cdn"
+  profile_name        = azurerm_cdn_profile.web_cdn.name
+  resource_group_name = azurerm_resource_group.rg.name
+  tags = {
+    Project = var.project
+  }
+
+  origin {
+    host_name = azurerm_storage_account.sa_web.primary_web_endpoint
+    name      = "${azurerm_storage_account.sa_web.name}-cdn"
+  }
+}
+
+resource "azurerm_cdn_profile" "web_cdn" {
+  location            = azurerm_resource_group.rg.location
+  name                = "${var.prefix}cdn"
+  resource_group_name = azurerm_resource_group.rg.name
+  sku                 = "Standard_Verizon"
+  tags = {
+    Project = var.project
+  }
+}
+
 resource "azurerm_cosmosdb_account" "db" {
   enable_automatic_failover = false
   enable_free_tier          = true
@@ -111,6 +136,7 @@ resource "azurerm_function_app" "app" {
   resource_group_name        = azurerm_resource_group.rg.name
   storage_account_access_key = azurerm_storage_account.sa_app.primary_access_key
   storage_account_name       = azurerm_storage_account.sa_app.name
+  version                    = "~3"
   tags = {
     Project = var.project
   }
