@@ -61,6 +61,7 @@ resource "azurerm_app_service_plan" "asp" {
 resource "azurerm_cdn_endpoint" "web_origin" {
   location            = azurerm_resource_group.rg.location
   name                = "${azurerm_storage_account.sa_web.name}-cdn"
+  origin_host_header  = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
   profile_name        = azurerm_cdn_profile.web_cdn.name
   resource_group_name = azurerm_resource_group.rg.name
   tags = {
@@ -68,7 +69,7 @@ resource "azurerm_cdn_endpoint" "web_origin" {
   }
 
   origin {
-    host_name = azurerm_storage_account.sa_web.primary_web_endpoint
+    host_name = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
     name      = "${azurerm_storage_account.sa_web.name}-cdn"
   }
 }
