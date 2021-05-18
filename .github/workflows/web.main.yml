@@ -33,6 +33,7 @@ jobs:
         run: |
           cd web
           ng build --prod
+          ls -lht dist
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,6 +49,8 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
+            pwd
+            ls -lht web/
             az storage blob upload-batch --account-name wheelerresumeweb -d '$web' -s web/dist/web/
 
       - name: Purge CDN
