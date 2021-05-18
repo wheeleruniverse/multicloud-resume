@@ -15,15 +15,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: azure/login@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
         with:
-          creds: ${{ secrets.AZURE_WEB_AUTH }}
+          node-version: '14.x'
+
+      - name: Install Dependencies
+        run: |
+          cd web
+          npm install
 
       - name: Angular Build
         run: |
           cd web
           ng build --prod
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_WEB_AUTH }}
 
       - name: Upload to Blob
         uses: azure/CLI@v1
@@ -43,6 +59,6 @@ jobs:
               --profile-name "wheeler-resume-cdn" \
               --resource-group "CloudGuruChallenge_21.04"
 
-      - name: Logout
+      - name: Azure Logout
         run: |
           az logout
