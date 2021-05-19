@@ -58,15 +58,14 @@ jobs:
         with:
           name: dist
 
-      - name: Upload to Blob
+      - name: Upload to Azure Blob
         uses: azure/CLI@v1
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            ls
             az storage blob upload-batch --account-name wheelerresumeweb -d '$web' -s dist/
 
-      - name: Purge CDN
+      - name: Purge Azure CDN
         uses: azure/CLI@v1
         with:
           azcliversion: 2.0.72
