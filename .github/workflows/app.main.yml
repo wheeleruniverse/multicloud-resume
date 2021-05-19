@@ -57,4 +57,5 @@ jobs:
 
       - name: Upload to Azure Functions
         run: |
+          cd app
           mvn install package azure-functions:deploy

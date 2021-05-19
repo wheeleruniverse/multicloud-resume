@@ -52,6 +52,7 @@ public class CertificationControllerTest {
         assertEquals(HttpStatus.valueOf(200), response.getStatus());
         assertEquals(data, response.getBody());
 
+
         verify(spyController).handleRequest(filter, mockContext);
     }
 }
