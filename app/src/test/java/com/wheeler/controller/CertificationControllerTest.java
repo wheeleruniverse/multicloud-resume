@@ -38,7 +38,6 @@ public class CertificationControllerTest {
         filter = new QueryFilter();
 
         doReturn(Logger.getGlobal()).when(mockContext).getLogger();
-
         when(mockHttpRequest.getBody()).thenReturn(Optional.of(filter));
         when(mockHttpRequest.createResponseBuilder(any())).thenReturn(new HttpResponseMessageMock.HttpResponseMessageBuilderMock());
     }

@@ -50,9 +50,10 @@ jobs:
           java-version: '11'
 
       - name: Download Artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: target
+          path: app/target
 
       - name: Upload to Azure Functions
         run: |
