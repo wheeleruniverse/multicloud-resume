@@ -3,6 +3,7 @@ package com.wheeler.service;
 import com.azure.cosmos.models.CosmosItemResponse;
 import com.wheeler.dao.filter.QueryFilter;
 import com.wheeler.dao.model.Visitor;
+import com.wheeler.dao.model.VisitorCount;
 import com.wheeler.dao.repository.VisitorRepository;
 import com.wheeler.exception.BadRequestException;
 import org.junit.jupiter.api.Assertions;
@@ -22,9 +23,6 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class VisitorServiceTest {
 
-    //TODO: Test Count Case
-
-
     @InjectMocks
     private VisitorService service;
 
@@ -37,6 +35,34 @@ public class VisitorServiceTest {
     @SuppressWarnings("unchecked")
     public void beforeEach(){
         this.mockCosmosItemResponse = mock(CosmosItemResponse.class);
+    }
+
+    @Test
+    public void countWithValidFilter(){
+        final String expectId = "test9";
+        final List<VisitorCount> expect = getTestDataForCount(expectId);
+        when(repository.countByName()).thenReturn(expect);
+
+        final List<VisitorCount> actual = service.visitorCount().apply(new QueryFilter());
+        Assertions.assertEquals(expect, actual);
+
+        final String actualId = actual.get(0).getName();
+        Assertions.assertEquals(expectId, actualId);
+        verify(repository).countByName();
+    }
+
+    @Test
+    public void countWithInvalidFilter(){
+        final String expectId = "test1039";
+        final List<VisitorCount> expect = getTestDataForCount(expectId);
+        when(repository.countByName()).thenReturn(expect);
+
+        final List<VisitorCount> actual = service.visitorCount().apply(null);
+        Assertions.assertEquals(expect, actual);
+
+        final String actualId = actual.get(0).getName();
+        Assertions.assertEquals(expectId, actualId);
+        verify(repository).countByName();
     }
 
     @Test
@@ -88,36 +114,44 @@ public class VisitorServiceTest {
 
     @Test
     public void retrieveWithValidFilter(){
-        final String expectId = "test519";
-        final List<Visitor> expect = getTestData(expectId);
+        final String expectName = "test519";
+        final List<Visitor> expect = getTestData(expectName);
         when(repository.findAll()).thenReturn(expect);
 
         final List<Visitor> actual = service.visitorRetrieve().apply(new QueryFilter());
         Assertions.assertEquals(expect, actual);
 
-        final String actualId = actual.get(0).getId();
-        Assertions.assertEquals(expectId, actualId);
+        final String actualId = actual.get(0).getName();
+        Assertions.assertEquals(expectName, actualId);
         verify(repository).findAll();
     }
 
     @Test
     public void retrieveWithInvalidFilter(){
-        final String expectId = "test843";
-        final List<Visitor> expect = getTestData(expectId);
+        final String expectName = "test843";
+        final List<Visitor> expect = getTestData(expectName);
         when(repository.findAll()).thenReturn(expect);
 
         final List<Visitor> actual = service.visitorRetrieve().apply(null);
         Assertions.assertEquals(expect, actual);
 
-        final String actualId = actual.get(0).getId();
-        Assertions.assertEquals(expectId, actualId);
+        final String actualId = actual.get(0).getName();
+        Assertions.assertEquals(expectName, actualId);
         verify(repository).findAll();
     }
 
-    private List<Visitor> getTestData(String id){
+    private List<Visitor> getTestData(String name){
         Visitor data = new Visitor();
-        data.setId(id);
-        data.setName("Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36");
+        data.setId("123");
+        data.setName(name);
+
+        return Collections.singletonList(data);
+    }
+
+    private List<VisitorCount> getTestDataForCount(String name){
+        VisitorCount data = new VisitorCount();
+        data.setCnt(9);
+        data.setName(name);
 
         return Collections.singletonList(data);
     }
