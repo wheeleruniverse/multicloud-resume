@@ -11,9 +11,6 @@ on:
     paths:
     - app/**
 
-env:
-  APP_NAME: wheeler-resume-app
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -34,10 +31,10 @@ jobs:
 
       - name: Upload to Azure Functions
         uses: Azure/functions-action@v1
-        id: ${{ env.APP_NAME }}
+        id: wheeler-resume-app
         with:
-          app-name: ${{ env.APP_NAME }}
-          package: app/target/azure-functions/${{ env.APP_NAME }}
+          app-name: wheeler-resume-app
+          package: app/target/azure-functions/wheeler-resume-app
           publish-profile: ${{ secrets.AZURE_APP_AUTH }}
 
       - name: Upload to Azure Functions
