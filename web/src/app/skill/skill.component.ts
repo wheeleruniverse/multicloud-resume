@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {Skill, SkillDto} from "./skill.model";
-import {SkillService} from "./skill.service";
+import {SkillService} from "../core/service/skill/skill.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {FilterService} from "../shared/service/filter.service";

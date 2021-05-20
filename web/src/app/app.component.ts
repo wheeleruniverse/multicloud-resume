@@ -35,8 +35,12 @@ export class AppComponent implements OnInit {
   role = 'Cloud Architect';
   view = new Map<string, boolean>();
 
+  //TODO: Change view to Map<string, View> that can track
+  // -> enabled/disabled
+  // -> open/close
+
   ngOnInit(): void {
-    this.view.set('about', false);
+    this.view.set('about', true);
     this.view.set('education', false);
     this.view.set('experience', false);
     this.view.set('certifications', false);

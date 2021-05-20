@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CertificationService} from "./certification.service";
-import {CertificationDto} from "./certification.model";
+import {CertificationService} from "../core/service/certification/certification.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 import {MetaData} from "../shared/model/meta-data.model";
+import {CertificationState} from "../core/store/certification/certification.state";
+import {CertificationFacade} from "../core/store/certification/certification.facade";
 
 @Component({
   selector: 'app-certifications',
@@ -15,9 +16,9 @@ import {MetaData} from "../shared/model/meta-data.model";
 })
 export class CertificationComponent implements OnDestroy, OnInit {
 
-  constructor(private service: CertificationService) {}
+  constructor(private facade: CertificationFacade) {}
 
-  dto: CertificationDto;
+  state: CertificationState;
   destroyed$ = new Subject<void>();
 
   ngOnDestroy(): void {
@@ -26,16 +27,16 @@ export class CertificationComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.service.get()
+    this.facade.retrieve()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(dto => this.dto = dto);
+      .subscribe(state => this.state = state);
   }
 
   getMetaForLevel(value: string): MetaData {
-    return this.dto.meta.levels.find(meta => meta.name === value);
+    return this.state.meta.levels.find(meta => meta.name === value);
   }
 
   getMetaForVendor(value: string): MetaData {
-    return this.dto.meta.vendors.find(meta => meta.name === value);
+    return this.state.meta.vendors.find(meta => meta.name === value);
   }
 }

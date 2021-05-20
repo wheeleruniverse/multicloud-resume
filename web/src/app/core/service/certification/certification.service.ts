@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {Certification, CertificationDto} from "./certification.model";
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
-import {MetaData} from "../shared/model/meta-data.model";
-import {AppComponent} from "../app.component";
+import {MetaData} from "../../../shared/model/meta-data.model";
+import {AppComponent} from "../../../app.component";
+import {Certification, CertificationState} from "../../store/certification/certification.state";
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +13,13 @@ export class CertificationService {
 
   constructor(private httpClient: HttpClient) {}
 
-  get(): Observable<CertificationDto> {
+  retrieve(): Observable<CertificationState> {
     return this.httpClient
-      .get<CertificationDto>(AppComponent.api.certification.retrieve)
+      .get<CertificationState>(AppComponent.api.certification.retrieve)
       .pipe(tap(dto => CertificationService.sort(dto)));
   }
 
-  private static sort(dto: CertificationDto): CertificationDto {
+  private static sort(dto: CertificationState): CertificationState {
 
     const lookupLevel = (i: Certification) => dto.meta.levels.find(meta => meta.name === i.level);
 

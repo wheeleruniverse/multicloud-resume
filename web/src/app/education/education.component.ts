@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Education} from "./education.model";
-import {EducationService} from "./education.service";
+import {EducationService} from "../core/service/education/education.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 

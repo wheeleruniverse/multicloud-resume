@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {VisitorService} from "./visitor.service";
+import {VisitorService} from "../core/service/visitor/visitor.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {skipUntil, switchMap} from "rxjs/operators";
 
