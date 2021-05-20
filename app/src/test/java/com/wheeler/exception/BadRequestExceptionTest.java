@@ -10,4 +10,10 @@ public class BadRequestExceptionTest {
         BadRequestException e = new BadRequestException("My Message");
         Assertions.assertEquals("BadRequestException: My Message", e.getMessage());
     }
+
+    @Test
+    public void newBadRequestExceptionWithNull(){
+        BadRequestException e = new BadRequestException(null);
+        Assertions.assertEquals("BadRequestException: null", e.getMessage());
+    }
 }
