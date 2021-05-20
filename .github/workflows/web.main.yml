@@ -51,7 +51,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v1
         with:
-          creds: ${{secrets.AZURE_WEB_AUTH}}
+          creds: ${{ secrets.AZURE_WEB_AUTH }}
 
       - name: Download Artifact
         uses: actions/download-artifact@v1
