@@ -1,4 +1,4 @@
-import {MetaData} from "../shared/meta-data.model";
+import {MetaData} from "../shared/model/meta-data.model";
 
 export interface Skill {
   id: number;

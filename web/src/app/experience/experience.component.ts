@@ -9,7 +9,7 @@ import {takeUntil} from "rxjs/operators";
   templateUrl: './experience.component.html',
   styleUrls: [
     './experience.component.scss',
-    '../shared/carousel.component.scss'
+    '../shared/carousel/carousel.component.scss'
   ]
 })
 export class ExperienceComponent implements OnDestroy, OnInit {

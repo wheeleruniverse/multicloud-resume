@@ -10,7 +10,7 @@ import {takeUntil} from "rxjs/operators";
   templateUrl: './education.component.html',
   styleUrls: [
     './education.component.scss',
-    '../shared/carousel.component.scss'
+    '../shared/carousel/carousel.component.scss'
   ]
 })
 export class EducationComponent implements OnDestroy, OnInit {

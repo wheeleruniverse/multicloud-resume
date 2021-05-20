@@ -1,68 +1,42 @@
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import {IvyCarouselModule} from "angular-responsive-carousel";
-import {MatDividerModule} from '@angular/material/divider';
+import {AppComponent} from './app.component';
 import {EducationComponent} from "./education/education.component";
 import {ExperienceComponent} from "./experience/experience.component";
 import {ProjectComponent} from "./project/project.component";
 import {SkillComponent} from "./skill/skill.component";
-import {MonthYearPipe} from "./shared/month-year.pipe";
-import {LocationPipe} from "./shared/location.pipe";
-import { CarouselComponent } from './shared/carousel.component';
 import {CertificationComponent} from "./certification/certification.component";
-import {MatSliderModule} from "@angular/material/slider";
-import {MatTableModule} from "@angular/material/table";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatSortModule} from "@angular/material/sort";
-import {MatChipsModule} from "@angular/material/chips";
-import {MatCardModule} from "@angular/material/card";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { VisitorComponent } from './visitor/visitor.component';
-import { AboutComponent } from './about/about.component';
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {VisitorComponent} from './visitor/visitor.component';
+import {AboutComponent} from './about/about.component';
+import {SharedModule} from "./shared/shared.module";
+import {CoreModule} from "./core/core.module";
 
 @NgModule({
+  bootstrap: [
+    AppComponent
+  ],
   declarations: [
+    AboutComponent,
     AppComponent,
     CertificationComponent,
     EducationComponent,
     ExperienceComponent,
     ProjectComponent,
     SkillComponent,
-    MonthYearPipe,
-    LocationPipe,
-    CarouselComponent,
     VisitorComponent,
-    AboutComponent,
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    IvyCarouselModule,
-    MatDividerModule,
-    MatSliderModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSortModule,
-    MatChipsModule,
-    MatCardModule,
-    MatProgressBarModule,
-    MatTooltipModule,
-    MatProgressSpinnerModule,
-    MatSnackBarModule,
-    HttpClientModule
+    CoreModule,
+    HttpClientModule,
+    SharedModule,
   ],
-  providers: [HttpClient],
-  bootstrap: [AppComponent]
+  providers: [
+    HttpClient
+  ]
 })
 export class AppModule { }

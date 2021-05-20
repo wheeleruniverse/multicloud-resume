@@ -3,14 +3,14 @@ import {CertificationService} from "./certification.service";
 import {CertificationDto} from "./certification.model";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
-import {MetaData} from "../shared/meta-data.model";
+import {MetaData} from "../shared/model/meta-data.model";
 
 @Component({
   selector: 'app-certifications',
   templateUrl: './certification.component.html',
   styleUrls: [
     './certification.component.scss',
-    '../shared/carousel.component.scss'
+    '../shared/carousel/carousel.component.scss'
   ]
 })
 export class CertificationComponent implements OnDestroy, OnInit {

@@ -4,8 +4,8 @@ import {Skill, SkillDto} from "./skill.model";
 import {SkillService} from "./skill.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {FilterService} from "../shared/filter.service";
-import {MetaData} from "../shared/meta-data.model";
+import {FilterService} from "../shared/service/filter.service";
+import {MetaData} from "../shared/model/meta-data.model";
 import {filter} from "rxjs/operators";
 
 @Component({

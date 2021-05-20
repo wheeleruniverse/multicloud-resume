@@ -1,5 +1,5 @@
-import {MonthYear} from "../shared/month-year.model";
-import {MetaData} from "../shared/meta-data.model";
+import {MonthYear} from "../shared/model/month-year.model";
+import {MetaData} from "../shared/model/meta-data.model";
 
 export interface Certification {
   id: number;

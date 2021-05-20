@@ -1,4 +1,4 @@
-import {MonthYear} from "./month-year.model";
+import {MonthYear} from "../model/month-year.model";
 import {Injectable} from "@angular/core";
 
 @Injectable({

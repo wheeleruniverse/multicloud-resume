@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {Location} from "./location.model";
+import {Location} from "../model/location.model";
 
 @Pipe({
   name: 'location',

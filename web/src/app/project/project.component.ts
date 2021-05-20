@@ -3,7 +3,7 @@ import {ProjectService} from "./project.service";
 import {Project} from "./project.model";
 import {SkillService} from "../skill/skill.service";
 import {Skill} from "../skill/skill.model";
-import {FilterService} from "../shared/filter.service";
+import {FilterService} from "../shared/service/filter.service";
 import {Subject} from "rxjs";
 
 @Component({
@@ -11,7 +11,7 @@ import {Subject} from "rxjs";
   templateUrl: './project.component.html',
   styleUrls: [
     './project.component.scss',
-    '../shared/carousel.component.scss'
+    '../shared/carousel/carousel.component.scss'
   ]
 })
 export class ProjectComponent implements OnDestroy, OnInit {

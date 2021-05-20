@@ -4,7 +4,7 @@ import {Project} from "./project.model";
 import {HttpClient} from "@angular/common/http";
 import {AppComponent} from "../app.component";
 import {tap} from "rxjs/operators";
-import {MonthYearService} from "../shared/month-year.service";
+import {MonthYearService} from "../shared/service/month-year.service";
 
 @Injectable({
   providedIn: 'root'

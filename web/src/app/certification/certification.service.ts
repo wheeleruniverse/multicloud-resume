@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {Certification, CertificationDto} from "./certification.model";
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs/operators";
-import {MetaData} from "../shared/meta-data.model";
+import {MetaData} from "../shared/model/meta-data.model";
 import {AppComponent} from "../app.component";
 
 @Injectable({

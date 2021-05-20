@@ -1,5 +1,5 @@
-import {Image} from "../shared/image.model";
-import {Location} from "../shared/location.model";
+import {Image} from "../shared/model/image.model";
+import {Location} from "../shared/model/location.model";
 
 export interface Education {
   id: number;

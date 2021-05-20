@@ -1,5 +1,5 @@
 
-import {MonthYear} from "../shared/month-year.model";
+import {MonthYear} from "../shared/model/month-year.model";
 
 export interface Project {
   id: number;
