@@ -5,9 +5,8 @@ import {
 } from "./certification.actions";
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {AppState} from "../app.state";
 import {CertificationService} from "../../service/certification/certification.service";
-import {Action, Store} from "@ngrx/store";
+import {Action} from "@ngrx/store";
 import {catchError, map, switchMap} from "rxjs/operators";
 import {ErrorAction} from "../error/error.actions";
 import {Observable, of} from "rxjs";

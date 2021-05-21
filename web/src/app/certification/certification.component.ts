@@ -1,10 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CertificationService} from "../core/service/certification/certification.service";
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
+import {filter, takeUntil} from "rxjs/operators";
 import {MetaData} from "../shared/model/meta-data.model";
 import {CertificationState} from "../core/store/certification/certification.state";
 import {CertificationFacade} from "../core/store/certification/certification.facade";
+import {AppComponent, AppInjectionToken} from "../app.component";
 
 @Component({
   selector: 'app-certifications',
@@ -16,7 +16,10 @@ import {CertificationFacade} from "../core/store/certification/certification.fac
 })
 export class CertificationComponent implements OnDestroy, OnInit {
 
-  constructor(private facade: CertificationFacade) {}
+  constructor(
+    @Inject(AppInjectionToken) public app: AppComponent,
+    private facade: CertificationFacade
+  ) {}
 
   state: CertificationState;
   destroyed$ = new Subject<void>();
@@ -27,9 +30,17 @@ export class CertificationComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    this.app.certificationView.shouldEnable = false;
+
     this.facade.retrieve()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(state => this.state = state);
+      .pipe(
+        takeUntil(this.destroyed$),
+        filter(state => !!state?.data)
+      )
+      .subscribe(state => {
+        this.state = state;
+        this.app.certificationView.shouldEnable = true;
+      });
   }
 
   getMetaForLevel(value: string): MetaData {

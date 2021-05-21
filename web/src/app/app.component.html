@@ -3,38 +3,66 @@
 </div>
 
 <div>
-  <mat-card (click)="toggleView('about')">About</mat-card>
-  <app-about *ngIf="view.get('about')"></app-about>
+  <mat-card
+    [ngClass]="{'disabled': !aboutView.shouldEnable}"
+    (click)="toggleViewShouldRender(aboutView)"
+  >
+    About
+  </mat-card>
+  <app-about *ngIf="aboutView.shouldRender"></app-about>
 </div>
 
 <div>
-  <mat-card (click)="toggleView('experience')">Experience</mat-card>
-  <app-experience *ngIf="view.get('experience')"></app-experience>
+  <mat-card
+    [ngClass]="{'disabled': !experienceView.shouldEnable}"
+    (click)="toggleViewShouldRender(experienceView)"
+  >
+    Experience
+  </mat-card>
+  <app-experience *ngIf="experienceView.shouldRender"></app-experience>
 </div>
 
 <div>
-  <mat-card (click)="toggleView('certifications')">Certifications</mat-card>
-  <app-certifications *ngIf="view.get('certifications')"></app-certifications>
+  <mat-card
+    [ngClass]="{'disabled': !certificationView.shouldEnable}"
+    (click)="toggleViewShouldRender(certificationView)"
+  >
+    Certifications
+  </mat-card>
+  <app-certifications *ngIf="certificationView.shouldRender"></app-certifications>
 </div>
 
 <div>
-  <mat-card (click)="toggleView('skills')">Skills</mat-card>
-  <app-skills *ngIf="view.get('skills')"></app-skills>
+  <mat-card
+    [ngClass]="{'disabled': !skillView.shouldEnable}"
+    (click)="toggleViewShouldRender(skillView)">
+    Skills
+  </mat-card>
+  <app-skills *ngIf="skillView.shouldRender"></app-skills>
 </div>
 
 <div>
-  <mat-card (click)="toggleView('projects')">Projects</mat-card>
-  <app-projects *ngIf="view.get('projects')"></app-projects>
+  <mat-card
+    [ngClass]="{'disabled': !projectView.shouldEnable}"
+    (click)="toggleViewShouldRender(projectView)">
+    Projects
+  </mat-card>
+  <app-projects *ngIf="projectView.shouldRender"></app-projects>
 </div>
 
 <div>
-  <mat-card (click)="toggleView('education')">Education</mat-card>
-  <app-education *ngIf="view.get('education')"></app-education>
+  <mat-card
+    [ngClass]="{'disabled': !educationView.shouldEnable}"
+    (click)="toggleViewShouldRender(educationView)">
+    Education
+  </mat-card>
+  <app-education *ngIf="educationView.shouldRender"></app-education>
 </div>
 
 <div id="footer">
   <br/><br/>
   <mat-divider></mat-divider>
   <app-visitor></app-visitor>
+  <br/><br/>
 </div>
 

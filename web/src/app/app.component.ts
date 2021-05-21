@@ -1,6 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, forwardRef, InjectionToken, OnInit} from '@angular/core';
+import {View, ViewType} from "./shared/model/view.model";
+
+export const AppInjectionToken = new InjectionToken<AppComponent>('AppComponentInjectionToken')
 
 @Component({
+  providers: [{
+    provide: AppInjectionToken,
+    useExisting: forwardRef(() => AppComponent)
+  }],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -32,23 +39,44 @@ export class AppComponent implements OnInit {
     }
   }
 
-  role = 'Cloud Architect';
-  view = new Map<string, boolean>();
-
-  //TODO: Change view to Map<string, View> that can track
-  // -> enabled/disabled
-  // -> open/close
-
-  ngOnInit(): void {
-    this.view.set('about', true);
-    this.view.set('education', false);
-    this.view.set('experience', false);
-    this.view.set('certifications', false);
-    this.view.set('projects', false);
-    this.view.set('skills', false);
+  aboutView: View = {
+    shouldEnable: true,
+    shouldRender: false
   }
 
-  toggleView(key: string): void {
-    this.view.set(key, !this.view.get(key));
+  certificationView: View = {
+    shouldEnable: true,
+    shouldRender: false
+  }
+
+  educationView: View = {
+    shouldEnable: true,
+    shouldRender: false
+  }
+
+  experienceView: View = {
+    shouldEnable: true,
+    shouldRender: false
+  }
+
+  projectView: View = {
+    shouldEnable: true,
+    shouldRender: false
+  }
+
+  skillView: View = {
+    shouldEnable: true,
+    shouldRender: false
+  }
+
+  role = 'Cloud Architect';
+  viewType = ViewType;
+
+  ngOnInit(): void {}
+
+  toggleViewShouldRender(view: View): void {
+    if (view.shouldEnable) {
+      view.shouldRender = !view.shouldRender;
+    }
   }
 }
