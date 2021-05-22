@@ -5,14 +5,19 @@ import {environment} from "../../environments/environment";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {CertificationEffects} from "./store/certification/certification.effects";
 import {certificationReducer} from "./store/certification/certification.reducer";
+import {EducationEffects} from "./store/education/education.effects";
+import {educationReducer} from "./store/education/education.reducer";
 
 
 @NgModule({
   imports: [
-    // CertificationStoreModule,
-    EffectsModule.forRoot([CertificationEffects]),
+    EffectsModule.forRoot([
+      CertificationEffects,
+      EducationEffects
+    ]),
     StoreModule.forRoot({
-      'certification': certificationReducer
+      'certification': certificationReducer,
+      'education': educationReducer
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ]

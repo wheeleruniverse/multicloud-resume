@@ -1,4 +1,4 @@
-import {createFeatureSelector, Store} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {CertificationState} from "./certification.state";
 import {AppState} from "../app.state";
 import {Injectable} from "@angular/core";

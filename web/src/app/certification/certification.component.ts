@@ -21,8 +21,8 @@ export class CertificationComponent implements OnDestroy, OnInit {
     private viewService: ViewService
   ) {}
 
-  state: CertificationState;
   destroyed$ = new Subject<void>();
+  state: CertificationState;
 
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -30,7 +30,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.viewService.setCertificationShouldEnable(false);
+    this.viewService.certificationShouldEnable(false);
 
     this.facade.retrieve()
       .pipe(
@@ -39,7 +39,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
       )
       .subscribe(state => {
         this.state = state;
-        this.viewService.setCertificationShouldEnable(true);
+        this.viewService.certificationShouldEnable(true);
       });
   }
 

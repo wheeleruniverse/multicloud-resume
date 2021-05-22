@@ -1,8 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Education} from "./education.model";
 import {EducationService} from "../core/service/education/education.service";
 import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
+import {filter, takeUntil} from "rxjs/operators";
+import {EducationState} from "../core/store/education/education.state";
+import {CertificationFacade} from "../core/store/certification/certification.facade";
+import {ViewService} from "../shared/service/view.service";
+import {EducationFacade} from "../core/store/education/education.facade";
 
 
 @Component({
@@ -15,10 +18,13 @@ import {takeUntil} from "rxjs/operators";
 })
 export class EducationComponent implements OnDestroy, OnInit {
 
-  constructor(private service: EducationService) {}
+  constructor(
+    private facade: EducationFacade,
+    private viewService: ViewService
+  ) {}
 
-  data: Education[];
   destroyed$ = new Subject<void>();
+  state: EducationState;
 
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -26,8 +32,16 @@ export class EducationComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.service.get()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(data => this.data = data);
+    this.viewService.educationShouldEnable(false);
+
+    this.facade.retrieve()
+      .pipe(
+        takeUntil(this.destroyed$),
+        filter(state => !!state?.data)
+      )
+      .subscribe(state => {
+        this.state = state;
+        this.viewService.educationShouldEnable(true);
+      });
   }
 }
