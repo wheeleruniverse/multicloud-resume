@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ExperienceService} from "./experience.service";
+import {ExperienceService} from "../core/service/experience/experience.service";
 import {Experience} from "./experience.model";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";

@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ViewService} from "./shared/service/view.service";
 
 @Component({
   selector: 'app-root',
@@ -31,20 +32,107 @@ export class AppComponent implements OnInit {
       retrieve: `${AppComponent.root}/visitor/retrieve`
     }
   }
-
   role = 'Cloud Architect';
-  view = new Map<string, boolean>();
+
+  aboutShouldRender = false;
+
+  certificationShouldEnable = true;
+  certificationShouldRender = false;
+
+  educationShouldEnable = true;
+  educationShouldRender = false;
+
+  experienceShouldEnable = true;
+  experienceShouldRender = false;
+
+  projectShouldEnable = true;
+  projectShouldRender = false;
+
+  skillShouldEnable = true;
+  skillShouldRender = false;
+
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private viewService: ViewService){}
 
   ngOnInit(): void {
-    this.view.set('about', false);
-    this.view.set('education', false);
-    this.view.set('experience', false);
-    this.view.set('certifications', false);
-    this.view.set('projects', false);
-    this.view.set('skills', false);
+    this.viewService.certificationShouldEnable$.subscribe(val => {
+      this.certificationShouldEnable = val;
+      this.changeDetectorRef.detectChanges();
+    });
+    this.viewService.certificationShouldRender$.subscribe(val => {
+      this.certificationShouldRender = val;
+      this.changeDetectorRef.detectChanges();
+    });
+
+    this.viewService.educationShouldEnable$.subscribe(val => {
+      this.educationShouldEnable = val;
+      this.changeDetectorRef.detectChanges();
+    });
+    this.viewService.educationShouldRender$.subscribe(val => {
+      this.educationShouldRender = val;
+      this.changeDetectorRef.detectChanges();
+    });
+
+    this.viewService.experienceShouldEnable$.subscribe(val => {
+      this.experienceShouldEnable = val;
+      this.changeDetectorRef.detectChanges();
+    });
+    this.viewService.experienceShouldRender$.subscribe(val => {
+      this.experienceShouldRender = val;
+      this.changeDetectorRef.detectChanges();
+    });
+
+    this.viewService.projectShouldEnable$.subscribe(val => {
+      this.projectShouldEnable = val;
+      this.changeDetectorRef.detectChanges();
+    });
+    this.viewService.projectShouldRender$.subscribe(val => {
+      this.projectShouldRender = val;
+      this.changeDetectorRef.detectChanges();
+    });
+
+    this.viewService.skillShouldEnable$.subscribe(val => {
+      this.skillShouldEnable = val;
+      this.changeDetectorRef.detectChanges();
+    });
+    this.viewService.skillShouldRender$.subscribe(val => {
+      this.skillShouldRender = val;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
-  toggleView(key: string): void {
-    this.view.set(key, !this.view.get(key));
+  toggleAboutShouldRender(){
+    this.aboutShouldRender = !this.aboutShouldRender;
+  }
+
+  toggleCertificationShouldRender(){
+    if(this.certificationShouldEnable) {
+      this.viewService.certificationShouldRender(!this.certificationShouldRender);
+    }
+  }
+
+  toggleEducationShouldRender(){
+    if(this.educationShouldEnable) {
+      this.viewService.educationShouldRender(!this.educationShouldRender);
+    }
+  }
+
+  toggleExperienceShouldRender(){
+    if(this.experienceShouldEnable) {
+      this.viewService.experienceShouldRender(!this.experienceShouldRender);
+    }
+  }
+
+  toggleProjectShouldRender(){
+    if(this.projectShouldEnable) {
+      this.viewService.projectShouldRender(!this.projectShouldRender);
+    }
+  }
+
+  toggleSkillShouldRender(){
+    if(this.skillShouldEnable) {
+      this.viewService.skillShouldRender(!this.skillShouldRender);
+    }
   }
 }

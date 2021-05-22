@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {Skill, SkillDto} from "./skill.model";
+import {Skill, SkillDto} from "../../../skill/skill.model";
 import {HttpClient} from "@angular/common/http";
-import {AppComponent} from "../app.component";
+import {AppComponent} from "../../../app.component";
 import {tap} from "rxjs/operators";
 
 @Injectable({

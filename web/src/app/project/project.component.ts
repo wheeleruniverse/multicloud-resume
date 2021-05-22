@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProjectService} from "./project.service";
+import {ProjectService} from "../core/service/project/project.service";
 import {Project} from "./project.model";
-import {SkillService} from "../skill/skill.service";
+import {SkillService} from "../core/service/skill/skill.service";
 import {Skill} from "../skill/skill.model";
 import {FilterService} from "../shared/service/filter.service";
 import {Subject} from "rxjs";

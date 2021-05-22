@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CertificationService} from "./certification.service";
-import {CertificationDto} from "./certification.model";
 import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
+import {filter, takeUntil} from "rxjs/operators";
 import {MetaData} from "../shared/model/meta-data.model";
+import {CertificationState} from "../core/store/certification/certification.state";
+import {CertificationFacade} from "../core/store/certification/certification.facade";
+import {ViewService} from "../shared/service/view.service";
 
 @Component({
   selector: 'app-certifications',
@@ -15,10 +16,13 @@ import {MetaData} from "../shared/model/meta-data.model";
 })
 export class CertificationComponent implements OnDestroy, OnInit {
 
-  constructor(private service: CertificationService) {}
+  constructor(
+    private facade: CertificationFacade,
+    private viewService: ViewService
+  ) {}
 
-  dto: CertificationDto;
   destroyed$ = new Subject<void>();
+  state: CertificationState;
 
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -26,16 +30,24 @@ export class CertificationComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.service.get()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(dto => this.dto = dto);
+    this.viewService.certificationShouldEnable(false);
+
+    this.facade.retrieve()
+      .pipe(
+        takeUntil(this.destroyed$),
+        filter(state => !!state?.data)
+      )
+      .subscribe(state => {
+        this.state = state;
+        this.viewService.certificationShouldEnable(true);
+      });
   }
 
   getMetaForLevel(value: string): MetaData {
-    return this.dto.meta.levels.find(meta => meta.name === value);
+    return this.state.meta.levels.find(meta => meta.name === value);
   }
 
   getMetaForVendor(value: string): MetaData {
-    return this.dto.meta.vendors.find(meta => meta.name === value);
+    return this.state.meta.vendors.find(meta => meta.name === value);
   }
 }

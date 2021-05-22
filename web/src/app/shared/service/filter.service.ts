@@ -6,7 +6,7 @@ import {BehaviorSubject} from "rxjs";
 })
 export class FilterService {
 
-  public target$ : BehaviorSubject<string> = new BehaviorSubject('');
+  public target$ = new BehaviorSubject('');
 
   constructor() {}
 

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Experience} from "./experience.model";
+import {Experience} from "../../../experience/experience.model";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {AppComponent} from "../app.component";
+import {AppComponent} from "../../../app.component";
 import {tap} from "rxjs/operators";
-import {MonthYearService} from "../shared/service/month-year.service";
+import {MonthYearService} from "../../../shared/service/month-year.service";
 
 @Injectable({
   providedIn: 'root'
