@@ -7,6 +7,7 @@ import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.wheeler.dao.filter.QueryFilter;
 import com.wheeler.dao.model.Experience;
 import com.wheeler.dao.model.Project;
+import com.wheeler.dto.model.ProjectDto;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -35,6 +36,6 @@ public class ProjectController extends AzureSpringBootRequestHandler<QueryFilter
 
         List<Project> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
         context.getLogger().info(String.format("received %d project records", data.size()));
-        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(data).build();
+        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new ProjectDto(data)).build();
     }
 }

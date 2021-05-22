@@ -6,6 +6,7 @@ import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.wheeler.dao.filter.QueryFilter;
 import com.wheeler.dao.model.Education;
+import com.wheeler.dto.model.EducationDto;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -34,6 +35,6 @@ public class EducationController extends AzureSpringBootRequestHandler<QueryFilt
 
         List<Education> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
         context.getLogger().info(String.format("received %d education records", data.size()));
-        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(data).build();
+        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new EducationDto(data)).build();
     }
 }
