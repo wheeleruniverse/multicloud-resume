@@ -1,4 +1,10 @@
-import {MetaData} from "../shared/model/meta-data.model";
+import {MonthYear} from "../../../shared/model/month-year.model";
+import {MetaData} from "../../../shared/model/meta-data.model";
+
+export interface SkillState {
+  data: Skill[];
+  meta: SkillMeta;
+}
 
 export interface Skill {
   id: number;
@@ -8,11 +14,6 @@ export interface Skill {
 
   // foreign
   _filterByProjectIds: string[]; //TODO:
-}
-
-export interface SkillDto {
-  data: Skill[];
-  meta: SkillMeta;
 }
 
 export interface SkillMeta {

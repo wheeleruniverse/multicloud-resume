@@ -6,11 +6,6 @@ on:
     paths:
     - web/**
 
-  pull_request:
-    branches: [main]
-    paths:
-    - web/**
-
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -1,5 +1,8 @@
+import {MonthYear} from "../../../shared/model/month-year.model";
 
-import {MonthYear} from "../shared/model/month-year.model";
+export interface ProjectState {
+  data: Project[];
+}
 
 export interface Project {
   id: number;

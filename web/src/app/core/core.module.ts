@@ -7,17 +7,29 @@ import {CertificationEffects} from "./store/certification/certification.effects"
 import {certificationReducer} from "./store/certification/certification.reducer";
 import {EducationEffects} from "./store/education/education.effects";
 import {educationReducer} from "./store/education/education.reducer";
+import {ExperienceEffects} from "./store/experience/experience.effects";
+import {experienceReducer} from "./store/experience/experience.reducer";
+import {projectReducer} from "./store/project/project.reducer";
+import {ProjectEffects} from "./store/project/project.effects";
+import {SkillEffects} from "./store/skill/skill.effects";
+import {skillReducer} from "./store/skill/skill.reducer";
 
 
 @NgModule({
   imports: [
     EffectsModule.forRoot([
       CertificationEffects,
-      EducationEffects
+      EducationEffects,
+      ExperienceEffects,
+      ProjectEffects,
+      SkillEffects
     ]),
     StoreModule.forRoot({
       'certification': certificationReducer,
-      'education': educationReducer
+      'education': educationReducer,
+      'experience': experienceReducer,
+      'project': projectReducer,
+      'skill': skillReducer
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ]

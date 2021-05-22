@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {Project} from "../../../project/project.model";
 import {HttpClient} from "@angular/common/http";
 import {AppComponent} from "../../../app.component";
 import {tap} from "rxjs/operators";
 import {MonthYearService} from "../../../shared/service/month-year.service";
+import {ProjectState} from "../../store/project/project.state";
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,16 @@ export class ProjectService {
 
   constructor(private httpClient: HttpClient) {}
 
-  get(): Observable<Project[]> {
+  retrieve(): Observable<ProjectState> {
     return this.httpClient
-      .get<Project[]>(AppComponent.api.project.retrieve)
-      .pipe(tap(data => ProjectService.sort(data)));
+      .get<ProjectState>(AppComponent.api.project.retrieve)
+      .pipe(tap(state => ProjectService.sort(state)));
   }
 
-  private static sort(data: Project[]): Project[] {
-    return data.sort((n1, n2) => {
+  private static sort(state: ProjectState): ProjectState {
+    state.data.sort((n1, n2) => {
       return MonthYearService.compare(n1.start, n2.start, false);
     });
+    return state;
   }
 }

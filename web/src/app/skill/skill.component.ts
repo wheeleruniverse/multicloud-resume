@@ -1,49 +1,88 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {Skill, SkillDto} from "./skill.model";
-import {SkillService} from "../core/service/skill/skill.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {FilterService} from "../shared/service/filter.service";
 import {MetaData} from "../shared/model/meta-data.model";
-import {filter} from "rxjs/operators";
+import {filter, takeUntil} from "rxjs/operators";
+import {Skill, SkillState} from "../core/store/skill/skill.state";
+import {ViewService} from "../shared/service/view.service";
+import {SkillFacade} from "../core/store/skill/skill.facade";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.scss']
 })
-export class SkillComponent implements AfterViewInit {
+export class SkillComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private service: SkillService,
-    private filter: FilterService) {}
+    private facade: SkillFacade,
+    private filterService: FilterService,
+    private viewService: ViewService
+  ) {}
 
-  dto: SkillDto;
+  destroyed$ = new Subject<void>();
+  state: SkillState;
   tableFields: string[] = ['skill', 'type', 'level'];
   tableSource: MatTableDataSource<Skill>;
 
   ngAfterViewInit(): void {
-    this.service.get().subscribe(dto => {
-      this.dto = dto;
-      this.tableSource = new MatTableDataSource<Skill>(dto.data);
-      this.tableSource.paginator = this.paginator;
-      this.tableSource.sort = this.sort;
-    });
+    this.viewService.skillShouldEnable(false);
 
-    this.filter.target$
+    this.facade.retrieve()
+      .pipe(
+        takeUntil(this.destroyed$),
+        filter(state => !!state?.data)
+      )
+      .subscribe(state => {
+        this.state = state;
+        this.tableSource = new MatTableDataSource<Skill>(state.data);
+        this.tableSource.paginator = this.paginator;
+        this.tableSource.sort = this.sort;
+        this.viewService.skillShouldEnable(true);
+      });
+
+    this.filterService.target$
       .pipe(filter(target => !!target))
       .subscribe(target => this.tableSource.filter = target);
   }
 
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
+
+  // ngOnInit(): void {
+  //   this.viewService.skillShouldEnable(false);
+  //
+  //   this.facade.retrieve()
+  //     .pipe(
+  //       takeUntil(this.destroyed$),
+  //       filter(state => !!state?.data)
+  //     )
+  //     .subscribe(state => {
+  //       this.state = state;
+  //       this.tableSource = new MatTableDataSource<Skill>(state.data);
+  //       this.tableSource.paginator = this.paginator;
+  //       this.tableSource.sort = this.sort;
+  //       this.viewService.skillShouldEnable(true);
+  //     });
+  //
+  //   this.filterService.target$
+  //     .pipe(filter(target => !!target))
+  //     .subscribe(target => this.tableSource.filter = target);
+  // }
+
   getMetaForLevel(value: string): MetaData {
-    return this.dto.meta.levels.find(meta => meta.name === value);
+    return this.state.meta.levels.find(meta => meta.name === value);
   }
 
   setFilter(event: Event) {
-    this.filter.setTarget(event != null ? (event.target as HTMLInputElement).value : '');
+    this.filterService.setTarget(event != null ? (event.target as HTMLInputElement).value : '');
   }
 }

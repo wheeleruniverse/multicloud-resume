@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ExperienceService} from "../core/service/experience/experience.service";
-import {Experience} from "./experience.model";
 import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
+import {filter, takeUntil} from "rxjs/operators";
+import {ExperienceState} from "../core/store/experience/experience.state";
+import {ViewService} from "../shared/service/view.service";
+import {ExperienceFacade} from "../core/store/experience/experience.facade";
 
 @Component({
   selector: 'app-experience',
@@ -14,10 +15,13 @@ import {takeUntil} from "rxjs/operators";
 })
 export class ExperienceComponent implements OnDestroy, OnInit {
 
-  constructor(private service: ExperienceService) {}
+  constructor(
+    private facade: ExperienceFacade,
+    private viewService: ViewService
+  ) {}
 
-  data: Experience[];
   destroyed$ = new Subject<void>();
+  state: ExperienceState;
 
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -25,8 +29,16 @@ export class ExperienceComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.service.get()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(data => this.data = data);
+    this.viewService.experienceShouldEnable(false);
+
+    this.facade.retrieve()
+      .pipe(
+        takeUntil(this.destroyed$),
+        filter(state => !!state?.data)
+      )
+      .subscribe(state => {
+        this.state = state;
+        this.viewService.experienceShouldEnable(true);
+      });
   }
 }

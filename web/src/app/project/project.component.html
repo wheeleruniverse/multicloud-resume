@@ -1,23 +1,26 @@
 <app-carousel
-  *ngIf="!!data; else loading"
+  *ngIf="!!state?.data; else loading"
   [cellsToShow]=2
   [height]=250
 >
-  <div *ngFor="let i of data" (click)="filterProject(i.id)" class="carousel-cell" tabindex="-1">
+  <!-- (click)="filterProject(i.id)" -->
+  <div *ngFor="let i of state.data" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
       <span class="large">{{i.name}}</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
       <span>Blog: <a href="{{i.blog}}">{{i.blog}}</a></span>
       <span>Code: <a href="{{i.code}}">{{i.code}}</a></span>
+      <!--
       <mat-chip-list>
         <mat-chip
           *ngFor="let s of i.skillIds"
           (click)="filterSkill(s)"
           [ngClass]="{'active': targetSkill !== null && targetSkill.id === s}"
         >
-<!--          {{getSkill(s).skill}}-->
+          {{getSkill(s).skill}}
         </mat-chip>
       </mat-chip-list>
+      -->
     </div>
     <div class="carousel-cell-secondary">
       <span>{{i.description}}</span>

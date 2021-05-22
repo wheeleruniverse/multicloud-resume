@@ -2,7 +2,7 @@ import {Image} from "../../../shared/model/image.model";
 import {Location} from "../../../shared/model/location.model";
 
 export interface EducationState {
-  data: Education[]; //TODO: modify the backend to return this response object
+  data: Education[];
 }
 
 export interface Education {

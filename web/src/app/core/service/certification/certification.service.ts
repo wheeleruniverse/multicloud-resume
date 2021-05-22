@@ -16,20 +16,20 @@ export class CertificationService {
   retrieve(): Observable<CertificationState> {
     return this.httpClient
       .get<CertificationState>(AppComponent.api.certification.retrieve)
-      .pipe(tap(dto => CertificationService.sort(dto)));
+      .pipe(tap(state => CertificationService.sort(state)));
   }
 
-  private static sort(dto: CertificationState): CertificationState {
+  private static sort(state: CertificationState): CertificationState {
 
-    const lookupLevel = (i: Certification) => dto.meta.levels.find(meta => meta.name === i.level);
+    const lookupLevel = (i: Certification) => state.meta.levels.find(meta => meta.name === i.level);
 
-    dto.data.sort((n1, n2) => {
+    state.data.sort((n1, n2) => {
       const c1 = CertificationService.compareVendor(n1, n2, true);
       const c2 = CertificationService.compareLevel(n1, n2, false, lookupLevel);
       const c3 = CertificationService.compareName(n1, n2, true);
       return c1 == 0 ? c2 == 0 ? c3 : c2 : c1;
     });
-    return dto;
+    return state;
   }
 
   private static compareLevel(
