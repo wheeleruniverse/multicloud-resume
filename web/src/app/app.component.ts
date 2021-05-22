@@ -1,13 +1,12 @@
-import {Component, forwardRef, InjectionToken, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, forwardRef, InjectionToken, OnInit} from '@angular/core';
 import {View, ViewType} from "./shared/model/view.model";
+import {ViewService} from "./shared/service/view.service";
+import {Observable} from "rxjs";
+import {distinctUntilChanged, filter, first, map, tap} from "rxjs/operators";
 
-export const AppInjectionToken = new InjectionToken<AppComponent>('AppComponentInjectionToken')
+// export const AppInjectionToken = new InjectionToken<AppComponent>('AppComponentInjectionToken')
 
 @Component({
-  providers: [{
-    provide: AppInjectionToken,
-    useExisting: forwardRef(() => AppComponent)
-  }],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -70,13 +69,35 @@ export class AppComponent implements OnInit {
   }
 
   role = 'Cloud Architect';
-  viewType = ViewType;
+  ViewType = ViewType;
 
-  ngOnInit(): void {}
+  certificationShouldEnable = true;
+  certificationShouldRender = false;
+
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private viewService: ViewService){}
+
+  ngOnInit(): void {
+    this.viewService.certificationShouldEnable$.subscribe(val => {
+      this.certificationShouldEnable = val;
+      this.changeDetectorRef.detectChanges();
+    });
+
+    this.viewService.certificationShouldRender$.subscribe(val => {
+      this.certificationShouldRender = val;
+      this.changeDetectorRef.detectChanges();
+    });
+  }
+
+  toggleCertificationViewShouldRender(){
+
+    if(this.certificationShouldEnable) {
+      this.viewService.setCertificationShouldRender(!this.certificationShouldRender);
+    }
+  }
 
   toggleViewShouldRender(view: View): void {
-    if (view.shouldEnable) {
-      view.shouldRender = !view.shouldRender;
-    }
+
   }
 }

@@ -22,11 +22,7 @@ export interface CertificationMeta {
   vendors: MetaData[];
 }
 
-// export const certificationAdapter = createEntityAdapter<Certification>({
-//   selectId: model => model.id
-// });
-
-export const certificationInitialState: CertificationState = {
-  data: undefined,
-  meta: undefined
-}
+// export const certificationInitialState: CertificationState = {
+//   data: undefined,
+//   meta: undefined
+// }

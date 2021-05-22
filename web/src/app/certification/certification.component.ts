@@ -1,10 +1,10 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 import {filter, takeUntil} from "rxjs/operators";
 import {MetaData} from "../shared/model/meta-data.model";
 import {CertificationState} from "../core/store/certification/certification.state";
 import {CertificationFacade} from "../core/store/certification/certification.facade";
-import {AppComponent, AppInjectionToken} from "../app.component";
+import {ViewService} from "../shared/service/view.service";
 
 @Component({
   selector: 'app-certifications',
@@ -17,8 +17,8 @@ import {AppComponent, AppInjectionToken} from "../app.component";
 export class CertificationComponent implements OnDestroy, OnInit {
 
   constructor(
-    @Inject(AppInjectionToken) public app: AppComponent,
-    private facade: CertificationFacade
+    private facade: CertificationFacade,
+    private viewService: ViewService
   ) {}
 
   state: CertificationState;
@@ -30,7 +30,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.app.certificationView.shouldEnable = false;
+    this.viewService.setCertificationShouldEnable(false);
 
     this.facade.retrieve()
       .pipe(
@@ -39,7 +39,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
       )
       .subscribe(state => {
         this.state = state;
-        this.app.certificationView.shouldEnable = true;
+        this.viewService.setCertificationShouldEnable(true);
       });
   }
 

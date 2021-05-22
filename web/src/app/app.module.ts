@@ -37,10 +37,7 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     CoreModule,
     HttpClientModule,
-    SharedModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    SharedModule
   ],
   providers: [
     HttpClient

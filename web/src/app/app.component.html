@@ -24,12 +24,12 @@
 
 <div>
   <mat-card
-    [ngClass]="{'disabled': !certificationView.shouldEnable}"
-    (click)="toggleViewShouldRender(certificationView)"
+    [ngClass]="{'disabled': !(certificationShouldEnable)}"
+    (click)="toggleCertificationViewShouldRender()"
   >
     Certifications
   </mat-card>
-  <app-certifications *ngIf="certificationView.shouldRender"></app-certifications>
+  <app-certifications *ngIf="certificationShouldRender"></app-certifications>
 </div>
 
 <div>
