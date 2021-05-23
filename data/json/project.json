@@ -3,60 +3,120 @@
         "name":"Sep, 20 #CloudGuruChallenge",
         "blog":"https://dev.to/wheelerswebsites/my-september-cloud-guru-challenge-experience-l2j",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_20.09",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "description":"Create and automate an ETL processing pipeline for COVID-19 data using Python and AWS. Infrastructure was created and managed by CloudFormation. Data was fetched from a hosted GitHub repositoy on a schedule managed by EventBridge and transformed using Python code running within a Lambda function. Transformed data was stored in a DynamoDB database and streamed to an S3 bucket. QuickSight was connected to the S3 bucket so COVID-19 data could be displayed on an easy to read dashboard. Code was tracked by Git version control and stored in a GitHub repository.",
         "end":{
-            "month":9,
-            "year":2020
+            "month":"9",
+            "year":"2020"
         },
+        "skills":[
+            "CloudFormation",
+            "DynamoDB",
+            "Event Bridge",
+            "Git",
+            "Lambda",
+            "Python",
+            "QuickSight",
+            "Serverless",
+            "Simple Notifcation Service (SNS)",
+            "Simple Storage Service (S3)"
+        ],
         "start":{
-            "month":9,
-            "year":2020
+            "month":"9",
+            "year":"2020"
         },
-		"website": null
+        "website":null
     },
     {
         "name":"Oct, 20 #CloudGuruChallenge",
         "blog":"https://dev.to/wheelerswebsites/my-october-cloud-guru-challenge-experience-5ecg",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_20.10",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "description":"Create a Netflix style recommendation engine using SageMaker. Data was loaded from IMDB and uploaded to S3 using Jupyter Notebooks. Jupyter was also used to conduct the machine learning training. Feature engineering was done with Athena and SQL. Machine learning results were exported and used to build a PHP website. The website was fully hosted on AWS. DNS registration and routing was done with Route53. Dynamic content was served by a containerized PHP Lambda using Bref fronted by API Gateway. Static content was served by S3. All content was distributed using CloudFront.",
         "end":{
-            "month":12,
-            "year":2020
+            "month":"12",
+            "year":"2020"
         },
+        "skills":[
+            "API Gateway",
+            "Athena",
+            "Bref",
+            "CloudFront",
+            "Elastic Container Registry (ECR)",
+            "Git",
+            "Jupyter Notebooks",
+            "Lambda",
+            "Machine Learning",
+            "PHP",
+            "Python",
+            "Route 53",
+            "SageMaker",
+            "Serverless",
+            "Simple Storage Service (S3)",
+            "SQL"
+        ],
         "start":{
-            "month":10,
-            "year":2020
+            "month":"10",
+            "year":"2020"
         },
-		"website": "https://wheelerrecommends.com"
+        "website":"https://wheelerrecommends.com"
     },
     {
         "name":"Jan, 21 #CloudGuruChallenge",
         "blog":"https://dev.to/wheelerswebsites/january-21-cloudguruchallenge-iaj",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.01",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "description":"Create an image processing website that utilizes multiple cloud providers. Used AWS, Azure, and GCP to accomplish the goal. For AWS, Route 53 was used for DNS registration and routing, CloudFront for content distribution, API Gateway for HTTP access to Lambda functions, C# and Node.js Lambda functions for business logic, and S3 for website hosting. For Azure, Table Storage was used to store image analysis data in a NoSQL database. For GCP, Cloud Vision was used to conduct image analysis on images uploaded to S3.",
         "end":{
-            "month":1,
-            "year":2021
+            "month":"1",
+            "year":"2021"
         },
+        "skills":[
+            "API Gateway",
+            "C#",
+            "Cloud Vision",
+            "CloudFront",
+            "Git",
+            "Lambda",
+            "Node.js",
+            "Route 53",
+            "Serverless",
+            "Simple Storage Service (S3)",
+            "Table Storage"
+        ],
         "start":{
-            "month":1,
-            "year":2021
+            "month":"1",
+            "year":"2021"
         },
-		"website": "https://selfieanalyzer.com"
+        "website":"https://selfieanalyzer.com"
     },
     {
         "name":"Feb, 21 #CloudGuruChallenge",
         "blog":"https://dev.to/wheelerswebsites/feb-21-cloudguruchallenge-358d",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.02",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "description":"Create a verification website in Azure that is continously integrated and globally performant. The website was written in Ruby on Rails and deployed to App Service using Azure Pipelines. The app servers were setup with auto scaling and secured within a Virtual Network behind Front Door. Data was written to Cosmos DB and binary data was written to Blob storage. Azure Pipelines was executed using a self-hosted agent running on a Virtual Machine with a local SSD disk and public IP address protected by a Network Security Group. All infrastructure was deployed using Resource Manager.",
         "end":{
-            "month":4,
-            "year":2021
+            "month":"4",
+            "year":"2021"
         },
+        "skills":[
+            "App Service",
+            "Blob",
+            "CosmosDB",
+            "Disk Storage",
+            "Front Door",
+            "Git",
+            "MongoDB",
+            "Network Security Group (NSG)",
+            "Pipelines",
+            "Public IP",
+            "Rails",
+            "Resource Manager",
+            "Ruby",
+            "Virtual Machine",
+            "Virtual Network"
+        ],
         "start":{
-            "month":2,
-            "year":2021
+            "month":"2",
+            "year":"2021"
         },
-		"website": null
+        "website":null
     }
 ]

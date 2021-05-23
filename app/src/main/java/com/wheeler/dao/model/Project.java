@@ -12,6 +12,7 @@ public class Project {
     private String code;
     private String description;
     private MonthYear end;
+    private String[] skills;
     private MonthYear start;
     private String website;
 }

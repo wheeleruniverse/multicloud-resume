@@ -4,7 +4,7 @@
       <span class="large">{{getMetaForVendor(i.vendor).display}}</span>
       <span class="large">{{i.name}}</span>
       <span>{{i.issued | monthYear}} &mdash; {{i.expiry | monthYear}}</span>
-      <span>Credential ID: {{i.credential}}</span>
+      <span>Credential ID: {{i.credential || "Not Applicable"}}</span>
       <span>
         <mat-slider
           aria-label="units"
