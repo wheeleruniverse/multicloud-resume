@@ -1,4 +1,3 @@
-import {MonthYear} from "../../../shared/model/month-year.model";
 import {MetaData} from "../../../shared/model/meta-data.model";
 
 export interface SkillState {
@@ -8,8 +7,8 @@ export interface SkillState {
 
 export interface Skill {
   id: number;
-  level: string;
   name: string;
+  level: string;
   type: string;
 
   // foreign

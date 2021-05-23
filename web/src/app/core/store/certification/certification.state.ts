@@ -8,12 +8,12 @@ export interface CertificationState {
 
 export interface Certification {
   id: number;
+  name: string;
   credential: string;
   description: string;
   expiry: MonthYear;
   issued: MonthYear;
   level: string,
-  name: string;
   vendor: string;
 }
 

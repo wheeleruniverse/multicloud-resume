@@ -4,6 +4,7 @@ import {ViewService} from "../shared/service/view.service";
 import {ProjectFacade} from "../core/store/project/project.facade";
 import {ProjectState} from "../core/store/project/project.state";
 import {filter, takeUntil} from "rxjs/operators";
+import {FilterService} from "../shared/service/filter.service";
 
 @Component({
   selector: 'app-projects',
@@ -17,13 +18,15 @@ export class ProjectComponent implements OnDestroy, OnInit {
 
   constructor(
     private facade: ProjectFacade,
+    private filterService: FilterService,
     private viewService: ViewService
   ) {}
 
   destroyed$ = new Subject<void>();
   state: ProjectState;
+  targetSkill = '';
+
   // targetProject: Project | null = null;
-  // targetSkill: Skill | null = null;
 
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -58,21 +61,22 @@ export class ProjectComponent implements OnDestroy, OnInit {
   //   }
   // }
 
-  // filterSkill(id: number): void {
-  //
-  //   this.targetProject = null;
-  //
-  //   if(this.targetSkill != null && this.targetSkill.id == id){
-  //     this.targetSkill = null;
-  //     this.filter.setTarget('');
-  //   }
-  //   else {
-  //     this.targetSkill = this.getSkill(id);
-  //     this.filter.setTarget(this.targetSkill.skill);
-  //   }
-  // }
+  setFilterToSkill(skill: string): void {
 
-  // getSkill(id: number): Skill {
-  //   return this.skillService.getById(id);
-  // }
+    // render skill
+    // TODO: Filter not being applied after Skill is rendered perhaps
+    // TODO: subscribe to if it is rendered and base logic on that value
+    this.viewService.skillShouldRender(true);
+
+    // unselect if already selected
+    if(this.targetSkill === skill){
+      this.targetSkill = null;
+      this.filterService.setTarget('');
+      return;
+    }
+
+    // select if not unselected
+    this.targetSkill = skill;
+    this.filterService.setTarget(this.targetSkill);
+  }
 }

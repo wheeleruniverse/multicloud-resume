@@ -7,12 +7,12 @@ export interface EducationState {
 
 export interface Education {
   id: number;
+  name: string;
   degree: string;
   description: string;
   end: number;
   image: Image;
   field: string;
   location: Location;
-  name: string;
   start: number;
 }

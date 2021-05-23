@@ -47,36 +47,17 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
         this.viewService.skillShouldEnable(true);
       });
 
-    this.filterService.target$
-      .pipe(filter(target => !!target))
-      .subscribe(target => this.tableSource.filter = target);
+    this.filterService.target$.subscribe(target => {
+      if(!!this.tableSource) {
+        this.tableSource.filter = target;
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.destroyed$.next();
     this.destroyed$.complete();
   }
-
-  // ngOnInit(): void {
-  //   this.viewService.skillShouldEnable(false);
-  //
-  //   this.facade.retrieve()
-  //     .pipe(
-  //       takeUntil(this.destroyed$),
-  //       filter(state => !!state?.data)
-  //     )
-  //     .subscribe(state => {
-  //       this.state = state;
-  //       this.tableSource = new MatTableDataSource<Skill>(state.data);
-  //       this.tableSource.paginator = this.paginator;
-  //       this.tableSource.sort = this.sort;
-  //       this.viewService.skillShouldEnable(true);
-  //     });
-  //
-  //   this.filterService.target$
-  //     .pipe(filter(target => !!target))
-  //     .subscribe(target => this.tableSource.filter = target);
-  // }
 
   getMetaForLevel(value: string): MetaData {
     return this.state.meta.levels.find(meta => meta.name === value);

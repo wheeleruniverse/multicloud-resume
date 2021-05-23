@@ -6,11 +6,11 @@ export interface ProjectState {
 
 export interface Project {
   id: number;
+  name: string;
   blog: string;
   code: string;
   description: string;
   end: MonthYear;
-  name: string;
+  skills: string[];
   start: MonthYear;
-  skillIds: number[]; //TODO:
 }
