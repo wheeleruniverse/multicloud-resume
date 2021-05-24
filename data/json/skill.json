@@ -3,504 +3,662 @@
         "id":"a3c5d586-901f-424f-bdbc-1b664e7e0a30",
         "name":"Angular",
         "level":"COMPETENT",
+        "projects":[],
         "type":"JavaScript Framework"
     },
     {
         "id":"1cd70378-cc89-4c61-ad31-a2e967a74102",
         "name":"Apache Maven",
         "level":"MASTER",
+        "projects":[],
         "type":"Build Automation"
     },
     {
         "id":"183c97ba-099c-4f0b-91fc-c6eef16f420d",
         "name":"AWS AMI",
         "level":"MASTER",
+        "projects":[],
         "type":"Compute"
     },
     {
         "id":"4424a537-3628-4a37-abb5-d23f2cf45fc2",
         "name":"AWS API Gateway",
         "level":"MASTER",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"Networking"
     },
     {
         "id":"79134c4f-d39a-45d0-8fb5-d3b2d4191186",
         "name":"AWS ASG",
         "level":"MASTER",
+        "projects":[],
         "type":"Compute"
     },
     {
         "id":"0fed5a25-c2fc-4901-b0fb-eb2b6140b4ac",
         "name":"AWS Athena",
         "level":"COMPETENT",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
         "type":"Analytics"
     },
     {
         "id":"7dbf4079-7dcc-42ec-a50a-f10121f1001f",
         "name":"AWS Aurora",
         "level":"MASTER",
+        "projects":[],
         "type":"Relational Database"
     },
     {
         "id":"8434ecff-82b7-4328-ad6c-a8171db27323",
         "name":"AWS Certificate Manager",
         "level":"PROFICIENT",
+        "projects":[],
         "type":"SSL/TLS Certificate Management"
     },
     {
         "id":"aa9304f1-9a3b-47d0-9731-0f1067450ef1",
         "name":"AWS CLI",
         "level":"MASTER",
+        "projects":[],
         "type":"CLI"
     },
     {
         "id":"a3743fe8-7399-45d2-bbce-ff0fdcaa1df8",
         "name":"AWS Cloud Formation",
         "level":"MASTER",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89"
+        ],
         "type":"Infrastructure as Code"
     },
     {
         "id":"ed450cf6-a2e6-4512-915e-c112eff7c797",
         "name":"AWS CloudFront",
         "level":"MASTER",
+        "projects":[
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"CDN"
     },
     {
         "id":"bed3126d-2d93-4f1f-8143-dfa6991d82dd",
         "name":"AWS CloudWatch",
         "level":"MASTER",
+        "projects":[],
         "type":"Monitoring"
     },
     {
         "id":"cc160541-0d68-4db5-9b56-a7a5001b02e3",
         "name":"AWS DynamoDB",
         "level":"COMPETENT",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89"
+        ],
         "type":"NoSQL Database"
     },
     {
         "id":"68465b54-535a-474b-9612-1202057db272",
         "name":"AWS EBS",
         "level":"MASTER",
+        "projects":[],
         "type":"Block Storage"
     },
     {
         "id":"30a32fb9-bb34-4ad6-b194-04132fe4651c",
         "name":"AWS EC2",
         "level":"MASTER",
+        "projects":[],
         "type":"Compute"
     },
     {
         "id":"5dc4d99b-2be7-4413-a515-5403c97f28f2",
         "name":"AWS ECR",
         "level":"NOVICE",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
         "type":"Container Registry"
     },
     {
         "id":"54585218-c750-4fd5-bd83-242df175f0c5",
         "name":"AWS EFS",
         "level":"MASTER",
+        "projects":[],
         "type":"NFS"
     },
     {
         "id":"abbecdfe-8116-4ffc-a424-c1b237deb205",
         "name":"AWS Event Bridge",
         "level":"MASTER",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89"
+        ],
         "type":"Event Bus"
     },
     {
         "id":"b050802a-2306-4a93-b4f8-9a551400992b",
         "name":"AWS IAM",
         "level":"MASTER",
+        "projects":[],
         "type":"IAM"
     },
     {
         "id":"5d4de0fc-2124-4356-8379-0fcc57c4f247",
         "name":"AWS Lambda",
         "level":"MASTER",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89",
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"Compute"
     },
     {
         "id":"e04c9fc2-4ad0-402f-8ac3-0c68afbb3133",
         "name":"AWS Launch Configuration",
         "level":"MASTER",
+        "projects":[],
         "type":"Compute"
     },
     {
         "id":"5cd463ca-3864-4c64-aea1-60082b4165be",
         "name":"AWS Private Link",
         "level":"PROFICIENT",
+        "projects":[],
         "type":"Networking"
     },
     {
         "id":"a771ac80-ac0e-4d82-b9ec-4e31f5bacdba",
         "name":"AWS Quick Sight",
         "level":"NOVICE",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89"
+        ],
         "type":"BI"
     },
     {
         "id":"72728fff-0e2a-43e5-b515-c72911eb6cd7",
         "name":"AWS RDS",
         "level":"MASTER",
+        "projects":[],
         "type":"Relational Database"
     },
     {
         "id":"457a4d4d-00e9-4522-8fe7-58044da7d0d7",
         "name":"AWS Route 53",
         "level":"MASTER",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"DNS"
     },
     {
         "id":"dcdd7b94-0137-456a-b67b-00419e2d4a84",
         "name":"AWS S3",
         "level":"MASTER",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89",
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"Object Storage"
     },
     {
         "id":"12cd7cf3-5963-4edd-a367-5cfb120e3e55",
         "name":"AWS SageMaker",
         "level":"NOVICE",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
         "type":"Machine Learning"
+    },
+    {
+        "id":"fa917912-9e24-4330-b9e6-e6b50d5ed0e2",
+        "name":"AWS SAM",
+        "level":"COMPETENT",
+        "projects":[
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
+        "type":"Serverless Framework"
     },
     {
         "id":"6e5df643-1ee5-405a-9021-922da377d330",
         "name":"AWS SNS",
         "level":"MASTER",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89"
+        ],
         "type":"App Integration"
     },
     {
         "id":"2eaf9ca5-007a-44df-b08a-9a14c7040b95",
         "name":"AWS SQS",
         "level":"NOVICE",
+        "projects":[],
         "type":"App Integration"
     },
     {
         "id":"0cc08f88-8f0f-46cb-b241-327ff204532d",
         "name":"AWS VPC",
         "level":"MASTER",
+        "projects":[],
         "type":"Networking"
     },
     {
         "id":"e8a6997b-c4d1-4ffb-a214-4ed99487b858",
         "name":"Azure App Service",
         "level":"COMPETENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Compute"
     },
     {
         "id":"d0eb1478-f755-49be-97bd-1b98c27e4b4a",
         "name":"Azure Blob",
         "level":"PROFICIENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Object Storage"
     },
     {
         "id":"0535d6cc-3815-46e7-bf33-406bb9e3b094",
         "name":"Azure Cosmos Database",
         "level":"PROFICIENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"NoSQL Database"
     },
     {
         "id":"115c0855-4c6e-4943-963a-7ff60139a932",
         "name":"Azure DevOps Pipelines",
         "level":"COMPETENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"CI/CD"
     },
     {
         "id":"f56d0a66-2b46-4697-b53e-4aad36ea0fc5",
         "name":"Azure Disk Storage",
         "level":"COMPETENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Block Storage"
     },
     {
         "id":"fc99bf5d-ead9-44eb-8de7-dd0add714411",
         "name":"Azure Front Door",
         "level":"NOVICE",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Networking"
     },
     {
         "id":"5d12e67a-f6db-48fd-848c-e267add62128",
         "name":"Azure NSG",
         "level":"COMPETENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Security"
     },
     {
         "id":"f6a97e57-0b4e-459a-b8d7-0dffe189be5a",
         "name":"Azure Public IP",
         "level":"COMPETENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Networking"
     },
     {
         "id":"79de5ad4-24ca-47c1-b18d-798c68705e1b",
         "name":"Azure Resource Manager",
         "level":"COMPETENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Infrastructure as Code"
     },
     {
         "id":"f2444e66-730a-4c4a-b59e-d342e8d57ed6",
         "name":"Azure Table Storage",
         "level":"PROFICIENT",
+        "projects":[
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"NoSQL Database"
     },
     {
         "id":"48ec5901-f927-4b3d-8a12-4c0d67185367",
         "name":"Azure Virtual Network",
         "level":"PROFICIENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Networking"
     },
     {
         "id":"823b6fa1-5bcf-498e-bf5e-29387b6fac3b",
         "name":"Azure VM",
         "level":"PROFICIENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
         "type":"Compute"
-    },
-    {
-        "id":"10f3de08-5f75-4cfa-b481-05daaee8db79",
-        "name":"C#",
-        "level":"COMPETENT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"0e4d2316-2510-458f-b9be-95e3cae2091c",
-        "name":"Cucumber",
-        "level":"NOVICE",
-        "type":"Testing Framework"
-    },
-    {
-        "id":"86e3212a-e2d2-43ea-b5fa-325c7e2368e9",
-        "name":"Eclipse",
-        "level":"PROFICIENT",
-        "type":"Java IDE"
-    },
-    {
-        "id":"e91aed35-d65b-4dd0-994c-e1038b648167",
-        "name":"Git",
-        "level":"MASTER",
-        "type":"Version Control"
-    },
-    {
-        "id":"01e69faa-e054-4b02-b7c3-879785172a47",
-        "name":"GitHub Actions",
-        "level":"COMPETENT",
-        "type":"CI/CD"
-    },
-    {
-        "id":"9cc23b68-5c49-4f46-a3c7-54e006413e6d",
-        "name":"Go",
-        "level":"COMPETENT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"9e9c0bac-7b6b-41fb-acc5-acf3f651c093",
-        "name":"Google Cloud Vision",
-        "level":"COMPETENT",
-        "type":"Machine Learning"
-    },
-    {
-        "id":"49bb192e-c83c-46a9-9ed4-ae486f234ee3",
-        "name":"HashiCorp Terraform",
-        "level":"COMPETENT",
-        "type":"Infrastructure as Code"
-    },
-    {
-        "id":"c8d0473c-f52c-49d7-973e-57c49f837edc",
-        "name":"Hibernate",
-        "level":"MASTER",
-        "type":"Java Framework"
-    },
-    {
-        "id":"70b9d7a1-060d-46b5-a386-30304a24ccdc",
-        "name":"Java",
-        "level":"MASTER",
-        "type":"Programming Language"
-    },
-    {
-        "id":"617de7e5-7e33-4dfd-9aa5-fe988eeac100",
-        "name":"JavaScript",
-        "level":"EXPERT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"27282a0d-0950-4ecc-b10b-d68371793125",
-        "name":"Jenkins",
-        "level":"EXPERT",
-        "type":"CI/CD"
-    },
-    {
-        "id":"b658c718-1433-43fb-97a9-a3ba9f9fa339",
-        "name":"JetBrains IntelliJ IDEA",
-        "level":"EXPERT",
-        "type":"Java IDE"
-    },
-    {
-        "id":"c20a04f9-943f-4e5d-bb92-19b183295168",
-        "name":"JetBrains PyCharm",
-        "level":"EXPERT",
-        "type":"Python IDE"
-    },
-    {
-        "id":"a323f59c-42c7-4007-a1d6-7ea743cae227",
-        "name":"JetBrains Rider",
-        "level":"NOVICE",
-        "type":".NET IDE"
-    },
-    {
-        "id":"72982110-e4e8-470c-92f9-a0a2a0ae1451",
-        "name":"JetBrains RubyMine",
-        "level":"NOVICE",
-        "type":"Ruby IDE"
-    },
-    {
-        "id":"3abf70eb-8041-4e2c-9ca5-bedab5742e19",
-        "name":"JetBrains WebStorm",
-        "level":"PROFICIENT",
-        "type":"JavaScript IDE"
-    },
-    {
-        "id":"21212a05-9ca5-457c-b62a-12cbfbd2878e",
-        "name":"jUnit",
-        "level":"MASTER",
-        "type":"Java Testing Framework"
-    },
-    {
-        "id":"c9b582ed-2a96-412d-99ac-d3cf2283cc5d",
-        "name":"Jupyter Notebook",
-        "level":"NOVICE",
-        "type":"Data Science"
-    },
-    {
-        "id":"aeb8601e-d2aa-4ddf-a446-76232dfa1489",
-        "name":"Machine Learning",
-        "level":"NOVICE",
-        "type":"Machine Learning"
-    },
-    {
-        "id":"e86dc53a-a898-4535-bc89-e42aaa7a2ab7",
-        "name":"Microsoft Visual Studio",
-        "level":"NOVICE",
-        "type":"IDE"
-    },
-    {
-        "id":"6a7cbf58-8987-44ab-8065-fc527ed632e2",
-        "name":"MongoDB",
-        "level":"NOVICE",
-        "type":"NoSQL Database"
-    },
-    {
-        "id":"ac160f48-1c9f-4e5e-8796-8fecbcd04367",
-        "name":"Node.js",
-        "level":"PROFICIENT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"b06bb60c-31e1-4939-8d18-54bc6f178cb6",
-        "name":"PHP",
-        "level":"COMPETENT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"56250a05-8bbd-425b-9704-2282595da788",
-        "name":"Python",
-        "level":"PROFICIENT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"2017a078-6d1f-4705-af3a-f60e2289a8ee",
-        "name":"Rails",
-        "level":"NOVICE",
-        "type":"Ruby Framework"
-    },
-    {
-        "id":"c952860a-4553-49db-a562-be27a1816997",
-        "name":"React",
-        "level":"PROFICIENT",
-        "type":"JavaScript Framework"
-    },
-    {
-        "id":"3991bdd1-6fa1-4d3a-af05-919965dcaa3d",
-        "name":"RSpec",
-        "level":"NOVICE",
-        "type":"Ruby Testing Framework"
-    },
-    {
-        "id":"e2a283c2-85f3-4941-b38e-71cedb3e4dec",
-        "name":"Ruby",
-        "level":"COMPETENT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"bd4bba05-f98e-4f02-baca-2e73833f1e27",
-        "name":"Selenium",
-        "level":"PROFICIENT",
-        "type":"Testing Framework"
-    },
-    {
-        "id":"8a50b96a-24d2-416b-8953-e2d368e36bd7",
-        "name":"Spring",
-        "level":"MASTER",
-        "type":"Java Framework"
-    },
-    {
-        "id":"6b8b1bba-ceea-462e-a93a-cde9835c4e91",
-        "name":"Spring Boot",
-        "level":"MASTER",
-        "type":"Java Framework"
-    },
-    {
-        "id":"e67ba77e-5800-4224-b085-92acd0520a99",
-        "name":"TypeScript",
-        "level":"COMPETENT",
-        "type":"Programming Language"
-    },
-    {
-        "id":"bb21bd4c-0280-4eaa-aaf1-ad88893836f5",
-        "name":"Serverless",
-        "level":"MASTER",
-        "type":"Cloud Computing Execution Model"
     },
     {
         "id":"3e9c896d-a80f-42b7-be71-fe1a3e0f9f0f",
         "name":"Bref",
         "level":"NOVICE",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
         "type":"PHP Framework"
     },
     {
-        "id":"5ab1b6f2-bfd3-4a89-80ad-d700e3bf09bd",
-        "name":"SQL",
-        "level":"MASTER",
-        "type":"Programming Language"
-    },
-    {
-        "id":"c2fdf2be-2dfd-4e45-a4c5-f81a7163dad2",
-        "name":"HTML",
-        "level":"MASTER",
+        "id":"10f3de08-5f75-4cfa-b481-05daaee8db79",
+        "name":"C#",
+        "level":"COMPETENT",
+        "projects":[
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"Programming Language"
     },
     {
         "id":"cb0a561b-8483-4089-810b-637e4d689ee4",
         "name":"CSS",
         "level":"PROFICIENT",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
         "type":"Programming Language"
     },
     {
-        "id":"fa917912-9e24-4330-b9e6-e6b50d5ed0e2",
-        "name":"AWS SAM",
+        "id":"0e4d2316-2510-458f-b9be-95e3cae2091c",
+        "name":"Cucumber",
+        "level":"NOVICE",
+        "projects":[],
+        "type":"Testing Framework"
+    },
+    {
+        "id":"86e3212a-e2d2-43ea-b5fa-325c7e2368e9",
+        "name":"Eclipse",
+        "level":"PROFICIENT",
+        "projects":[],
+        "type":"Java IDE"
+    },
+    {
+        "id":"e91aed35-d65b-4dd0-994c-e1038b648167",
+        "name":"Git",
+        "level":"MASTER",
+        "projects":[],
+        "type":"Version Control"
+    },
+    {
+        "id":"01e69faa-e054-4b02-b7c3-879785172a47",
+        "name":"GitHub Actions",
         "level":"COMPETENT",
-        "type":"Serverless Framework"
+        "projects":[],
+        "type":"CI/CD"
     },
     {
-        "id":"cb827f86-a10e-4688-874b-ebe63f1e75e0",
-        "name":"",
-        "level":"",
-        "type":""
+        "id":"9cc23b68-5c49-4f46-a3c7-54e006413e6d",
+        "name":"Go",
+        "level":"COMPETENT",
+        "projects":[],
+        "type":"Programming Language"
     },
     {
-        "id":"df096f85-bbeb-42f9-8291-34bff1611b8c",
-        "name":"",
-        "level":"",
-        "type":""
+        "id":"9e9c0bac-7b6b-41fb-acc5-acf3f651c093",
+        "name":"Google Cloud Vision",
+        "level":"COMPETENT",
+        "projects":[
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
+        "type":"Machine Learning"
     },
     {
-        "id":"06d24560-645c-49a3-b59d-14e22e654088",
-        "name":"",
-        "level":"",
-        "type":""
+        "id":"49bb192e-c83c-46a9-9ed4-ae486f234ee3",
+        "name":"HashiCorp Terraform",
+        "level":"COMPETENT",
+        "projects":[],
+        "type":"Infrastructure as Code"
+    },
+    {
+        "id":"c8d0473c-f52c-49d7-973e-57c49f837edc",
+        "name":"Hibernate",
+        "level":"MASTER",
+        "projects":[],
+        "type":"Java Framework"
+    },
+    {
+        "id":"c2fdf2be-2dfd-4e45-a4c5-f81a7163dad2",
+        "name":"HTML",
+        "level":"MASTER",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
+        "type":"Programming Language"
+    },
+    {
+        "id":"70b9d7a1-060d-46b5-a386-30304a24ccdc",
+        "name":"Java",
+        "level":"MASTER",
+        "projects":[],
+        "type":"Programming Language"
+    },
+    {
+        "id":"617de7e5-7e33-4dfd-9aa5-fe988eeac100",
+        "name":"JavaScript",
+        "level":"EXPERT",
+        "projects":[],
+        "type":"Programming Language"
+    },
+    {
+        "id":"27282a0d-0950-4ecc-b10b-d68371793125",
+        "name":"Jenkins",
+        "level":"EXPERT",
+        "projects":[],
+        "type":"CI/CD"
+    },
+    {
+        "id":"b658c718-1433-43fb-97a9-a3ba9f9fa339",
+        "name":"JetBrains IntelliJ IDEA",
+        "level":"EXPERT",
+        "projects":[],
+        "type":"Java IDE"
+    },
+    {
+        "id":"c20a04f9-943f-4e5d-bb92-19b183295168",
+        "name":"JetBrains PyCharm",
+        "level":"EXPERT",
+        "projects":[],
+        "type":"Python IDE"
+    },
+    {
+        "id":"a323f59c-42c7-4007-a1d6-7ea743cae227",
+        "name":"JetBrains Rider",
+        "level":"NOVICE",
+        "projects":[],
+        "type":".NET IDE"
+    },
+    {
+        "id":"72982110-e4e8-470c-92f9-a0a2a0ae1451",
+        "name":"JetBrains RubyMine",
+        "level":"NOVICE",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
+        "type":"Ruby IDE"
+    },
+    {
+        "id":"3abf70eb-8041-4e2c-9ca5-bedab5742e19",
+        "name":"JetBrains WebStorm",
+        "level":"PROFICIENT",
+        "projects":[],
+        "type":"JavaScript IDE"
+    },
+    {
+        "id":"21212a05-9ca5-457c-b62a-12cbfbd2878e",
+        "name":"jUnit",
+        "level":"MASTER",
+        "projects":[],
+        "type":"Java Testing Framework"
+    },
+    {
+        "id":"c9b582ed-2a96-412d-99ac-d3cf2283cc5d",
+        "name":"Jupyter Notebook",
+        "level":"NOVICE",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
+        "type":"Data Science"
+    },
+    {
+        "id":"aeb8601e-d2aa-4ddf-a446-76232dfa1489",
+        "name":"Machine Learning",
+        "level":"NOVICE",
+        "projects":[],
+        "type":"Machine Learning"
+    },
+    {
+        "id":"e86dc53a-a898-4535-bc89-e42aaa7a2ab7",
+        "name":"Microsoft Visual Studio",
+        "level":"NOVICE",
+        "projects":[],
+        "type":"IDE"
+    },
+    {
+        "id":"6a7cbf58-8987-44ab-8065-fc527ed632e2",
+        "name":"MongoDB",
+        "level":"NOVICE",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
+        "type":"NoSQL Database"
+    },
+    {
+        "id":"ac160f48-1c9f-4e5e-8796-8fecbcd04367",
+        "name":"Node.js",
+        "level":"PROFICIENT",
+        "projects":[
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
+        "type":"Programming Language"
+    },
+    {
+        "id":"b06bb60c-31e1-4939-8d18-54bc6f178cb6",
+        "name":"PHP",
+        "level":"COMPETENT",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
+        "type":"Programming Language"
+    },
+    {
+        "id":"56250a05-8bbd-425b-9704-2282595da788",
+        "name":"Python",
+        "level":"PROFICIENT",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89",
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
+        "type":"Programming Language"
+    },
+    {
+        "id":"2017a078-6d1f-4705-af3a-f60e2289a8ee",
+        "name":"Rails",
+        "level":"NOVICE",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
+        "type":"Ruby Framework"
+    },
+    {
+        "id":"c952860a-4553-49db-a562-be27a1816997",
+        "name":"React",
+        "level":"PROFICIENT",
+        "projects":[],
+        "type":"JavaScript Framework"
+    },
+    {
+        "id":"3991bdd1-6fa1-4d3a-af05-919965dcaa3d",
+        "name":"RSpec",
+        "level":"NOVICE",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
+        "type":"Ruby Testing Framework"
+    },
+    {
+        "id":"e2a283c2-85f3-4941-b38e-71cedb3e4dec",
+        "name":"Ruby",
+        "level":"COMPETENT",
+        "projects":[
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+        ],
+        "type":"Programming Language"
+    },
+    {
+        "id":"bd4bba05-f98e-4f02-baca-2e73833f1e27",
+        "name":"Selenium",
+        "level":"PROFICIENT",
+        "projects":[],
+        "type":"Testing Framework"
+    },
+    {
+        "id":"bb21bd4c-0280-4eaa-aaf1-ad88893836f5",
+        "name":"Serverless",
+        "level":"MASTER",
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89",
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+        ],
+        "type":"Cloud Computing Execution Model"
+    },
+    {
+        "id":"8a50b96a-24d2-416b-8953-e2d368e36bd7",
+        "name":"Spring",
+        "level":"MASTER",
+        "projects":[],
+        "type":"Java Framework"
+    },
+    {
+        "id":"6b8b1bba-ceea-462e-a93a-cde9835c4e91",
+        "name":"Spring Boot",
+        "level":"MASTER",
+        "projects":[],
+        "type":"Java Framework"
+    },
+    {
+        "id":"5ab1b6f2-bfd3-4a89-80ad-d700e3bf09bd",
+        "name":"SQL",
+        "level":"MASTER",
+        "projects":[
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+        ],
+        "type":"Programming Language"
+    },
+    {
+        "id":"e67ba77e-5800-4224-b085-92acd0520a99",
+        "name":"TypeScript",
+        "level":"COMPETENT",
+        "projects":[],
+        "type":"Programming Language"
     }
 ]
