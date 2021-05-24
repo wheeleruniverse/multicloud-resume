@@ -1,0 +1,45 @@
+
+mat-divider {
+  margin: 24px 12px;
+}
+
+#dialog {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+}
+
+#dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.active {
+  background-color: #49caff;
+}
+
+.dialog-close {
+  background-color: #49caff;
+  color: #ffffff;
+}
+
+.section-definition {
+  width: 85%;
+}
+
+.section-paragraph {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.section-subject {
+  justify-content: center;
+  margin-right: 40px;
+  text-align: center;
+  width: 10%;
+}
+

@@ -1,6 +1,7 @@
 
 carousel {
   margin: 0 auto;
+  z-index: 0 !important;
 }
 
 .carousel-cell {
@@ -23,6 +24,19 @@ carousel {
 .carousel-cell span {
   display: block;
   margin-bottom: 0.2em;
+}
+
+.carousel-cell-icons {
+  float: right;
+  margin-right: 1em;
+
+  a {
+    text-decoration: none;
+  }
+  mat-icon {
+    color: #49caff;
+    margin: 0.1em;
+  }
 }
 
 .carousel-cell-primary {

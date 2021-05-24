@@ -3,13 +3,20 @@
   [cellsToShow]=2
   [height]=475
 >
-  <!-- (click)="filterProject(i.id)" -->
-  <div *ngFor="let i of state.projects" class="carousel-cell" tabindex="-1">
+  <div
+    *ngFor="let i of state.projects"
+    (click)=setProjectFilter(i.id)
+    class="carousel-cell"
+    tabindex="-1"
+  >
+    <div class="carousel-cell-icons">
+      <a href="{{i.blog}}" target="_blank"><mat-icon>book</mat-icon></a>
+      <a href="{{i.code}}" target="_blank"><mat-icon>code</mat-icon></a>
+      <mat-icon id="info-icon" (click)="openDialog()">info</mat-icon>
+    </div>
     <div class="carousel-cell-primary">
       <span class="large">{{i.name}}</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
-      <span>Blog: <a href="{{i.blog}}">{{i.blog}}</a></span>
-      <span>Code: <a href="{{i.code}}">{{i.code}}</a></span>
       <br/>
       <mat-chip-list>
         <mat-chip

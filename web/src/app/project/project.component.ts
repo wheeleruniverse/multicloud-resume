@@ -6,6 +6,8 @@ import {ProjectCompositeState, ProjectState} from "../core/store/project/project
 import {filter, takeUntil} from "rxjs/operators";
 import {FilterService} from "../shared/service/filter.service";
 import {Skill} from "../core/store/skill/skill.state";
+import {MatDialog} from "@angular/material/dialog";
+import {ProjectDialogComponent} from "../shared/dialog/project-dialog.component";
 
 @Component({
   selector: 'app-projects',
@@ -18,6 +20,7 @@ import {Skill} from "../core/store/skill/skill.state";
 export class ProjectComponent implements OnDestroy, OnInit {
 
   constructor(
+    public dialog: MatDialog,
     private facade: ProjectFacade,
     private filterService: FilterService,
     private viewService: ViewService
@@ -28,8 +31,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
   skillShouldRender: boolean;
   skillSortBy: string = 'Name';
   skillTarget: string;
-
-  // targetProject: Project | null = null;
+  projectTarget: string;
 
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -51,23 +53,16 @@ export class ProjectComponent implements OnDestroy, OnInit {
 
     this.viewService.skillShouldRender$.subscribe(val => {
       this.skillShouldRender = val;
-      //this.changeDetectorRef.detectChanges();
     });
   }
 
-  // filterProject(id: number): void {
-  //
-  //   this.targetSkill = null;
-  //
-  //   if(this.targetProject != null && this.targetProject.id == id){
-  //     this.targetProject = null;
-  //     this.filter.setTarget('');
-  //   }
-  //   else {
-  //     this.targetProject = this.data.find(p => p.id == id);
-  //     this.filter.setTarget(`project.${id}`);
-  //   }
+  openDialog(){
+    const dialogRef = this.dialog.open(ProjectDialogComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   getSkills(ids: string[]): Skill[] {
     return !!this.state?.skills ? this.state.skills.filter(skill => ids.includes(skill.id)) : [];
@@ -87,11 +82,34 @@ export class ProjectComponent implements OnDestroy, OnInit {
       .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1);
   }
 
-  setSkillFilter(value: string): void {
+  renderSkillView(){
+    if(!this.skillShouldRender){
+      this.viewService.skillShouldRender(true);
+    }
+  }
+
+  setProjectFilter(value: string): void {
+
+    this.renderSkillView();
+    this.skillTarget = null;
 
     if(!this.skillShouldRender){
       this.viewService.skillShouldRender(true);
     }
+    if(this.projectTarget === value){
+      this.projectTarget = null;
+      this.filterService.setTarget('');
+      return;
+    }
+    this.projectTarget = value;
+    this.filterService.setTarget(value);
+  }
+
+  setSkillFilter(value: string): void {
+
+    this.renderSkillView();
+    this.projectTarget = null;
+
     if(this.skillTarget === value){
       this.skillTarget = null;
       this.filterService.setTarget('');

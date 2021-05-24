@@ -18,21 +18,29 @@ import {NgModule} from '@angular/core';
 import {CarouselComponent} from "./carousel/carousel.component";
 import {LocationPipe} from "./pipe/location.pipe";
 import {MonthYearPipe} from "./pipe/month-year.pipe";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
+import { ProjectDialogComponent } from './dialog/project-dialog.component';
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [
     CarouselComponent,
+    ProjectDialogComponent,
     LocationPipe,
     MonthYearPipe,
   ],
   exports: [
     CarouselComponent,
     CommonModule,
+    MatButtonModule,
     MatCardModule,
     MatChipsModule,
+    MatDialogModule,
     MatDividerModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatPaginatorModule,
     MatProgressBarModule,
@@ -47,7 +55,13 @@ import {MonthYearPipe} from "./pipe/month-year.pipe";
   ],
   imports: [
     CommonModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatIconModule,
     IvyCarouselModule,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

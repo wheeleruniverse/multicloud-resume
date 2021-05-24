@@ -13,10 +13,6 @@ import {VisitorComponent} from './visitor/visitor.component';
 import {AboutComponent} from './about/about.component';
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   bootstrap: [
@@ -37,10 +33,11 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     CoreModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     HttpClient
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
