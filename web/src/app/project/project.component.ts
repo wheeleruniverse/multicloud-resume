@@ -2,9 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 import {ViewService} from "../shared/service/view.service";
 import {ProjectFacade} from "../core/store/project/project.facade";
-import {ProjectState} from "../core/store/project/project.state";
+import {ProjectCompositeState, ProjectState} from "../core/store/project/project.state";
 import {filter, takeUntil} from "rxjs/operators";
 import {FilterService} from "../shared/service/filter.service";
+import {Skill} from "../core/store/skill/skill.state";
 
 @Component({
   selector: 'app-projects',
@@ -23,8 +24,10 @@ export class ProjectComponent implements OnDestroy, OnInit {
   ) {}
 
   destroyed$ = new Subject<void>();
-  state: ProjectState;
-  targetSkill = '';
+  state: ProjectCompositeState;
+  skillShouldRender: boolean;
+  skillSortBy: string = 'Name';
+  skillTarget: string;
 
   // targetProject: Project | null = null;
 
@@ -39,12 +42,17 @@ export class ProjectComponent implements OnDestroy, OnInit {
     this.facade.retrieve()
       .pipe(
         takeUntil(this.destroyed$),
-        filter(state => !!state?.data)
+        filter(state => !!state?.projects)
       )
       .subscribe(state => {
         this.state = state;
         this.viewService.projectShouldEnable(true);
       });
+
+    this.viewService.skillShouldRender$.subscribe(val => {
+      this.skillShouldRender = val;
+      //this.changeDetectorRef.detectChanges();
+    });
   }
 
   // filterProject(id: number): void {
@@ -59,24 +67,41 @@ export class ProjectComponent implements OnDestroy, OnInit {
   //     this.targetProject = this.data.find(p => p.id == id);
   //     this.filter.setTarget(`project.${id}`);
   //   }
-  // }
 
-  setFilterToSkill(skill: string): void {
 
-    // render skill
-    // TODO: Filter not being applied after Skill is rendered perhaps
-    // TODO: subscribe to if it is rendered and base logic on that value
-    this.viewService.skillShouldRender(true);
+  getSkills(ids: string[]): Skill[] {
+    return !!this.state?.skills ? this.state.skills.filter(skill => ids.includes(skill.id)) : [];
+  }
 
-    // unselect if already selected
-    if(this.targetSkill === skill){
-      this.targetSkill = null;
+  getSkillNames(ids: string[]): string[] {
+    return this.getSkills(ids)
+      .map(skill => skill.name)
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1);
+  }
+
+  getSkillTypes(ids: string[]): string[] {
+    return this.getSkills(ids)
+      .map(skill => skill.type)
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1);
+  }
+
+  setSkillFilter(value: string): void {
+
+    if(!this.skillShouldRender){
+      this.viewService.skillShouldRender(true);
+    }
+    if(this.skillTarget === value){
+      this.skillTarget = null;
       this.filterService.setTarget('');
       return;
     }
+    this.skillTarget = value;
+    this.filterService.setTarget(value);
+  }
 
-    // select if not unselected
-    this.targetSkill = skill;
-    this.filterService.setTarget(this.targetSkill);
+  setSkillSortBy(sortBy: string): void {
+    this.skillSortBy = sortBy;
   }
 }

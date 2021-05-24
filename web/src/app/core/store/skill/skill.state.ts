@@ -6,7 +6,7 @@ export interface SkillState {
 }
 
 export interface Skill {
-  id: number;
+  id: string;
   name: string;
   level: string;
   type: string;

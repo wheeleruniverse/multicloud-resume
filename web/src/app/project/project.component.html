@@ -1,22 +1,49 @@
 <app-carousel
-  *ngIf="!!state?.data; else loading"
+  *ngIf="!!state?.projects; else loading"
   [cellsToShow]=2
-  [height]=400
+  [height]=475
 >
   <!-- (click)="filterProject(i.id)" -->
-  <div *ngFor="let i of state.data" class="carousel-cell" tabindex="-1">
+  <div *ngFor="let i of state.projects" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
       <span class="large">{{i.name}}</span>
       <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
       <span>Blog: <a href="{{i.blog}}">{{i.blog}}</a></span>
       <span>Code: <a href="{{i.code}}">{{i.code}}</a></span>
+      <br/>
       <mat-chip-list>
         <mat-chip
-          *ngFor="let s of i.skills"
-          (click)="setFilterToSkill(s)"
-          [ngClass]="{'active': targetSkill === s}"
+          (click)="setSkillSortBy('Name')"
+          [ngClass]="{'active': skillSortBy === 'Name'}"
         >
-          {{s}}
+          Name
+        </mat-chip>
+        <mat-chip
+          (click)="setSkillSortBy('Type')"
+          [ngClass]="{'active': skillSortBy === 'Type'}"
+        >
+          Type
+        </mat-chip>
+      </mat-chip-list>
+      <br/>
+      <mat-divider></mat-divider>
+      <br/>
+      <mat-chip-list *ngIf="skillSortBy === 'Name'">
+        <mat-chip
+          *ngFor="let skillName of getSkillNames(i.skills)"
+          (click)="setSkillFilter(skillName)"
+          [ngClass]="{'active': skillTarget === skillName}"
+        >
+          <ng-container>{{skillName}}</ng-container>
+        </mat-chip>
+      </mat-chip-list>
+      <mat-chip-list *ngIf="skillSortBy === 'Type'">
+        <mat-chip
+          *ngFor="let skillType of getSkillTypes(i.skills)"
+          (click)="setSkillFilter(skillType)"
+          [ngClass]="{'active': skillTarget === skillType}"
+        >
+          <ng-container>{{skillType}}</ng-container>
         </mat-chip>
       </mat-chip-list>
     </div>

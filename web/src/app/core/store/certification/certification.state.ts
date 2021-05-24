@@ -7,7 +7,7 @@ export interface CertificationState {
 }
 
 export interface Certification {
-  id: number;
+  id: string;
   name: string;
   credential: string;
   description: string;

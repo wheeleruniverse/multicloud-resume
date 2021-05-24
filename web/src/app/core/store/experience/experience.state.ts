@@ -7,7 +7,7 @@ export interface ExperienceState {
 }
 
 export interface Experience {
-  id: number;
+  id: string;
   name: string;
   description: string;
   end: MonthYear;

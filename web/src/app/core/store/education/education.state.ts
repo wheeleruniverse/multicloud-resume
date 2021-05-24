@@ -6,7 +6,7 @@ export interface EducationState {
 }
 
 export interface Education {
-  id: number;
+  id: string;
   name: string;
   degree: string;
   description: string;
