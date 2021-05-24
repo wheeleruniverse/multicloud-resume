@@ -28,7 +28,7 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
 
   destroyed$ = new Subject<void>();
   state: SkillState;
-  tableFields: string[] = ['skill', 'type', 'level'];
+  tableFields: string[] = ['name', 'type', 'level'];
   tableSource: MatTableDataSource<Skill>;
 
   ngAfterViewInit(): void {
