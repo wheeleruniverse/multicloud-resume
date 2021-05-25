@@ -1,9 +1,20 @@
+@import 'src/stylesheets/variables';
 
 #about {
+  font-size: 20px;
   margin-left: 10em;
   margin-top: 2em;
 }
 
 p {
   font-style: italic;
+}
+
+@media screen and (max-width: $device-mobile-lg){
+
+  #about {
+    font-size: 12px;
+    margin-left: 1em;
+    margin-top: 0.4em;
+  }
 }

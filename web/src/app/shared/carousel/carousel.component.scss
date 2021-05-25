@@ -1,3 +1,4 @@
+@import 'src/stylesheets/variables';
 
 carousel {
   margin: 0 auto;
@@ -45,5 +46,27 @@ carousel {
 .carousel-cell-secondary {
   color: #8899a6;
   padding: 0.5em;
+}
+
+
+@media screen and (max-width: $device-mobile-lg){
+
+  .carousel-cell div {
+    margin-left: 0.1em;
+    margin-top: 0.3em;
+  }
+
+  .carousel-cell span {
+    margin-bottom: 0.1em;
+  }
+
+  .carousel-cell-icons {
+    margin-right: 0.5em;
+  }
+
+  .carousel-cell-secondary {
+    color: #8899a6;
+    padding: 0.3em;
+  }
 }
 

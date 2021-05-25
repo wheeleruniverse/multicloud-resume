@@ -1,0 +1,14 @@
+@import 'src/stylesheets/variables';
+
+#visitor {
+  font-size: x-large;
+  margin: 30px 0;
+}
+
+@media screen and (max-width: $device-mobile-lg){
+
+  #visitor {
+    font-size: medium;
+    margin: 10px 0;
+  }
+}

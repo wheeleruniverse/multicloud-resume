@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ViewService} from "./shared/service/view.service";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,8 @@ export class AppComponent implements OnInit {
       retrieve: `${AppComponent.root}/visitor/retrieve`
     }
   }
-  role = 'Cloud Architect';
+  // rolesAll = ['Cloud Architect', 'Cloud Enthusiast', 'Senior Software Developer'];
+  // rolesIdx = 1;
 
   aboutShouldRender = false;
 

@@ -1,3 +1,4 @@
+@import 'src/stylesheets/variables';
 
 mat-spinner {
   background-color: #49caff;
@@ -21,10 +22,35 @@ tr:focus {
 }
 
 #skill-table {
+  font-size: 20px;
   margin: 0 auto;
   width: 75%;
 }
 
 .skill-loading {
-  margin: 3% 44% 3% 44%;
+  margin: 3% 44%;
+}
+
+@media screen and (max-width: $device-mobile-lg){
+
+  mat-slider {
+    display: none;
+  }
+
+  #skill-filter {
+    margin-left: 0.5em;
+  }
+
+  #skill-table {
+    font-size: 12px;
+    width: 96%;
+  }
+
+  .mat-cell {
+    font-size: 11px;
+  }
+
+  .skill-loading {
+    margin: 5% 37%;
+  }
 }

@@ -1,3 +1,42 @@
+@import 'src/stylesheets/variables';
+
+$name-prefix: "Justin Wheeler — ";
+
+@keyframes spin {
+  0% {
+    content:"#{$name-prefix}Cloud Architect";
+  }
+  10% {
+    content:"#{$name-prefix}Cloud Guru";
+  }
+  20% {
+    content:"#{$name-prefix}Dreamer";
+  }
+  30% {
+    content:"#{$name-prefix}Professional DevOps Engineer";
+  }
+  40% {
+    content:"#{$name-prefix}Professional Solutions Architect";
+  }
+  50% {
+    content:"#{$name-prefix}Security Specialist";
+  }
+  60% {
+    content:"#{$name-prefix}Serverless Specialist";
+  }
+  70% {
+    content:"#{$name-prefix}Senior Software Developer";
+  }
+  80% {
+    content:"#{$name-prefix}Student";
+  }
+  90% {
+    content:"#{$name-prefix}Website Designer";
+  }
+  100% {
+    content:"#{$name-prefix}Wizard";
+  }
+}
 
 div {
   margin-left: 1em;
@@ -21,10 +60,70 @@ mat-divider {
 }
 
 #header {
-  margin-top: 2em;
-  text-align: center;
+  margin-left: 2em;
+  margin-top: 3em;
+  text-align: left;
+  width: 80%;
 }
 
 #footer {
   text-align: center;
 }
+
+.header-role:after {
+  animation: spin 30s linear infinite;
+  content: "";
+  font-size: xxx-large;
+}
+
+@media screen and (max-width: $device-mobile-lg){
+
+  @keyframes spin {
+    0% {
+      content:"#{$name-prefix}Cloud Architect";
+    }
+    17% {
+      content:"#{$name-prefix}Cloud Guru";
+    }
+    34% {
+      content:"#{$name-prefix}DevOps Expert";
+    }
+    51% {
+      content:"#{$name-prefix}Security Expert";
+    }
+    68% {
+      content:"#{$name-prefix}Student";
+    }
+    85% {
+      content:"#{$name-prefix}Web Developer";
+    }
+    100% {
+      content:"#{$name-prefix}Wizard";
+    }
+  }
+
+  div {
+    margin-left: 0.5em;
+  }
+
+  mat-card {
+    font-size: medium;
+    width: 45%;
+  }
+
+  mat-divider {
+    margin: 10px 3%;
+  }
+
+  #header {
+    margin-left: 0.5em;
+    margin-top: 1em;
+    width: 100%;
+  }
+
+  .header-role:after {
+    animation: spin 20s linear infinite;
+    font-size: large;
+  }
+}
+
