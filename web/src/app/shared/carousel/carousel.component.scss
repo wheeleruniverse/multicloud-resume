@@ -1,7 +1,7 @@
 @import 'src/stylesheets/variables';
 
 carousel {
-  margin: 0 auto;
+  margin: 3em auto;
   z-index: 0 !important;
 }
 
@@ -24,6 +24,7 @@ carousel {
 
 .carousel-cell span {
   display: block;
+  font-size: medium;
   margin-bottom: 0.2em;
 }
 
@@ -51,12 +52,17 @@ carousel {
 
 @media screen and (max-width: $device-mobile-lg){
 
+  carousel {
+    margin: 1em auto;
+  }
+
   .carousel-cell div {
     margin-left: 0.1em;
     margin-top: 0.3em;
   }
 
   .carousel-cell span {
+    font-size: small;
     margin-bottom: 0.1em;
   }
 

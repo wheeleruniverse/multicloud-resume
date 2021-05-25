@@ -1,9 +1,21 @@
+@import 'src/stylesheets/variables';
+
+mat-chip {
+  font-size: medium;
+}
 
 #info-icon {
   cursor: pointer;
 }
 
-
 .active {
   background-color: #49caff;
+}
+
+@media screen and (max-width: $device-mobile-lg) {
+
+  mat-chip {
+    font-size: small;
+    padding: 2px 7px;
+  }
 }

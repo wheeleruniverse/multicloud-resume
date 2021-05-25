@@ -101,6 +101,29 @@ mat-divider {
       content:"#{$name-prefix}Wizard";
     }
   }
+  @-webkit-keyframes spin {
+    0% {
+      content:"#{$name-prefix}Cloud Architect";
+    }
+    17% {
+      content:"#{$name-prefix}Cloud Guru";
+    }
+    34% {
+      content:"#{$name-prefix}DevOps Expert";
+    }
+    51% {
+      content:"#{$name-prefix}Security Expert";
+    }
+    68% {
+      content:"#{$name-prefix}Student";
+    }
+    85% {
+      content:"#{$name-prefix}Web Developer";
+    }
+    100% {
+      content:"#{$name-prefix}Wizard";
+    }
+  }
 
   div {
     margin-left: 0.5em;
@@ -108,6 +131,7 @@ mat-divider {
 
   mat-card {
     font-size: medium;
+    margin: 0.5em auto;
     width: 45%;
   }
 
@@ -116,14 +140,15 @@ mat-divider {
   }
 
   #header {
-    margin-left: 0.5em;
-    margin-top: 1em;
+    margin: 0;
+    text-align: center;
     width: 100%;
   }
 
   .header-role:after {
     animation: spin 20s linear infinite;
     font-size: large;
+    margin: 0 auto;
   }
 }
 

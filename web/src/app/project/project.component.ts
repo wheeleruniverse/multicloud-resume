@@ -2,12 +2,13 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 import {ViewService} from "../shared/service/view.service";
 import {ProjectFacade} from "../core/store/project/project.facade";
-import {ProjectCompositeState, ProjectState} from "../core/store/project/project.state";
+import {ProjectCompositeState} from "../core/store/project/project.state";
 import {filter, takeUntil} from "rxjs/operators";
 import {FilterService} from "../shared/service/filter.service";
 import {Skill} from "../core/store/skill/skill.state";
 import {MatDialog} from "@angular/material/dialog";
 import {ProjectDialogComponent} from "../shared/dialog/project-dialog.component";
+import {BreakpointObserver} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-projects',
@@ -20,7 +21,8 @@ import {ProjectDialogComponent} from "../shared/dialog/project-dialog.component"
 export class ProjectComponent implements OnDestroy, OnInit {
 
   constructor(
-    public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver,
+    private dialog: MatDialog,
     private facade: ProjectFacade,
     private filterService: FilterService,
     private viewService: ViewService
@@ -28,6 +30,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
 
   destroyed$ = new Subject<void>();
   state: ProjectCompositeState;
+  skillLimit = 20;
   skillShouldRender: boolean;
   skillSortBy: string = 'Name';
   skillTarget: string;
@@ -39,8 +42,13 @@ export class ProjectComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.viewService.projectShouldEnable(false);
+    this.breakpointObserver.observe('(max-width: 425px)')
+      .pipe(filter(result => result.matches))
+      .subscribe(() => {
+        this.skillLimit = 5;
+      });
 
+    this.viewService.projectShouldEnable(false);
     this.facade.retrieve()
       .pipe(
         takeUntil(this.destroyed$),
@@ -58,10 +66,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
 
   openDialog(){
     const dialogRef = this.dialog.open(ProjectDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
 
   getSkills(ids: string[]): Skill[] {
@@ -72,14 +77,16 @@ export class ProjectComponent implements OnDestroy, OnInit {
     return this.getSkills(ids)
       .map(skill => skill.name)
       .filter((value, index, self) => self.indexOf(value) === index)
-      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1);
+      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1)
+      .slice(0, this.skillLimit);
   }
 
   getSkillTypes(ids: string[]): string[] {
     return this.getSkills(ids)
       .map(skill => skill.type)
       .filter((value, index, self) => self.indexOf(value) === index)
-      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1);
+      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1)
+      .slice(0, this.skillLimit);
   }
 
   renderSkillView(){

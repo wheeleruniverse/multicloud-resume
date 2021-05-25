@@ -1,3 +1,12 @@
+@import 'src/stylesheets/variables';
+
+h1 {
+  font-size: xx-large;
+}
+
+h2 {
+  font-size: x-large;
+}
 
 mat-divider {
   margin: 24px 12px;
@@ -25,6 +34,10 @@ mat-divider {
   color: #ffffff;
 }
 
+.section {
+  margin-bottom: 2em;
+}
+
 .section-definition {
   width: 85%;
 }
@@ -33,6 +46,7 @@ mat-divider {
   align-items: center;
   display: flex;
   flex-direction: row;
+  font-size: medium;
   margin: 10px;
 }
 
@@ -41,5 +55,39 @@ mat-divider {
   margin-right: 40px;
   text-align: center;
   width: 10%;
+}
+
+@media screen and (max-width: $device-mobile-lg) {
+
+  h1 {
+    font-size: large;
+  }
+
+  h2 {
+    font-size: medium;
+    margin: 0;
+  }
+
+  mat-chip {
+    font-size: x-small;
+    padding: 2px 7px;
+  }
+
+  mat-divider {
+    margin: 12px 6px;
+  }
+
+  #dialog {
+    width: 96%;
+  }
+
+  .section {
+    margin-bottom: 1em;
+  }
+
+  .section-paragraph {
+    font-size: x-small;
+    margin: 1em auto;
+  }
 }
 

@@ -1,14 +1,12 @@
 <div id="header">
   <h1 class="header-role"></h1>
 </div>
-
 <div>
   <mat-card (click)="toggleAboutShouldRender()">
     About
   </mat-card>
   <app-about *ngIf="aboutShouldRender"></app-about>
 </div>
-
 <div>
   <mat-card
     [ngClass]="{'disabled': !experienceShouldEnable}"
@@ -18,7 +16,6 @@
   </mat-card>
   <app-experience *ngIf="experienceShouldRender"></app-experience>
 </div>
-
 <div>
   <mat-card
     [ngClass]="{'disabled': !(certificationShouldEnable)}"
@@ -28,7 +25,6 @@
   </mat-card>
   <app-certifications *ngIf="certificationShouldRender"></app-certifications>
 </div>
-
 <div>
   <mat-card
     [ngClass]="{'disabled': !skillShouldEnable}"
@@ -37,7 +33,6 @@
   </mat-card>
   <app-skills *ngIf="skillShouldRender"></app-skills>
 </div>
-
 <div>
   <mat-card
     [ngClass]="{'disabled': !projectShouldEnable}"
@@ -46,7 +41,6 @@
   </mat-card>
   <app-projects *ngIf="projectShouldRender"></app-projects>
 </div>
-
 <div>
   <mat-card
     [ngClass]="{'disabled': !educationShouldEnable}"
@@ -55,7 +49,6 @@
   </mat-card>
   <app-education *ngIf="educationShouldRender"></app-education>
 </div>
-
 <div id="footer">
   <mat-divider></mat-divider>
   <app-visitor></app-visitor>
