@@ -5,14 +5,15 @@
 >
   <div
     *ngFor="let i of state.projects"
-    (click)=setProjectFilter(i.id)
     class="carousel-cell"
     tabindex="-1"
   >
     <div class="carousel-cell-icons">
+      <mat-icon (click)="openDialog()">info</mat-icon>
+      <mat-icon (click)=setProjectFilter(i.id)>filter_list</mat-icon>
       <a href="{{i.blog}}" target="_blank"><mat-icon>book</mat-icon></a>
       <a href="{{i.code}}" target="_blank"><mat-icon>code</mat-icon></a>
-      <mat-icon id="info-icon" (click)="openDialog()">info</mat-icon>
+      <a *ngIf="i.website" href="{{i.website}}" target="_blank"><mat-icon>launch</mat-icon></a>
     </div>
     <div class="carousel-cell-primary">
       <span class="large">{{i.name}}</span>

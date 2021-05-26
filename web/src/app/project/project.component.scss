@@ -4,12 +4,12 @@ mat-chip {
   font-size: medium;
 }
 
-#info-icon {
-  cursor: pointer;
-}
-
 .active {
   background-color: #49caff;
+}
+
+.carousel-cell-icons mat-icon {
+  cursor: pointer;
 }
 
 @media screen and (max-width: $device-mobile-lg) {

@@ -78,53 +78,6 @@ mat-divider {
 
 @media screen and (max-width: $device-mobile-lg){
 
-  @keyframes spin {
-    0% {
-      content:"#{$name-prefix}Cloud Architect";
-    }
-    17% {
-      content:"#{$name-prefix}Cloud Guru";
-    }
-    34% {
-      content:"#{$name-prefix}DevOps Expert";
-    }
-    51% {
-      content:"#{$name-prefix}Security Expert";
-    }
-    68% {
-      content:"#{$name-prefix}Student";
-    }
-    85% {
-      content:"#{$name-prefix}Web Developer";
-    }
-    100% {
-      content:"#{$name-prefix}Wizard";
-    }
-  }
-  @-webkit-keyframes spin {
-    0% {
-      content:"#{$name-prefix}Cloud Architect";
-    }
-    17% {
-      content:"#{$name-prefix}Cloud Guru";
-    }
-    34% {
-      content:"#{$name-prefix}DevOps Expert";
-    }
-    51% {
-      content:"#{$name-prefix}Security Expert";
-    }
-    68% {
-      content:"#{$name-prefix}Student";
-    }
-    85% {
-      content:"#{$name-prefix}Web Developer";
-    }
-    100% {
-      content:"#{$name-prefix}Wizard";
-    }
-  }
-
   div {
     margin-left: 0.5em;
   }
@@ -145,8 +98,7 @@ mat-divider {
     width: 100%;
   }
 
-  .header-role:after {
-    animation: spin 20s linear infinite;
+  .header-role-mobile {
     font-size: large;
     margin: 0 auto;
   }

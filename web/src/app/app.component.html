@@ -1,5 +1,6 @@
 <div id="header">
-  <h1 class="header-role"></h1>
+  <h1 class="header-role" *ngIf="!isMobile"></h1>
+  <h1 class="header-role-mobile" *ngIf="isMobile">Justin Wheeler — Cloud Guru</h1>
 </div>
 <div>
   <mat-card (click)="toggleAboutShouldRender()">

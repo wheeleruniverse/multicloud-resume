@@ -56,6 +56,12 @@ carousel {
     margin: 1em auto;
   }
 
+  #carousel-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
   .carousel-cell div {
     margin-left: 0.1em;
     margin-top: 0.3em;

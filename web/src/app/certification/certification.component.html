@@ -1,4 +1,8 @@
-<app-carousel *ngIf="!!state?.data; else loading">
+<app-carousel
+  *ngIf="!!state?.data; else loading"
+  [cellsToShow]="3"
+  [height]="400"
+>
   <div *ngFor="let i of state.data" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
       <span class="large">{{getMetaForVendor(i.vendor).display}}</span>

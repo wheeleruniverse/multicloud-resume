@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ViewService} from "./shared/service/view.service";
-import {BehaviorSubject} from "rxjs";
+import {BreakpointObserver} from "@angular/cdk/layout";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,11 @@ import {BehaviorSubject} from "rxjs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private changeDetectorRef: ChangeDetectorRef,
+    private viewService: ViewService){}
 
   private static readonly root = "https://wheeler-resume-app.azurewebsites.net/api";
 
@@ -33,8 +39,9 @@ export class AppComponent implements OnInit {
       retrieve: `${AppComponent.root}/visitor/retrieve`
     }
   }
-  // rolesAll = ['Cloud Architect', 'Cloud Enthusiast', 'Senior Software Developer'];
-  // rolesIdx = 1;
+
+  isMobile = false;
+
 
   aboutShouldRender = false;
 
@@ -53,11 +60,12 @@ export class AppComponent implements OnInit {
   skillShouldEnable = true;
   skillShouldRender = false;
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef,
-    private viewService: ViewService){}
-
   ngOnInit(): void {
+    this.breakpointObserver.observe('(max-width: 425px)')
+      .subscribe((result) => {
+        this.isMobile = result.matches;
+      });
+
     this.viewService.certificationShouldEnable$.subscribe(val => {
       this.certificationShouldEnable = val;
       this.changeDetectorRef.detectChanges();

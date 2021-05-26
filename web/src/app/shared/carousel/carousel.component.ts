@@ -12,20 +12,25 @@ export class CarouselComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  @Input() cellsToShow: number = 3;
-  @Input() height: number = 400;
-  @Input() width: number = 1400;
+  @Input() cellsToShow: number;
+  @Input() height: number;
 
   arrows = true;
-
+  autoplay = false;
+  cellWidth: number;
+  width = 1400;
 
   ngOnInit(): void {
+    this.cellWidth = this.width / this.cellsToShow;
+
     this.breakpointObserver.observe('(max-width: 425px)')
       .pipe(filter(result => result.matches))
       .subscribe(() => {
         this.arrows = false;
+        this.autoplay = true;
         this.cellsToShow = 1;
-        this.width = 250;
+        this.cellWidth = 280;
+        this.width = 280;
       });
   }
 }

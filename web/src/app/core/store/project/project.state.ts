@@ -14,6 +14,7 @@ export interface Project {
   end: MonthYear;
   skills: string[];
   start: MonthYear;
+  website?: string;
 }
 
 export interface ProjectCompositeState {
