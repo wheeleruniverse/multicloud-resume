@@ -24,10 +24,12 @@ jobs:
           npm install
           npm install -g @angular/cli
 
-      - name: Test Angular
-        run: |
-          cd web
-          ng test --browsers ChromeHeadless
+# TODO: Integrate Testing
+#
+#      - name: Test Angular
+#        run: |
+#          cd web
+#          ng test --browsers ChromeHeadless
 
       - name: Build Angular
         run: |

@@ -10,7 +10,7 @@ export interface Certification {
   id: string;
   name: string;
   credential: string;
-  description: string;
+  descriptions: string[];
   expiry: MonthYear;
   issued: MonthYear;
   level: string,

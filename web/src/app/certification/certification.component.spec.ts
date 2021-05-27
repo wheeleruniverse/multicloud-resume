@@ -31,7 +31,9 @@ describe('CertificationsComponent', () => {
         id: 'testId',
         name: 'testName',
         credential: 'testCredential',
-        description: 'testDescription',
+        descriptions: [
+          'testDescription'
+        ],
         expiry: {
           year: 2021,
           month: 5
