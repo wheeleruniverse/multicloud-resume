@@ -8,6 +8,8 @@ import com.wheeler.dao.filter.QueryFilter;
 import com.wheeler.dao.model.Education;
 import com.wheeler.dao.model.Experience;
 import com.wheeler.dto.model.ExperienceDto;
+import com.wheeler.exception.ExceptionHandler;
+import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -34,8 +36,14 @@ public class ExperienceController extends AzureSpringBootRequestHandler<QueryFil
                     HttpRequestMessage<Optional<QueryFilter>> request,
             final ExecutionContext context) {
 
-        List<Experience> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
-        context.getLogger().info(String.format("received %d experience records", data.size()));
-        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new ExperienceDto(data)).build();
+        try {
+            List<Experience> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
+            context.getLogger().info(String.format("received %d experience records", data.size()));
+            return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new ExperienceDto(data)).build();
+        }
+        catch(Exception e){
+            final Exception wrapped = new InternalServerErrorException(e.getMessage());
+            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+        }
     }
 }

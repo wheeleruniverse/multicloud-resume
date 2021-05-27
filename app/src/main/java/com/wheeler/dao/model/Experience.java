@@ -10,7 +10,7 @@ public class Experience {
 
     private String id;
     private String name;
-    private String descriptions;
+    private String[] descriptions;
     private MonthYear end;
     private Location location;
     private String project;

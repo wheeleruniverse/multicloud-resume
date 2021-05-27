@@ -6,6 +6,9 @@ import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.wheeler.dao.model.Visitor;
+import com.wheeler.exception.BadRequestException;
+import com.wheeler.exception.ExceptionHandler;
+import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -35,9 +38,16 @@ public class VisitorCreateController extends AzureSpringBootRequestHandler<Visit
         context.getLogger().info(String.format("visitor: %s", visitor));
 
         if (visitor == null || visitor.getName() == null){
-            return request.createResponseBuilder(HttpStatus.valueOf(400)).build();
+            final Exception wrapped = new BadRequestException("visitor.name is invalid");
+            return new ExceptionHandler(context, wrapped, request).asHttpResponse(HttpStatus.valueOf(400));
         }
-        CosmosItemResponse<Visitor> data = handleRequest(visitor, context);
-        return request.createResponseBuilder(HttpStatus.valueOf(data.getStatusCode())).build();
+        try {
+            CosmosItemResponse<Visitor> data = handleRequest(visitor, context);
+            return request.createResponseBuilder(HttpStatus.valueOf(data.getStatusCode())).build();
+        }
+        catch(Exception e){
+            final Exception wrapped = new InternalServerErrorException(e.getMessage());
+            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+        }
     }
 }

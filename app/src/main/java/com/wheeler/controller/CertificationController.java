@@ -7,6 +7,8 @@ import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.wheeler.dao.filter.QueryFilter;
 import com.wheeler.dao.model.Certification;
 import com.wheeler.dto.model.CertificationDto;
+import com.wheeler.exception.ExceptionHandler;
+import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -33,8 +35,14 @@ public class CertificationController extends AzureSpringBootRequestHandler<Query
                     HttpRequestMessage<Optional<QueryFilter>> request,
             final ExecutionContext context) {
 
-        List<Certification> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
-        context.getLogger().info(String.format("received %d certification records", data.size()));
-        return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new CertificationDto(data)).build();
+        try {
+            List<Certification> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
+            context.getLogger().info(String.format("received %d certification records", data.size()));
+            return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new CertificationDto(data)).build();
+        }
+        catch(Exception e){
+            final Exception wrapped = new InternalServerErrorException(e.getMessage());
+            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+        }
     }
 }

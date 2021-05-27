@@ -8,6 +8,8 @@ import com.wheeler.dao.constant.SkillLevel;
 import com.wheeler.dao.filter.QueryFilter;
 import com.wheeler.dao.model.Skill;
 import com.wheeler.dto.model.SkillDto;
+import com.wheeler.exception.ExceptionHandler;
+import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -34,11 +36,17 @@ public class SkillController extends AzureSpringBootRequestHandler<QueryFilter, 
                     HttpRequestMessage<Optional<QueryFilter>> request,
             final ExecutionContext context) {
 
-        List<Skill> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
-        context.getLogger().info(String.format("received %d skill records", data.size()));
-        return request
-                .createResponseBuilder(HttpStatus.valueOf(200))
-                .body(new SkillDto(data))
-                .build();
+        try {
+            List<Skill> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
+            context.getLogger().info(String.format("received %d skill records", data.size()));
+            return request
+                    .createResponseBuilder(HttpStatus.valueOf(200))
+                    .body(new SkillDto(data))
+                    .build();
+        }
+        catch(Exception e){
+            final Exception wrapped = new InternalServerErrorException(e.getMessage());
+            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+        }
     }
 }
