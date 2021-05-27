@@ -13,7 +13,7 @@
       <span>{{i.location | location }} {{i.location.remote ? '(Remote)' : ''}}</span>
     </div>
     <div class="carousel-cell-secondary">
-      <span>{{i.description}}</span>
+      <ul><li *ngFor="let d of i.descriptions">{{d}}</li></ul>
     </div>
   </div>
 </app-carousel>

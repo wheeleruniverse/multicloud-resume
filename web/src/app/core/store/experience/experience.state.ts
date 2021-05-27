@@ -9,7 +9,7 @@ export interface ExperienceState {
 export interface Experience {
   id: string;
   name: string;
-  description: string;
+  descriptions: string[];
   end: MonthYear;
   image: Image;
   location: Location;

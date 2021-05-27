@@ -1,7 +1,7 @@
 <app-carousel
   *ngIf="!!state?.data; else loading"
   [cellsToShow]="3"
-  [height]="400"
+  [height]="360"
 >
   <div *ngFor="let i of state.data" class="carousel-cell" tabindex="-1">
     <div class="carousel-cell-primary">
@@ -12,7 +12,7 @@
       <span>{{i.location | location }} {{i.location.remote ? '(Remote)' : ''}}</span>
     </div>
     <div class="carousel-cell-secondary">
-      <span>{{i.description}}</span>
+      <ul><li *ngFor="let d of i.descriptions">{{d}}</li></ul>
     </div>
   </div>
 </app-carousel>

@@ -6,10 +6,7 @@
             "Implement multiple types of tests to maintain 100% average",
             "Interact with GCP products to perform analysis, corrections, monitoring, logging, and validation"
         ],
-        "end":{
-            "month":"",
-            "year":""
-        },
+        "end":null,
         "location":{
             "address":"40 Monroe Center St NW",
             "city":"Grand Rapids",
