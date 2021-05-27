@@ -16,3 +16,8 @@ export interface Skill {
 export interface SkillMeta {
   levels: MetaData[];
 }
+
+export const initialSkillState: SkillState = {
+  data: undefined,
+  meta: undefined
+}

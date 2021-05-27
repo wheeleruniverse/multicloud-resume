@@ -12,10 +12,10 @@ export class CarouselComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  @Input() arrows = true;
   @Input() cellsToShow: number;
   @Input() height: number;
 
-  arrows = true;
   autoplay = false;
   cellWidth: number;
   width = 1400;

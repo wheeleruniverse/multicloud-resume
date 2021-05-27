@@ -1,10 +1,13 @@
-import {ProjectState} from "./project.state";
+import {initialProjectState, ProjectState} from "./project.state";
 import {ProjectActions, ProjectActionType} from "./project.actions";
 
-export function projectReducer(state: ProjectState, action: ProjectActions){
+export function projectReducer(
+  state: ProjectState = initialProjectState,
+  action: ProjectActions
+){
   switch(action.type){
     case ProjectActionType.RetrieveSuccess:
-      return action.state;
+      return {...state, ...action.state};
     default:
       return state;
   }

@@ -18,3 +18,7 @@ export interface Experience {
   start: MonthYear;
   type: string;
 }
+
+export const initialExperienceState: ExperienceState = {
+  data: undefined
+}

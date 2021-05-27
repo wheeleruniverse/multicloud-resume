@@ -21,3 +21,8 @@ export interface CertificationMeta {
   levels: MetaData[];
   vendors: MetaData[];
 }
+
+export const initialCertificationState: CertificationState = {
+  data: undefined,
+  meta: undefined
+}

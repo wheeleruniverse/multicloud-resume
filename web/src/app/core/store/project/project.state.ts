@@ -21,3 +21,8 @@ export interface ProjectCompositeState {
   projects: Project[];
   skills: Skill[];
 }
+
+export const initialProjectState: ProjectState = {
+  data: undefined
+}
+
