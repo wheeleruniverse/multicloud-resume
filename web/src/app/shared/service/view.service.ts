@@ -1,7 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, Observable, ReplaySubject, Subject} from "rxjs";
-import {debounceTime, distinctUntilChanged} from "rxjs/operators";
-import {View} from "../model/view.model";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
