@@ -11,7 +11,7 @@ public class Certification {
     private String id;
     private String name;
     private String credential;
-    private String description;
+    private String[] descriptions;
     private MonthYear expiry;
     private MonthYear issued;
     private CertificationLevel level;

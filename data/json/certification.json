@@ -2,14 +2,23 @@
     {
         "name":"Cloud Practitioner",
         "credential":"R9P1ZDJC2BEE1LS4",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Define what the AWS Cloud is and the basic global infrastructure",
+            "Describe basic AWS Cloud architectural principles",
+            "Describe the AWS Cloud value proposition",
+            "Describe key services on the AWS platform and their common use cases (for example, compute and analytics)",
+            "Describe basic security and compliance aspects of the AWS platform and the shared security model",
+            "Define the billing, account management, and pricing models",
+            "Identify sources of documentation or technical assistance (for example, whitepapers or support tickets)",
+            "Describe basic/core characteristics of deploying and operating in the AWS Cloud"
+        ],
         "expiry":{
-            "month":7,
-            "year":2023
+            "month":"7",
+            "year":"2023"
         },
         "issued":{
-            "month":12,
-            "year":2018
+            "month":"12",
+            "year":"2018"
         },
         "level":"FOUNDATIONAL",
         "vendor":"AWS"
@@ -17,14 +26,17 @@
     {
         "name":"Developer Associate",
         "credential":"KNVXP1W2LFF4QFKS",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Demonstrate an understanding of core AWS services, uses, and basic AWS architecture best practices",
+            "Demonstrate proficiency in developing, deploying, and debugging cloud-based applications using AWS"
+        ],
         "expiry":{
-            "month":7,
-            "year":2023
+            "month":"7",
+            "year":"2023"
         },
         "issued":{
-            "month":6,
-            "year":2018
+            "month":"6",
+            "year":"2018"
         },
         "level":"ASSOCIATE",
         "vendor":"AWS"
@@ -32,14 +44,18 @@
     {
         "name":"Solutions Architect Associate",
         "credential":"6JGG02H2CJREQFC8",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Effectively demonstrate knowledge of how to architect and deploy secure and robust applications on AWS technologies",
+            "Define a solution using architectural design principles based on customer requirements",
+            "Provide implementation guidance based on best practices to the organization throughout the life cycle of the project"
+        ],
         "expiry":{
-            "month":1,
-            "year":2023
+            "month":"1",
+            "year":"2023"
         },
         "issued":{
-            "month":1,
-            "year":2018
+            "month":"1",
+            "year":"2018"
         },
         "level":"ASSOCIATE",
         "vendor":"AWS"
@@ -47,14 +63,21 @@
     {
         "name":"SysOps Admin Associate",
         "credential":"K591NJZ222R1QFWL",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Deploy, manage, and operate scalable, highly available, and fault-tolerant systems on AWS",
+            "Implement and control the flow of data to and from AWS",
+            "Select the appropriate AWS service based on compute, data, or security requirements",
+            "Identify appropriate use of AWS operational best practices",
+            "Estimate AWS usage costs and identify operational cost control mechanisms",
+            "Migrate on-premises workloads to AWS"
+        ],
         "expiry":{
-            "month":7,
-            "year":2023
+            "month":"7",
+            "year":"2023"
         },
         "issued":{
-            "month":12,
-            "year":2018
+            "month":"12",
+            "year":"2018"
         },
         "level":"ASSOCIATE",
         "vendor":"AWS"
@@ -62,14 +85,22 @@
     {
         "name":"Alexa Skill Builder Specialty",
         "credential":"1Q9WRMSCPFR1QLST",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Explain the value of voice",
+            "Design the user experience",
+            "Design the architecture to build the skill",
+            "Follow AWS and Alexa security best practices for the skill",
+            "Develop, test, validate, and troubleshoot the skill",
+            "Manage the skill-publishing process and work with the Alexa Developer Console",
+            "Manage skill operations and life cycles"
+        ],
         "expiry":{
-            "month":12,
-            "year":2022
+            "month":"12",
+            "year":"2022"
         },
         "issued":{
-            "month":12,
-            "year":2019
+            "month":"12",
+            "year":"2019"
         },
         "level":"SPECIALTY",
         "vendor":"AWS"
@@ -77,14 +108,17 @@
     {
         "name":"Database Specialty",
         "credential":"9GLXQ97C32QQ1699",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Understand and differentiate the key features of AWS database services",
+            "Analyze needs and requirements to recommend and design appropriate database solutions using AWS services"
+        ],
         "expiry":{
-            "month":3,
-            "year":2023
+            "month":"3",
+            "year":"2023"
         },
         "issued":{
-            "month":1,
-            "year":2020
+            "month":"1",
+            "year":"2020"
         },
         "level":"SPECIALTY",
         "vendor":"AWS"
@@ -92,14 +126,22 @@
     {
         "name":"Securtity Specialty",
         "credential":"KX5PP7EKG2V11WSR",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "An understanding of specialized data classifications and AWS data protection mechanisms",
+            "An understanding of data encryption methods and AWS mechanisms to implement them",
+            "An understanding of secure Internet protocols and AWS mechanisms to implement them",
+            "A working knowledge of AWS security services and features of services to provide a secure production environment",
+            "Competency gained from two or more years of production deployment experience using AWS security services and features",
+            "Ability to make tradeoff decisions with regard to cost, security, and deployment complexity given a set of application requirements",
+            "An understanding of security operations and risk"
+        ],
         "expiry":{
-            "month":10,
-            "year":2022
+            "month":"10",
+            "year":"2022"
         },
         "issued":{
-            "month":10,
-            "year":2019
+            "month":"10",
+            "year":"2019"
         },
         "level":"SPECIALTY",
         "vendor":"AWS"
@@ -107,14 +149,20 @@
     {
         "name":"DevOps Engineer Professional",
         "credential":"8DJLFE6CN2441GCQ",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Implement and manage continuous delivery systems and methodologies on AWS",
+            "Implement and automate security controls, governance processes, and compliance validation",
+            "Define and deploy monitoring, metrics, and logging systems on AWS",
+            "Implement systems that are highly available, scalable, and self-healing on the AWS platform",
+            "Design, manage, and maintain tools to automate operational processes"
+        ],
         "expiry":{
-            "month":7,
-            "year":2023
+            "month":"7",
+            "year":"2023"
         },
         "issued":{
-            "month":7,
-            "year":2020
+            "month":"7",
+            "year":"2020"
         },
         "level":"PROFESSIONAL",
         "vendor":"AWS"
@@ -122,14 +170,20 @@
     {
         "name":"Solutions Architect Professional",
         "credential":"F9T6LYBL2BF4QC50",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Design and deploy dynamically scalable, highly available, fault-tolerant, and reliable applications on AWS",
+            "Select appropriate AWS services to design and deploy an application based on given requirements",
+            "Migrate complex, multi-tier applications on AWS",
+            "Design and deploy enterprise-wide scalable operations on AWS",
+            "Implement cost-control strategies"
+        ],
         "expiry":{
-            "month":12,
-            "year":2023
+            "month":"12",
+            "year":"2023"
         },
         "issued":{
-            "month":12,
-            "year":2020
+            "month":"12",
+            "year":"2020"
         },
         "level":"PROFESSIONAL",
         "vendor":"AWS"
@@ -137,11 +191,18 @@
     {
         "name":"Azure Fundamentals",
         "credential":"H478-5093",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Describe cloud concepts",
+            "Describe core Azure services",
+            "Describe core solutions and management tools on Azure",
+            "Describe general security and network security features",
+            "Describe identity, governance, privacy, and compliance features",
+            "Describe Azure cost management and Service Level Agreements"
+        ],
         "expiry":null,
         "issued":{
-            "month":7,
-            "year":2020
+            "month":"7",
+            "year":"2020"
         },
         "level":"FOUNDATIONAL",
         "vendor":"AZURE"
@@ -149,10 +210,20 @@
     {
         "name":"Oracle Associate, Java SE 7 Programmer",
         "credential":null,
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "I/O and NIO",
+            "Generics and Collections",
+            "Flow Control and Exceptions",
+            "Strings, Arrays, and ArrayLists",
+            "Declarations and Access Control",
+            "Advanced OO and Design Patterns",
+            "Assertions and Java SE 7 Exceptions",
+            "Threads, Inner Classes, and Concurrency",
+            "String Processing, Data Formatting, and Resources Bundles"
+        ],
         "expiry":null,
         "issued":{
-            "month":10,
+            "month":"10",
             "year":"2016"
         },
         "level":"ASSOCIATE",
@@ -161,14 +232,22 @@
     {
         "name":"SAFe 5 Practitioner",
         "credential":"57495344-8244",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Explain SAFe Agile Principles",
+            "Plan Iterations",
+            "Plan Program Increments",
+            "Execute Iterations and demonstrate value",
+            "Improve Agile Release Train processes",
+            "Integrate and work with other teams on the Agile Release Train",
+            "Perform as member of an Agile Team on an Agile Release Train"
+        ],
         "expiry":{
-            "month":9,
-            "year":2021
+            "month":"9",
+            "year":"2021"
         },
         "issued":{
-            "month":9,
-            "year":2020
+            "month":"9",
+            "year":"2020"
         },
         "level":"FOUNDATIONAL",
         "vendor":"SAFE"
