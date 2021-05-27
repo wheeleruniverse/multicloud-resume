@@ -1,27 +1,40 @@
 [
     {
         "name":"Bravo LT",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
-        "end":null,
+        "descriptions":[
+            "Implement full stack code with pair programming style against  vigorous standards",
+            "Implement multiple types of tests to maintain 100% average",
+            "Interact with GCP products to perform analysis, corrections, monitoring, logging, and validation"
+        ],
+        "end":{
+            "month":"",
+            "year":""
+        },
         "location":{
             "address":"40 Monroe Center St NW",
             "city":"Grand Rapids",
-            "remote":true,
+            "remote":"1",
             "state":"Michigan",
             "zip":"49503"
         },
         "project":"Gordon Ordering",
         "role":"Senior Software Developer",
         "start":{
-            "month":4,
-            "year":2021
+            "month":"4",
+            "year":"2021"
         },
         "title":"Senior Software Developer",
         "type":"FULLTIME"
     },
     {
         "name":"Verizon",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Design, implement, secure, and maintain AWS environments for multiple applications on the platform",
+            "Implement Jenkins jobs and pipelines to analyze code and deploy code artifacts onto active servers",
+            "Perform cost optimization on AWS environments to meet monetary requirements",
+            "Provide development guidance on best practices for numerous programming languages to numerous colleagues",
+            "Write Ansible playbooks and CloudFormation templates to automate AWS infrastructure"
+        ],
         "end":{
             "month":"4",
             "year":"2021"
@@ -29,130 +42,149 @@
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":true,
+            "remote":"1",
             "state":"Florida",
             "zip":"33637"
         },
         "project":"Network Planning Platform",
         "role":"Cloud Architect",
         "start":{
-            "month":3,
-            "year":2020
+            "month":"3",
+            "year":"2020"
         },
         "title":"MTS-III",
         "type":"FULLTIME"
     },
     {
         "name":"Verizon",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Design and implement backend logic including API specifications and database elements in Java and Python",
+            "Translate business requirements into technical requirements so they can be written as code",
+            "Write application code to generate tiles embedded with data for serving on <a href='https://www.verizon.com/coverage-map/' target='_blank'>Verizon's 5G Coverage Map</a>"
+        ],
         "end":{
-            "month":3,
-            "year":2020
+            "month":"3",
+            "year":"2020"
         },
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":true,
+            "remote":"1",
             "state":"Florida",
             "zip":"33637"
         },
         "project":"Network Planning Platform",
         "role":"Software Developer",
         "start":{
-            "month":11,
-            "year":2019
+            "month":"11",
+            "year":"2019"
         },
         "title":"MTS-III",
         "type":"FULLTIME"
     },
     {
         "name":"Verizon",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Coordinate API communication across numerous teams working on a unified product for the business",
+            "Design and implement backend logic for <a href='https://www.verizon.com/5g/home' target='_blank'>Verizon's 5G Home Customer Qualification</a>"
+        ],
         "end":{
-            "month":11,
-            "year":2019
+            "month":"11",
+            "year":"2019"
         },
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":true,
+            "remote":"1",
             "state":"Florida",
             "zip":"33637"
         },
         "project":"Service Qualification 5G",
         "role":"Java Developer",
         "start":{
-            "month":12,
-            "year":2017
+            "month":"12",
+            "year":"2017"
         },
         "title":"MTS-II",
         "type":"FULLTIME"
     },
     {
         "name":"Verizon",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Act as gate keeper to multiple backend Java repositories",
+            "Perform maintenance and optimizations on existing Java code written by colleagues",
+            "Provide Java code guidance to the team when required",
+            "Write Java and unit tests to complete technical requirements"
+        ],
         "end":{
-            "month":12,
-            "year":2017
+            "month":"12",
+            "year":"2017"
         },
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":false,
+            "remote":"0",
             "state":"Florida",
             "zip":"33637"
         },
         "project":"VZT Nautilus",
         "role":"Java Developer",
         "start":{
-            "month":8,
-            "year":2017
+            "month":"8",
+            "year":"2017"
         },
         "title":"MTS-II",
         "type":"FULLTIME"
     },
     {
         "name":"Verizon",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Convert legacy code to match current Java standards",
+            "Perform data entry and correct data bugs in multiple databases"
+        ],
         "end":{
-            "month":8,
-            "year":2017
+            "month":"8",
+            "year":"2017"
         },
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":false,
+            "remote":"0",
             "state":"Florida",
             "zip":"33637"
         },
         "project":"VZW Nautilus",
         "role":"Java Developer Contract",
         "start":{
-            "month":11,
-            "year":2016
+            "month":"11",
+            "year":"2016"
         },
         "title":"Contractor",
         "type":"CONTRACT"
     },
     {
         "name":"Revature",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
+        "descriptions":[
+            "Created an expense reimbursement sample application",
+            "Created an inventory management sample application",
+            "Created an internal blogging application for technical trainers"
+        ],
         "end":{
-            "month":11,
-            "year":2016
+            "month":"11",
+            "year":"2016"
         },
         "location":{
             "address":"11730 Plaza America Dr",
             "city":"Reston",
-            "remote":false,
+            "remote":"0",
             "state":"Virginia",
             "zip":"20190"
         },
         "project":"Bootcamp",
         "role":"Java Developer",
         "start":{
-            "month":7,
-            "year":2016
+            "month":"7",
+            "year":"2016"
         },
         "title":"Trainee",
         "type":"CONTRACT"
