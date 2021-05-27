@@ -3,15 +3,21 @@
   <h1 class="header-role-mobile" *ngIf="isMobile">Justin Wheeler — Cloud Guru</h1>
 </div>
 <div>
-  <mat-card (click)="toggleAboutShouldRender()">
+  <mat-card
+    (click)="toggleAboutShouldRender()"
+    (keydown.enter)="toggleAboutShouldRender()"
+    tabindex="0"
+  >
     About
   </mat-card>
   <app-about *ngIf="aboutShouldRender"></app-about>
 </div>
 <div>
   <mat-card
-    [ngClass]="{'disabled': !experienceShouldEnable}"
     (click)="toggleExperienceShouldRender()"
+    (keydown.enter)="toggleExperienceShouldRender()"
+    [ngClass]="{'disabled': !experienceShouldEnable}"
+    tabindex="0"
   >
     Experience
   </mat-card>
@@ -19,8 +25,10 @@
 </div>
 <div>
   <mat-card
-    [ngClass]="{'disabled': !(certificationShouldEnable)}"
     (click)="toggleCertificationShouldRender()"
+    (keydown.enter)="toggleCertificationShouldRender()"
+    [ngClass]="{'disabled': !certificationShouldEnable}"
+    tabindex="0"
   >
     Certifications
   </mat-card>
@@ -28,24 +36,33 @@
 </div>
 <div>
   <mat-card
+    (click)="toggleSkillShouldRender()"
+    (keydown.enter)="toggleSkillShouldRender()"
     [ngClass]="{'disabled': !skillShouldEnable}"
-    (click)="toggleSkillShouldRender()">
+    tabindex="0"
+  >
     Skills
   </mat-card>
   <app-skills *ngIf="skillShouldRender"></app-skills>
 </div>
 <div>
   <mat-card
+    (click)="toggleProjectShouldRender()"
+    (keydown.enter)="toggleProjectShouldRender()"
     [ngClass]="{'disabled': !projectShouldEnable}"
-    (click)="toggleProjectShouldRender()">
+    tabindex="0"
+  >
     Projects
   </mat-card>
   <app-projects *ngIf="projectShouldRender"></app-projects>
 </div>
 <div>
   <mat-card
+    (click)="toggleEducationShouldRender()"
+    (keydown.enter)="toggleEducationShouldRender()"
     [ngClass]="{'disabled': !educationShouldEnable}"
-    (click)="toggleEducationShouldRender()">
+    tabindex="0"
+  >
     Education
   </mat-card>
   <app-education *ngIf="educationShouldRender"></app-education>

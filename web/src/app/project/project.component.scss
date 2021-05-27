@@ -4,6 +4,13 @@ mat-chip {
   font-size: medium;
 }
 
+mat-icon {
+  &.active {
+    background-color: inherit;
+    color: #49caff;
+  }
+}
+
 .active {
   background-color: #49caff;
 }

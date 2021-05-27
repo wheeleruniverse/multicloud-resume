@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {filter} from "rxjs/operators";
 
@@ -16,21 +16,36 @@ export class CarouselComponent implements OnInit {
   @Input() cellsToShow: number;
   @Input() height: number;
 
-  autoplay = false;
-  cellWidth: number;
-  width = 1400;
+  carouselArrows: boolean;
+  carouselAutoplay: boolean;
+  carouselCellWidth: number;
+  carouselCellsToShow: number;
+  carouselHeight: number;
+  carouselWidth: number;
 
   ngOnInit(): void {
-    this.cellWidth = this.width / this.cellsToShow;
+    this.setDesktopView();
 
     this.breakpointObserver.observe('(max-width: 425px)')
       .pipe(filter(result => result.matches))
-      .subscribe(() => {
-        this.arrows = false;
-        this.autoplay = true;
-        this.cellsToShow = 1;
-        this.cellWidth = 280;
-        this.width = 280;
-      });
+      .subscribe(() => this.setMobileView());
+  }
+
+  private setDesktopView(): void {
+    this.carouselArrows = this.arrows;
+    this.carouselAutoplay = false;
+    this.carouselCellsToShow = this.cellsToShow;
+    this.carouselHeight = this.height;
+    this.carouselWidth = 1400;
+    this.carouselCellWidth = this.carouselWidth / this.carouselCellsToShow;
+  }
+
+  private setMobileView(): void {
+    this.carouselArrows = false;
+    this.carouselAutoplay = true;
+    this.carouselCellsToShow = 1;
+    this.carouselHeight = this.height * 1.25;
+    this.carouselWidth = 270;
+    this.carouselCellWidth = this.carouselWidth / this.carouselCellsToShow;
   }
 }

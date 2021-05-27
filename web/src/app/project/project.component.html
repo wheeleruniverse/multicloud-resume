@@ -6,11 +6,24 @@
   <div
     *ngFor="let i of state.projects"
     class="carousel-cell"
-    tabindex="-1"
+    tabindex="0"
   >
     <div class="carousel-cell-icons">
-      <mat-icon (click)="openDialog()">info</mat-icon>
-      <mat-icon (click)=setProjectFilter(i.id)>filter_list</mat-icon>
+      <mat-icon
+        (click)="openDialog()"
+        (keydown.enter)="openDialog()"
+        tabIndex="0"
+      >
+        info
+      </mat-icon>
+      <mat-icon
+        (click)="setProjectFilter(i.id)"
+        (keydown.enter)="setProjectFilter(i.id)"
+        [ngClass]="{'active': projectTarget === i.id}"
+        tabIndex="0"
+      >
+        filter_list
+      </mat-icon>
       <a href="{{i.blog}}" target="_blank"><mat-icon>book</mat-icon></a>
       <a href="{{i.code}}" target="_blank"><mat-icon>code</mat-icon></a>
       <a *ngIf="i.website" href="{{i.website}}" target="_blank"><mat-icon>launch</mat-icon></a>
@@ -22,13 +35,17 @@
       <mat-chip-list>
         <mat-chip
           (click)="setSkillSortBy('Name')"
+          (keydown.enter)="setSkillSortBy('Name')"
           [ngClass]="{'active': skillSortBy === 'Name'}"
+          tabIndex="0"
         >
           Name
         </mat-chip>
         <mat-chip
           (click)="setSkillSortBy('Type')"
+          (keydown.enter)="setSkillSortBy('Type')"
           [ngClass]="{'active': skillSortBy === 'Type'}"
+          tabIndex="0"
         >
           Type
         </mat-chip>
@@ -40,7 +57,9 @@
         <mat-chip
           *ngFor="let skillName of getSkillNames(i.skills)"
           (click)="setSkillFilter(skillName)"
+          (keydown.enter)="setSkillFilter(skillName)"
           [ngClass]="{'active': skillTarget === skillName}"
+          tabIndex="0"
         >
           <ng-container>{{skillName}}</ng-container>
         </mat-chip>
@@ -49,7 +68,9 @@
         <mat-chip
           *ngFor="let skillType of getSkillTypes(i.skills)"
           (click)="setSkillFilter(skillType)"
+          (keydown.enter)="setSkillFilter(skillType)"
           [ngClass]="{'active': skillTarget === skillType}"
+          tabIndex="0"
         >
           <ng-container>{{skillType}}</ng-container>
         </mat-chip>

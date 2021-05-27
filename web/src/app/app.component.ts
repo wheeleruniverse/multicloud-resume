@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ViewService} from "./shared/service/view.service";
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -42,7 +41,6 @@ export class AppComponent implements OnInit {
 
   isMobile = false;
 
-
   aboutShouldRender = false;
 
   certificationShouldEnable = true;
@@ -64,6 +62,13 @@ export class AppComponent implements OnInit {
     this.breakpointObserver.observe('(max-width: 425px)')
       .subscribe((result) => {
         this.isMobile = result.matches;
+
+        // close dynamically sized components (if open)
+        this.viewService.certificationShouldRender(false);
+        this.viewService.educationShouldRender(false);
+        this.viewService.experienceShouldRender(false);
+        this.viewService.projectShouldRender(false);
+        this.viewService.skillShouldRender(false);
       });
 
     this.viewService.certificationShouldEnable$.subscribe(val => {
