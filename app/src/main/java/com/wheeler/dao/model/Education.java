@@ -9,7 +9,7 @@ public class Education {
     private String id;
     private String name;
     private String degree;
-    private String description;
+    private String descriptions;
     private Integer end;
     private String field;
     private Location location;

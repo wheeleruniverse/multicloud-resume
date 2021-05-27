@@ -2,8 +2,14 @@
     {
         "name":"Full Sail University",
         "degree":"Bachelor of Science",
-        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis purus ac mauris vehicula, tristique tempor tellus lobortis. Fusce semper eu elit ac elementum. Aenean tincidunt venenatis nisl, at egestas massa ullamcorper at. Maecenas dui ex, egestas at velit eu, dictum tempor dolor. Donec varius ac nisi sit amet ultrices.",
-        "end":2016,
+        "descriptions":[
+            "Created a board game to simulate skills without coding",
+            "Created story boards to illustrate the user's experience",
+            "Designed and implemented virtual worlds using the Unity game engine",
+            "Developed believable physics, partical effects, reward system, and state machine logic",
+            "Learned about history, psychology, math, mythology, and science in relation to Game Design"
+        ],
+        "end":"2016",
         "field":"Game Design and Development",
         "location":{
             "address":"3300 University Blvd",
@@ -12,6 +18,6 @@
             "state":"Florida",
             "zip":"32792"
         },
-        "start":2013
+        "start":"2013"
     }
 ]
