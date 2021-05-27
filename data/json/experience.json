@@ -2,7 +2,7 @@
     {
         "name":"Bravo LT",
         "descriptions":[
-            "Implement full stack code with pair programming style against  vigorous standards",
+            "Implement full stack code with pair programming style against vigorous standards",
             "Implement multiple types of tests to maintain 100% average",
             "Interact with GCP products to perform analysis, corrections, monitoring, logging, and validation"
         ],
@@ -13,7 +13,7 @@
         "location":{
             "address":"40 Monroe Center St NW",
             "city":"Grand Rapids",
-            "remote":"1",
+            "remote":true,
             "state":"Michigan",
             "zip":"49503"
         },
@@ -42,7 +42,7 @@
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":"1",
+            "remote":true,
             "state":"Florida",
             "zip":"33637"
         },
@@ -69,7 +69,7 @@
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":"1",
+            "remote":true,
             "state":"Florida",
             "zip":"33637"
         },
@@ -95,7 +95,7 @@
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":"1",
+            "remote":true,
             "state":"Florida",
             "zip":"33637"
         },
@@ -123,7 +123,7 @@
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":"0",
+            "remote":false,
             "state":"Florida",
             "zip":"33637"
         },
@@ -149,7 +149,7 @@
         "location":{
             "address":"7701 E Telecom Pkwy",
             "city":"Temple Terrace",
-            "remote":"0",
+            "remote":false,
             "state":"Florida",
             "zip":"33637"
         },
@@ -176,7 +176,7 @@
         "location":{
             "address":"11730 Plaza America Dr",
             "city":"Reston",
-            "remote":"0",
+            "remote":false,
             "state":"Virginia",
             "zip":"20190"
         },
