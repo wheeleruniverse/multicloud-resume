@@ -18,8 +18,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
 
   constructor(
     private facade: CertificationFacade,
-    private viewService: ViewService
-  ) {}
+    private viewService: ViewService) {}
 
   destroyed$ = new Subject<void>();
   state: CertificationState;

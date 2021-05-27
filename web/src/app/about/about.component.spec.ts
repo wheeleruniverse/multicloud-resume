@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
+import {By} from "@angular/platform-browser";
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -21,5 +22,10 @@ describe('AboutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render #about', () => {
+    const about = fixture.debugElement.query(By.css('#about'));
+    expect(about).toBeTruthy();
   });
 });

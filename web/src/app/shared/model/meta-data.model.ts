@@ -1,6 +1,6 @@
 export interface MetaData {
   name: string;
   display: string;
-  description: string;
-  rank: number;
+  description?: string;
+  rank?: number;
 }

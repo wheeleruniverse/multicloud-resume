@@ -24,6 +24,11 @@ jobs:
           npm install
           npm install -g @angular/cli
 
+      - name: Test Angular
+        run: |
+          cd web
+          ng test
+
       - name: Build Angular
         run: |
           cd web
