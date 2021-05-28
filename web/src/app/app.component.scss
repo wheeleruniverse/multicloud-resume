@@ -76,6 +76,24 @@ mat-divider {
   font-size: xxx-large;
 }
 
+@media screen and (max-width: $device-tablet){
+
+  mat-card {
+    font-size: x-large;
+    margin: 1em auto;
+    width: 35%;
+  }
+
+  #header {
+    text-align: center;
+    width: 100%;
+  }
+
+  .header-role-tablet {
+    font-size: xx-large;
+  }
+}
+
 @media screen and (max-width: $device-mobile-lg){
 
   div {

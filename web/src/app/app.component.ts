@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
   }
 
   isMobile = false;
+  isTablet = false;
 
   aboutShouldRender = false;
 
@@ -59,16 +60,16 @@ export class AppComponent implements OnInit {
   skillShouldRender = false;
 
   ngOnInit(): void {
+    this.breakpointObserver.observe('(max-width: 768px)')
+      .subscribe((result) => {
+        this.isTablet = result.matches;
+        this.closeView();
+      });
+
     this.breakpointObserver.observe('(max-width: 425px)')
       .subscribe((result) => {
         this.isMobile = result.matches;
-
-        // close dynamically sized components (if open)
-        this.viewService.certificationShouldRender(false);
-        this.viewService.educationShouldRender(false);
-        this.viewService.experienceShouldRender(false);
-        this.viewService.projectShouldRender(false);
-        this.viewService.skillShouldRender(false);
+        this.closeView();
       });
 
     this.viewService.certificationShouldEnable$.subscribe(val => {
@@ -115,6 +116,14 @@ export class AppComponent implements OnInit {
       this.skillShouldRender = val;
       this.changeDetectorRef.detectChanges();
     });
+  }
+
+  closeView(){
+    this.viewService.certificationShouldRender(false);
+    this.viewService.educationShouldRender(false);
+    this.viewService.experienceShouldRender(false);
+    this.viewService.projectShouldRender(false);
+    this.viewService.skillShouldRender(false);
   }
 
   toggleAboutShouldRender(){
