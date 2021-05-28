@@ -2,8 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EducationComponent } from './education.component';
 
-//TODO: Update Spec
-describe('EducationComponent', () => {
+xdescribe('EducationComponent', () => {
   let component: EducationComponent;
   let fixture: ComponentFixture<EducationComponent>;
 
