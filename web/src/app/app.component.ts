@@ -60,15 +60,28 @@ export class AppComponent implements OnInit {
   skillShouldRender = false;
 
   ngOnInit(): void {
-    this.breakpointObserver.observe('(max-width: 768px)')
-      .subscribe((result) => {
-        this.isTablet = result.matches;
-        this.closeView();
-      });
 
-    this.breakpointObserver.observe('(max-width: 425px)')
+    const mobileBreakPoint = '(max-width: 425px)';
+    const tabletBreakPoint = '(max-width: 768px)';
+
+    this.breakpointObserver
+      .observe([
+        mobileBreakPoint,
+        tabletBreakPoint,
+      ])
       .subscribe((result) => {
-        this.isMobile = result.matches;
+        if(result.breakpoints[mobileBreakPoint]){
+          this.isMobile = true;
+          this.isTablet = false;
+        }
+        else if(result.breakpoints[tabletBreakPoint]){
+          this.isMobile = false;
+          this.isTablet = true;
+        }
+        else {
+          this.isMobile = false;
+          this.isTablet = false;
+        }
         this.closeView();
       });
 

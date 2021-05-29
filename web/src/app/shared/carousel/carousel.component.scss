@@ -29,8 +29,11 @@ ul {
 
 .carousel-cell span {
   display: block;
-  font-size: medium;
   margin-bottom: 0.2em;
+
+  :not(.large){
+    font-size: medium;
+  }
 }
 
 .carousel-cell-icons {
@@ -44,9 +47,6 @@ ul {
   mat-icon {
     margin: 0.1em;
   }
-}
-
-.carousel-cell-primary {
 }
 
 .carousel-cell-secondary {
