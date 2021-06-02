@@ -1,9 +1,9 @@
-import {Action} from "@ngrx/store";
-import {SkillState} from "./skill.state";
+import { Action } from '@ngrx/store';
+import { SkillState } from './skill.state';
 
 export enum SkillActionType {
-  Retrieve = "[Skill] Retrieve",
-  RetrieveSuccess = "[Skill] Retrieve Success"
+  Retrieve = '[Skill] Retrieve',
+  RetrieveSuccess = '[Skill] Retrieve Success',
 }
 
 export class SkillRetrieveAction implements Action {
@@ -12,9 +12,7 @@ export class SkillRetrieveAction implements Action {
 
 export class SkillRetrieveSuccessAction implements Action {
   readonly type = SkillActionType.RetrieveSuccess;
-  constructor(public state: SkillState){}
+  constructor(public state: SkillState) {}
 }
 
-export type SkillActions =
-  | SkillRetrieveAction
-  | SkillRetrieveSuccessAction;
+export type SkillActions = SkillRetrieveAction | SkillRetrieveSuccessAction;

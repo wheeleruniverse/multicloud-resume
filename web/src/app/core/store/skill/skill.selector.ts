@@ -1,8 +1,6 @@
-import {createFeatureSelector} from "@ngrx/store";
-import {SkillState} from "./skill.state";
-import {AppState} from "../app.state";
+import { createFeatureSelector } from '@ngrx/store';
+import { SkillState } from './skill.state';
+import { AppState } from '../app.state';
 
-export const skillStateSelector = createFeatureSelector<AppState, SkillState>(
-  'skill'
-);
-
+export const skillStateSelector =
+  createFeatureSelector<AppState, SkillState>('skill');

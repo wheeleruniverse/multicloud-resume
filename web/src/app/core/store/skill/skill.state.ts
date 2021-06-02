@@ -1,4 +1,4 @@
-import {MetaData} from "../../../shared/model/meta-data.model";
+import { MetaData } from '../../../shared/model/meta-data.model';
 
 export interface SkillState {
   data: Skill[];
@@ -19,5 +19,5 @@ export interface SkillMeta {
 
 export const initialSkillState: SkillState = {
   data: undefined,
-  meta: undefined
-}
+  meta: undefined,
+};

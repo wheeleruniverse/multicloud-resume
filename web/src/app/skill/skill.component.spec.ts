@@ -8,9 +8,8 @@ xdescribe('SkillComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SkillComponent ]
-    })
-    .compileComponents();
+      declarations: [SkillComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

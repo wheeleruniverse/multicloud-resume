@@ -1,4 +1,4 @@
-@import 'src/stylesheets/variables';
+@import "src/stylesheets/variables";
 
 mat-spinner {
   background-color: #49caff;
@@ -32,7 +32,6 @@ tr:focus {
 }
 
 @media screen and (max-width: $device-tablet) {
-
   mat-slider {
     display: none;
   }
@@ -44,8 +43,7 @@ tr:focus {
   }
 }
 
-@media screen and (max-width: $device-mobile-lg){
-
+@media screen and (max-width: $device-mobile-lg) {
   mat-slider {
     display: none;
   }
