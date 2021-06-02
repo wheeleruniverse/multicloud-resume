@@ -1,7 +1,11 @@
 <div id="header">
   <h1 class="header-role" *ngIf="!isMobile && !isTablet"></h1>
-  <h1 class="header-role-mobile" *ngIf="isMobile">Justin Wheeler — Cloud Guru</h1>
-  <h1 class="header-role-tablet" *ngIf="isTablet">Justin Wheeler — Cloud Architect</h1>
+  <h1 class="header-role-mobile" *ngIf="isMobile">
+    Justin Wheeler — Cloud Guru
+  </h1>
+  <h1 class="header-role-tablet" *ngIf="isTablet">
+    Justin Wheeler — Cloud Architect
+  </h1>
 </div>
 <div>
   <mat-card
@@ -17,7 +21,7 @@
   <mat-card
     (click)="toggleExperienceShouldRender()"
     (keydown.enter)="toggleExperienceShouldRender()"
-    [ngClass]="{'disabled': !experienceShouldEnable}"
+    [ngClass]="{ disabled: !experienceShouldEnable }"
     tabindex="0"
   >
     Experience
@@ -28,7 +32,7 @@
   <mat-card
     (click)="toggleCertificationShouldRender()"
     (keydown.enter)="toggleCertificationShouldRender()"
-    [ngClass]="{'disabled': !certificationShouldEnable}"
+    [ngClass]="{ disabled: !certificationShouldEnable }"
     tabindex="0"
   >
     Certifications
@@ -39,7 +43,7 @@
   <mat-card
     (click)="toggleSkillShouldRender()"
     (keydown.enter)="toggleSkillShouldRender()"
-    [ngClass]="{'disabled': !skillShouldEnable}"
+    [ngClass]="{ disabled: !skillShouldEnable }"
     tabindex="0"
   >
     Skills
@@ -50,7 +54,7 @@
   <mat-card
     (click)="toggleProjectShouldRender()"
     (keydown.enter)="toggleProjectShouldRender()"
-    [ngClass]="{'disabled': !projectShouldEnable}"
+    [ngClass]="{ disabled: !projectShouldEnable }"
     tabindex="0"
   >
     Projects
@@ -61,7 +65,7 @@
   <mat-card
     (click)="toggleEducationShouldRender()"
     (keydown.enter)="toggleEducationShouldRender()"
-    [ngClass]="{'disabled': !educationShouldEnable}"
+    [ngClass]="{ disabled: !educationShouldEnable }"
     tabindex="0"
   >
     Education
@@ -72,4 +76,3 @@
   <mat-divider></mat-divider>
   <app-visitor></app-visitor>
 </div>
-

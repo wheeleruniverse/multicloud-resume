@@ -1,40 +1,40 @@
-@import 'src/stylesheets/variables';
+@import "src/stylesheets/variables";
 
 $name-prefix: "Justin Wheeler — ";
 
 @keyframes spin {
   0% {
-    content:"#{$name-prefix}Cloud Architect";
+    content: "#{$name-prefix}Cloud Architect";
   }
   10% {
-    content:"#{$name-prefix}Cloud Guru";
+    content: "#{$name-prefix}Cloud Guru";
   }
   20% {
-    content:"#{$name-prefix}Dreamer";
+    content: "#{$name-prefix}Dreamer";
   }
   30% {
-    content:"#{$name-prefix}Professional DevOps Engineer";
+    content: "#{$name-prefix}Professional DevOps Engineer";
   }
   40% {
-    content:"#{$name-prefix}Professional Solutions Architect";
+    content: "#{$name-prefix}Professional Solutions Architect";
   }
   50% {
-    content:"#{$name-prefix}Security Specialist";
+    content: "#{$name-prefix}Security Specialist";
   }
   60% {
-    content:"#{$name-prefix}Serverless Specialist";
+    content: "#{$name-prefix}Serverless Specialist";
   }
   70% {
-    content:"#{$name-prefix}Senior Software Developer";
+    content: "#{$name-prefix}Senior Software Developer";
   }
   80% {
-    content:"#{$name-prefix}Student";
+    content: "#{$name-prefix}Student";
   }
   90% {
-    content:"#{$name-prefix}Website Designer";
+    content: "#{$name-prefix}Website Designer";
   }
   100% {
-    content:"#{$name-prefix}Wizard";
+    content: "#{$name-prefix}Wizard";
   }
 }
 
@@ -76,8 +76,7 @@ mat-divider {
   font-size: xxx-large;
 }
 
-@media screen and (max-width: $device-tablet){
-
+@media screen and (max-width: $device-tablet) {
   mat-card {
     font-size: x-large;
     margin: 1em auto;
@@ -94,8 +93,7 @@ mat-divider {
   }
 }
 
-@media screen and (max-width: $device-mobile-lg){
-
+@media screen and (max-width: $device-mobile-lg) {
   div {
     margin-left: 0.5em;
   }
@@ -121,4 +119,3 @@ mat-divider {
     margin: 0 auto;
   }
 }
-
