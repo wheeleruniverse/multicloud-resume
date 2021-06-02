@@ -8,9 +8,8 @@ xdescribe('ProjectDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [ProjectDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,25 +1,24 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from "rxjs";
-import {ViewService} from "../shared/service/view.service";
-import {ProjectFacade} from "../core/store/project/project.facade";
-import {ProjectCompositeState} from "../core/store/project/project.state";
-import {filter, takeUntil} from "rxjs/operators";
-import {FilterService} from "../shared/service/filter.service";
-import {Skill} from "../core/store/skill/skill.state";
-import {MatDialog} from "@angular/material/dialog";
-import {ProjectDialogComponent} from "../shared/dialog/project-dialog.component";
-import {BreakpointObserver} from "@angular/cdk/layout";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { ViewService } from '../shared/service/view.service';
+import { ProjectFacade } from '../core/store/project/project.facade';
+import { ProjectCompositeState } from '../core/store/project/project.state';
+import { filter, takeUntil } from 'rxjs/operators';
+import { FilterService } from '../shared/service/filter.service';
+import { Skill } from '../core/store/skill/skill.state';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectDialogComponent } from '../shared/dialog/project-dialog.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './project.component.html',
   styleUrls: [
     './project.component.scss',
-    '../shared/carousel/carousel.component.scss'
-  ]
+    '../shared/carousel/carousel.component.scss',
+  ],
 })
 export class ProjectComponent implements OnDestroy, OnInit {
-
   constructor(
     private breakpointObserver: BreakpointObserver,
     private dialog: MatDialog,
@@ -32,7 +31,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
   state: ProjectCompositeState;
   skillLimit = 20;
   skillShouldRender: boolean;
-  skillSortBy: string = 'Name';
+  skillSortBy = 'Name';
   skillTarget: string;
   projectTarget: string;
 
@@ -42,68 +41,71 @@ export class ProjectComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.breakpointObserver.observe('(max-width: 425px)')
-      .pipe(filter(result => result.matches))
+    this.breakpointObserver
+      .observe('(max-width: 425px)')
+      .pipe(filter((result) => result.matches))
       .subscribe(() => {
         this.skillLimit = 5;
       });
 
     this.viewService.projectShouldEnable(false);
-    this.facade.retrieve()
+    this.facade
+      .retrieve()
       .pipe(
         takeUntil(this.destroyed$),
-        filter(state => !!state?.projects)
+        filter((state) => !!state?.projects)
       )
-      .subscribe(state => {
+      .subscribe((state) => {
         this.state = state;
         this.viewService.projectShouldEnable(true);
       });
 
-    this.viewService.skillShouldRender$.subscribe(val => {
+    this.viewService.skillShouldRender$.subscribe((val) => {
       this.skillShouldRender = val;
     });
   }
 
-  openDialog(){
+  openDialog(): void {
     const dialogRef = this.dialog.open(ProjectDialogComponent);
     dialogRef.afterClosed().subscribe(() => {});
   }
 
   getSkills(ids: string[]): Skill[] {
-    return !!this.state?.skills ? this.state.skills.filter(skill => ids.includes(skill.id)) : [];
+    return !!this.state?.skills
+      ? this.state.skills.filter((skill) => ids.includes(skill.id))
+      : [];
   }
 
   getSkillNames(ids: string[]): string[] {
     return this.getSkills(ids)
-      .map(skill => skill.name)
+      .map((skill) => skill.name)
       .filter((value, index, self) => self.indexOf(value) === index)
-      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1)
+      .sort((n1, n2) => (n1 === n2 ? 0 : n1 > n2 ? 1 : -1) * 1)
       .slice(0, this.skillLimit);
   }
 
   getSkillTypes(ids: string[]): string[] {
     return this.getSkills(ids)
-      .map(skill => skill.type)
+      .map((skill) => skill.type)
       .filter((value, index, self) => self.indexOf(value) === index)
-      .sort((n1, n2) => (n1 == n2 ? 0 : n1 > n2 ? 1 : -1) * 1)
+      .sort((n1, n2) => (n1 === n2 ? 0 : n1 > n2 ? 1 : -1) * 1)
       .slice(0, this.skillLimit);
   }
 
-  renderSkillView(){
-    if(!this.skillShouldRender){
+  renderSkillView(): void {
+    if (!this.skillShouldRender) {
       this.viewService.skillShouldRender(true);
     }
   }
 
   setProjectFilter(value: string): void {
-
     this.renderSkillView();
     this.skillTarget = null;
 
-    if(!this.skillShouldRender){
+    if (!this.skillShouldRender) {
       this.viewService.skillShouldRender(true);
     }
-    if(this.projectTarget === value){
+    if (this.projectTarget === value) {
       this.projectTarget = null;
       this.filterService.setTarget('');
       return;
@@ -113,11 +115,10 @@ export class ProjectComponent implements OnDestroy, OnInit {
   }
 
   setSkillFilter(value: string): void {
-
     this.renderSkillView();
     this.projectTarget = null;
 
-    if(this.skillTarget === value){
+    if (this.skillTarget === value) {
       this.skillTarget = null;
       this.filterService.setTarget('');
       return;

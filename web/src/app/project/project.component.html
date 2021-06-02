@@ -1,13 +1,9 @@
 <app-carousel
   *ngIf="!!state?.projects; else loading"
-  [cellsToShow]=2
-  [height]=475
+  [cellsToShow]="2"
+  [height]="475"
 >
-  <div
-    *ngFor="let i of state.projects"
-    class="carousel-cell"
-    tabindex="0"
-  >
+  <div *ngFor="let i of state.projects" class="carousel-cell" tabindex="0">
     <div class="carousel-cell-icons">
       <mat-icon
         (click)="openDialog()"
@@ -19,24 +15,26 @@
       <mat-icon
         (click)="setProjectFilter(i.id)"
         (keydown.enter)="setProjectFilter(i.id)"
-        [ngClass]="{'active': projectTarget === i.id}"
+        [ngClass]="{ active: projectTarget === i.id }"
         tabIndex="0"
       >
         filter_list
       </mat-icon>
-      <a href="{{i.blog}}" target="_blank"><mat-icon>book</mat-icon></a>
-      <a href="{{i.code}}" target="_blank"><mat-icon>code</mat-icon></a>
-      <a *ngIf="i.website" href="{{i.website}}" target="_blank"><mat-icon>launch</mat-icon></a>
+      <a href="{{ i.blog }}" target="_blank"><mat-icon>book</mat-icon></a>
+      <a href="{{ i.code }}" target="_blank"><mat-icon>code</mat-icon></a>
+      <a *ngIf="i.website" href="{{ i.website }}" target="_blank"
+        ><mat-icon>launch</mat-icon></a
+      >
     </div>
     <div class="carousel-cell-primary">
-      <span class="large">{{i.name}}</span>
-      <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
-      <br/>
+      <span class="large">{{ i.name }}</span>
+      <span>{{ i.start | monthYear }} &mdash; {{ i.end | monthYear }}</span>
+      <br />
       <mat-chip-list>
         <mat-chip
           (click)="setSkillSortBy('Name')"
           (keydown.enter)="setSkillSortBy('Name')"
-          [ngClass]="{'active': skillSortBy === 'Name'}"
+          [ngClass]="{ active: skillSortBy === 'Name' }"
           tabIndex="0"
         >
           Name
@@ -44,24 +42,24 @@
         <mat-chip
           (click)="setSkillSortBy('Type')"
           (keydown.enter)="setSkillSortBy('Type')"
-          [ngClass]="{'active': skillSortBy === 'Type'}"
+          [ngClass]="{ active: skillSortBy === 'Type' }"
           tabIndex="0"
         >
           Type
         </mat-chip>
       </mat-chip-list>
-      <br/>
+      <br />
       <mat-divider></mat-divider>
-      <br/>
+      <br />
       <mat-chip-list *ngIf="skillSortBy === 'Name'">
         <mat-chip
           *ngFor="let skillName of getSkillNames(i.skills)"
           (click)="setSkillFilter(skillName)"
           (keydown.enter)="setSkillFilter(skillName)"
-          [ngClass]="{'active': skillTarget === skillName}"
+          [ngClass]="{ active: skillTarget === skillName }"
           tabIndex="0"
         >
-          <ng-container>{{skillName}}</ng-container>
+          <ng-container>{{ skillName }}</ng-container>
         </mat-chip>
       </mat-chip-list>
       <mat-chip-list *ngIf="skillSortBy === 'Type'">
@@ -69,15 +67,15 @@
           *ngFor="let skillType of getSkillTypes(i.skills)"
           (click)="setSkillFilter(skillType)"
           (keydown.enter)="setSkillFilter(skillType)"
-          [ngClass]="{'active': skillTarget === skillType}"
+          [ngClass]="{ active: skillTarget === skillType }"
           tabIndex="0"
         >
-          <ng-container>{{skillType}}</ng-container>
+          <ng-container>{{ skillType }}</ng-container>
         </mat-chip>
       </mat-chip-list>
     </div>
     <div class="carousel-cell-secondary">
-      <span>{{i.description}}</span>
+      <span>{{ i.description }}</span>
     </div>
   </div>
 </app-carousel>

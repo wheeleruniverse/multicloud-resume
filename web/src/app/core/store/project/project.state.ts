@@ -1,5 +1,5 @@
-import {MonthYear} from "../../../shared/model/month-year.model";
-import {Skill} from "../skill/skill.state";
+import { MonthYear } from '../../../shared/model/month-year.model';
+import { Skill } from '../skill/skill.state';
 
 export interface ProjectState {
   data: Project[];
@@ -23,6 +23,5 @@ export interface ProjectCompositeState {
 }
 
 export const initialProjectState: ProjectState = {
-  data: undefined
-}
-
+  data: undefined,
+};

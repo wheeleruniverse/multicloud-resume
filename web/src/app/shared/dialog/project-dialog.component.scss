@@ -1,4 +1,4 @@
-@import 'src/stylesheets/variables';
+@import "src/stylesheets/variables";
 
 h1 {
   font-size: xx-large;
@@ -58,7 +58,6 @@ mat-divider {
 }
 
 @media screen and (max-width: $device-mobile-lg) {
-
   h1 {
     font-size: large;
   }
@@ -90,4 +89,3 @@ mat-divider {
     margin: 1em auto;
   }
 }
-

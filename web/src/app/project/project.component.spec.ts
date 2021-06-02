@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {ProjectComponent} from "./project.component";
-
+import { ProjectComponent } from './project.component';
 
 xdescribe('ProjectComponent', () => {
   let component: ProjectComponent;
@@ -8,9 +7,8 @@ xdescribe('ProjectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectComponent ]
-    })
-    .compileComponents();
+      declarations: [ProjectComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

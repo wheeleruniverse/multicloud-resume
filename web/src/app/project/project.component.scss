@@ -1,4 +1,4 @@
-@import 'src/stylesheets/variables';
+@import "src/stylesheets/variables";
 
 mat-chip {
   font-size: medium;
@@ -20,7 +20,6 @@ mat-icon {
 }
 
 @media screen and (max-width: $device-mobile-lg) {
-
   mat-chip {
     font-size: small;
     padding: 2px 7px;
