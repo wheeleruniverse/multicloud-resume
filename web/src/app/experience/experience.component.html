@@ -5,14 +5,19 @@
 >
   <div *ngFor="let i of state.data" class="carousel-cell" tabindex="0">
     <div class="carousel-cell-primary">
-      <span class="large">{{i.name}}</span>
-      <span class="large">{{i.role}} ({{i.type | titlecase}})</span>
-      <span>{{i.start | monthYear }} &mdash; {{i.end | monthYear }}</span>
-      <span>{{i.project}}</span>
-      <span>{{i.location | location }} {{i.location.remote ? '(Remote)' : ''}}</span>
+      <span class="large">{{ i.name }}</span>
+      <span class="large">{{ i.role }} ({{ i.type | titlecase }})</span>
+      <span>{{ i.start | monthYear }} &mdash; {{ i.end | monthYear }}</span>
+      <span>{{ i.project }}</span>
+      <span
+        >{{ i.location | location }}
+        {{ i.location.remote ? "(Remote)" : "" }}</span
+      >
     </div>
     <div class="carousel-cell-secondary">
-      <ul><li *ngFor="let d of i.descriptions">{{d}}</li></ul>
+      <ul>
+        <li *ngFor="let d of i.descriptions">{{ d }}</li>
+      </ul>
     </div>
   </div>
 </app-carousel>
