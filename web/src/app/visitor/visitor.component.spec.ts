@@ -8,9 +8,8 @@ xdescribe('VisitorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VisitorComponent ]
-    })
-    .compileComponents();
+      declarations: [VisitorComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
