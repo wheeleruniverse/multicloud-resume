@@ -1,4 +1,4 @@
-@import 'src/stylesheets/variables';
+@import "src/stylesheets/variables";
 
 #about {
   font-size: 20px;
@@ -9,8 +9,7 @@ p {
   font-style: italic;
 }
 
-@media screen and (max-width: $device-mobile-lg){
-
+@media screen and (max-width: $device-mobile-lg) {
   #about {
     font-size: 12px;
     margin: 0.5em 1em;
