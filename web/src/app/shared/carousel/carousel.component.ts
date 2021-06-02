@@ -1,15 +1,13 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {filter} from "rxjs/operators";
-
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
-
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   @Input() arrows = true;
@@ -30,18 +28,13 @@ export class CarouselComponent implements OnInit {
     const tabletBreakPoint = '(max-width: 768px)';
 
     this.breakpointObserver
-      .observe([
-        mobileBreakPoint,
-        tabletBreakPoint,
-      ])
+      .observe([mobileBreakPoint, tabletBreakPoint])
       .subscribe((result) => {
-        if(result.breakpoints[mobileBreakPoint]){
+        if (result.breakpoints[mobileBreakPoint]) {
           this.setMobileView();
-        }
-        else if(result.breakpoints[tabletBreakPoint]){
+        } else if (result.breakpoints[tabletBreakPoint]) {
           this.setTabletView();
-        }
-        else {
+        } else {
           this.setDesktopView();
         }
       });
