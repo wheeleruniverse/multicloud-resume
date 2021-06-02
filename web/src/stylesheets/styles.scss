@@ -1,4 +1,4 @@
-@import 'src/stylesheets/variables';
+@import "src/stylesheets/variables";
 
 mat-progress-bar {
   margin-top: 2em;
@@ -8,8 +8,7 @@ mat-progress-bar {
   font-size: large;
 }
 
-@media screen and (max-width: $device-mobile-lg){
-
+@media screen and (max-width: $device-mobile-lg) {
   mat-progress-bar {
     margin-top: 0;
   }

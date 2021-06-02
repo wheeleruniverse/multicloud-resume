@@ -1,7 +1,7 @@
-import {Action} from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum ErrorActionType {
-  Error = "[Error] Error",
+  Error = '[Error] Error',
 }
 
 export class ErrorAction implements Action {
@@ -9,5 +9,4 @@ export class ErrorAction implements Action {
   constructor(public e: any) {}
 }
 
-export type ErrorActions =
-  | ErrorAction;
+export type ErrorActions = ErrorAction;

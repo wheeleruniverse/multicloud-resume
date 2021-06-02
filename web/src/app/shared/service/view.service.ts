@@ -1,11 +1,10 @@
-import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ViewService {
-
   public certificationShouldEnable$ = new BehaviorSubject<boolean>(true);
   public certificationShouldRender$ = new BehaviorSubject<boolean>(false);
 
@@ -20,8 +19,6 @@ export class ViewService {
 
   public skillShouldEnable$ = new BehaviorSubject<boolean>(true);
   public skillShouldRender$ = new BehaviorSubject<boolean>(false);
-
-  constructor(){}
 
   public certificationShouldEnable(value: boolean): void {
     this.certificationShouldEnable$.next(value);

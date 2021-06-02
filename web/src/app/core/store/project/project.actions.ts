@@ -1,9 +1,9 @@
-import {Action} from "@ngrx/store";
-import {ProjectState} from "./project.state";
+import { Action } from '@ngrx/store';
+import { ProjectState } from './project.state';
 
 export enum ProjectActionType {
-  Retrieve = "[Project] Retrieve",
-  RetrieveSuccess = "[Project] Retrieve Success"
+  Retrieve = '[Project] Retrieve',
+  RetrieveSuccess = '[Project] Retrieve Success',
 }
 
 export class ProjectRetrieveAction implements Action {
@@ -12,7 +12,7 @@ export class ProjectRetrieveAction implements Action {
 
 export class ProjectRetrieveSuccessAction implements Action {
   readonly type = ProjectActionType.RetrieveSuccess;
-  constructor(public state: ProjectState){}
+  constructor(public state: ProjectState) {}
 }
 
 export type ProjectActions =

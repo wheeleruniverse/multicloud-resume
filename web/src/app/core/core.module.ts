@@ -1,19 +1,18 @@
-import {NgModule} from '@angular/core';
-import {StoreModule} from '@ngrx/store';
-import {EffectsModule} from "@ngrx/effects";
-import {environment} from "../../environments/environment";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {CertificationEffects} from "./store/certification/certification.effects";
-import {certificationReducer} from "./store/certification/certification.reducer";
-import {EducationEffects} from "./store/education/education.effects";
-import {educationReducer} from "./store/education/education.reducer";
-import {ExperienceEffects} from "./store/experience/experience.effects";
-import {experienceReducer} from "./store/experience/experience.reducer";
-import {projectReducer} from "./store/project/project.reducer";
-import {ProjectEffects} from "./store/project/project.effects";
-import {SkillEffects} from "./store/skill/skill.effects";
-import {skillReducer} from "./store/skill/skill.reducer";
-
+import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from '../../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CertificationEffects } from './store/certification/certification.effects';
+import { certificationReducer } from './store/certification/certification.reducer';
+import { EducationEffects } from './store/education/education.effects';
+import { educationReducer } from './store/education/education.reducer';
+import { ExperienceEffects } from './store/experience/experience.effects';
+import { experienceReducer } from './store/experience/experience.reducer';
+import { projectReducer } from './store/project/project.reducer';
+import { ProjectEffects } from './store/project/project.effects';
+import { SkillEffects } from './store/skill/skill.effects';
+import { skillReducer } from './store/skill/skill.reducer';
 
 @NgModule({
   imports: [
@@ -22,16 +21,16 @@ import {skillReducer} from "./store/skill/skill.reducer";
       EducationEffects,
       ExperienceEffects,
       ProjectEffects,
-      SkillEffects
+      SkillEffects,
     ]),
     StoreModule.forRoot({
-      'certification': certificationReducer,
-      'education': educationReducer,
-      'experience': experienceReducer,
-      'project': projectReducer,
-      'skill': skillReducer
+      certification: certificationReducer,
+      education: educationReducer,
+      experience: experienceReducer,
+      project: projectReducer,
+      skill: skillReducer,
     }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
-  ]
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+  ],
 })
 export class CoreModule {}
