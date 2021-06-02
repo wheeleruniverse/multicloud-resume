@@ -13,6 +13,7 @@ import {VisitorComponent} from './visitor/visitor.component';
 import {AboutComponent} from './about/about.component';
 import {SharedModule} from "./shared/shared.module";
 import {CoreModule} from "./core/core.module";
+import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
   bootstrap: [
@@ -36,6 +37,7 @@ import {CoreModule} from "./core/core.module";
     SharedModule,
   ],
   providers: [
+    CookieService,
     HttpClient
   ]
 })

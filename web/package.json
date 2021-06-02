@@ -28,6 +28,7 @@
     "@ngrx/store-devtools": "^12.0.0",
     "angular-responsive-carousel": "^2.0.2",
     "bootstrap": "^4.6.0",
+    "ngx-cookie-service": "^12.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
