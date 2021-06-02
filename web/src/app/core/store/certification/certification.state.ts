@@ -1,5 +1,5 @@
-import {MonthYear} from "../../../shared/model/month-year.model";
-import {MetaData} from "../../../shared/model/meta-data.model";
+import { MonthYear } from '../../../shared/model/month-year.model';
+import { MetaData } from '../../../shared/model/meta-data.model';
 
 export interface CertificationState {
   data: Certification[];
@@ -13,7 +13,7 @@ export interface Certification {
   descriptions: string[];
   expiry: MonthYear;
   issued: MonthYear;
-  level: string,
+  level: string;
   vendor: string;
 }
 
@@ -24,5 +24,5 @@ export interface CertificationMeta {
 
 export const initialCertificationState: CertificationState = {
   data: undefined,
-  meta: undefined
-}
+  meta: undefined,
+};

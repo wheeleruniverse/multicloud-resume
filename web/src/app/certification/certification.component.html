@@ -5,10 +5,10 @@
 >
   <div *ngFor="let i of state.data" class="carousel-cell" tabindex="0">
     <div class="carousel-cell-primary">
-      <span class="large">{{getMetaForVendor(i.vendor).display}}</span>
-      <span class="large">{{i.name}}</span>
-      <span>{{i.issued | monthYear}} &mdash; {{i.expiry | monthYear}}</span>
-      <span>Credential ID: {{i.credential || "Not Applicable"}}</span>
+      <span class="large">{{ getMetaForVendor(i.vendor).display }}</span>
+      <span class="large">{{ i.name }}</span>
+      <span>{{ i.issued | monthYear }} &mdash; {{ i.expiry | monthYear }}</span>
+      <span>Credential ID: {{ i.credential || "Not Applicable" }}</span>
       <span>
         <mat-slider
           aria-label="units"
@@ -18,11 +18,13 @@
           [value]="getMetaForLevel(i.level).rank"
         >
         </mat-slider>
-        {{getMetaForLevel(i.level).display}}
+        {{ getMetaForLevel(i.level).display }}
       </span>
     </div>
     <div class="carousel-cell-secondary">
-      <ul><li *ngFor="let d of i.descriptions">{{d}}</li></ul>
+      <ul>
+        <li *ngFor="let d of i.descriptions">{{ d }}</li>
+      </ul>
     </div>
   </div>
 </app-carousel>
