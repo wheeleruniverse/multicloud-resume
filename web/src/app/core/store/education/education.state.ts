@@ -1,5 +1,5 @@
-import {Image} from "../../../shared/model/image.model";
-import {Location} from "../../../shared/model/location.model";
+import { Image } from '../../../shared/model/image.model';
+import { Location } from '../../../shared/model/location.model';
 
 export interface EducationState {
   data: Education[];
@@ -18,5 +18,5 @@ export interface Education {
 }
 
 export const initialEducationState: EducationState = {
-  data: undefined
-}
+  data: undefined,
+};

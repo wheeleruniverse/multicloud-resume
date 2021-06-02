@@ -1,9 +1,9 @@
-import {Action} from "@ngrx/store";
-import {EducationState} from "./education.state";
+import { Action } from '@ngrx/store';
+import { EducationState } from './education.state';
 
 export enum EducationActionType {
-  Retrieve = "[Education] Retrieve",
-  RetrieveSuccess = "[Education] Retrieve Success"
+  Retrieve = '[Education] Retrieve',
+  RetrieveSuccess = '[Education] Retrieve Success',
 }
 
 export class EducationRetrieveAction implements Action {
@@ -12,7 +12,7 @@ export class EducationRetrieveAction implements Action {
 
 export class EducationRetrieveSuccessAction implements Action {
   readonly type = EducationActionType.RetrieveSuccess;
-  constructor(public state: EducationState){}
+  constructor(public state: EducationState) {}
 }
 
 export type EducationActions =
