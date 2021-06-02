@@ -10,16 +10,10 @@ import { EducationFacade } from '../core/store/education/education.facade';
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
-  styleUrls: [
-    './education.component.scss',
-    '../shared/carousel/carousel.component.scss',
-  ],
+  styleUrls: ['./education.component.scss', '../shared/carousel/carousel.component.scss'],
 })
 export class EducationComponent implements OnDestroy, OnInit {
-  constructor(
-    private facade: EducationFacade,
-    private viewService: ViewService
-  ) {}
+  constructor(private facade: EducationFacade, private viewService: ViewService) {}
 
   destroyed$ = new Subject<void>();
   state: EducationState;

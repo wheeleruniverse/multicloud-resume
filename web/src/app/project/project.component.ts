@@ -13,10 +13,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
   selector: 'app-projects',
   templateUrl: './project.component.html',
-  styleUrls: [
-    './project.component.scss',
-    '../shared/carousel/carousel.component.scss',
-  ],
+  styleUrls: ['./project.component.scss', '../shared/carousel/carousel.component.scss'],
 })
 export class ProjectComponent implements OnDestroy, OnInit {
   constructor(
@@ -71,9 +68,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
   }
 
   getSkills(ids: string[]): Skill[] {
-    return !!this.state?.skills
-      ? this.state.skills.filter((skill) => ids.includes(skill.id))
-      : [];
+    return !!this.state?.skills ? this.state.skills.filter((skill) => ids.includes(skill.id)) : [];
   }
 
   getSkillNames(ids: string[]): string[] {

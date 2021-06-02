@@ -11,8 +11,6 @@ export class EducationService {
   constructor(private httpClient: HttpClient) {}
 
   retrieve(): Observable<EducationState> {
-    return this.httpClient.get<EducationState>(
-      AppComponent.api.education.retrieve
-    );
+    return this.httpClient.get<EducationState>(AppComponent.api.education.retrieve);
   }
 }

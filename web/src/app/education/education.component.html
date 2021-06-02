@@ -1,19 +1,11 @@
-<app-carousel
-  *ngIf="!!state?.data; else loading"
-  [arrows]="false"
-  [cellsToShow]="2"
-  [height]="250"
->
+<app-carousel *ngIf="!!state?.data; else loading" [arrows]="false" [cellsToShow]="2" [height]="250">
   <div *ngFor="let i of state.data" class="carousel-cell" tabindex="0">
     <div class="carousel-cell-primary">
       <span class="large">{{ i.name }}</span>
       <span class="large">{{ i.degree }}</span>
       <span class="large">{{ i.field }}</span>
       <span>{{ i.start }} &mdash; {{ i.end }}</span>
-      <span
-        >{{ i.location | location }}
-        {{ i.location.remote ? "(Remote)" : "" }}</span
-      >
+      <span>{{ i.location | location }} {{ i.location.remote ? "(Remote)" : "" }}</span>
     </div>
     <div class="carousel-cell-secondary">
       <ul>

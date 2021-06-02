@@ -1,8 +1,4 @@
-import {
-  EducationActionType,
-  EducationRetrieveAction,
-  EducationRetrieveSuccessAction,
-} from './education.actions';
+import { EducationActionType, EducationRetrieveAction, EducationRetrieveSuccessAction } from './education.actions';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';

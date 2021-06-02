@@ -1,8 +1,4 @@
-<app-carousel
-  *ngIf="!!state?.data; else loading"
-  [cellsToShow]="3"
-  [height]="500"
->
+<app-carousel *ngIf="!!state?.data; else loading" [cellsToShow]="3" [height]="500">
   <div *ngFor="let i of state.data" class="carousel-cell" tabindex="0">
     <div class="carousel-cell-primary">
       <span class="large">{{ getMetaForVendor(i.vendor).display }}</span>
@@ -10,13 +6,7 @@
       <span>{{ i.issued | monthYear }} &mdash; {{ i.expiry | monthYear }}</span>
       <span>Credential ID: {{ i.credential || "Not Applicable" }}</span>
       <span>
-        <mat-slider
-          aria-label="units"
-          [disabled]="true"
-          [max]="4"
-          [min]="0"
-          [value]="getMetaForLevel(i.level).rank"
-        >
+        <mat-slider aria-label="units" [disabled]="true" [max]="4" [min]="0" [value]="getMetaForLevel(i.level).rank">
         </mat-slider>
         {{ getMetaForLevel(i.level).display }}
       </span>

@@ -24,12 +24,7 @@ import { ProjectDialogComponent } from './dialog/project-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
-    CarouselComponent,
-    ProjectDialogComponent,
-    LocationPipe,
-    MonthYearPipe,
-  ],
+  declarations: [CarouselComponent, ProjectDialogComponent, LocationPipe, MonthYearPipe],
   exports: [
     CarouselComponent,
     CommonModule,

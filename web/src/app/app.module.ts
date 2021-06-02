@@ -27,13 +27,7 @@ import { CookieService } from 'ngx-cookie-service';
     SkillComponent,
     VisitorComponent,
   ],
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    CoreModule,
-    HttpClientModule,
-    SharedModule,
-  ],
+  imports: [BrowserAnimationsModule, BrowserModule, CoreModule, HttpClientModule, SharedModule],
   providers: [CookieService, HttpClient],
 })
 export class AppModule {}

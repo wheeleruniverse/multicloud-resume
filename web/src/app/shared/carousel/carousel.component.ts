@@ -27,17 +27,15 @@ export class CarouselComponent implements OnInit {
     const mobileBreakPoint = '(max-width: 425px)';
     const tabletBreakPoint = '(max-width: 768px)';
 
-    this.breakpointObserver
-      .observe([mobileBreakPoint, tabletBreakPoint])
-      .subscribe((result) => {
-        if (result.breakpoints[mobileBreakPoint]) {
-          this.setMobileView();
-        } else if (result.breakpoints[tabletBreakPoint]) {
-          this.setTabletView();
-        } else {
-          this.setDesktopView();
-        }
-      });
+    this.breakpointObserver.observe([mobileBreakPoint, tabletBreakPoint]).subscribe((result) => {
+      if (result.breakpoints[mobileBreakPoint]) {
+        this.setMobileView();
+      } else if (result.breakpoints[tabletBreakPoint]) {
+        this.setTabletView();
+      } else {
+        this.setDesktopView();
+      }
+    });
   }
 
   private setDesktopView(): void {

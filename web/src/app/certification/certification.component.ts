@@ -9,16 +9,10 @@ import { ViewService } from '../shared/service/view.service';
 @Component({
   selector: 'app-certifications',
   templateUrl: './certification.component.html',
-  styleUrls: [
-    './certification.component.scss',
-    '../shared/carousel/carousel.component.scss',
-  ],
+  styleUrls: ['./certification.component.scss', '../shared/carousel/carousel.component.scss'],
 })
 export class CertificationComponent implements OnDestroy, OnInit {
-  constructor(
-    private facade: CertificationFacade,
-    private viewService: ViewService
-  ) {}
+  constructor(private facade: CertificationFacade, private viewService: ViewService) {}
 
   destroyed$ = new Subject<void>();
   state: CertificationState;

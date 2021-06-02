@@ -16,13 +16,7 @@ import { skillReducer } from './store/skill/skill.reducer';
 
 @NgModule({
   imports: [
-    EffectsModule.forRoot([
-      CertificationEffects,
-      EducationEffects,
-      ExperienceEffects,
-      ProjectEffects,
-      SkillEffects,
-    ]),
+    EffectsModule.forRoot([CertificationEffects, EducationEffects, ExperienceEffects, ProjectEffects, SkillEffects]),
     StoreModule.forRoot({
       certification: certificationReducer,
       education: educationReducer,

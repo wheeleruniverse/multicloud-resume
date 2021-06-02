@@ -14,8 +14,7 @@ export class AppComponent implements OnInit {
     private viewService: ViewService
   ) {}
 
-  private static readonly root =
-    'https://wheeler-resume-app.azurewebsites.net/api';
+  private static readonly root = 'https://wheeler-resume-app.azurewebsites.net/api';
 
   static readonly api = {
     certification: {
@@ -64,21 +63,19 @@ export class AppComponent implements OnInit {
     const mobileBreakPoint = '(max-width: 425px)';
     const tabletBreakPoint = '(max-width: 768px)';
 
-    this.breakpointObserver
-      .observe([mobileBreakPoint, tabletBreakPoint])
-      .subscribe((result) => {
-        if (result.breakpoints[mobileBreakPoint]) {
-          this.isMobile = true;
-          this.isTablet = false;
-        } else if (result.breakpoints[tabletBreakPoint]) {
-          this.isMobile = false;
-          this.isTablet = true;
-        } else {
-          this.isMobile = false;
-          this.isTablet = false;
-        }
-        this.closeView();
-      });
+    this.breakpointObserver.observe([mobileBreakPoint, tabletBreakPoint]).subscribe((result) => {
+      if (result.breakpoints[mobileBreakPoint]) {
+        this.isMobile = true;
+        this.isTablet = false;
+      } else if (result.breakpoints[tabletBreakPoint]) {
+        this.isMobile = false;
+        this.isTablet = true;
+      } else {
+        this.isMobile = false;
+        this.isTablet = false;
+      }
+      this.closeView();
+    });
 
     this.viewService.certificationShouldEnable$.subscribe((val) => {
       this.certificationShouldEnable = val;
@@ -140,9 +137,7 @@ export class AppComponent implements OnInit {
 
   toggleCertificationShouldRender(): void {
     if (this.certificationShouldEnable) {
-      this.viewService.certificationShouldRender(
-        !this.certificationShouldRender
-      );
+      this.viewService.certificationShouldRender(!this.certificationShouldRender);
     }
   }
 

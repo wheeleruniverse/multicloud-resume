@@ -13,10 +13,7 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class CertificationEffects {
-  constructor(
-    private actions$: Actions,
-    private service: CertificationService
-  ) {}
+  constructor(private actions$: Actions, private service: CertificationService) {}
 
   retrieve$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(

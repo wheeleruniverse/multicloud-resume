@@ -8,16 +8,10 @@ import { ExperienceFacade } from '../core/store/experience/experience.facade';
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
-  styleUrls: [
-    './experience.component.scss',
-    '../shared/carousel/carousel.component.scss',
-  ],
+  styleUrls: ['./experience.component.scss', '../shared/carousel/carousel.component.scss'],
 })
 export class ExperienceComponent implements OnDestroy, OnInit {
-  constructor(
-    private facade: ExperienceFacade,
-    private viewService: ViewService
-  ) {}
+  constructor(private facade: ExperienceFacade, private viewService: ViewService) {}
 
   destroyed$ = new Subject<void>();
   state: ExperienceState;

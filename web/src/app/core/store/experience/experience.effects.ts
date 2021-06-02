@@ -1,8 +1,4 @@
-import {
-  ExperienceActionType,
-  ExperienceRetrieveAction,
-  ExperienceRetrieveSuccessAction,
-} from './experience.actions';
+import { ExperienceActionType, ExperienceRetrieveAction, ExperienceRetrieveSuccessAction } from './experience.actions';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';

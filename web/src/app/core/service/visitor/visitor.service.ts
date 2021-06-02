@@ -16,10 +16,8 @@ export class VisitorService {
   }
 
   create(visitor: Visitor): Observable<HttpResponse<object>> {
-    return this.httpClient.post<HttpResponse<object>>(
-      AppComponent.api.visitor.create,
-      visitor,
-      { observe: 'response' }
-    );
+    return this.httpClient.post<HttpResponse<object>>(AppComponent.api.visitor.create, visitor, {
+      observe: 'response',
+    });
   }
 }

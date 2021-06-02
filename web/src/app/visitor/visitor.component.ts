@@ -10,11 +10,7 @@ import { v4 } from 'uuid';
   styleUrls: ['./visitor.component.scss'],
 })
 export class VisitorComponent implements OnInit {
-  constructor(
-    private cookieService: CookieService,
-    private service: VisitorService,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private cookieService: CookieService, private service: VisitorService, private snackBar: MatSnackBar) {}
 
   total: number;
 

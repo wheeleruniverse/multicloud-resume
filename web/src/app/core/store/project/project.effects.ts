@@ -1,8 +1,4 @@
-import {
-  ProjectActionType,
-  ProjectRetrieveAction,
-  ProjectRetrieveSuccessAction,
-} from './project.actions';
+import { ProjectActionType, ProjectRetrieveAction, ProjectRetrieveSuccessAction } from './project.actions';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';

@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -25,11 +19,7 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(
-    private facade: SkillFacade,
-    private filterService: FilterService,
-    private viewService: ViewService
-  ) {}
+  constructor(private facade: SkillFacade, private filterService: FilterService, private viewService: ViewService) {}
 
   destroyed$ = new Subject<void>();
   state: SkillState;
@@ -70,8 +60,6 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
   }
 
   setFilter(event: Event): void {
-    this.filterService.setTarget(
-      event != null ? (event.target as HTMLInputElement).value : ''
-    );
+    this.filterService.setTarget(event != null ? (event.target as HTMLInputElement).value : '');
   }
 }

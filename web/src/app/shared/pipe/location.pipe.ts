@@ -7,8 +7,6 @@ import { Location } from '../model/location.model';
 })
 export class LocationPipe implements PipeTransform {
   transform(value: Location, args?: any): string {
-    return value != null
-      ? `${value.address}, ${value.city}, ${value.state} ${value.zip}`
-      : '';
+    return value != null ? `${value.address}, ${value.city}, ${value.state} ${value.zip}` : '';
   }
 }

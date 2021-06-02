@@ -19,9 +19,7 @@ export class SkillService {
   }
 
   private static compareName(n1: Skill, n2: Skill, asc: boolean): number {
-    return (
-      (n1.name === n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1)
-    );
+    return (n1.name === n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1);
   }
 
   retrieve(): Observable<SkillState> {

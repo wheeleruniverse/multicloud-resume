@@ -1,17 +1,7 @@
-<app-carousel
-  *ngIf="!!state?.projects; else loading"
-  [cellsToShow]="2"
-  [height]="475"
->
+<app-carousel *ngIf="!!state?.projects; else loading" [cellsToShow]="2" [height]="475">
   <div *ngFor="let i of state.projects" class="carousel-cell" tabindex="0">
     <div class="carousel-cell-icons">
-      <mat-icon
-        (click)="openDialog()"
-        (keydown.enter)="openDialog()"
-        tabIndex="0"
-      >
-        info
-      </mat-icon>
+      <mat-icon (click)="openDialog()" (keydown.enter)="openDialog()" tabIndex="0"> info </mat-icon>
       <mat-icon
         (click)="setProjectFilter(i.id)"
         (keydown.enter)="setProjectFilter(i.id)"
@@ -22,9 +12,7 @@
       </mat-icon>
       <a href="{{ i.blog }}" target="_blank"><mat-icon>book</mat-icon></a>
       <a href="{{ i.code }}" target="_blank"><mat-icon>code</mat-icon></a>
-      <a *ngIf="i.website" href="{{ i.website }}" target="_blank"
-        ><mat-icon>launch</mat-icon></a
-      >
+      <a *ngIf="i.website" href="{{ i.website }}" target="_blank"><mat-icon>launch</mat-icon></a>
     </div>
     <div class="carousel-cell-primary">
       <span class="large">{{ i.name }}</span>

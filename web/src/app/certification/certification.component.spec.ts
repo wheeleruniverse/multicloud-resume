@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { CertificationState } from '../core/store/certification/certification.state';
 import { MonthYearPipe } from '../shared/pipe/month-year.pipe';
 import SpyObj = jasmine.SpyObj;
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('CertificationsComponent', () => {
   let component: CertificationComponent;
@@ -15,10 +16,7 @@ describe('CertificationsComponent', () => {
   let viewServiceSpy: SpyObj<ViewService>;
 
   beforeEach(async () => {
-    facadeSpy = jasmine.createSpyObj<CertificationFacade>(
-      'CertificationFacade',
-      ['retrieve']
-    );
+    facadeSpy = jasmine.createSpyObj<CertificationFacade>('CertificationFacade', ['retrieve']);
 
     viewServiceSpy = jasmine.createSpyObj<ViewService>('ViewService', [
       'certificationShouldEnable',
@@ -69,6 +67,7 @@ describe('CertificationsComponent', () => {
         { provide: CertificationFacade, useValue: facadeSpy },
         { provide: ViewService, useValue: viewServiceSpy },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 

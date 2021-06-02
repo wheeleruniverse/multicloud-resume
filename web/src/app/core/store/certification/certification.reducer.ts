@@ -1,11 +1,5 @@
-import {
-  CertificationState,
-  initialCertificationState,
-} from './certification.state';
-import {
-  CertificationActions,
-  CertificationActionType,
-} from './certification.actions';
+import { CertificationState, initialCertificationState } from './certification.state';
+import { CertificationActions, CertificationActionType } from './certification.actions';
 
 export function certificationReducer(
   state: CertificationState = initialCertificationState,

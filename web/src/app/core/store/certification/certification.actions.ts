@@ -15,6 +15,4 @@ export class CertificationRetrieveSuccessAction implements Action {
   constructor(public state: CertificationState) {}
 }
 
-export type CertificationActions =
-  | CertificationRetrieveAction
-  | CertificationRetrieveSuccessAction;
+export type CertificationActions = CertificationRetrieveAction | CertificationRetrieveSuccessAction;

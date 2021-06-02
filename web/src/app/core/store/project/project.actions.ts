@@ -15,6 +15,4 @@ export class ProjectRetrieveSuccessAction implements Action {
   constructor(public state: ProjectState) {}
 }
 
-export type ProjectActions =
-  | ProjectRetrieveAction
-  | ProjectRetrieveSuccessAction;
+export type ProjectActions = ProjectRetrieveAction | ProjectRetrieveSuccessAction;

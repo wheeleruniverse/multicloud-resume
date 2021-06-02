@@ -15,6 +15,4 @@ export class EducationRetrieveSuccessAction implements Action {
   constructor(public state: EducationState) {}
 }
 
-export type EducationActions =
-  | EducationRetrieveAction
-  | EducationRetrieveSuccessAction;
+export type EducationActions = EducationRetrieveAction | EducationRetrieveSuccessAction;

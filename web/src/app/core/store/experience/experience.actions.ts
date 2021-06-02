@@ -15,6 +15,4 @@ export class ExperienceRetrieveSuccessAction implements Action {
   constructor(public state: ExperienceState) {}
 }
 
-export type ExperienceActions =
-  | ExperienceRetrieveAction
-  | ExperienceRetrieveSuccessAction;
+export type ExperienceActions = ExperienceRetrieveAction | ExperienceRetrieveSuccessAction;

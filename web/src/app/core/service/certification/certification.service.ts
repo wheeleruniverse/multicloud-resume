@@ -4,10 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { MetaData } from '../../../shared/model/meta-data.model';
 import { AppComponent } from '../../../app.component';
-import {
-  Certification,
-  CertificationState,
-} from '../../store/certification/certification.state';
+import { Certification, CertificationState } from '../../store/certification/certification.state';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +13,7 @@ export class CertificationService {
   constructor(private httpClient: HttpClient) {}
 
   private static sort(state: CertificationState): CertificationState {
-    const lookupLevel = (i: Certification) =>
-      state.meta.levels.find((meta) => meta.name === i.level);
+    const lookupLevel = (i: Certification) => state.meta.levels.find((meta) => meta.name === i.level);
 
     state.data.sort((n1, n2) => {
       const c1 = CertificationService.compareVendor(n1, n2, true);
@@ -36,25 +32,16 @@ export class CertificationService {
   ): number {
     const v1 = lookup(n1);
     const v2 = lookup(n2);
-    return (
-      (v1.rank === v2.rank ? 0 : v1.rank > v2.rank ? 1 : -1) * (asc ? 1 : -1)
-    );
+    return (v1.rank === v2.rank ? 0 : v1.rank > v2.rank ? 1 : -1) * (asc ? 1 : -1);
   }
 
-  private static compareName = (
-    n1: Certification,
-    n2: Certification,
-    asc: boolean
-  ): number =>
-    (n1.name === n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1)
+  private static compareName(n1: Certification, n2: Certification, asc: boolean): number {
+    return (n1.name === n2.name ? 0 : n1.name > n2.name ? 1 : -1) * (asc ? 1 : -1);
+  }
 
-  private static compareVendor = (
-    n1: Certification,
-    n2: Certification,
-    asc: boolean
-  ): number =>
-    (n1.vendor === n2.vendor ? 0 : n1.vendor > n2.vendor ? 1 : -1) *
-    (asc ? 1 : -1)
+  private static compareVendor(n1: Certification, n2: Certification, asc: boolean): number {
+    return (n1.vendor === n2.vendor ? 0 : n1.vendor > n2.vendor ? 1 : -1) * (asc ? 1 : -1);
+  }
 
   retrieve(): Observable<CertificationState> {
     return this.httpClient
