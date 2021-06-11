@@ -78,7 +78,7 @@ resource "azurerm_cdn_profile" "web_cdn" {
   location            = azurerm_resource_group.rg.location
   name                = "${var.prefix}cdn"
   resource_group_name = azurerm_resource_group.rg.name
-  sku                 = "Standard_Verizon"
+  sku                 = "Standard_Microsoft"
   tags = {
     Project = var.project
   }
