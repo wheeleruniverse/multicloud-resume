@@ -4,7 +4,7 @@
         "name":"Sep, 20 #CloudGuruChallenge",
         "blog":"https://dev.to/wheelerswebsites/my-september-cloud-guru-challenge-experience-l2j",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_20.09",
-        "description":"Create and automate an ETL processing pipeline for COVID-19 data using Python and AWS. Infrastructure was created and managed by CloudFormation. Data was fetched from a hosted GitHub repositoy on a schedule managed by EventBridge and transformed using Python code running within a Lambda function. Transformed data was stored in a DynamoDB database and streamed to an S3 bucket. QuickSight was connected to the S3 bucket so COVID-19 data could be displayed on an easy to read dashboard. Code was tracked by Git version control and stored in a GitHub repository.",
+        "description":"Create and automate an ETL processing pipeline for COVID-19 data using Python and AWS. Infrastructure was created and managed by CloudFormation. Data was fetched from a hosted GitHub repository on a schedule managed by EventBridge and transformed using Python code running within a Lambda function. Transformed data was stored in a DynamoDB database and streamed to an S3 bucket. QuickSight was connected to the S3 bucket so COVID-19 data could be displayed on an easy to read dashboard. Code was tracked by Git version control and stored in a GitHub repository.",
         "end":{
             "month":"9",
             "year":"2020"
@@ -94,7 +94,7 @@
         "name":"Feb, 21 #CloudGuruChallenge",
         "blog":"https://dev.to/wheelerswebsites/feb-21-cloudguruchallenge-358d",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.02",
-        "description":"Create a verification website in Azure that is continously integrated and globally performant. The website was written in Ruby on Rails and deployed to App Service using Azure Pipelines. The app servers were setup with auto scaling and secured within a Virtual Network behind Front Door. Data was written to Cosmos DB and binary data was written to Blob storage. Azure Pipelines was executed using a self-hosted agent running on a Virtual Machine with a local SSD disk and public IP address protected by a Network Security Group. All infrastructure was deployed using Resource Manager.",
+        "description":"Create a verification website in Azure that is continuously integrated and globally performant. The website was written in Ruby on Rails and deployed to App Service using Azure Pipelines. The app servers were setup with auto scaling and secured within a Virtual Network behind Front Door. Data was written to Cosmos DB and binary data was written to Blob storage. Azure Pipelines was executed using a self-hosted agent running on a Virtual Machine with a local SSD disk and public IP address protected by a Network Security Group. All infrastructure was deployed using Resource Manager.",
         "end":{
             "month":"4",
             "year":"2021"

@@ -25,12 +25,12 @@ export class ProjectComponent implements OnDestroy, OnInit {
   ) {}
 
   destroyed$ = new Subject<void>();
+  projectTarget: string;
   state: ProjectCompositeState;
   skillLimit = 20;
   skillShouldRender: boolean;
   skillSortBy = 'Name';
   skillTarget: string;
-  projectTarget: string;
 
   ngOnDestroy(): void {
     this.destroyed$.next();
