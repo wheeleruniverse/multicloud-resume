@@ -38,6 +38,7 @@ resource "azurerm_application_insights" "insights" {
   name                = "${var.prefix}insights"
   resource_group_name = azurerm_resource_group.rg.name
   retention_in_days   = 30
+  sampling_percentage = 1
   tags = {
     Project = var.project
   }
@@ -66,6 +67,20 @@ resource "azurerm_cdn_endpoint" "web_origin" {
   resource_group_name = azurerm_resource_group.rg.name
   tags = {
     Project = var.project
+  }
+
+  delivery_rule {
+    name  = "HttpToHttpsRedirect"
+    order = 1
+
+    request_scheme_condition {
+      match_values = ["HTTP"]
+      operator     = "Equal"
+    }
+    url_redirect_action {
+      protocol      = "Https"
+      redirect_type = "PermanentRedirect"
+    }
   }
 
   origin {
@@ -113,6 +128,7 @@ resource "azurerm_cosmosdb_sql_container" "tables" {
   count               = length(var.tables)
   database_name       = azurerm_cosmosdb_sql_database.prd.name
   name                = var.tables[count.index]
+  partition_key_path  = "/id"
   resource_group_name = azurerm_resource_group.rg.name
 }
 
@@ -126,6 +142,9 @@ resource "azurerm_function_app" "app" {
   app_service_plan_id = azurerm_app_service_plan.asp.id
   app_settings = {
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
+    COSMOS_AUTH                    = azurerm_cosmosdb_account.db.primary_master_key
+    COSMOS_HOST                    = azurerm_cosmosdb_account.db.endpoint
+    COSMOS_NAME                    = azurerm_cosmosdb_sql_database.prd.name
     FUNCTIONS_WORKER_RUNTIME       = "java"
     FUNCTION_APP_EDIT_MODE         = "readonly"
     FUNCTIONS_EXTENSION_VERSION    = "~3"
@@ -143,6 +162,8 @@ resource "azurerm_function_app" "app" {
   }
 
   site_config {
+    java_version = "11"
+
     cors {
       allowed_origins     = ["*"]
       support_credentials = false
