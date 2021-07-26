@@ -3,14 +3,18 @@
         "id":"a3c5d586-901f-424f-bdbc-1b664e7e0a30",
         "name":"Angular",
         "level":"COMPETENT",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"JavaScript Framework"
     },
     {
         "id":"1cd70378-cc89-4c61-ad31-a2e967a74102",
         "name":"Apache Maven",
         "level":"MASTER",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"Build Automation"
     },
     {
@@ -51,7 +55,7 @@
         "name":"AWS Aurora",
         "level":"MASTER",
         "projects":[],
-        "type":"Relational Database"
+        "type":"Managed Relational Database"
     },
     {
         "id":"8434ecff-82b7-4328-ad6c-a8171db27323",
@@ -64,7 +68,9 @@
         "id":"aa9304f1-9a3b-47d0-9731-0f1067450ef1",
         "name":"AWS CLI",
         "level":"MASTER",
-        "projects":[],
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
         "type":"CLI"
     },
     {
@@ -112,7 +118,9 @@
         "id":"30a32fb9-bb34-4ad6-b194-04132fe4651c",
         "name":"AWS EC2",
         "level":"MASTER",
-        "projects":[],
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
         "type":"Compute"
     },
     {
@@ -130,6 +138,15 @@
         "level":"MASTER",
         "projects":[],
         "type":"NFS"
+    },
+    {
+        "id":"c717991b-a2d9-4018-aa7b-b7a5a0d853a9",
+        "name":"AWS ElastiCache",
+        "level":"COMPETENT",
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
+        "type":"Managed In-Memory Database"
     },
     {
         "id":"abbecdfe-8116-4ffc-a424-c1b237deb205",
@@ -182,11 +199,22 @@
         "type":"BI"
     },
     {
+        "id":"1a3e1c8c-597d-4417-bd06-67291cd977b9",
+        "name":"AWS NAT Gateway",
+        "level":"COMPETENT",
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
+        "type":"Networking"
+    },
+    {
         "id":"72728fff-0e2a-43e5-b515-c72911eb6cd7",
         "name":"AWS RDS",
         "level":"MASTER",
-        "projects":[],
-        "type":"Relational Database"
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
+        "type":"Managed Relational Database"
     },
     {
         "id":"457a4d4d-00e9-4522-8fe7-58044da7d0d7",
@@ -194,7 +222,8 @@
         "level":"MASTER",
         "projects":[
             "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
-            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+            "2ed5500a-34ee-42a9-b053-77369cbc065a",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
         "type":"DNS"
     },
@@ -205,7 +234,8 @@
         "projects":[
             "259adedf-5510-42a8-9a28-c72754626b89",
             "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
-            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+            "2ed5500a-34ee-42a9-b053-77369cbc065a",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
         "type":"Object Storage"
     },
@@ -228,6 +258,15 @@
         "type":"Serverless Framework"
     },
     {
+        "id":"da404bbe-55c7-4982-985c-8e6eb8a361d1",
+        "name":"AWS Security Group",
+        "level":"MASTER",
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
+        "type":"Networking"
+    },
+    {
         "id":"6e5df643-1ee5-405a-9021-922da377d330",
         "name":"AWS SNS",
         "level":"MASTER",
@@ -247,7 +286,9 @@
         "id":"0cc08f88-8f0f-46cb-b241-327ff204532d",
         "name":"AWS VPC",
         "level":"MASTER",
-        "projects":[],
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
         "type":"Networking"
     },
     {
@@ -255,7 +296,8 @@
         "name":"Azure App Service",
         "level":"COMPETENT",
         "projects":[
-            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
         "type":"Compute"
     },
@@ -264,7 +306,8 @@
         "name":"Azure Blob",
         "level":"PROFICIENT",
         "projects":[
-            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
         "type":"Object Storage"
     },
@@ -273,9 +316,10 @@
         "name":"Azure Cosmos Database",
         "level":"PROFICIENT",
         "projects":[
-            "31793aed-8cbe-40e4-b0f6-1b90a098e999"
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
-        "type":"NoSQL Database"
+        "type":"Managed NoSQL Database"
     },
     {
         "id":"115c0855-4c6e-4943-963a-7ff60139a932",
@@ -303,6 +347,15 @@
             "31793aed-8cbe-40e4-b0f6-1b90a098e999"
         ],
         "type":"Networking"
+    },
+    {
+        "id":"a575ee85-5c8b-40f7-bc34-68e513a409d4",
+        "name":"Azure Functions",
+        "level":"PROFICIENT",
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
+        "type":"Compute"
     },
     {
         "id":"5d12e67a-f6db-48fd-848c-e267add62128",
@@ -338,7 +391,7 @@
         "projects":[
             "2ed5500a-34ee-42a9-b053-77369cbc065a"
         ],
-        "type":"NoSQL Database"
+        "type":"Managed NoSQL Database"
     },
     {
         "id":"48ec5901-f927-4b3d-8a12-4c0d67185367",
@@ -382,7 +435,9 @@
         "level":"PROFICIENT",
         "projects":[
             "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
-            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+            "2ed5500a-34ee-42a9-b053-77369cbc065a",
+            "6054440c-63aa-4714-913e-38125944d213",
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
         ],
         "type":"Programming Language"
     },
@@ -404,14 +459,23 @@
         "id":"e91aed35-d65b-4dd0-994c-e1038b648167",
         "name":"Git",
         "level":"MASTER",
-        "projects":[],
+        "projects":[
+            "259adedf-5510-42a8-9a28-c72754626b89",
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "2ed5500a-34ee-42a9-b053-77369cbc065a",
+            "31793aed-8cbe-40e4-b0f6-1b90a098e999",
+            "6054440c-63aa-4714-913e-38125944d213",
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
         "type":"Version Control"
     },
     {
         "id":"01e69faa-e054-4b02-b7c3-879785172a47",
         "name":"GitHub Actions",
         "level":"COMPETENT",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"CI/CD"
     },
     {
@@ -434,7 +498,10 @@
         "id":"49bb192e-c83c-46a9-9ed4-ae486f234ee3",
         "name":"HashiCorp Terraform",
         "level":"COMPETENT",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213",
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
         "type":"Infrastructure as Code"
     },
     {
@@ -450,7 +517,8 @@
         "level":"MASTER",
         "projects":[
             "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
-            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+            "2ed5500a-34ee-42a9-b053-77369cbc065a",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
         "type":"Programming Language"
     },
@@ -458,7 +526,9 @@
         "id":"70b9d7a1-060d-46b5-a386-30304a24ccdc",
         "name":"Java",
         "level":"MASTER",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"Programming Language"
     },
     {
@@ -479,14 +549,18 @@
         "id":"b658c718-1433-43fb-97a9-a3ba9f9fa339",
         "name":"JetBrains IntelliJ IDEA",
         "level":"EXPERT",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"Java IDE"
     },
     {
         "id":"c20a04f9-943f-4e5d-bb92-19b183295168",
         "name":"JetBrains PyCharm",
         "level":"EXPERT",
-        "projects":[],
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
         "type":"Python IDE"
     },
     {
@@ -508,15 +582,28 @@
     {
         "id":"3abf70eb-8041-4e2c-9ca5-bedab5742e19",
         "name":"JetBrains WebStorm",
-        "level":"PROFICIENT",
-        "projects":[],
+        "level":"NOVICE",
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"JavaScript IDE"
+    },
+    {
+        "id":"cd4f673a-c163-44b1-9094-ed6b84254841",
+        "name":"Jinja",
+        "level":"COMPETENT",
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
+        "type":"Template Engine"
     },
     {
         "id":"21212a05-9ca5-457c-b62a-12cbfbd2878e",
         "name":"jUnit",
         "level":"MASTER",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"Java Testing Framework"
     },
     {
@@ -552,6 +639,24 @@
         "type":"NoSQL Database"
     },
     {
+        "id":"75fa0327-ce2c-4411-a009-8001a952ec32",
+        "name":"NgRx",
+        "level":"COMPETENT",
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
+        "type":"Angular Framework"
+    },
+    {
+        "id":"6a10d9ad-3572-4b3c-a215-6051e5d2f34a",
+        "name":"Node Package Manager",
+        "level":"COMPETENT",
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
+        "type":"JavaScript Package Manager"
+    },
+    {
         "id":"ac160f48-1c9f-4e5e-8796-8fecbcd04367",
         "name":"Node.js",
         "level":"PROFICIENT",
@@ -559,6 +664,13 @@
             "2ed5500a-34ee-42a9-b053-77369cbc065a"
         ],
         "type":"Programming Language"
+    },
+    {
+        "id":"87a55ddf-cf81-4419-973c-95e31b3c1fab",
+        "name":"NuGet",
+        "level":"NOVICE",
+        "projects":[],
+        "type":"C# Package Manager"
     },
     {
         "id":"b06bb60c-31e1-4939-8d18-54bc6f178cb6",
@@ -570,12 +682,22 @@
         "type":"Programming Language"
     },
     {
+        "id":"c7fc4924-3f02-45b7-b0a5-a8db0884b81c",
+        "name":"PostgreSQL",
+        "level":"MASTER",
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
+        "type":"Relational Database"
+    },
+    {
         "id":"56250a05-8bbd-425b-9704-2282595da788",
         "name":"Python",
         "level":"PROFICIENT",
         "projects":[
             "259adedf-5510-42a8-9a28-c72754626b89",
-            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
         ],
         "type":"Programming Language"
     },
@@ -594,6 +716,15 @@
         "level":"PROFICIENT",
         "projects":[],
         "type":"JavaScript Framework"
+    },
+    {
+        "id":"d7ab57b5-c12c-43c2-8945-5bf47866582e",
+        "name":"Redis",
+        "level":"COMPETENT",
+        "projects":[
+            "f873ba47-3d3c-4e17-9142-5f7f64dfa748"
+        ],
+        "type":"In-Memory Database"
     },
     {
         "id":"3991bdd1-6fa1-4d3a-af05-919965dcaa3d",
@@ -627,7 +758,8 @@
         "projects":[
             "259adedf-5510-42a8-9a28-c72754626b89",
             "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
-            "2ed5500a-34ee-42a9-b053-77369cbc065a"
+            "2ed5500a-34ee-42a9-b053-77369cbc065a",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
         "type":"Cloud Computing Execution Model"
     },
@@ -650,7 +782,8 @@
         "name":"SQL",
         "level":"MASTER",
         "projects":[
-            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6"
+            "4c5bdbad-b5d8-4bb2-bf49-f0244fd365f6",
+            "6054440c-63aa-4714-913e-38125944d213"
         ],
         "type":"Programming Language"
     },
@@ -658,7 +791,9 @@
         "id":"e67ba77e-5800-4224-b085-92acd0520a99",
         "name":"TypeScript",
         "level":"COMPETENT",
-        "projects":[],
+        "projects":[
+            "6054440c-63aa-4714-913e-38125944d213"
+        ],
         "type":"Programming Language"
     }
 ]

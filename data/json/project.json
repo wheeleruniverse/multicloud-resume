@@ -18,7 +18,8 @@
             "a771ac80-ac0e-4d82-b9ec-4e31f5bacdba",
             "bb21bd4c-0280-4eaa-aaf1-ad88893836f5",
             "dcdd7b94-0137-456a-b67b-00419e2d4a84",
-            "6e5df643-1ee5-405a-9021-922da377d330"
+            "6e5df643-1ee5-405a-9021-922da377d330",
+            "e91aed35-d65b-4dd0-994c-e1038b648167"
         ],
         "start":{
             "month":"9",
@@ -50,7 +51,9 @@
             "c2fdf2be-2dfd-4e45-a4c5-f81a7163dad2",
             "cb0a561b-8483-4089-810b-637e4d689ee4",
             "b06bb60c-31e1-4939-8d18-54bc6f178cb6",
-            "56250a05-8bbd-425b-9704-2282595da788"
+            "56250a05-8bbd-425b-9704-2282595da788",
+            "5ab1b6f2-bfd3-4a89-80ad-d700e3bf09bd",
+            "e91aed35-d65b-4dd0-994c-e1038b648167"
         ],
         "start":{
             "month":"10",
@@ -81,7 +84,8 @@
             "bb21bd4c-0280-4eaa-aaf1-ad88893836f5",
             "c2fdf2be-2dfd-4e45-a4c5-f81a7163dad2",
             "cb0a561b-8483-4089-810b-637e4d689ee4",
-            "fa917912-9e24-4330-b9e6-e6b50d5ed0e2"
+            "fa917912-9e24-4330-b9e6-e6b50d5ed0e2",
+            "e91aed35-d65b-4dd0-994c-e1038b648167"
         ],
         "start":{
             "month":"1",
@@ -114,10 +118,85 @@
             "6a7cbf58-8987-44ab-8065-fc527ed632e2",
             "2017a078-6d1f-4705-af3a-f60e2289a8ee",
             "e2a283c2-85f3-4941-b38e-71cedb3e4dec",
-            "3991bdd1-6fa1-4d3a-af05-919965dcaa3d"
+            "3991bdd1-6fa1-4d3a-af05-919965dcaa3d",
+            "72982110-e4e8-470c-92f9-a0a2a0ae1451",
+            "e91aed35-d65b-4dd0-994c-e1038b648167"
         ],
         "start":{
             "month":"2",
+            "year":"2021"
+        },
+        "website":null
+    },
+    {
+        "id":"6054440c-63aa-4714-913e-38125944d213",
+        "name":"Apr, 21 #CloudGuruChallenge",
+        "blog":"https://dev.to/wheelerswebsites/apr-21-cloudguruchallenge-3fch",
+        "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.04",
+        "description":"Create a website to display Resume information hosted in Azure. The frontend uses Angular and NgRx hosted in Azure Blob storage. The backend uses Java hosted in Azure Functions. The frontend sits behind Azure CDN, which is routed to via AWS Route 53. Website data is stored in a serverless Cosmos DB instance. The infrastructure is deployed via Terraform. GitHub Actions provides automatd CI/CD for the frontend and the backend code.",
+        "end":{
+            "month":"6",
+            "year":"2021"
+        },
+        "skills":[
+            "a3c5d586-901f-424f-bdbc-1b664e7e0a30",
+            "1cd70378-cc89-4c61-ad31-a2e967a74102",
+            "457a4d4d-00e9-4522-8fe7-58044da7d0d7",
+            "dcdd7b94-0137-456a-b67b-00419e2d4a84",
+            "e8a6997b-c4d1-4ffb-a214-4ed99487b858",
+            "d0eb1478-f755-49be-97bd-1b98c27e4b4a",
+            "0535d6cc-3815-46e7-bf33-406bb9e3b094",
+            "a575ee85-5c8b-40f7-bc34-68e513a409d4",
+            "cb0a561b-8483-4089-810b-637e4d689ee4",
+            "e91aed35-d65b-4dd0-994c-e1038b648167",
+            "01e69faa-e054-4b02-b7c3-879785172a47",
+            "49bb192e-c83c-46a9-9ed4-ae486f234ee3",
+            "c2fdf2be-2dfd-4e45-a4c5-f81a7163dad2",
+            "70b9d7a1-060d-46b5-a386-30304a24ccdc",
+            "b658c718-1433-43fb-97a9-a3ba9f9fa339",
+            "3abf70eb-8041-4e2c-9ca5-bedab5742e19",
+            "21212a05-9ca5-457c-b62a-12cbfbd2878e",
+            "75fa0327-ce2c-4411-a009-8001a952ec32",
+            "6a10d9ad-3572-4b3c-a215-6051e5d2f34a",
+            "bb21bd4c-0280-4eaa-aaf1-ad88893836f5",
+            "5ab1b6f2-bfd3-4a89-80ad-d700e3bf09bd",
+            "e67ba77e-5800-4224-b085-92acd0520a99"
+        ],
+        "start":{
+            "month":"4",
+            "year":"2021"
+        },
+        "website":"https://www.wheelercloudguru.com"
+    },
+    {
+        "id":"f873ba47-3d3c-4e17-9142-5f7f64dfa748",
+        "name":"Jun, 21 #CloudGuruChallenge",
+        "blog":"https://dev.to/wheelerswebsites/jun-21-cloudguruchallenge-2k11",
+        "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.06",
+        "description":"Create a Python application that leverages a Redis ElastiCache to improve performance. The website is a Python Flask app hosted on EC2 within a custom VPC. The application interacts with a Redis ElastiCache instance and a PostgreSQL RDS instance. The RDS instance uses a stored procedure that sleeps to simulate slowness. The application caches the result in ElastiCache to demonstrate the dramatic effect caching can have on user experience. Infrastructure is fully managed by Terraform. The application and network infrastructure is managed separately.",
+        "end":{
+            "month":"8",
+            "year":"2021"
+        },
+        "skills":[
+            "aa9304f1-9a3b-47d0-9731-0f1067450ef1",
+            "30a32fb9-bb34-4ad6-b194-04132fe4651c",
+            "c717991b-a2d9-4018-aa7b-b7a5a0d853a9",
+            "1a3e1c8c-597d-4417-bd06-67291cd977b9",
+            "72728fff-0e2a-43e5-b515-c72911eb6cd7",
+            "da404bbe-55c7-4982-985c-8e6eb8a361d1",
+            "0cc08f88-8f0f-46cb-b241-327ff204532d",
+            "cb0a561b-8483-4089-810b-637e4d689ee4",
+            "e91aed35-d65b-4dd0-994c-e1038b648167",
+            "49bb192e-c83c-46a9-9ed4-ae486f234ee3",
+            "c20a04f9-943f-4e5d-bb92-19b183295168",
+            "cd4f673a-c163-44b1-9094-ed6b84254841",
+            "c7fc4924-3f02-45b7-b0a5-a8db0884b81c",
+            "56250a05-8bbd-425b-9704-2282595da788",
+            "d7ab57b5-c12c-43c2-8945-5bf47866582e"
+        ],
+        "start":{
+            "month":"6",
             "year":"2021"
         },
         "website":null
