@@ -1,12 +1,13 @@
 package com.wheeler.dao.constant;
 
 import com.wheeler.dto.model.partial.EnumDto;
+import com.wheeler.dto.model.partial.EnumDtoMappable;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public enum SkillLevel {
+public enum SkillLevel implements EnumDtoMappable {
 
     COMPETENT(
         "used on at least one project with a solid understanding of configuration options",
@@ -36,7 +37,7 @@ public enum SkillLevel {
 
     private final String description;
     private final String display;
-    private final int rank;
+    private final Integer rank;
 
     SkillLevel(final String description, final String display, final int rank) {
         this.description = description;
@@ -44,21 +45,22 @@ public enum SkillLevel {
         this.rank = rank;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public String getDisplay() {
         return display;
     }
 
-    public int getRank() {
+    @Override
+    public Integer getRank() {
         return rank;
     }
 
     public static List<EnumDto> dto(){
-        return Arrays.stream(SkillLevel.values())
-                .map(EnumDto::new)
-                .collect(Collectors.toList());
+        return Arrays.stream(SkillLevel.values()).map(EnumDto::new).collect(Collectors.toList());
     }
 }
