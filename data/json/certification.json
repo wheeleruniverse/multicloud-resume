@@ -1,5 +1,6 @@
 [
     {
+        "id":"7155cf85-e91b-4d1a-baea-fdafbc6b85a3",
         "name":"Cloud Practitioner",
         "credential":"R9P1ZDJC2BEE1LS4",
         "descriptions":[
@@ -24,6 +25,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"0f6d8e2f-4ba4-4705-a483-2de7b71bf397",
         "name":"Developer Associate",
         "credential":"KNVXP1W2LFF4QFKS",
         "descriptions":[
@@ -42,6 +44,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"75d645c3-df70-4b02-954e-bcf5780a95c3",
         "name":"Solutions Architect Associate",
         "credential":"6JGG02H2CJREQFC8",
         "descriptions":[
@@ -61,6 +64,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"710b9380-e995-4afc-ac3a-89c6a8969702",
         "name":"SysOps Admin Associate",
         "credential":"K591NJZ222R1QFWL",
         "descriptions":[
@@ -83,6 +87,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"16989db5-8378-464b-8994-f8982f5f1f7e",
         "name":"Alexa Skill Builder Specialty",
         "credential":"1Q9WRMSCPFR1QLST",
         "descriptions":[
@@ -106,6 +111,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"ca78ab92-6aa2-4334-87ec-dffb3b98edf4",
         "name":"Database Specialty",
         "credential":"9GLXQ97C32QQ1699",
         "descriptions":[
@@ -124,6 +130,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"f163ca9d-e34f-40aa-b7a9-3ccf0af6d55b",
         "name":"Securtity Specialty",
         "credential":"KX5PP7EKG2V11WSR",
         "descriptions":[
@@ -147,6 +154,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"1b5b9a7c-ce68-4e0b-a98e-f3500acaff6c",
         "name":"DevOps Engineer Professional",
         "credential":"8DJLFE6CN2441GCQ",
         "descriptions":[
@@ -168,6 +176,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"81122a38-13b6-43d5-99dc-78ca0a1de415",
         "name":"Solutions Architect Professional",
         "credential":"F9T6LYBL2BF4QC50",
         "descriptions":[
@@ -189,6 +198,7 @@
         "vendor":"AWS"
     },
     {
+        "id":"4bd2f6e4-a6ce-4292-846f-172945fb22fe",
         "name":"Azure Fundamentals",
         "credential":"H478-5093",
         "descriptions":[
@@ -199,7 +209,10 @@
             "Describe identity, governance, privacy, and compliance features",
             "Describe Azure cost management and Service Level Agreements"
         ],
-        "expiry":null,
+        "expiry":{
+            "month":null,
+            "year":null
+        },
         "issued":{
             "month":"7",
             "year":"2020"
@@ -208,6 +221,26 @@
         "vendor":"AZURE"
     },
     {
+        "id":"c65d75fc-2042-4369-aaf9-e612e3989a8b",
+        "name":"Google Cloud Certified Cloud Digital Leader",
+        "credential":"o4fJ0h",
+        "descriptions":[
+            "A Cloud Digital Leader can articulate the capabilities of Google Cloud core products and services and how they benefit organizations. The Cloud Digital Leader can also describe common business use cases and how cloud solutions support an enterprise.",
+            "The Cloud Digital Leader exam is job-role agnostic and does not require hands-on experience with Google Cloud."
+        ],
+        "expiry":{
+            "month":"6",
+            "year":"2024"
+        },
+        "issued":{
+            "month":"6",
+            "year":"2021"
+        },
+        "level":"FOUNDATIONAL",
+        "vendor":"GCP"
+    },
+    {
+        "id":"05cef00e-c598-4ed4-8426-c1c3925bc62f",
         "name":"Oracle Associate, Java SE 7 Programmer",
         "credential":null,
         "descriptions":[
@@ -221,7 +254,10 @@
             "Threads, Inner Classes, and Concurrency",
             "String Processing, Data Formatting, and Resources Bundles"
         ],
-        "expiry":null,
+        "expiry":{
+            "month":null,
+            "year":null
+        },
         "issued":{
             "month":"10",
             "year":"2016"
@@ -230,6 +266,7 @@
         "vendor":"ORACLE"
     },
     {
+        "id":"99bcdbf4-17da-491e-af7d-1cdb2395a172",
         "name":"SAFe 5 Practitioner",
         "credential":"57495344-8244",
         "descriptions":[
