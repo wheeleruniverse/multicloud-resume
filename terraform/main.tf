@@ -183,17 +183,28 @@ resource "azurerm_storage_account" "sa_app" {
   account_replication_type = "LRS"
   account_tier             = "Standard"
   location                 = azurerm_resource_group.rg.location
+  min_tls_version          = "TLS1_2"
   name                     = "${replace(var.prefix, "-", "")}app"
   resource_group_name      = azurerm_resource_group.rg.name
+
+  network_rules {
+    bypass         = ["AzureServices"]
+    default_action = "Allow"
+  }
 }
 
 resource "azurerm_storage_account" "sa_web" {
   account_replication_type = "LRS"
   account_tier             = "Standard"
   location                 = azurerm_resource_group.rg.location
+  min_tls_version          = "TLS1_2"
   name                     = "${replace(var.prefix, "-", "")}web"
   resource_group_name      = azurerm_resource_group.rg.name
 
+  network_rules {
+    bypass         = ["AzureServices"]
+    default_action = "Allow"
+  }
   static_website {
     index_document = "index.html"
   }
