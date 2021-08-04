@@ -101,6 +101,25 @@ resource "azurerm_cdn_endpoint" "web_origin" {
       redirect_type = "PermanentRedirect"
     }
   }
+  delivery_rule {
+    name  = "SetCacheExpiration"
+    order = 2
+
+    cache_expiration_action {
+      behavior = "SetIfMissing"
+      duration = "30.00:00:00"
+    }
+    url_file_extension_condition {
+      match_values = [
+        "css",
+        "ico",
+        "js",
+      ]
+      negate_condition = false
+      operator         = "Equal"
+      transforms       = []
+    }
+  }
   origin {
     host_name = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
     name      = "${azurerm_storage_account.sa_web.name}-cdn"
@@ -163,9 +182,11 @@ resource "azurerm_function_app" "app" {
     COSMOS_AUTH                    = azurerm_cosmosdb_account.db.primary_master_key
     COSMOS_HOST                    = azurerm_cosmosdb_account.db.endpoint
     COSMOS_NAME                    = azurerm_cosmosdb_sql_database.prd.name
+    ENABLE_ORYX_BUILD              = false
     FUNCTIONS_WORKER_RUNTIME       = "java"
     FUNCTION_APP_EDIT_MODE         = "readonly"
     FUNCTIONS_EXTENSION_VERSION    = "~3"
+    SCM_DO_BUILD_DURING_DEPLOYMENT = false
     WEBSITE_RUN_FROM_PACKAGE       = "1"
   }
   https_only                 = true
