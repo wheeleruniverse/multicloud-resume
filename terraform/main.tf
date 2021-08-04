@@ -207,7 +207,7 @@ resource "azurerm_storage_account" "sa_app" {
 
   network_rules {
     bypass         = ["AzureServices"]
-    default_action = "Deny"
+    default_action = "Allow"
   }
 }
 
