@@ -1,13 +1,21 @@
 
 terraform {
+  required_version = ">= 0.14.9"
+
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "wheelers-websites"
+
+    workspaces {
+      name = "CloudGuruChallenge_2104"
+    }
+  }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = ">= 2.26"
     }
   }
-
-  required_version = ">= 0.14.9"
 }
 
 provider "azurerm" {
@@ -60,11 +68,22 @@ resource "azurerm_app_service_plan" "asp" {
 }
 
 resource "azurerm_cdn_endpoint" "web_origin" {
-  location            = azurerm_resource_group.rg.location
-  name                = "${azurerm_storage_account.sa_web.name}-cdn"
-  origin_host_header  = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
-  profile_name        = azurerm_cdn_profile.web_cdn.name
-  resource_group_name = azurerm_resource_group.rg.name
+  content_types_to_compress = [
+    "application/javascript",
+    "application/json",
+    "application/x-javascript",
+    "application/xml",
+    "text/css",
+    "text/html",
+    "text/javascript",
+    "text/plain"
+  ]
+  is_compression_enabled = true
+  location               = azurerm_resource_group.rg.location
+  name                   = "${azurerm_storage_account.sa_web.name}-cdn"
+  origin_host_header     = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
+  profile_name           = azurerm_cdn_profile.web_cdn.name
+  resource_group_name    = azurerm_resource_group.rg.name
   tags = {
     Project = var.project
   }
@@ -82,7 +101,6 @@ resource "azurerm_cdn_endpoint" "web_origin" {
       redirect_type = "PermanentRedirect"
     }
   }
-
   origin {
     host_name = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
     name      = "${azurerm_storage_account.sa_web.name}-cdn"
