@@ -209,10 +209,7 @@
             "Describe identity, governance, privacy, and compliance features",
             "Describe Azure cost management and Service Level Agreements"
         ],
-        "expiry":{
-            "month":null,
-            "year":null
-        },
+        "expiry":null,
         "issued":{
             "month":"7",
             "year":"2020"
@@ -254,10 +251,7 @@
             "Threads, Inner Classes, and Concurrency",
             "String Processing, Data Formatting, and Resources Bundles"
         ],
-        "expiry":{
-            "month":null,
-            "year":null
-        },
+        "expiry":null,
         "issued":{
             "month":"10",
             "year":"2016"
