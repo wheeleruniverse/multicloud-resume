@@ -120,6 +120,28 @@ resource "azurerm_cdn_endpoint" "web_origin" {
       transforms       = []
     }
   }
+  global_delivery_rule {
+    modify_response_header_action {
+      action = "Append"
+      name   = "Strict-Transport-Security"
+      value  = "max-age=63072000; includeSubDomains; preload"
+    }
+    modify_response_header_action {
+      action = "Append"
+      name   = "X-Content-Type-Options"
+      value  = "nosniff"
+    }
+    modify_response_header_action {
+      action = "Append"
+      name   = "X-Frame-Options"
+      value  = "SAMEORIGIN"
+    }
+    modify_response_header_action {
+      action = "Append"
+      name   = "X-XSS-Protection"
+      value  = "1; mode=block"
+    }
+  }
   origin {
     host_name = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
     name      = "${azurerm_storage_account.sa_web.name}-cdn"
