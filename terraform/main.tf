@@ -7,7 +7,7 @@ terraform {
     organization = "wheelers-websites"
 
     workspaces {
-      name = "CloudGuruChallenge_2104"
+      name = "Resume"
     }
   }
   required_providers {
@@ -29,7 +29,7 @@ variable "prefix" {
 }
 
 variable "project" {
-  default     = "CloudGuruChallenge_21.04"
+  default     = "Resume"
   description = "project name"
   type        = string
 }
