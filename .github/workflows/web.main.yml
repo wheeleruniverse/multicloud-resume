@@ -76,7 +76,7 @@ jobs:
               --content-paths  "/*" \
               --name "wheelerresumeweb-cdn" \
               --profile-name "wheeler-resume-cdn" \
-              --resource-group "CloudGuruChallenge_21.04"
+              --resource-group "Resume"
 
       - name: Azure Logout
         run: |
