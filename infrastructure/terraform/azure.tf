@@ -24,11 +24,11 @@ variable "bucket_tier" {
   type        = string
 }
 
-resource "azurerm_application_insights" "insights" {
+resource "azurerm_application_insights" "this" {
   application_type    = "java"
-  location            = azurerm_resource_group.rg.location
+  location            = azurerm_resource_group.this.location
   name                = "${var.prefix}insights"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.this.name
   retention_in_days   = 30
   sampling_percentage = 1
   tags = {
@@ -36,11 +36,11 @@ resource "azurerm_application_insights" "insights" {
   }
 }
 
-resource "azurerm_app_service_plan" "asp" {
+resource "azurerm_app_service_plan" "this" {
   kind                = "FunctionApp"
-  location            = azurerm_resource_group.rg.location
+  location            = azurerm_resource_group.this.location
   name                = "${var.prefix}asp"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.this.name
   tags = {
     Project = var.project
   }
@@ -51,7 +51,7 @@ resource "azurerm_app_service_plan" "asp" {
   }
 }
 
-resource "azurerm_cdn_endpoint" "web_origin" {
+resource "azurerm_cdn_endpoint" "this" {
   content_types_to_compress = [
     "application/javascript",
     "application/json",
@@ -63,11 +63,11 @@ resource "azurerm_cdn_endpoint" "web_origin" {
     "text/plain"
   ]
   is_compression_enabled = true
-  location               = azurerm_resource_group.rg.location
-  name                   = "${azurerm_storage_account.sa_web.name}-cdn"
-  origin_host_header     = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
-  profile_name           = azurerm_cdn_profile.web_cdn.name
-  resource_group_name    = azurerm_resource_group.rg.name
+  location               = azurerm_resource_group.this.location
+  name                   = "${azurerm_storage_account.web.name}-cdn"
+  origin_host_header     = "${azurerm_storage_account.web.name}.z20.web.core.windows.net"
+  profile_name           = azurerm_cdn_profile.this.name
+  resource_group_name    = azurerm_resource_group.this.name
   tags = {
     Project = var.project
   }
@@ -127,29 +127,29 @@ resource "azurerm_cdn_endpoint" "web_origin" {
     }
   }
   origin {
-    host_name = "${azurerm_storage_account.sa_web.name}.z20.web.core.windows.net"
-    name      = "${azurerm_storage_account.sa_web.name}-cdn"
+    host_name = "${azurerm_storage_account.web.name}.z20.web.core.windows.net"
+    name      = "${azurerm_storage_account.web.name}-cdn"
   }
 }
 
-resource "azurerm_cdn_profile" "web_cdn" {
-  location            = azurerm_resource_group.rg.location
+resource "azurerm_cdn_profile" "this" {
+  location            = azurerm_resource_group.this.location
   name                = "${var.prefix}cdn"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.this.name
   sku                 = "Standard_Microsoft"
   tags = {
     Project = var.project
   }
 }
 
-resource "azurerm_cosmosdb_account" "db" {
+resource "azurerm_cosmosdb_account" "this" {
   enable_automatic_failover = false
   enable_free_tier          = true
   kind                      = "GlobalDocumentDB"
-  location                  = azurerm_resource_group.rg.location
+  location                  = azurerm_resource_group.this.location
   name                      = "${var.prefix}cosmos-db"
   offer_type                = "Standard"
-  resource_group_name       = azurerm_resource_group.rg.name
+  resource_group_name       = azurerm_resource_group.this.name
   tags = {
     Project = var.project
   }
@@ -162,32 +162,32 @@ resource "azurerm_cosmosdb_account" "db" {
   }
   geo_location {
     failover_priority = 0
-    location          = azurerm_resource_group.rg.location
+    location          = azurerm_resource_group.this.location
   }
 }
 
-resource "azurerm_cosmosdb_sql_container" "tables" {
-  account_name        = azurerm_cosmosdb_account.db.name
+resource "azurerm_cosmosdb_sql_container" "this" {
+  account_name        = azurerm_cosmosdb_account.this.name
   count               = length(var.tables)
-  database_name       = azurerm_cosmosdb_sql_database.prd.name
+  database_name       = azurerm_cosmosdb_sql_database.this.name
   name                = var.tables[count.index]
   partition_key_path  = "/id"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.this.name
 }
 
-resource "azurerm_cosmosdb_sql_database" "prd" {
-  account_name        = azurerm_cosmosdb_account.db.name
+resource "azurerm_cosmosdb_sql_database" "this" {
+  account_name        = azurerm_cosmosdb_account.this.name
   name                = "prd"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.this.name
 }
 
-resource "azurerm_function_app" "app" {
-  app_service_plan_id = azurerm_app_service_plan.asp.id
+resource "azurerm_function_app" "this" {
+  app_service_plan_id = azurerm_app_service_plan.this.id
   app_settings = {
-    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.insights.instrumentation_key
-    COSMOS_AUTH                    = azurerm_cosmosdb_account.db.primary_master_key
-    COSMOS_HOST                    = azurerm_cosmosdb_account.db.endpoint
-    COSMOS_NAME                    = azurerm_cosmosdb_sql_database.prd.name
+    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.this.instrumentation_key
+    COSMOS_AUTH                    = azurerm_cosmosdb_account.this.primary_master_key
+    COSMOS_HOST                    = azurerm_cosmosdb_account.this.endpoint
+    COSMOS_NAME                    = azurerm_cosmosdb_sql_database.this.name
     ENABLE_ORYX_BUILD              = false
     FUNCTIONS_WORKER_RUNTIME       = "java"
     FUNCTION_APP_EDIT_MODE         = "readonly"
@@ -196,11 +196,11 @@ resource "azurerm_function_app" "app" {
     WEBSITE_RUN_FROM_PACKAGE       = "1"
   }
   https_only                 = true
-  location                   = azurerm_resource_group.rg.location
+  location                   = azurerm_resource_group.this.location
   name                       = "${var.prefix}app"
-  resource_group_name        = azurerm_resource_group.rg.name
-  storage_account_access_key = azurerm_storage_account.sa_app.primary_access_key
-  storage_account_name       = azurerm_storage_account.sa_app.name
+  resource_group_name        = azurerm_resource_group.this.name
+  storage_account_access_key = azurerm_storage_account.app.primary_access_key
+  storage_account_name       = azurerm_storage_account.app.name
   version                    = "~3"
   tags = {
     Project = var.project
@@ -216,7 +216,7 @@ resource "azurerm_function_app" "app" {
   }
 }
 
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "this" {
   location = "East US 2"
   name     = var.project
   tags = {
@@ -224,13 +224,14 @@ resource "azurerm_resource_group" "rg" {
   }
 }
 
-resource "azurerm_storage_account" "sa_app" {
+resource "azurerm_storage_account" "app" {
   account_replication_type = var.bucket_replication
   account_tier             = var.bucket_tier
-  location                 = azurerm_resource_group.rg.location
+  allow_blob_public_access = false
+  location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
   name                     = "${replace(var.prefix, "-", "")}app"
-  resource_group_name      = azurerm_resource_group.rg.name
+  resource_group_name      = azurerm_resource_group.this.name
 
   network_rules {
     bypass         = ["AzureServices"]
@@ -238,13 +239,14 @@ resource "azurerm_storage_account" "sa_app" {
   }
 }
 
-resource "azurerm_storage_account" "sa_iac" {
+resource "azurerm_storage_account" "iac" {
   account_replication_type = var.bucket_replication
   account_tier             = var.bucket_tier
-  location                 = azurerm_resource_group.rg.location
+  allow_blob_public_access = true
+  location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
   name                     = replace(var.bucket, "-", "")
-  resource_group_name      = azurerm_resource_group.rg.name
+  resource_group_name      = azurerm_resource_group.this.name
 
   network_rules {
     bypass         = ["AzureServices"]
@@ -252,13 +254,14 @@ resource "azurerm_storage_account" "sa_iac" {
   }
 }
 
-resource "azurerm_storage_account" "sa_web" {
+resource "azurerm_storage_account" "web" {
   account_replication_type = var.bucket_replication
   account_tier             = var.bucket_tier
-  location                 = azurerm_resource_group.rg.location
+  allow_blob_public_access = false
+  location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
   name                     = "${replace(var.prefix, "-", "")}web"
-  resource_group_name      = azurerm_resource_group.rg.name
+  resource_group_name      = azurerm_resource_group.this.name
 
   network_rules {
     bypass         = ["AzureServices"]
