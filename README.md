@@ -9,5 +9,11 @@ https://forrestbrazeal.com/2020/04/23/the-cloud-resume-challenge/
 ## Azure
 https://acloudguru.com/blog/engineering/cloudguruchallenge-your-resume-in-azure
 
+az ad sp create-for-rbac \
+--name wheelercloudguruweb \
+--role contributor \
+--scopes /subscriptions/{subscription-id}/resourceGroups/wheelercloudguru \
+--sdk-auth
+
 ## GCP
 https://acloudguru.com/blog/engineering/cloudguruchallenge-your-resume-on-gcp

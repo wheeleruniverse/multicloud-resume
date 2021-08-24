@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     private viewService: ViewService
   ) {}
 
-  private static readonly root = 'https://wheeler-resume-app.azurewebsites.net/api';
+  private static readonly root = 'https://wheelercloudguru.azurewebsites.net/api';
 
   static readonly api = {
     certification: {
