@@ -1,24 +1,15 @@
 
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = ">= 2.26"
-    }
-  }
-}
-
 provider "azurerm" {
   features {}
 }
 
-variable "bucket_replication" {
+variable "azure_bucket_replication" {
   default     = "LRS"
   description = "bucket replication"
   type        = string
 }
 
-variable "bucket_tier" {
+variable "azure_bucket_tier" {
   default     = "Standard"
   description = "bucket tier"
   type        = string
@@ -27,22 +18,26 @@ variable "bucket_tier" {
 resource "azurerm_application_insights" "this" {
   application_type    = "java"
   location            = azurerm_resource_group.this.location
-  name                = "${var.prefix}insights"
+  name                = var.domain
   resource_group_name = azurerm_resource_group.this.name
   retention_in_days   = 30
   sampling_percentage = 1
   tags = {
-    Project = var.project
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
   }
 }
 
 resource "azurerm_app_service_plan" "this" {
   kind                = "FunctionApp"
   location            = azurerm_resource_group.this.location
-  name                = "${var.prefix}asp"
+  name                = var.domain
   resource_group_name = azurerm_resource_group.this.name
   tags = {
-    Project = var.project
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
   }
 
   sku {
@@ -69,7 +64,9 @@ resource "azurerm_cdn_endpoint" "this" {
   profile_name           = azurerm_cdn_profile.this.name
   resource_group_name    = azurerm_resource_group.this.name
   tags = {
-    Project = var.project
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
   }
 
   delivery_rule {
@@ -134,11 +131,13 @@ resource "azurerm_cdn_endpoint" "this" {
 
 resource "azurerm_cdn_profile" "this" {
   location            = azurerm_resource_group.this.location
-  name                = "${var.prefix}cdn"
+  name                = var.domain
   resource_group_name = azurerm_resource_group.this.name
   sku                 = "Standard_Microsoft"
   tags = {
-    Project = var.project
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
   }
 }
 
@@ -147,11 +146,13 @@ resource "azurerm_cosmosdb_account" "this" {
   enable_free_tier          = true
   kind                      = "GlobalDocumentDB"
   location                  = azurerm_resource_group.this.location
-  name                      = "${var.prefix}cosmos-db"
+  name                      = var.domain
   offer_type                = "Standard"
   resource_group_name       = azurerm_resource_group.this.name
   tags = {
-    Project = var.project
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
   }
 
   capabilities {
@@ -177,7 +178,7 @@ resource "azurerm_cosmosdb_sql_container" "this" {
 
 resource "azurerm_cosmosdb_sql_database" "this" {
   account_name        = azurerm_cosmosdb_account.this.name
-  name                = "prd"
+  name                = var.project
   resource_group_name = azurerm_resource_group.this.name
 }
 
@@ -197,14 +198,16 @@ resource "azurerm_function_app" "this" {
   }
   https_only                 = true
   location                   = azurerm_resource_group.this.location
-  name                       = "${var.prefix}app"
+  name                       = "${var.domain}-app"
   resource_group_name        = azurerm_resource_group.this.name
   storage_account_access_key = azurerm_storage_account.app.primary_access_key
   storage_account_name       = azurerm_storage_account.app.name
-  version                    = "~3"
   tags = {
-    Project = var.project
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
   }
+  version = "~3"
 
   site_config {
     java_version = "11"
@@ -218,20 +221,27 @@ resource "azurerm_function_app" "this" {
 
 resource "azurerm_resource_group" "this" {
   location = "East US 2"
-  name     = var.project
+  name     = var.domain
   tags = {
-    Project = var.project
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
   }
 }
 
 resource "azurerm_storage_account" "app" {
-  account_replication_type = var.bucket_replication
-  account_tier             = var.bucket_tier
+  account_replication_type = var.azure_bucket_replication
+  account_tier             = var.azure_bucket_tier
   allow_blob_public_access = false
   location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
-  name                     = "${replace(var.prefix, "-", "")}app"
+  name                     = "${var.domain}app"
   resource_group_name      = azurerm_resource_group.this.name
+  tags = {
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
+  }
 
   network_rules {
     bypass         = ["AzureServices"]
@@ -240,13 +250,18 @@ resource "azurerm_storage_account" "app" {
 }
 
 resource "azurerm_storage_account" "iac" {
-  account_replication_type = var.bucket_replication
-  account_tier             = var.bucket_tier
+  account_replication_type = var.azure_bucket_replication
+  account_tier             = var.azure_bucket_tier
   allow_blob_public_access = true
   location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
-  name                     = replace(var.bucket, "-", "")
+  name                     = "${var.domain}iac"
   resource_group_name      = azurerm_resource_group.this.name
+  tags = {
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
+  }
 
   network_rules {
     bypass         = ["AzureServices"]
@@ -255,13 +270,18 @@ resource "azurerm_storage_account" "iac" {
 }
 
 resource "azurerm_storage_account" "web" {
-  account_replication_type = var.bucket_replication
-  account_tier             = var.bucket_tier
+  account_replication_type = var.azure_bucket_replication
+  account_tier             = var.azure_bucket_tier
   allow_blob_public_access = false
   location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
-  name                     = "${replace(var.prefix, "-", "")}web"
+  name                     = "${var.domain}web"
   resource_group_name      = azurerm_resource_group.this.name
+  tags = {
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
+  }
 
   network_rules {
     bypass         = ["AzureServices"]

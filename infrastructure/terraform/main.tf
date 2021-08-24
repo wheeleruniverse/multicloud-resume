@@ -10,22 +10,48 @@ terraform {
       name = "Resume"
     }
   }
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.55.0"
+    }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 2.73.0"
+    }
+    google = {
+      source  = "hashicorp/google"
+      version = ">= 3.80.0"
+    }
+  }
 }
 
-variable "bucket" {
-  default     = "wheelercloudguru-iac"
-  description = "infrastructure bucket name on aws s3"
+variable "domain" {
+  default     = "wheelercloudguru"
+  description = "domain name"
   type        = string
 }
 
-variable "prefix" {
-  default     = "wheeler-resume-"
-  description = "prefix name"
+variable "environment" {
+  default     = "prd"
+  description = "environment name"
+  type        = string
+}
+
+variable "fqdn" {
+  default     = "wheelercloudguru.com"
+  description = "fully qualified domain name"
+  type        = string
+}
+
+variable "owner" {
+  default     = "justin.wheeler@wheelerswebsites.com"
+  description = "owner email address"
   type        = string
 }
 
 variable "project" {
-  default     = "Resume"
+  default     = "resume"
   description = "project name"
   type        = string
 }
