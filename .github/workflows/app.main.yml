@@ -28,9 +28,9 @@ jobs:
 
       - name: Upload to Azure Functions
         uses: Azure/functions-action@v1
-        id: wheeler-resume-app
+        id: wheelercloudguru
         with:
-          app-name: wheeler-resume-app
-          package: app/target/azure-functions/wheeler-resume-app
+          app-name: wheelercloudguru
+          package: app/target/azure-functions/wheelercloudguru
           publish-profile: ${{ secrets.AZURE_APP_AUTH }}
 

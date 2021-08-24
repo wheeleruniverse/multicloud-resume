@@ -59,7 +59,7 @@ resource "azurerm_cdn_endpoint" "this" {
   ]
   is_compression_enabled = true
   location               = azurerm_resource_group.this.location
-  name                   = "${azurerm_storage_account.web.name}-cdn"
+  name                   = var.domain
   origin_host_header     = "${azurerm_storage_account.web.name}.z20.web.core.windows.net"
   profile_name           = azurerm_cdn_profile.this.name
   resource_group_name    = azurerm_resource_group.this.name
@@ -125,7 +125,7 @@ resource "azurerm_cdn_endpoint" "this" {
   }
   origin {
     host_name = "${azurerm_storage_account.web.name}.z20.web.core.windows.net"
-    name      = "${azurerm_storage_account.web.name}-cdn"
+    name      = var.domain
   }
 }
 
@@ -198,7 +198,7 @@ resource "azurerm_function_app" "this" {
   }
   https_only                 = true
   location                   = azurerm_resource_group.this.location
-  name                       = "${var.domain}-app"
+  name                       = var.domain
   resource_group_name        = azurerm_resource_group.this.name
   storage_account_access_key = azurerm_storage_account.app.primary_access_key
   storage_account_name       = azurerm_storage_account.app.name

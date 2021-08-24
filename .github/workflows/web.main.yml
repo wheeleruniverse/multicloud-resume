@@ -65,7 +65,7 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            az storage blob upload-batch --account-name wheelerresumeweb -d '$web' -s dist/
+            az storage blob upload-batch --account-name wheelercloudguruweb -d '$web' -s dist/
 
       - name: Purge Azure CDN
         uses: azure/CLI@v1
@@ -74,9 +74,9 @@ jobs:
           inlineScript: |
             az cdn endpoint purge \
               --content-paths  "/*" \
-              --name "wheelerresumeweb-cdn" \
-              --profile-name "wheeler-resume-cdn" \
-              --resource-group "Resume"
+              --name "wheelercloudguru" \
+              --profile-name "wheelercloudguru" \
+              --resource-group "wheelercloudguru"
 
       - name: Azure Logout
         run: |
