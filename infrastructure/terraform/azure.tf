@@ -22,11 +22,7 @@ resource "azurerm_application_insights" "this" {
   resource_group_name = azurerm_resource_group.this.name
   retention_in_days   = 30
   sampling_percentage = 1
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                = local.tags
 }
 
 resource "azurerm_app_service_plan" "this" {
@@ -34,11 +30,7 @@ resource "azurerm_app_service_plan" "this" {
   location            = azurerm_resource_group.this.location
   name                = var.domain
   resource_group_name = azurerm_resource_group.this.name
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                = local.tags
 
   sku {
     size = "Y1"
@@ -63,11 +55,7 @@ resource "azurerm_cdn_endpoint" "this" {
   origin_host_header     = "${azurerm_storage_account.web.name}.z20.web.core.windows.net"
   profile_name           = azurerm_cdn_profile.this.name
   resource_group_name    = azurerm_resource_group.this.name
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                   = local.tags
 
   delivery_rule {
     name  = "HttpToHttpsRedirect"
@@ -134,11 +122,7 @@ resource "azurerm_cdn_profile" "this" {
   name                = var.domain
   resource_group_name = azurerm_resource_group.this.name
   sku                 = "Standard_Microsoft"
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                = local.tags
 }
 
 resource "azurerm_cosmosdb_account" "this" {
@@ -149,11 +133,7 @@ resource "azurerm_cosmosdb_account" "this" {
   name                      = var.domain
   offer_type                = "Standard"
   resource_group_name       = azurerm_resource_group.this.name
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                      = local.tags
 
   capabilities {
     name = "EnableServerless"
@@ -202,12 +182,8 @@ resource "azurerm_function_app" "this" {
   resource_group_name        = azurerm_resource_group.this.name
   storage_account_access_key = azurerm_storage_account.app.primary_access_key
   storage_account_name       = azurerm_storage_account.app.name
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
-  version = "~3"
+  tags                       = local.tags
+  version                    = "~3"
 
   site_config {
     java_version = "11"
@@ -222,11 +198,7 @@ resource "azurerm_function_app" "this" {
 resource "azurerm_resource_group" "this" {
   location = "East US 2"
   name     = var.domain
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags     = local.tags
 }
 
 resource "azurerm_storage_account" "app" {
@@ -237,11 +209,7 @@ resource "azurerm_storage_account" "app" {
   min_tls_version          = var.tls_version
   name                     = "${var.domain}app"
   resource_group_name      = azurerm_resource_group.this.name
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                     = local.tags
 
   network_rules {
     bypass         = ["AzureServices"]
@@ -257,11 +225,7 @@ resource "azurerm_storage_account" "iac" {
   min_tls_version          = var.tls_version
   name                     = "${var.domain}iac"
   resource_group_name      = azurerm_resource_group.this.name
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                     = local.tags
 
   network_rules {
     bypass         = ["AzureServices"]
@@ -277,11 +241,7 @@ resource "azurerm_storage_account" "web" {
   min_tls_version          = var.tls_version
   name                     = "${var.domain}web"
   resource_group_name      = azurerm_resource_group.this.name
-  tags = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
+  tags                     = local.tags
 
   network_rules {
     bypass         = ["AzureServices"]
@@ -290,4 +250,10 @@ resource "azurerm_storage_account" "web" {
   static_website {
     index_document = "index.html"
   }
+}
+
+resource "azurerm_storage_container" "this" {
+  container_access_type = "container"
+  name                  = "web"
+  storage_account_name  = azurerm_storage_account.iac.name
 }

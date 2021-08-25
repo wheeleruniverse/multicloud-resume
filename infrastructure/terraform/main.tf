@@ -26,6 +26,19 @@ terraform {
   }
 }
 
+locals {
+  labels = {
+    environment = var.environment
+    project     = var.project
+  }
+  tags = {
+    environment = var.environment
+    owner       = var.owner
+    project     = var.project
+  }
+}
+
+
 variable "domain" {
   default     = "wheelercloudguru"
   description = "domain name"

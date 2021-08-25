@@ -17,34 +17,28 @@ variable "gcp_bucket_tier" {
 }
 
 resource "google_storage_bucket" "app" {
-  name = "${var.domain}-app"
-  labels = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
-  location      = var.gcp_bucket_replication
-  storage_class = var.gcp_bucket_tier
+  name                        = "${var.domain}-app"
+  force_destroy               = true
+  labels                      = local.labels
+  location                    = var.gcp_bucket_replication
+  storage_class               = var.gcp_bucket_tier
+  uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket" "iac" {
-  name = "${var.domain}-iac"
-  labels = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
-  location      = var.gcp_bucket_replication
-  storage_class = var.gcp_bucket_tier
+  name                        = "${var.domain}-iac"
+  force_destroy               = true
+  labels                      = local.labels
+  location                    = var.gcp_bucket_replication
+  storage_class               = var.gcp_bucket_tier
+  uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket" "web" {
-  name = "${var.domain}-web"
-  labels = {
-    environment = var.environment
-    owner       = var.owner
-    project     = var.project
-  }
-  location      = var.gcp_bucket_replication
-  storage_class = var.gcp_bucket_tier
+  name                        = "${var.domain}-web"
+  force_destroy               = true
+  labels                      = local.labels
+  location                    = var.gcp_bucket_replication
+  storage_class               = var.gcp_bucket_tier
+  uniform_bucket_level_access = true
 }
