@@ -22,7 +22,7 @@ resource "google_compute_backend_bucket" "this" {
   name        = google_storage_bucket.web.name
 }
 
-resource "google_compute_global_forwarding_rule" "default" {
+resource "google_compute_global_forwarding_rule" "this" {
   name       = var.domain
   target     = google_compute_target_https_proxy.this.id
   port_range = "443"
