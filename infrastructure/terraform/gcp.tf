@@ -75,4 +75,8 @@ resource "google_storage_bucket" "web" {
   location                    = var.gcp_bucket_replication
   storage_class               = var.gcp_bucket_tier
   uniform_bucket_level_access = true
+
+  website {
+    main_page_suffix = "index.html"
+  }
 }
