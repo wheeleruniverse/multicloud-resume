@@ -1,6 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ViewService } from './shared/service/view.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +14,14 @@ export class AppComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private changeDetectorRef: ChangeDetectorRef,
-    private viewService: ViewService
-  ) {}
+    private viewService: ViewService,
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+  ) {
+    iconRegistry.addSvgIcon('aws', sanitizer.bypassSecurityTrustResourceUrl('../assets/app/aws.svg'));
+    iconRegistry.addSvgIcon('google', sanitizer.bypassSecurityTrustResourceUrl('../assets/app/google.svg'));
+    iconRegistry.addSvgIcon('microsoft', sanitizer.bypassSecurityTrustResourceUrl('../assets/app/microsoft.svg'));
+  }
 
   private static readonly root = 'https://wheelercloudguru.azurewebsites.net/api';
 
@@ -121,6 +130,10 @@ export class AppComponent implements OnInit {
       this.skillShouldRender = val;
       this.changeDetectorRef.detectChanges();
     });
+  }
+
+  get provider(): string {
+    return environment.provider;
   }
 
   closeView(): void {

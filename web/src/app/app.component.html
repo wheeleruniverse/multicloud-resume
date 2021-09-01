@@ -1,7 +1,12 @@
-<div id="header">
-  <h1 class="header-role" *ngIf="!isMobile && !isTablet"></h1>
-  <h1 class="header-role-mobile" *ngIf="isMobile">Justin Wheeler — Cloud Guru</h1>
-  <h1 class="header-role-tablet" *ngIf="isTablet">Justin Wheeler — Cloud Architect</h1>
+<div class="header">
+  <div class="role">
+    <h1 class="header-role" *ngIf="!isMobile && !isTablet"></h1>
+    <h1 class="header-role-mobile" *ngIf="isMobile">Justin Wheeler — Cloud Guru</h1>
+    <h1 class="header-role-tablet" *ngIf="isTablet">Justin Wheeler — Cloud Architect</h1>
+  </div>
+  <div class="logo">
+    <mat-icon [svgIcon]=provider></mat-icon>
+  </div>
 </div>
 <div>
   <mat-card (click)="toggleAboutShouldRender()" (keydown.enter)="toggleAboutShouldRender()" tabindex="0">
@@ -64,7 +69,7 @@
   </mat-card>
   <app-education *ngIf="educationShouldRender"></app-education>
 </div>
-<div id="footer">
+<div class="footer">
   <mat-divider></mat-divider>
   <app-visitor></app-visitor>
 </div>

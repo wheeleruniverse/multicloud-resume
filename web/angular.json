@@ -36,11 +36,65 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "aws": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.aws.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "azure": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.azure.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "gcp": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.gcp.ts"
                 }
               ],
               "optimization": true,
@@ -71,8 +125,14 @@
             "browserTarget": "web:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "web:build:production"
+            "aws": {
+              "browserTarget": "web:build:aws"
+            },
+            "azure": {
+              "browserTarget": "web:build:azure"
+            },
+            "gcp": {
+              "browserTarget": "web:build:gcp"
             }
           }
         },
@@ -112,8 +172,14 @@
             "devServerTarget": "web:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "web:serve:production"
+            "aws": {
+              "devServerTarget": "web:serve:aws"
+            },
+            "azure": {
+              "devServerTarget": "web:serve:azure"
+            },
+            "gcp": {
+              "devServerTarget": "web:serve:gcp"
             }
           }
         }

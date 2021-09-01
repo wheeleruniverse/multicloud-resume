@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  azure-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,18 +34,18 @@ jobs:
       - name: Build Angular
         run: |
           cd web
-          ng build --prod
+          ng build --configuration azure
 
       - name: Upload Artifact
         if: success()
         uses: actions/upload-artifact@v1
         with:
-          name: dist
+          name: azure-dist
           path: web/dist/web
 
-  deploy:
+  azure-deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: azure-build
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -58,14 +58,14 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v1
         with:
-          name: dist
+          name: azure-dist
 
       - name: Upload to Azure Blob
         uses: azure/CLI@v1
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            az storage blob upload-batch --account-name wheelercloudguruweb -d '$web' -s dist/
+            az storage blob upload-batch --account-name wheelercloudguruweb -d '$web' -s azure-dist/
 
       - name: Purge Azure CDN
         uses: azure/CLI@v1

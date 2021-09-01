@@ -1,8 +1,7 @@
 @import "src/stylesheets/variables";
 
-$name-prefix: "Justin Wheeler — ";
-
 @keyframes spin {
+  $name-prefix: "Justin Wheeler — ";
   0% {
     content: "#{$name-prefix}Cloud Architect";
   }
@@ -38,17 +37,43 @@ $name-prefix: "Justin Wheeler — ";
   }
 }
 
-div {
-  margin-left: 1em;
+.footer {
+  text-align: center;
+}
+
+.header {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  margin: 40px;
+  width: 100%;
+
+  .logo {
+    text-align: center;
+    width: 20%;
+
+    mat-icon {
+      transform: scale(4);
+    }
+  }
+  .role {
+    text-align: left;
+    width: 80%;
+  }
+}
+
+.header-role:after {
+  animation: spin 30s linear infinite;
+  content: "";
+  font-size: 56px;
 }
 
 mat-card {
   cursor: pointer;
-  font-size: xx-large;
-  margin-left: 2em;
-  margin-top: 1.5em;
+  font-size: 32px;
+  margin: 32px 24px;
   text-align: center;
-  width: 25%;
+  width: 20%;
 
   &.disabled {
     opacity: 0.2;
@@ -59,63 +84,73 @@ mat-divider {
   margin: 40px 5%;
 }
 
-#header {
-  margin-left: 2em;
-  margin-top: 3em;
-  text-align: left;
-  width: 80%;
-}
-
-#footer {
-  text-align: center;
-}
-
-.header-role:after {
-  animation: spin 30s linear infinite;
-  content: "";
-  font-size: xxx-large;
-}
 
 @media screen and (max-width: $device-tablet) {
-  mat-card {
-    font-size: x-large;
-    margin: 1em auto;
-    width: 35%;
-  }
 
-  #header {
+  .header {
+    flex-direction: column-reverse;
+    margin: 40px auto 0 auto;
     text-align: center;
     width: 100%;
+
+    .logo {
+      margin-bottom: 40px;
+      width: 100%;
+
+      mat-icon {
+        transform: scale(3);
+      }
+    }
+    .role {
+      text-align: center;
+      width: 100%;
+    }
   }
 
   .header-role-tablet {
-    font-size: xx-large;
+    font-size: 32px;
+  }
+
+  mat-card {
+    font-size: 24px;
+    margin: 32px auto;
+    width: 35%;
   }
 }
 
 @media screen and (max-width: $device-mobile-lg) {
-  div {
-    margin-left: 0.5em;
+
+  .header {
+    margin: 16px 0 0 0;
+    text-align: center;
+    width: 100%;
+
+    .logo {
+      margin-bottom: 16px;
+      width: 100%;
+
+      mat-icon {
+        transform: scale(2);
+      }
+    }
+    .role {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .header-role-mobile {
+    font-size: 24px;
+    margin: 0 auto;
   }
 
   mat-card {
-    font-size: medium;
-    margin: 0.5em auto;
+    font-size: 16px;
+    margin: 16px auto;
     width: 45%;
   }
 
   mat-divider {
     margin: 10px 3%;
-  }
-
-  #header {
-    margin: 0;
-    text-align: center;
-    width: 100%;
-  }
-
-  .header-role-mobile {
-    font-size: large;
-    margin: 0 auto;
   }
 }
