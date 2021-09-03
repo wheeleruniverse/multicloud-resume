@@ -48,7 +48,7 @@ jobs:
       - name: Test Angular
         run: |
           cd web
-          ng test --browsers ChromeHeadless --watch=false
+          npm run ng test --browsers ChromeHeadless --watch=false
 
   azure-build:
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
       - name: Build Angular
         run: |
           cd web
-          ng build --configuration azure
+          npm run ng build --configuration azure
 
       - name: Upload Dist
         if: success()
