@@ -24,7 +24,7 @@ jobs:
         run: |
           cd web
           npm install
-          npm install @angular/cli
+          npm install -g @angular/cli
 
       - name: Test Angular
         run: |
@@ -47,7 +47,7 @@ jobs:
         run: |
           cd web
           npm install
-          npm install @angular/cli
+          npm install -g @angular/cli
 
       - name: Build Angular
         run: |
