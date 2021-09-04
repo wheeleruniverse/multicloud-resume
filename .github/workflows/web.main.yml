@@ -31,6 +31,36 @@ jobs:
           cd web
           ng test --browsers ChromeHeadless --watch=false
 
+  aws-build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install Dependencies
+        run: |
+          cd web
+          npm install
+          npm install -g @angular/cli
+
+      - name: Build Angular
+        run: |
+          cd web
+          ng build --configuration aws
+
+      - name: Upload Dist
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: aws-dist
+          path: web/dist/web
+
   azure-build:
     runs-on: ubuntu-latest
     needs: test
@@ -61,6 +91,20 @@ jobs:
           name: azure-dist
           path: web/dist/web
 
+  aws-deploy:
+    runs-on: ubuntu-latest
+    needs: aws-build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download Dist
+        uses: actions/download-artifact@v1
+        with:
+          name: aws-dist
+
+      # TODO: implement aws-deploy
+
   azure-deploy:
     runs-on: ubuntu-latest
     needs: azure-build
@@ -68,15 +112,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_WEB_AUTH }}
-
       - name: Download Dist
         uses: actions/download-artifact@v1
         with:
           name: azure-dist
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_WEB_AUTH }}
 
       - name: Upload to Azure Blob
         uses: azure/CLI@v1
@@ -99,3 +143,47 @@ jobs:
       - name: Azure Logout
         run: |
           az logout
+
+  gcp-build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install Dependencies
+        run: |
+          cd web
+          npm install
+          npm install -g @angular/cli
+
+      - name: Build Angular
+        run: |
+          cd web
+          ng build --configuration gcp
+
+      - name: Upload Dist
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: gcp-dist
+          path: web/dist/web
+
+  gcp-deploy:
+    runs-on: ubuntu-latest
+    needs: gcp-build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download Dist
+        uses: actions/download-artifact@v1
+        with:
+          name: gcp-dist
+
+      # TODO: implement gcp-deploy
