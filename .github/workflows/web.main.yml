@@ -103,7 +103,20 @@ jobs:
         with:
           name: aws-dist
 
-      # TODO: implement aws-deploy
+      - name: AWS Authenticate
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+
+      - name: Upload to AWS S3
+        run: aws s3 sync aws-dist/ s3://wheelercloudguru-web --delete
+
+      - name: Purge AWS CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E24DJPMVXTY9Q0 \
+            --paths "/*"
 
   azure-deploy:
     runs-on: ubuntu-latest
