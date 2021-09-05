@@ -108,6 +108,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
 
       - name: Upload to AWS S3
         run: aws s3 sync aws-dist/ s3://wheelercloudguru-web --delete
