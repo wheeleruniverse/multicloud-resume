@@ -200,4 +200,14 @@ jobs:
         with:
           name: gcp-dist
 
-      # TODO: implement gcp-deploy
+      - name: GCP Authenticate
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: wheeler-resume
+          service_account_key: ${{ secrets.GCP_SECRET_KEY }}
+
+      - name: Upload to Cloud Storage
+        run: gsutil rsync -c -d -r gcp-dist/ gs://wheelercloudguru-web
+
+      - name: Purge Cloud CDN
+        run: gcloud compute url-maps invalidate-cdn-cache wheelercloudguru --path "/*"
