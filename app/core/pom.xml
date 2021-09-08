@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wheeler</groupId>
-    <artifactId>resume-app</artifactId>
+    <artifactId>resume-core</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Resume Functions</name>
+    <name>Resume Core</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
