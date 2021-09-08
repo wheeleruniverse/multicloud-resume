@@ -141,9 +141,13 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            az storage blob sync \
+            az storage blob delete-batch \
               --account-name wheelercloudguruweb \
-              --container '$web' \
+              --source '$web'
+
+            az storage blob upload-batch \
+              --account-name wheelercloudguruweb \
+              --destination '$web' \
               --source azure-dist/
 
       - name: Purge Azure CDN

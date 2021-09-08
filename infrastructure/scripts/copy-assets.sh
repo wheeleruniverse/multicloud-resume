@@ -15,18 +15,14 @@ aws s3 cp "s3://${BUCKET}" ${LOCAL_DIR} \
 --only-show-errors \
 --recursive 
 
-az storage blob upload-batch \
+az storage blob sync \
 --account-name ${BUCKET//-/} \
---destination web \
---no-progress \
+--container 'web' \
 --only-show-errors \
 --output none \
---source ${LOCAL_DIR}/web
+--source ${LOCAL_DIR}/web/
 
-# https://wheelercloudguruiac.blob.core.windows.net/web/certification/0f6d8e2f-4ba4-4705-a483-2de7b71bf397/badge.png
-# https://wheelercloudguruiac.blob.core.windows.net/web/certification/0f6d8e2f-4ba4-4705-a483-2de7b71bf397/credential.pdf
-
-# TODO: Upload ${LOCAL_DIR} to GCP wheelercloudguru-iac
+gsutil -m -q rsync -d -r ${LOCAL_DIR}/ "gs://${BUCKET}"
 
 rm -rf ${LOCAL_DIR}
 echo "copy-assets.sh ended @ $(date)"
