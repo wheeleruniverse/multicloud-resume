@@ -44,6 +44,13 @@
             <version>${azure.functions.java.library.version}</version>
         </dependency>
 
+        <!-- Core -->
+        <dependency>
+            <groupId>com.wheeler.core</groupId>
+            <artifactId>resume-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

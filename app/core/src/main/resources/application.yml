@@ -1,5 +1,0 @@
-
-cosmos:
-  auth: ${COSMOS_AUTH:auth}
-  host: ${COSMOS_HOST:host}
-  name: ${COSMOS_NAME:name}

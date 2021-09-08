@@ -1,0 +1,24 @@
+package com.wheeler.core.service;
+
+import com.wheeler.core.dao.model.Education;
+import com.wheeler.core.dao.repository.CoreRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.function.Supplier;
+
+@Service
+public class EducationService {
+
+    private final CoreRepository<Education> educationRepository;
+
+    public EducationService(final CoreRepository<Education> educationRepository) {
+        this.educationRepository = educationRepository;
+    }
+
+    @Bean
+    public Supplier<List<Education>> educationRetrieve() {
+        return educationRepository::findAll;
+    }
+}

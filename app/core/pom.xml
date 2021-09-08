@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.wheeler</groupId>
+    <groupId>com.wheeler.core</groupId>
     <artifactId>resume-core</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -12,38 +12,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.3</version>
+        <version>2.5.4</version>
         <relativePath/>
     </parent>
 
     <properties>
-        <azure.functions.java.library.version>1.4.2</azure.functions.java.library.version>
-        <azure.functions.maven.plugin.version>1.10.1</azure.functions.maven.plugin.version>
-        <functionAsp>wheelercloudguru</functionAsp>
-        <functionName>wheelercloudguru</functionName>
-        <functionRegion>eastus2</functionRegion>
-        <functionResourceGroup>wheelercloudguru</functionResourceGroup>
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <stagingDirectory>${project.build.directory}/azure-functions/${functionName}</stagingDirectory>
-        <start-class>com.wheeler.Main</start-class>
     </properties>
 
     <dependencies>
-        <!-- Azure -->
-        <dependency>
-            <groupId>com.azure</groupId>
-            <artifactId>azure-cosmos</artifactId>
-            <version>4.17.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.azure.functions</groupId>
-            <artifactId>azure-functions-java-library</artifactId>
-            <version>${azure.functions.java.library.version}</version>
-        </dependency>
-
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -54,14 +34,11 @@
 
         <!-- Spring -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-function-adapter-azure</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>2.5.4</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-function-webflux</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
 
         <!-- ######################################################################################### -->
         <!-- ################################### Test Dependencies ################################### -->
@@ -97,36 +74,9 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- Azure -->
-            <dependency>
-                <groupId>com.microsoft.azure.functions</groupId>
-                <artifactId>azure-functions-java-library</artifactId>
-                <version>${azure.functions.java.library.version}</version>
-            </dependency>
-
-            <!-- Spring -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-function-dependencies</artifactId>
-                <version>3.1.2</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <pluginManagement>
             <plugins>
-                <!-- Azure -->
-                <plugin>
-                    <groupId>com.microsoft.azure</groupId>
-                    <artifactId>azure-functions-maven-plugin</artifactId>
-                    <version>${azure.functions.maven.plugin.version}</version>
-                </plugin>
-
                 <!-- Maven -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -138,54 +88,9 @@
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>3.1.2</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.1.0</version>
-                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
-            <!-- Azure -->
-            <plugin>
-                <groupId>com.microsoft.azure</groupId>
-                <artifactId>azure-functions-maven-plugin</artifactId>
-                <version>${azure.functions.maven.plugin.version}</version>
-                <configuration>
-                    <appName>${functionName}</appName>
-                    <appServicePlanName>${functionAsp}</appServicePlanName>
-                    <disableAppInsights>false</disableAppInsights>
-                    <region>${functionRegion}</region>
-                    <resourceGroup>${functionResourceGroup}</resourceGroup>
-                    <runtime>
-                        <javaVersion>11</javaVersion>
-                        <os>windows</os>
-                    </runtime>
-                    <appSettings>
-                        <property>
-                            <name>FUNCTIONS_EXTENSION_VERSION</name>
-                            <value>~3</value>
-                        </property>
-                        <property>
-                            <name>FUNCTIONS_WORKER_RUNTIME</name>
-                            <value>java</value>
-                        </property>
-                        <property>
-                            <name>WEBSITE_RUN_FROM_PACKAGE</name>
-                            <value>1</value>
-                        </property>
-                    </appSettings>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>package-functions</id>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!-- Maven -->
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -207,68 +112,6 @@
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <overwrite>true</overwrite>
-                            <outputDirectory>${stagingDirectory}</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}</directory>
-                                    <includes>
-                                        <include>host.json</include>
-                                        <include>local.settings.json</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${stagingDirectory}/lib</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>false</overWriteSnapshots>
-                            <overWriteIfNewer>true</overWriteIfNewer>
-                            <includeScope>runtime</includeScope>
-                            <excludeArtifactIds>azure-functions-java-library</excludeArtifactIds>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Spring -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.springframework.boot.experimental</groupId>
-                        <artifactId>spring-boot-thin-layout</artifactId>
-                        <version>1.0.26.RELEASE</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
