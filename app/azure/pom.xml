@@ -28,7 +28,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionName}</stagingDirectory>
-        <start-class>com.wheeler.Main</start-class>
+        <start-class>com.wheeler.azure.Main</start-class>
     </properties>
 
     <dependencies>
