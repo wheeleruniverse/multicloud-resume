@@ -1,21 +1,20 @@
 package com.wheeler.controller;
 
-import com.azure.cosmos.models.CosmosItemResponse;
 import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import com.wheeler.dao.model.Visitor;
-import com.wheeler.exception.BadRequestException;
+import com.wheeler.core.dao.model.Visitor;
+import com.wheeler.core.exception.BadRequestException;
+import com.wheeler.core.exception.InternalServerErrorException;
 import com.wheeler.exception.ExceptionHandler;
-import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
 import java.util.Optional;
 
 @Controller
-public class VisitorCreateController extends AzureSpringBootRequestHandler<Visitor, CosmosItemResponse<Visitor>> {
+public class VisitorCreateController extends AzureSpringBootRequestHandler<Visitor, Optional<?>> {
 
     /**
      * creates visitor data
@@ -42,8 +41,8 @@ public class VisitorCreateController extends AzureSpringBootRequestHandler<Visit
             return new ExceptionHandler(context, wrapped, request).asHttpResponse(HttpStatus.valueOf(400));
         }
         try {
-            CosmosItemResponse<Visitor> data = handleRequest(visitor, context);
-            return request.createResponseBuilder(HttpStatus.valueOf(data.getStatusCode())).build();
+            handleRequest(visitor, context);
+            return request.createResponseBuilder(HttpStatus.valueOf(200)).build();
         }
         catch(Exception e){
             final Exception wrapped = new InternalServerErrorException(e.getMessage());

@@ -56,7 +56,7 @@ public class CosmosConnector {
         if (TABLES.containsKey(name)){
             return TABLES.get(name);
         }
-        CosmosContainer container = getDatabase().getContainer(name);
+        final CosmosContainer container = getDatabase().getContainer(name);
         TABLES.put(name, container);
         return container;
     }

@@ -22,6 +22,14 @@ public abstract class AbstractCosmosRepository<T> {
 
     public abstract Class<T> getTableType();
 
+    public int count(){
+        final String sql = String.format("select count(*) from %s", getTableName());
+        final CosmosQueryRequestOptions options = cosmosConnector.getQueryOptions();
+        return getTable()
+                .queryItems(sql, options, Integer.class)
+                .stream().findFirst().orElse(0);
+    }
+
     public List<T> findAll() {
         final String sql = String.format("select * from %s", getTableName());
         final CosmosQueryRequestOptions options = cosmosConnector.getQueryOptions();
@@ -30,9 +38,9 @@ public abstract class AbstractCosmosRepository<T> {
                 .stream().collect(Collectors.toList());
     }
 
-    public CosmosItemResponse<T> save(T item) {
+    public void save(T item) {
         final CosmosItemRequestOptions options = cosmosConnector.getItemOptions();
-        return getTable().createItem(item, options);
+        getTable().createItem(item, options);
     }
 
     protected CosmosContainer getTable() {

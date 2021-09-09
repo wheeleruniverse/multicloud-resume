@@ -4,12 +4,10 @@ import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import com.wheeler.dao.filter.QueryFilter;
-import com.wheeler.dao.model.Education;
-import com.wheeler.dao.model.Experience;
-import com.wheeler.dto.model.ExperienceDto;
+import com.wheeler.core.dao.model.Experience;
+import com.wheeler.core.dto.model.ExperienceDto;
+import com.wheeler.core.exception.InternalServerErrorException;
 import com.wheeler.exception.ExceptionHandler;
-import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -17,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class ExperienceController extends AzureSpringBootRequestHandler<QueryFilter, List<Experience>> {
+public class ExperienceController extends AzureSpringBootRequestHandler<Optional<?>, List<Experience>> {
 
     /**
      * retrieves experience data
@@ -33,11 +31,11 @@ public class ExperienceController extends AzureSpringBootRequestHandler<QueryFil
                     methods = {HttpMethod.GET, HttpMethod.POST},
                     name = "req",
                     route = "experience/retrieve")
-                    HttpRequestMessage<Optional<QueryFilter>> request,
+                    HttpRequestMessage<Void> request,
             final ExecutionContext context) {
 
         try {
-            List<Experience> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
+            List<Experience> data = handleRequest(Optional.empty(), context);
             context.getLogger().info(String.format("received %d experience records", data.size()));
             return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new ExperienceDto(data)).build();
         }

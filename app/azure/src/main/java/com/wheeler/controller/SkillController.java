@@ -4,12 +4,10 @@ import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import com.wheeler.dao.constant.SkillLevel;
-import com.wheeler.dao.filter.QueryFilter;
-import com.wheeler.dao.model.Skill;
-import com.wheeler.dto.model.SkillDto;
+import com.wheeler.core.dao.model.Skill;
+import com.wheeler.core.dto.model.SkillDto;
+import com.wheeler.core.exception.InternalServerErrorException;
 import com.wheeler.exception.ExceptionHandler;
-import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -17,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class SkillController extends AzureSpringBootRequestHandler<QueryFilter, List<Skill>> {
+public class SkillController extends AzureSpringBootRequestHandler<Optional<?>, List<Skill>> {
 
     /**
      * retrieves skill data
@@ -33,11 +31,11 @@ public class SkillController extends AzureSpringBootRequestHandler<QueryFilter, 
                     methods = {HttpMethod.GET, HttpMethod.POST},
                     name = "req",
                     route = "skill/retrieve")
-                    HttpRequestMessage<Optional<QueryFilter>> request,
+                    HttpRequestMessage<Void> request,
             final ExecutionContext context) {
 
         try {
-            List<Skill> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
+            List<Skill> data = handleRequest(Optional.empty(), context);
             context.getLogger().info(String.format("received %d skill records", data.size()));
             return request
                     .createResponseBuilder(HttpStatus.valueOf(200))

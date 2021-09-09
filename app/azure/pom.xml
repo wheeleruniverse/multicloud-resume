@@ -48,7 +48,7 @@
         <dependency>
             <groupId>com.wheeler.core</groupId>
             <artifactId>resume-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>2021.09.01</version>
         </dependency>
 
         <!-- Lombok -->

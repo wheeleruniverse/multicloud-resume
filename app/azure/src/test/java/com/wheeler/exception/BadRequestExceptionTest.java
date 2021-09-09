@@ -1,5 +1,6 @@
 package com.wheeler.exception;
 
+import com.wheeler.core.exception.BadRequestException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

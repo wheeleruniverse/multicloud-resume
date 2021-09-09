@@ -4,11 +4,10 @@ import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
-import com.wheeler.dao.filter.QueryFilter;
-import com.wheeler.dao.model.Certification;
-import com.wheeler.dto.model.CertificationDto;
+import com.wheeler.core.dao.model.Certification;
+import com.wheeler.core.dto.model.CertificationDto;
+import com.wheeler.core.exception.InternalServerErrorException;
 import com.wheeler.exception.ExceptionHandler;
-import com.wheeler.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class CertificationController extends AzureSpringBootRequestHandler<QueryFilter, List<Certification>> {
+public class CertificationController extends AzureSpringBootRequestHandler<Optional<?>, List<Certification>> {
 
     /**
      * retrieves certification data
@@ -32,11 +31,11 @@ public class CertificationController extends AzureSpringBootRequestHandler<Query
                     methods = {HttpMethod.GET, HttpMethod.POST},
                     name = "req",
                     route = "certification/retrieve")
-                    HttpRequestMessage<Optional<QueryFilter>> request,
+                    HttpRequestMessage<Void> request,
             final ExecutionContext context) {
 
         try {
-            List<Certification> data = handleRequest(request.getBody().orElse(new QueryFilter()), context);
+            List<Certification> data = handleRequest(Optional.empty(), context);
             context.getLogger().info(String.format("received %d certification records", data.size()));
             return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new CertificationDto(data)).build();
         }

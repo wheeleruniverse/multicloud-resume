@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class VisitorService {
@@ -22,22 +22,23 @@ public class VisitorService {
     }
 
     @Bean
-    public Supplier<List<VisitorCount>> visitorCount() {
-        return () -> {
+    public Function<Optional<?>, List<VisitorCount>> visitorCount() {
+        return (o) -> {
             int count = visitorRepository.count();
             return Collections.singletonList(new VisitorCount(count, null));
         };
     }
     @Bean
-    public Consumer<Visitor> visitorCreate() {
+    public Function<Visitor, Optional<?>> visitorCreate() {
         return visitor -> {
             validateVisitor(visitor);
             visitorRepository.save(visitor);
+            return Optional.empty();
         };
     }
     @Bean
-    public Supplier<List<Visitor>> visitorRetrieve() {
-        return visitorRepository::findAll;
+    public Function<Optional<?>, List<Visitor>> visitorRetrieve() {
+        return (o) -> visitorRepository.findAll();
     }
 
     private void validateVisitor(Visitor visitor){

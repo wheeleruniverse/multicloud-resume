@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Service
@@ -18,7 +20,7 @@ public class CertificationService {
     }
 
     @Bean
-    public Supplier<List<Certification>> certificationRetrieve() {
-        return certificationRepository::findAll;
+    public Function<Optional<?>, List<Certification>> certificationRetrieve() {
+        return (o) -> certificationRepository.findAll();
     }
 }

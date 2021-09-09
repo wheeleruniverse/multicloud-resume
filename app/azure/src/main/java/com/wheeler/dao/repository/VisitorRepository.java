@@ -1,17 +1,19 @@
 package com.wheeler.dao.repository;
 
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
+import com.wheeler.core.dao.model.Visitor;
+import com.wheeler.core.dao.model.VisitorCount;
+import com.wheeler.core.dao.repository.CoreRepository;
 import com.wheeler.dao.connection.CosmosConnector;
-import com.wheeler.dao.model.Skill;
-import com.wheeler.dao.model.Visitor;
-import com.wheeler.dao.model.VisitorCount;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class VisitorRepository extends AbstractCosmosRepository<Visitor> {
+public class VisitorRepository
+        extends AbstractCosmosRepository<Visitor>
+        implements CoreRepository<Visitor> {
 
     public VisitorRepository(final CosmosConnector cosmosConnector) {
         super(cosmosConnector);

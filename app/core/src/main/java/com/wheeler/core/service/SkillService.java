@@ -6,7 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class SkillService {
@@ -18,7 +19,7 @@ public class SkillService {
     }
 
     @Bean
-    public Supplier<List<Skill>> skillRetrieve() {
-        return skillRepository::findAll;
+    public Function<Optional<?>, List<Skill>> skillRetrieve() {
+        return (o) -> skillRepository.findAll();
     }
 }
