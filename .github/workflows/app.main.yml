@@ -21,9 +21,14 @@ jobs:
           distribution: adopt
           java-version: 11
 
-      - name: Package
+      - name: Install Core
         run: |
-          cd app
+          cd app/core
+          mvn clean install
+
+      - name: Package Azure
+        run: |
+          cd app/azure
           mvn clean package
 
       - name: Upload to Azure Functions
