@@ -1,13 +1,12 @@
 package com.wheeler.azure.controller;
 
-import com.wheeler.azure.exception.ExceptionHandler;
 import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
+import com.wheeler.azure.exception.ExceptionHandler;
 import com.wheeler.core.dao.model.Project;
 import com.wheeler.core.dto.model.ProjectDto;
-import com.wheeler.core.exception.InternalServerErrorException;
 import org.springframework.cloud.function.adapter.azure.AzureSpringBootRequestHandler;
 import org.springframework.stereotype.Controller;
 
@@ -40,8 +39,7 @@ public class ProjectController extends AzureSpringBootRequestHandler<Optional<?>
             return request.createResponseBuilder(HttpStatus.valueOf(200)).body(new ProjectDto(data)).build();
         }
         catch(Exception e){
-            final Exception wrapped = new InternalServerErrorException(e.getMessage());
-            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+            return new ExceptionHandler(context, e, request).asHttpResponse();
         }
     }
 }

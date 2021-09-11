@@ -37,16 +37,15 @@ public class VisitorCreateController extends AzureSpringBootRequestHandler<Visit
         context.getLogger().info(String.format("visitor: %s", visitor));
 
         if (visitor == null || visitor.getName() == null){
-            final Exception wrapped = new BadRequestException("visitor.name is invalid");
-            return new ExceptionHandler(context, wrapped, request).asHttpResponse(HttpStatus.valueOf(400));
+            final BadRequestException exception = new BadRequestException("visitor.name is invalid");
+            return new ExceptionHandler(context, exception, request).asHttpResponse(HttpStatus.valueOf(400));
         }
         try {
             handleRequest(visitor, context);
             return request.createResponseBuilder(HttpStatus.valueOf(200)).build();
         }
         catch(Exception e){
-            final Exception wrapped = new InternalServerErrorException(e.getMessage());
-            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+            return new ExceptionHandler(context, e, request).asHttpResponse();
         }
     }
 }

@@ -1,10 +1,10 @@
 package com.wheeler.azure.exception;
 
+import com.azure.cosmos.implementation.apachecommons.lang.exception.ExceptionUtils;
 import com.microsoft.azure.functions.ExecutionContext;
 import com.microsoft.azure.functions.HttpRequestMessage;
 import com.microsoft.azure.functions.HttpResponseMessage;
 import com.microsoft.azure.functions.HttpStatus;
-import com.wheeler.core.exception.InternalServerErrorException;
 
 import java.util.logging.Level;
 
@@ -29,19 +29,7 @@ public class ExceptionHandler {
     }
 
     private HttpResponseMessage createResponse(final HttpStatus status){
-        logException();
+        context.getLogger().log(Level.SEVERE, ExceptionUtils.getStackTrace(exception));
         return request.createResponseBuilder(status).body(exception.getMessage()).build();
-    }
-
-    private void logException(){
-
-        Level level;
-        if(exception instanceof InternalServerErrorException){
-            level = Level.SEVERE;
-        }
-        else {
-            level = Level.INFO;
-        }
-        context.getLogger().log(level, exception.toString());
     }
 }

@@ -43,8 +43,7 @@ public class SkillController extends AzureSpringBootRequestHandler<Optional<?>, 
                     .build();
         }
         catch(Exception e){
-            final Exception wrapped = new InternalServerErrorException(e.getMessage());
-            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+            return new ExceptionHandler(context, e, request).asHttpResponse();
         }
     }
 }

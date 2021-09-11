@@ -39,8 +39,7 @@ public class VisitorRetrieveController extends AzureSpringBootRequestHandler<Opt
             return request.createResponseBuilder(HttpStatus.valueOf(200)).body(data).build();
         }
         catch(Exception e){
-            final Exception wrapped = new InternalServerErrorException(e.getMessage());
-            return new ExceptionHandler(context, wrapped, request).asHttpResponse();
+            return new ExceptionHandler(context, e, request).asHttpResponse();
         }
     }
 }
