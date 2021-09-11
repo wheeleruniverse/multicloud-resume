@@ -21,13 +21,13 @@ public class VisitorRetrieveController extends AzureSpringBootRequestHandler<Opt
      *
      * @param request the http request
      * @param context the execution context
-     * @return an http response message
+     * @return a http response message
      */
     @FunctionName("visitorRetrieve")
     public HttpResponseMessage retrieve(
             @HttpTrigger(
                     authLevel = AuthorizationLevel.ANONYMOUS,
-                    methods = {HttpMethod.GET, HttpMethod.POST},
+                    methods = {HttpMethod.GET},
                     name = "req",
                     route = "visitor/retrieve")
                     HttpRequestMessage<Void> request,

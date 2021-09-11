@@ -21,7 +21,7 @@ public class VisitorCreateController extends AzureSpringBootRequestHandler<Visit
      *
      * @param request the http request
      * @param context the execution context
-     * @return an http response message
+     * @return a http response message
      */
     @FunctionName("visitorCreate")
     public HttpResponseMessage create(

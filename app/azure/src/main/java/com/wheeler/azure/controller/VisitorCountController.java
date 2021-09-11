@@ -21,13 +21,13 @@ public class VisitorCountController extends AzureSpringBootRequestHandler<Option
      *
      * @param request the http request
      * @param context the execution context
-     * @return an http response message
+     * @return a http response message
      */
     @FunctionName("visitorCount")
     public HttpResponseMessage count(
             @HttpTrigger(
                     authLevel = AuthorizationLevel.ANONYMOUS,
-                    methods = {HttpMethod.GET, HttpMethod.POST},
+                    methods = {HttpMethod.GET},
                     name = "req",
                     route = "visitor/count")
                     HttpRequestMessage<Void> request,

@@ -22,13 +22,13 @@ public class EducationController extends AzureSpringBootRequestHandler<Optional<
      *
      * @param request the http request
      * @param context the execution context
-     * @return an http response message
+     * @return a http response message
      */
     @FunctionName("educationRetrieve")
     public HttpResponseMessage retrieve(
             @HttpTrigger(
                     authLevel = AuthorizationLevel.ANONYMOUS,
-                    methods = {HttpMethod.GET, HttpMethod.POST},
+                    methods = {HttpMethod.GET},
                     name = "req",
                     route = "education/retrieve")
                     HttpRequestMessage<Void> request,

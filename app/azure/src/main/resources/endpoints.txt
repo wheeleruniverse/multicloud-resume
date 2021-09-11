@@ -1,8 +1,0 @@
-https://wheeler-resume-app.azurewebsites.net/api/certification/retrieve
-https://wheeler-resume-app.azurewebsites.net/api/education/retrieve
-https://wheeler-resume-app.azurewebsites.net/api/experience/retrieve
-https://wheeler-resume-app.azurewebsites.net/api/project/retrieve
-https://wheeler-resume-app.azurewebsites.net/api/skill/retrieve
-https://wheeler-resume-app.azurewebsites.net/api/visitor/count
-https://wheeler-resume-app.azurewebsites.net/api/visitor/create
-https://wheeler-resume-app.azurewebsites.net/api/visitor/retrieve
