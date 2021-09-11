@@ -15,11 +15,8 @@ export class VisitorComponent implements OnInit {
   total: number;
 
   ngOnInit(): void {
-    this.service.count().subscribe((count) => {
-      this.initTotal();
-      count.forEach((c) => {
-        this.total += c.cnt;
-      });
+    this.service.count().subscribe((total) => {
+      this.total = total;
     });
 
     if (!this.cookieService.check('Visitor')) {
@@ -32,20 +29,13 @@ export class VisitorComponent implements OnInit {
     const visitor = { id: v4(), name: window.navigator.userAgent };
 
     this.service.create(visitor).subscribe((res) => {
-      this.initTotal();
-      if (res.status === 201) {
+      if (res.status === 200) {
         this.cookieService.set('Visitor', visitor.id, 30);
         this.snackBar.open('Visitor Created!', null, config);
-        this.total += 1;
+        this.total = !!this.total ? this.total + 1 : 1;
       } else {
         this.snackBar.open('Visitor Failure!', null, config);
       }
     });
-  }
-
-  private initTotal(): void {
-    if (this.total == null) {
-      this.total = 0;
-    }
   }
 }
