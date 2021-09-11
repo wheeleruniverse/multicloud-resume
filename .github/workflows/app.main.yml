@@ -36,6 +36,6 @@ jobs:
         id: wheelercloudguru
         with:
           app-name: wheelercloudguru
-          package: app/target/azure-functions/wheelercloudguru
+          package: app/azure/target/azure-functions/wheelercloudguru
           publish-profile: ${{ secrets.AZURE_APP_AUTH }}
 
