@@ -1,13 +1,11 @@
 package com.wheeler.core.service;
 
 import com.wheeler.core.dao.model.Visitor;
-import com.wheeler.core.dao.model.VisitorCount;
 import com.wheeler.core.dao.repository.CoreRepository;
 import com.wheeler.core.exception.BadRequestException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -22,11 +20,8 @@ public class VisitorService {
     }
 
     @Bean
-    public Function<Optional<?>, List<VisitorCount>> visitorCount() {
-        return (o) -> {
-            int count = visitorRepository.count();
-            return Collections.singletonList(new VisitorCount(count, null));
-        };
+    public Function<Optional<?>, Integer> visitorCount() {
+        return (o) -> visitorRepository.count();
     }
     @Bean
     public Function<Visitor, Optional<?>> visitorCreate() {

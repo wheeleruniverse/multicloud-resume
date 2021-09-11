@@ -4,6 +4,7 @@ import com.azure.cosmos.CosmosContainer;
 import com.azure.cosmos.models.CosmosItemRequestOptions;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import com.wheeler.azure.dao.connection.CosmosConnector;
+import com.wheeler.azure.dao.model.Count;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,11 +23,12 @@ public abstract class AbstractCosmosRepository<T> {
     public abstract Class<T> getTableType();
 
     public int count(){
-        final String sql = String.format("select count(*) from %s", getTableName());
+        final String sql = String.format("select count(c.id) total from %s c", getTableName());
         final CosmosQueryRequestOptions options = cosmosConnector.getQueryOptions();
         return getTable()
-                .queryItems(sql, options, Integer.class)
-                .stream().findFirst().orElse(0);
+                .queryItems(sql, options, Count.class)
+                .stream().findFirst().orElse(new Count())
+                .getTotal();
     }
 
     public List<T> findAll() {
