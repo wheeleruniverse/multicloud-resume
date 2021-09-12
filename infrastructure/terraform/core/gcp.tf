@@ -1,7 +1,11 @@
 
 provider "google" {
-  project = "wheeler-resume"
+  project = local.gcp_project
   region  = "us-central1"
+}
+
+locals {
+  gcp_project = "wheeler-resume"
 }
 
 variable "gcp_bucket_replication" {
@@ -14,6 +18,11 @@ variable "gcp_bucket_tier" {
   default     = "STANDARD"
   description = "bucket tier"
   type        = string
+}
+
+resource "google_app_engine_application" "this" {
+  database_type = "CLOUD_FIRESTORE"
+  location_id = "us-central"
 }
 
 resource "google_compute_backend_bucket" "this" {

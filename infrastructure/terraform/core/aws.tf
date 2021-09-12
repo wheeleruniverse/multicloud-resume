@@ -11,17 +11,6 @@ locals {
   ]
 }
 
-resource "aws_acm_certificate" "this" {
-  domain_name               = var.fqdn
-  subject_alternative_names = local.aws_fqdn_list
-  tags                      = local.tags
-  validation_method         = "DNS"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_cloudfront_distribution" "this" {
   aliases             = local.aws_fqdn_list
   enabled             = true
@@ -71,7 +60,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
   viewer_certificate {
-    acm_certificate_arn            = aws_acm_certificate.this.arn
+    acm_certificate_arn            = "arn:aws:acm:us-east-1:778263278211:certificate/5bed8c4a-fb53-4a2e-800d-64740eaf6c7b"
     cloudfront_default_certificate = false
     minimum_protocol_version       = "TLSv1.2_2021"
     ssl_support_method             = "sni-only"
