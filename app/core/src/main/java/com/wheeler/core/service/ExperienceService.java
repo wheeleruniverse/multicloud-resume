@@ -21,6 +21,14 @@ public class ExperienceService {
     }
 
     @Bean
+    public Function<String, Optional<?>>experienceLoad() {
+        return (json) -> {
+            experienceRepository.load(json);
+            return Optional.empty();
+        };
+    }
+
+    @Bean
     public Function<Optional<?>, List<Experience>> experienceRetrieve() {
         return (o) -> experienceRepository.findAll();
     }

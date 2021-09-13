@@ -20,6 +20,14 @@ public class CertificationService {
     }
 
     @Bean
+    public Function<String, Optional<?>> certificationLoad() {
+        return (json) -> {
+            certificationRepository.load(json);
+            return Optional.empty();
+        };
+    }
+
+    @Bean
     public Function<Optional<?>, List<Certification>> certificationRetrieve() {
         return (o) -> certificationRepository.findAll();
     }

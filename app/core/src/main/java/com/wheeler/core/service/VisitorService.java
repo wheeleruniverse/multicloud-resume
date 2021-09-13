@@ -23,6 +23,7 @@ public class VisitorService {
     public Function<Optional<?>, Integer> visitorCount() {
         return (o) -> visitorRepository.count();
     }
+
     @Bean
     public Function<Visitor, Optional<?>> visitorCreate() {
         return visitor -> {
@@ -31,6 +32,15 @@ public class VisitorService {
             return Optional.empty();
         };
     }
+
+    @Bean
+    public Function<String, Optional<?>> visitorLoad() {
+        return (json) -> {
+            visitorRepository.load(json);
+            return Optional.empty();
+        };
+    }
+
     @Bean
     public Function<Optional<?>, List<Visitor>> visitorRetrieve() {
         return (o) -> visitorRepository.findAll();

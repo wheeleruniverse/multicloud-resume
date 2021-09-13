@@ -1,17 +1,15 @@
 package com.wheeler.azure.dao.connection;
 
-import com.azure.cosmos.*;
+import com.azure.cosmos.ConsistencyLevel;
+import com.azure.cosmos.CosmosClient;
+import com.azure.cosmos.CosmosClientBuilder;
+import com.azure.cosmos.CosmosDatabase;
 import com.azure.cosmos.models.CosmosItemRequestOptions;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Service
 public class CosmosConnector {
-
-    private static final Map<String, CosmosContainer> TABLES = new HashMap<>();
 
     private final String cosmosAuth;
     private final String cosmosHost;
@@ -50,14 +48,5 @@ public class CosmosConnector {
 
     public CosmosQueryRequestOptions getQueryOptions(){
         return new CosmosQueryRequestOptions();
-    }
-
-    public CosmosContainer getTable(String name){
-        if (TABLES.containsKey(name)){
-            return TABLES.get(name);
-        }
-        final CosmosContainer container = getDatabase().getContainer(name);
-        TABLES.put(name, container);
-        return container;
     }
 }

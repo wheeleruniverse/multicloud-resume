@@ -21,6 +21,14 @@ public class ProjectService {
     }
 
     @Bean
+    public Function<String, Optional<?>> projectLoad() {
+        return (json) -> {
+            projectRepository.load(json);
+            return Optional.empty();
+        };
+    }
+
+    @Bean
     public Function<Optional<?>, List<Project>> projectRetrieve() {
         return (o) -> projectRepository.findAll();
     }

@@ -7,8 +7,6 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Resume Azure</name>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -28,7 +26,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionName}</stagingDirectory>
-        <start-class>com.wheeler.azure.Main</start-class>
+        <start-class>com.wheeler.azure.ResumeAzureMain</start-class>
     </properties>
 
     <dependencies>
@@ -48,7 +46,7 @@
         <dependency>
             <groupId>com.wheeler.core</groupId>
             <artifactId>resume-core</artifactId>
-            <version>2021.09.02</version>
+            <version>2021.09.03</version>
         </dependency>
 
         <!-- Lombok -->

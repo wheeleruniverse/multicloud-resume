@@ -20,6 +20,14 @@ public class EducationService {
     }
 
     @Bean
+    public Function<String, Optional<?>> educationLoad() {
+        return (json) -> {
+            educationRepository.load(json);
+            return Optional.empty();
+        };
+    }
+
+    @Bean
     public Function<Optional<?>, List<Education>> educationRetrieve() {
         return (o) -> educationRepository.findAll();
     }

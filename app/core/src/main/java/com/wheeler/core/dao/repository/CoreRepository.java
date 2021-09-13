@@ -8,5 +8,7 @@ public interface CoreRepository<T> {
 
     List<T> findAll();
 
-    void save(T record);
+    void load(final String json);
+
+    void save(final T record);
 }

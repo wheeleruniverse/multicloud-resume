@@ -19,6 +19,14 @@ public class SkillService {
     }
 
     @Bean
+    public Function<String, Optional<?>> skillLoad() {
+        return (json) -> {
+            skillRepository.load(json);
+            return Optional.empty();
+        };
+    }
+
+    @Bean
     public Function<Optional<?>, List<Skill>> skillRetrieve() {
         return (o) -> skillRepository.findAll();
     }

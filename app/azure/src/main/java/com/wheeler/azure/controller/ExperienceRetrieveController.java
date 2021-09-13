@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class ExperienceController extends AzureSpringBootRequestHandler<Optional<?>, List<Experience>> {
+public class ExperienceRetrieveController extends AzureSpringBootRequestHandler<Optional<?>, List<Experience>> {
 
     /**
      * retrieves experience data
