@@ -28,6 +28,18 @@ resource "google_app_engine_application" "this" {
 resource "google_cloud_run_service" "this" {
   location = "us-central1"
   name     = var.domain
+
+  template {
+    spec {
+      containers {
+        image = "us-docker.pkg.dev/cloudrun/container/hello"
+      }
+    }
+  }
+  traffic {
+    latest_revision = true
+    percent         = 100
+  }
 }
 
 resource "google_compute_backend_bucket" "this" {
