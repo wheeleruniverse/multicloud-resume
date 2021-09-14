@@ -1,16 +1,16 @@
-name: App Azure Deployment
+name: App Deployment (Azure)
 
 on:
   push:
     branches: [main]
     paths:
-    - app/azure/**
     - app/core/**
+    - app/azure/**
 
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  azure-deployment:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

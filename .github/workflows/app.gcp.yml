@@ -1,4 +1,4 @@
-name: App Gcp Deployment
+name: App Deployment (GCP)
 
 on:
   push:
@@ -10,22 +10,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  docker-deployment:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Use Java 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: adopt
-          java-version: 11
-
-      - name: Install Core
-        run: |
-          cd app/core
-          mvn clean install
 
       - name: Docker Build
         run: docker build app/gcp -t wheeler146/resume:gcp-latest
