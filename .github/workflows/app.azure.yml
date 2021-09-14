@@ -1,10 +1,11 @@
-name: App Deployment
+name: App Azure Deployment
 
 on:
   push:
     branches: [main]
     paths:
-    - app/**
+    - app/azure/**
+    - app/core/**
 
   workflow_dispatch:
 

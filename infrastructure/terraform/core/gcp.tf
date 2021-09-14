@@ -22,7 +22,12 @@ variable "gcp_bucket_tier" {
 
 resource "google_app_engine_application" "this" {
   database_type = "CLOUD_FIRESTORE"
-  location_id = "us-central"
+  location_id   = "us-central"
+}
+
+resource "google_cloud_run_service" "this" {
+  location = "us-central1"
+  name     = var.domain
 }
 
 resource "google_compute_backend_bucket" "this" {
