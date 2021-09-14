@@ -1,6 +1,8 @@
 FROM maven:3.8-jdk-11 as builder
 
 WORKDIR /app
+RUN ls -lht
+
 RUN mkdir core
 COPY /core/pom.xml ./core/pom.xml
 COPY /core/src ./core/src
