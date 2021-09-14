@@ -1,20 +1,9 @@
 FROM maven:3.8-jdk-11 as builder
 
-WORKDIR /app
-RUN ls -lht
+WORKDIR /app/gcp
+COPY pom.xml .
+COPY src ./src
 
-RUN mkdir core
-COPY /core/pom.xml ./core/pom.xml
-COPY /core/src ./core/src
-
-RUN mkdir gcp
-COPY /gcp/pom.xml ./gcp/pom.xml
-COPY /gcp/src ./gcp/src
-
-WORKDIR ./core
-RUN mvn clean install
-
-WORKDIR ./gcp
 RUN mvn package -DskipTests
 
 FROM adoptopenjdk/openjdk11:alpine-jre
