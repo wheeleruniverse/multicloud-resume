@@ -1,6 +1,8 @@
 
 .idea
 
+app/*/target
+
 infrastructure/terraform/*/.terraform
 infrastructure/terraform/*/*.tfstate
 infrastructure/terraform/*/*.tfstate.*

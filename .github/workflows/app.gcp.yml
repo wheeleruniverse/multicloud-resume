@@ -33,7 +33,7 @@ jobs:
       - name: Docker Login
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_USERNAME: ${{ secrets.$DOCKER_USERNAME }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker login -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
 
       - name: Docker Push
