@@ -30,6 +30,6 @@ jobs:
       - name: Deploy Script
         shell: bash
         run: |
-          cd /app/core
+          cd app/core
           chmod +x ./deploy.sh
           ./deploy.sh
