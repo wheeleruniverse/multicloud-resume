@@ -99,4 +99,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>codeartifact</id>
+            <name>codeartifact</name>
+            <url>https://wheelercloudguru-778263278211.d.codeartifact.us-east-1.amazonaws.com/maven/resume/</url>
+        </repository>
+    </repositories>
 </project>

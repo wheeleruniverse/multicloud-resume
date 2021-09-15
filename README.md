@@ -1,5 +1,7 @@
 [![App Deployment (Azure)](https://github.com/wheelers-websites/Resume/actions/workflows/app.azure.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app.azure.yml)
 
+[![App Deployment (Core)](https://github.com/wheelers-websites/Resume/actions/workflows/app.core.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app.core.yml)
+
 [![App Deployment (GCP)](https://github.com/wheelers-websites/Resume/actions/workflows/app.gcp.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app.gcp.yml)
 
 [![Web Deployment](https://github.com/wheelers-websites/Resume/actions/workflows/web.main.yml/badge.svg?branch=main)](https://github.com/wheelers-websites/Resume/actions/workflows/web.main.yml)

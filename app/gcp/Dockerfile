@@ -1,10 +1,5 @@
 FROM maven:3.8-jdk-11 as builder
 
-WORKDIR /app/core
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean install
-
 WORKDIR /app/gcp
 COPY pom.xml .
 COPY src ./src
