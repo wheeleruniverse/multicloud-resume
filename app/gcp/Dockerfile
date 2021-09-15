@@ -1,5 +1,8 @@
 FROM maven:3.8-jdk-11 as builder
 
+ARG artifacts_auth
+RUN echo "artifacts_auth=${artifacts_auth}"
+
 WORKDIR /app/gcp
 
 RUN mkdir -p /root/.m2/repository
