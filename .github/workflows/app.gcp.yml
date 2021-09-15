@@ -1,4 +1,4 @@
-name: App Deployment (GCP)
+name: app-gcp
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker-deployment:
+  gcp-deployment:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
