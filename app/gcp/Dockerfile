@@ -1,7 +1,6 @@
 FROM maven:3.8-jdk-11 as builder
 
-ARG artifacts_auth
-RUN echo "artifacts_auth=${artifacts_auth}"
+ARG ARTIFACTS_AUTH
 
 WORKDIR /app/gcp
 

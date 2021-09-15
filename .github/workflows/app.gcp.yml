@@ -33,7 +33,7 @@ jobs:
 
           echo "docker build app/gcp"
           docker build app/gcp \
-          --build-arg artifacts_auth=${ARTIFACTS_AUTH}
+          --build-arg ARTIFACTS_AUTH=${ARTIFACTS_AUTH}
           --tag wheeler146/resume:gcp-latest
 
       - name: Docker Login
