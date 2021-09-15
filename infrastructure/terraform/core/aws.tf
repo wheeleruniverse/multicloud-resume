@@ -71,6 +71,45 @@ resource "aws_cloudfront_origin_access_identity" "this" {
   comment = "${var.domain} oai"
 }
 
+resource "aws_codeartifact_domain" "this" {
+  domain = var.domain
+  tags   = local.tags
+}
+
+resource "aws_codeartifact_repository" "this" {
+  domain     = aws_codeartifact_domain.this.domain
+  repository = var.project
+  tags       = local.tags
+}
+
+resource "aws_codeartifact_repository_permissions_policy" "this" {
+  domain          = aws_codeartifact_domain.this.domain
+  repository      = aws_codeartifact_repository.this.repository
+  policy_document = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "codeartifact:DescribePackageVersion",
+                "codeartifact:DescribeRepository",
+                "codeartifact:GetPackageVersionReadme",
+                "codeartifact:GetRepositoryEndpoint",
+                "codeartifact:ListPackageVersionAssets",
+                "codeartifact:ListPackageVersionDependencies",
+                "codeartifact:ListPackageVersions",
+                "codeartifact:ListPackages",
+                "codeartifact:ReadFromRepository"
+            ],
+            "Effect": "Allow",
+            "Principal": "*",
+            "Resource": "${aws_codeartifact_repository.this.arn}"
+        }
+    ]
+}
+EOF
+}
+
 resource "aws_s3_bucket" "app" {
   acl    = "private"
   bucket = "${var.domain}-app"

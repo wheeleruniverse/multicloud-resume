@@ -1,0 +1,31 @@
+name: App Deployment (Core)
+
+on:
+  push:
+    branches: [main]
+    paths:
+    - app/core/**
+
+  workflow_dispatch:
+
+jobs:
+  core-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure Maven
+        uses: s4u/maven-settings-action@v2.4.1
+        with:
+          servers: '[{"id": "codeartifact", "username": "aws", "password": "${env.ARTIFACTS_AUTH}"}]'
+
+      - name: AWS Authenticate
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy Script
+        run: ./app/core/deploy.sh
