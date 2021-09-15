@@ -15,16 +15,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Java 11
-        uses: actions/setup-java@v2
+      - name: Configure Maven
+        uses: s4u/maven-settings-action@v2.4.1
         with:
-          distribution: adopt
-          java-version: 11
+          servers: '[{"id": "codeartifact", "username": "aws", "password": "${env.ARTIFACTS_AUTH}"}]'
 
-      - name: Package Azure
+      - name: AWS Authenticate
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy Script
+        shell: bash
         run: |
           cd app/azure
-          mvn clean package
+          chmod +x ./deploy.sh
+          ./deploy.sh
 
       - name: Upload to Azure Functions
         uses: Azure/functions-action@v1
