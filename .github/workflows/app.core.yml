@@ -28,4 +28,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy Script
-        run: ./app/core/deploy.sh
+        shell: bash
+        run: |
+          chmod +x ./app/core/deploy.sh
+          ./app/core/deploy.sh

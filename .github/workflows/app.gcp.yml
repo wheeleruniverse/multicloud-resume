@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
     paths:
-    - app/core/**
     - app/gcp/**
 
   workflow_dispatch:
