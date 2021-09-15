@@ -1,9 +1,9 @@
 FROM maven:3.8-jdk-11 as builder
 
 WORKDIR /app/gcp
-COPY pom.xml .
-COPY src ./src
-RUN mvn package -DskipTests
+COPY . .
+
+RUN export ARTIFACTS_AUTH=$(aws codeartifact get-authorization-token --domain wheelercloudguru --query authorizationToken --output text) && mvn package -DskipTests
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 
