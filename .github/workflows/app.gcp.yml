@@ -15,8 +15,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Configure Maven
+        uses: s4u/maven-settings-action@v2.4.1
+        with:
+          servers: '[{"id": "codeartifact", "username": "aws", "password": "${env.ARTIFACTS_AUTH}"}]'
+
+      - name: AWS Authenticate
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
       - name: Docker Build
-        run: docker build app/gcp -t wheeler146/resume:gcp-latest
+        shell: bash
+        run: |
+          echo "aws codeartifact get-authorization-token"
+          ARTIFACTS_AUTH=$(aws codeartifact get-authorization-token \
+          --domain wheelercloudguru \
+          --query authorizationToken \
+          --output text)
+
+          echo "docker build app/gcp"
+          docker build app/gcp \
+          --build-arg ARTIFACTS_AUTH=${ARTIFACTS_AUTH}
+          --tag wheeler146/resume:gcp-latest
 
       - name: Docker Login
         env:
