@@ -76,6 +76,10 @@ resource "google_compute_url_map" "this" {
   name            = var.domain
 }
 
+resource "google_container_registry" "this" {
+  location = "US"
+}
+
 resource "google_storage_bucket" "app" {
   name                        = "${var.domain}-app"
   force_destroy               = true

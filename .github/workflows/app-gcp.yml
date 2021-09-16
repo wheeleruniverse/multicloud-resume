@@ -42,5 +42,20 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker login -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
 
-      - name: Docker Push
+      - name: Docker Push to Docker Hub
         run: docker push wheeler146/resume:gcp-latest
+
+      - name: GCP Authenticate
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: wheeler-resume
+          service_account_key: ${{ secrets.GCP_SECRET_KEY }}
+
+      - name: Docker Push to Container Registry
+        run: docker push gcr.io/wheeler-resume/resume:gcp-latest
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy wheelercloudguru \
+          --image gcr.io/wheeler-resume/resume:gcp-latest \
+          --region us-central1
