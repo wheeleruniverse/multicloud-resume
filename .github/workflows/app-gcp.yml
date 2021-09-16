@@ -52,7 +52,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SECRET_KEY }}
 
       - name: Docker Login
-        run: echo ${{ secrets.GCP_SECRET_KEY }} | docker login -u _json_key --password-stdin https://gcr.io
+        run: docker login -u _json_key -p ${{ secrets.GCP_SECRET_KEY }} https://gcr.io
 
       - name: Docker Push to Container Registry
         run: docker push gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA}
