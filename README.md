@@ -1,10 +1,10 @@
-[![app-azure](https://github.com/wheelers-websites/Resume/actions/workflows/app.azure.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app.azure.yml)
+[![app-azure](https://github.com/wheelers-websites/Resume/actions/workflows/app-azure.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-azure.yml)
 
-[![app-core](https://github.com/wheelers-websites/Resume/actions/workflows/app.core.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app.core.yml)
+[![app-core](https://github.com/wheelers-websites/Resume/actions/workflows/app-core.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-core.yml)
 
-[![app-gcp](https://github.com/wheelers-websites/Resume/actions/workflows/app.gcp.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app.gcp.yml)
+[![app-gcp](https://github.com/wheelers-websites/Resume/actions/workflows/app-gcp.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-gcp.yml)
 
-[![web](https://github.com/wheelers-websites/Resume/actions/workflows/web.main.yml/badge.svg?branch=main)](https://github.com/wheelers-websites/Resume/actions/workflows/web.main.yml)
+[![web](https://github.com/wheelers-websites/Resume/actions/workflows/web.yml/badge.svg?branch=main)](https://github.com/wheelers-websites/Resume/actions/workflows/web.yml)
 
 # Resume
 
