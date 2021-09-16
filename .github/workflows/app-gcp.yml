@@ -25,6 +25,7 @@ jobs:
       - name: Docker Build
         shell: bash
         run: |
+          echo "GITHUB_SHA: '${GITHUB_SHA}'"
           echo "aws codeartifact get-authorization-token"
           ARTIFACTS_AUTH=$(aws codeartifact get-authorization-token \
           --domain wheelercloudguru \
@@ -34,16 +35,16 @@ jobs:
           echo "docker build app/gcp"
           docker build app/gcp \
           --build-arg ARTIFACTS_AUTH=${ARTIFACTS_AUTH} \
-          --tag wheeler146/resume:gcp-latest
+          --tag gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA}
 
-      - name: Docker Login
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        run: docker login -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
-
-      - name: Docker Push to Docker Hub
-        run: docker push wheeler146/resume:gcp-latest
+#      - name: Docker Login
+#        env:
+#          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+#          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#        run: docker login -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
+#
+#      - name: Docker Push to Docker Hub
+#        run: docker push wheeler146/resume:gcp-latest
 
       - name: GCP Authenticate
         uses: google-github-actions/setup-gcloud@master
@@ -52,10 +53,10 @@ jobs:
           service_account_key: ${{ secrets.GCP_SECRET_KEY }}
 
       - name: Docker Push to Container Registry
-        run: docker push gcr.io/wheeler-resume/resume:gcp-latest
+        run: docker push gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA}
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy wheelercloudguru \
-          --image gcr.io/wheeler-resume/resume:gcp-latest \
+          --image gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA} \
           --region us-central1
