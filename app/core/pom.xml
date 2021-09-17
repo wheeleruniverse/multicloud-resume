@@ -4,7 +4,7 @@
 
     <groupId>com.wheeler.core</groupId>
     <artifactId>resume-core</artifactId>
-    <version>2021.09.05</version>
+    <version>2021.09.06</version>
     <packaging>jar</packaging>
 
     <parent>

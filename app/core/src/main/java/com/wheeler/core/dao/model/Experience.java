@@ -5,12 +5,14 @@ import com.wheeler.core.dao.model.partial.Location;
 import com.wheeler.core.dao.model.partial.MonthYear;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Experience {
 
     private String id;
     private String name;
-    private String[] descriptions;
+    private List<String> descriptions;
     private MonthYear end;
     private Location location;
     private String project;

@@ -5,13 +5,15 @@ import com.wheeler.core.dao.constant.CertificationVendor;
 import com.wheeler.core.dao.model.partial.MonthYear;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Certification {
 
     private String id;
     private String name;
     private String credential;
-    private String[] descriptions;
+    private List<String> descriptions;
     private MonthYear expiry;
     private MonthYear issued;
     private CertificationLevel level;
