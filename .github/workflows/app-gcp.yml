@@ -51,8 +51,11 @@ jobs:
           project_id: wheeler-resume
           service_account_key: ${{ secrets.GCP_SECRET_KEY }}
 
-      - name: Docker Login
-        run: docker login -u _json_key -p ${{ secrets.GCP_SECRET_KEY }} https://gcr.io
+      - name: Configure Docker
+        run: gcloud auth configure-docker --quiet
+
+#      - name: Docker Login
+#        run: docker login -u _json_key -p ${{ secrets.GCP_SECRET_KEY }} https://gcr.io
 
       - name: Docker Push to Container Registry
         run: docker push gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA}
