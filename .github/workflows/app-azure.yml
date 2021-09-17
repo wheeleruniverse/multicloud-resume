@@ -15,26 +15,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Configure Maven
-        uses: s4u/maven-settings-action@v2.4.1
-        with:
-          servers: '[{"id": "codeartifact", "username": "aws", "password": "${env.ARTIFACTS_AUTH}"}]'
-
-      - name: AWS Authenticate
+      - name: AWS Auth
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-1
 
-      - name: Deploy Script
+      - name: Maven Config
+        uses: s4u/maven-settings-action@v2.4.1
+        with:
+          servers: '[{"id": "codeartifact", "username": "aws", "password": "${env.ARTIFACTS_AUTH}"}]'
+
+      - name: Build Script
         shell: bash
         run: |
           cd app/azure
-          chmod +x ./deploy.sh
-          ./deploy.sh
+          chmod +x ./build.sh
+          ./build.sh
 
-      - name: Upload to Azure Functions
+      - name: Azure Functions Deployment
         uses: Azure/functions-action@v1
         id: wheelercloudguru
         with:

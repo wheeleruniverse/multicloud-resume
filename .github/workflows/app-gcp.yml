@@ -15,12 +15,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: AWS Authenticate
+      - name: AWS Auth
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-1
+
+      - name: GCP Auth
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: wheeler-resume
+          service_account_key: ${{ secrets.GCP_SECRET_KEY }}
+
+      - name: Docker Auth
+        run: gcloud auth configure-docker --quiet
 
       - name: Docker Build
         shell: bash
@@ -36,6 +45,17 @@ jobs:
           --build-arg ARTIFACTS_AUTH=${ARTIFACTS_AUTH} \
           --tag gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA}
 
+      - name: Docker Push
+        run: docker push gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA}
+
+      - name: Cloud Run Deployment
+        run: |
+          gcloud run deploy wheelercloudguru \
+          --image gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA} \
+          --region us-central1
+
+#      Docker Hub
+#
 #      - name: Docker Login
 #        env:
 #          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -44,24 +64,3 @@ jobs:
 #
 #      - name: Docker Push to Docker Hub
 #        run: docker push wheeler146/resume:gcp-latest
-
-      - name: GCP Authenticate
-        uses: google-github-actions/setup-gcloud@master
-        with:
-          project_id: wheeler-resume
-          service_account_key: ${{ secrets.GCP_SECRET_KEY }}
-
-      - name: Configure Docker
-        run: gcloud auth configure-docker --quiet
-
-#      - name: Docker Login
-#        run: docker login -u _json_key -p ${{ secrets.GCP_SECRET_KEY }} https://gcr.io
-
-      - name: Docker Push to Container Registry
-        run: docker push gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA}
-
-      - name: Deploy to Cloud Run
-        run: |
-          gcloud run deploy wheelercloudguru \
-          --image gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA} \
-          --region us-central1
