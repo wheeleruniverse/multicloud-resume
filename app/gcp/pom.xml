@@ -8,6 +8,8 @@
     <artifactId>resume-gcp</artifactId>
     <version>1.0.0</version>
 
+    <packaging>jar</packaging>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -107,4 +109,13 @@
             <url>https://wheelercloudguru-778263278211.d.codeartifact.us-east-1.amazonaws.com/maven/resume/</url>
         </repository>
     </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
