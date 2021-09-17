@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Value("${gcp.project")
+    @Value("${gcp.project}")
     private String gcpProject;
 
     @Bean
