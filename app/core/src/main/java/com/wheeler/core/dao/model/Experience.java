@@ -1,6 +1,7 @@
 package com.wheeler.core.dao.model;
 
 import com.wheeler.core.dao.constant.ExperienceType;
+import com.wheeler.core.dao.model.contract.Entity;
 import com.wheeler.core.dao.model.partial.Location;
 import com.wheeler.core.dao.model.partial.MonthYear;
 import lombok.Data;
@@ -8,7 +9,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Experience {
+public class Experience implements Entity {
 
     private String id;
     private String name;

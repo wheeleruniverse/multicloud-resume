@@ -1,12 +1,13 @@
 package com.wheeler.core.dao.model;
 
+import com.wheeler.core.dao.model.contract.Entity;
 import com.wheeler.core.dao.model.partial.MonthYear;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class Project {
+public class Project implements Entity {
 
     private String id;
     private String name;
