@@ -1,7 +1,10 @@
 package com.wheeler.gcp.controller;
 
 import com.wheeler.core.dao.model.Experience;
+import com.wheeler.core.dto.model.ExperienceDto;
 import com.wheeler.core.service.ExperienceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
 @RequestMapping(value = "/experience")
 public class ExperienceController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExperienceController.class);
     private final ExperienceService experienceService;
 
     public ExperienceController(final ExperienceService experienceService){
@@ -27,7 +31,9 @@ public class ExperienceController {
 
     @GetMapping(value = "/retrieve")
     @ResponseBody
-    public List<Experience> retrieve(){
-        return experienceService.experienceRetrieve().apply(Optional.empty());
+    public ExperienceDto retrieve(){
+        final List<Experience> data = experienceService.experienceRetrieve().apply(Optional.empty());
+        LOGGER.info("received {} experience records", data.size());
+        return new ExperienceDto(data);
     }
 }

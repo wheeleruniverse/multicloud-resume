@@ -1,7 +1,10 @@
 package com.wheeler.gcp.controller;
 
 import com.wheeler.core.dao.model.Certification;
+import com.wheeler.core.dto.model.CertificationDto;
 import com.wheeler.core.service.CertificationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
 @RequestMapping(value = "/certification")
 public class CertificationController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CertificationController.class);
     private final CertificationService certificationService;
 
     public CertificationController(final CertificationService certificationService){
@@ -27,7 +31,9 @@ public class CertificationController {
 
     @GetMapping(value = "/retrieve")
     @ResponseBody
-    public List<Certification> retrieve(){
-        return certificationService.certificationRetrieve().apply(Optional.empty());
+    public CertificationDto retrieve(){
+        final List<Certification> data = certificationService.certificationRetrieve().apply(Optional.empty());
+        LOGGER.info("received {} certification records", data.size());
+        return new CertificationDto(data);
     }
 }

@@ -1,11 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EducationService } from '../core/service/education/education.service';
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
-import { EducationState } from '../core/store/education/education.state';
-import { CertificationFacade } from '../core/store/certification/certification.facade';
-import { ViewService } from '../shared/service/view.service';
-import { EducationFacade } from '../core/store/education/education.facade';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
+import {filter, takeUntil} from 'rxjs/operators';
+import {EducationState} from '../core/store/education/education.state';
+import {ViewService} from '../shared/service/view.service';
+import {EducationFacade} from '../core/store/education/education.facade';
 
 @Component({
   selector: 'app-education',

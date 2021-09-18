@@ -1,7 +1,10 @@
 package com.wheeler.gcp.controller;
 
 import com.wheeler.core.dao.model.Education;
+import com.wheeler.core.dto.model.EducationDto;
 import com.wheeler.core.service.EducationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
 @RequestMapping(value = "/education")
 public class EducationController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EducationController.class);
     private final EducationService educationService;
 
     public EducationController(final EducationService educationService){
@@ -27,7 +31,9 @@ public class EducationController {
 
     @GetMapping(value = "/retrieve")
     @ResponseBody
-    public List<Education> retrieve(){
-        return educationService.educationRetrieve().apply(Optional.empty());
+    public EducationDto retrieve(){
+        final List<Education> data = educationService.educationRetrieve().apply(Optional.empty());
+        LOGGER.info("received {} education records", data.size());
+        return new EducationDto(data);
     }
 }

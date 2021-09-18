@@ -1,7 +1,12 @@
 package com.wheeler.gcp.controller;
 
+import com.wheeler.core.dao.model.Experience;
 import com.wheeler.core.dao.model.Project;
+import com.wheeler.core.dto.model.ExperienceDto;
+import com.wheeler.core.dto.model.ProjectDto;
 import com.wheeler.core.service.ProjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +18,7 @@ import java.util.Optional;
 @RequestMapping(value = "/project")
 public class ProjectController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
     private final ProjectService projectService;
 
     public ProjectController(final ProjectService projectService){
@@ -27,7 +33,9 @@ public class ProjectController {
 
     @GetMapping(value = "/retrieve")
     @ResponseBody
-    public List<Project> retrieve(){
-        return projectService.projectRetrieve().apply(Optional.empty());
+    public ProjectDto retrieve(){
+        final List<Project> data = projectService.projectRetrieve().apply(Optional.empty());
+        LOGGER.info("received {} project records", data.size());
+        return new ProjectDto(data);
     }
 }
