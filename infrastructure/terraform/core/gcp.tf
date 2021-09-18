@@ -20,19 +20,51 @@ variable "gcp_bucket_tier" {
   type        = string
 }
 
+variable "gcp_image" {
+  description = "container image"
+  type        = string
+}
+
+variable "gcp_svc_json" {
+  description = "service account json"
+  type        = string
+}
+
 resource "google_app_engine_application" "this" {
   database_type = "CLOUD_FIRESTORE"
   location_id   = "us-central"
 }
 
+resource "google_cloud_run_domain_mapping" "this" {
+  location = google_cloud_run_service.this.location
+  name     = "api.gcp.${var.fqdn}"
+
+  metadata {
+    labels    = local.labels
+    namespace = local.gcp_project
+  }
+  spec {
+    route_name = google_cloud_run_service.this.name
+  }
+}
+
 resource "google_cloud_run_service" "this" {
-  location = "us-central1"
-  name     = var.domain
+  autogenerate_revision_name = true
+  location                   = "us-central1"
+  name                       = var.domain
 
   template {
+    metadata {
+      labels = local.labels
+    }
     spec {
       containers {
-        image = "us-docker.pkg.dev/cloudrun/container/hello"
+        image = var.gcp_image
+
+        env {
+          name  = "GCP_CREDENTIALS"
+          value = var.gcp_svc_json
+        }
       }
     }
   }

@@ -23,28 +23,26 @@ export class AppComponent implements OnInit {
     iconRegistry.addSvgIcon('microsoft', sanitizer.bypassSecurityTrustResourceUrl('../assets/app/microsoft.svg'));
   }
 
-  private static readonly root = 'https://wheelercloudguru.azurewebsites.net/api';
-
   static readonly api = {
     certification: {
-      retrieve: `${AppComponent.root}/certification/retrieve`,
+      retrieve: `${environment.backend}/certification/retrieve`,
     },
     education: {
-      retrieve: `${AppComponent.root}/education/retrieve`,
+      retrieve: `${environment.backend}/education/retrieve`,
     },
     experience: {
-      retrieve: `${AppComponent.root}/experience/retrieve`,
+      retrieve: `${environment.backend}/experience/retrieve`,
     },
     project: {
-      retrieve: `${AppComponent.root}/project/retrieve`,
+      retrieve: `${environment.backend}/project/retrieve`,
     },
     skill: {
-      retrieve: `${AppComponent.root}/skill/retrieve`,
+      retrieve: `${environment.backend}/skill/retrieve`,
     },
     visitor: {
-      count: `${AppComponent.root}/visitor/count`,
-      create: `${AppComponent.root}/visitor/create`,
-      retrieve: `${AppComponent.root}/visitor/retrieve`,
+      count: `${environment.backend}/visitor/count`,
+      create: `${environment.backend}/visitor/create`,
+      retrieve: `${environment.backend}/visitor/retrieve`,
     },
   };
 
