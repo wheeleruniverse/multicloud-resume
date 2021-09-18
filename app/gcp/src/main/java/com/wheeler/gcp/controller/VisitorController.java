@@ -22,8 +22,9 @@ public class VisitorController {
     }
 
     @PostMapping(value = "/create")
-    public void create(@RequestBody final Visitor visitor){
+    public void create(@RequestBody final Visitor visitor, final HttpServletResponse httpResponse){
         visitorService.visitorCreate().apply(visitor);
+        httpResponse.setStatus(204);
     }
 
     @GetMapping(value = "/count")
