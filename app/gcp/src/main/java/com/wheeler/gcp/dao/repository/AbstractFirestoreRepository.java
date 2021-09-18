@@ -1,7 +1,9 @@
 package com.wheeler.gcp.dao.repository;
 
 import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.wheeler.core.dao.model.contract.Entity;
 import com.wheeler.core.exception.InternalServerErrorException;
 import com.wheeler.core.utility.JsonUtil;
 import com.wheeler.gcp.dao.connection.FirestoreConnector;
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
-public abstract class AbstractFirestoreRepository<T> {
+public abstract class AbstractFirestoreRepository<T extends Entity> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractFirestoreRepository.class);
 
@@ -42,12 +44,13 @@ public abstract class AbstractFirestoreRepository<T> {
     }
 
     public void load(final String json){
+        getTable().listDocuments().forEach(DocumentReference::delete);
         Arrays.stream(JsonUtil.toObject(json, getArrayTableType())).forEach(this::save);
     }
 
     public void save(T item) {
         try {
-            getTable().add(item).get();
+            getTable().document(item.getId()).set(item).get();
             return;
         }
         catch (InterruptedException e) {

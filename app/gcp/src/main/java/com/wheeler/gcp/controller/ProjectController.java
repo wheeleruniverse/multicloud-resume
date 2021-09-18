@@ -5,6 +5,7 @@ import com.wheeler.core.service.ProjectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +20,9 @@ public class ProjectController {
     }
 
     @PostMapping(value = "/load")
-    public void load(@RequestBody final String json){
+    public void load(@RequestBody final String json, final HttpServletResponse httpResponse){
         projectService.projectLoad().apply(json);
+        httpResponse.setStatus(204);
     }
 
     @GetMapping(value = "/retrieve")
