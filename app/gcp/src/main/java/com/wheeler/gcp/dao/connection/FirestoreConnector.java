@@ -9,19 +9,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Service
 public class FirestoreConnector {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FirestoreConnector.class);
 
+    private final String gcpCredentials;
     private final String gcpProject;
 
     private Firestore database;
     private FirestoreOptions options;
 
-    public FirestoreConnector(final String gcpProject){
+    public FirestoreConnector(final String gcpCredentials, final String gcpProject){
+        this.gcpCredentials = gcpCredentials;
         this.gcpProject = gcpProject;
     }
 
@@ -43,8 +47,8 @@ public class FirestoreConnector {
     }
 
     private Credentials getCredentials(){
-        try {
-            return GoogleCredentials.getApplicationDefault();
+        try(final InputStream credentialsStream = new ByteArrayInputStream(gcpCredentials.getBytes())){
+            return GoogleCredentials.fromStream(credentialsStream);
         }
         catch(IOException e){
             LOGGER.error("getCredentials()", e);

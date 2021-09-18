@@ -1,4 +1,6 @@
 
-gcp.project: ${GCP_PROJECT:wheeler-resume}
+gcp:
+  credentials: ${GCP_CREDENTIALS:credentials}
+  project: ${GCP_PROJECT:wheeler-resume}
 
 server.port: ${PORT:9999}

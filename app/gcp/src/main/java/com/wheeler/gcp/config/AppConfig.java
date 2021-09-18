@@ -9,6 +9,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    @Value("${gcp.credentials}")
+    private String gcpCredentials;
+
+    @Bean
+    public String gcpCredentials(){
+        return gcpCredentials;
+    }
+
     @Value("${gcp.project}")
     private String gcpProject;
 
