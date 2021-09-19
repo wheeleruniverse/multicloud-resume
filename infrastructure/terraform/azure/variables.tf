@@ -1,31 +1,4 @@
 
-terraform {
-  required_version = ">= 0.14.9"
-
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "wheelers-websites"
-
-    workspaces {
-      name = "Resume"
-    }
-  }
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 3.55.0"
-    }
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = ">= 2.73.0"
-    }
-    google = {
-      source  = "hashicorp/google"
-      version = ">= 3.80.0"
-    }
-  }
-}
-
 locals {
   labels = {
     environment = var.environment
@@ -37,7 +10,6 @@ locals {
     project     = var.project
   }
 }
-
 
 variable "domain" {
   default     = "wheelercloudguru"
@@ -78,5 +50,17 @@ variable "tables" {
 variable "tls_version" {
   default     = "TLS1_2"
   description = "tls version"
+  type        = string
+}
+
+variable "azure_bucket_replication" {
+  default     = "LRS"
+  description = "bucket replication"
+  type        = string
+}
+
+variable "azure_bucket_tier" {
+  default     = "Standard"
+  description = "bucket tier"
   type        = string
 }

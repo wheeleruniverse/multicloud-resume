@@ -1,16 +1,4 @@
 
-provider "aws" {
-  region = "us-east-1"
-}
-
-locals {
-  aws_fqdn_list = [
-    "aws.${var.fqdn}",
-    var.fqdn,
-    "www.${var.fqdn}"
-  ]
-}
-
 resource "aws_cloudfront_distribution" "this" {
   aliases             = local.aws_fqdn_list
   enabled             = true

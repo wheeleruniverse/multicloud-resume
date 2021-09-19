@@ -1,35 +1,4 @@
 
-provider "google" {
-  project = local.gcp_project
-  region  = "us-central1"
-}
-
-locals {
-  gcp_project = "wheeler-resume"
-}
-
-variable "gcp_bucket_replication" {
-  default     = "US"
-  description = "bucket replication"
-  type        = string
-}
-
-variable "gcp_bucket_tier" {
-  default     = "STANDARD"
-  description = "bucket tier"
-  type        = string
-}
-
-variable "gcp_image" {
-  description = "container image"
-  type        = string
-}
-
-variable "gcp_svc_json" {
-  description = "service account json"
-  type        = string
-}
-
 resource "google_app_engine_application" "this" {
   database_type = "CLOUD_FIRESTORE"
   location_id   = "us-central"

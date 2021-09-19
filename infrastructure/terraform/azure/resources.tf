@@ -1,20 +1,4 @@
 
-provider "azurerm" {
-  features {}
-}
-
-variable "azure_bucket_replication" {
-  default     = "LRS"
-  description = "bucket replication"
-  type        = string
-}
-
-variable "azure_bucket_tier" {
-  default     = "Standard"
-  description = "bucket tier"
-  type        = string
-}
-
 resource "azurerm_application_insights" "this" {
   application_type    = "java"
   location            = azurerm_resource_group.this.location
