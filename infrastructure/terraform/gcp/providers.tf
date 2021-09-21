@@ -1,6 +1,6 @@
 
 provider "google" {
-  project = local.gcp_project
+  project = var.project
   region  = "us-central1"
 }
 

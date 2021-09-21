@@ -5,17 +5,12 @@ locals {
     var.fqdn,
     "www.${var.fqdn}"
   ]
-  labels = {
-    environment = var.environment
-    project     = var.project
-  }
   tags = {
     environment = var.environment
     owner       = var.owner
     project     = var.project
   }
 }
-
 
 variable "domain" {
   default     = "wheelercloudguru"
@@ -47,14 +42,8 @@ variable "project" {
   type        = string
 }
 
-variable "tables" {
-  default     = ["certification", "education", "experience", "project", "skill", "visitor"]
-  description = "sql tables to create"
-  type        = list(string)
-}
-
 variable "tls_version" {
-  default     = "TLS1_2"
+  default     = "TLSv1.2_2021"
   description = "tls version"
   type        = string
 }

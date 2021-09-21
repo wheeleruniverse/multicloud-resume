@@ -1,7 +1,15 @@
 
 resource "google_app_engine_application" "this" {
+  /*
+   * Note:
+   *
+   * Two locations, which are called europe-west and us-central in App Engine commands and in the Google Cloud Console,
+   * are called europe-west1 and us-central1, respectively, elsewhere in Google documentation.
+   *
+   * https://cloud.google.com/appengine/docs/locations
+   */
   database_type = "CLOUD_FIRESTORE"
-  location_id   = "us-central"
+  location_id   = "US-CENTRAL1" == var.location_region ? "us-central" : lower(var.location_region)
 }
 
 resource "google_cloud_run_domain_mapping" "this" {
@@ -9,8 +17,7 @@ resource "google_cloud_run_domain_mapping" "this" {
   name     = "api.gcp.${var.fqdn}"
 
   metadata {
-    labels    = local.labels
-    namespace = local.gcp_project
+    namespace = var.project
   }
   spec {
     route_name = google_cloud_run_service.this.name
@@ -19,7 +26,7 @@ resource "google_cloud_run_domain_mapping" "this" {
 
 resource "google_cloud_run_service" "this" {
   autogenerate_revision_name = true
-  location                   = "us-central1"
+  location                   = lower(var.location_region)
   name                       = var.domain
 
   template {
@@ -28,11 +35,11 @@ resource "google_cloud_run_service" "this" {
     }
     spec {
       containers {
-        image = var.gcp_image
+        image = var.image
 
         env {
           name  = "GCP_CREDENTIALS"
-          value = var.gcp_svc_json
+          value = var.service_account_json
         }
       }
     }
@@ -78,15 +85,15 @@ resource "google_compute_url_map" "this" {
 }
 
 resource "google_container_registry" "this" {
-  location = "US"
+  location = var.location_multi_region
 }
 
 resource "google_storage_bucket" "app" {
   name                        = "${var.domain}-app"
   force_destroy               = true
   labels                      = local.labels
-  location                    = var.gcp_bucket_replication
-  storage_class               = var.gcp_bucket_tier
+  location                    = var.location_multi_region
+  storage_class               = var.storage_class
   uniform_bucket_level_access = true
 }
 
@@ -94,8 +101,8 @@ resource "google_storage_bucket" "iac" {
   name                        = "${var.domain}-iac"
   force_destroy               = true
   labels                      = local.labels
-  location                    = var.gcp_bucket_replication
-  storage_class               = var.gcp_bucket_tier
+  location                    = var.location_multi_region
+  storage_class               = var.storage_class
   uniform_bucket_level_access = true
 }
 
@@ -103,8 +110,8 @@ resource "google_storage_bucket" "web" {
   name                        = "${var.domain}-web"
   force_destroy               = true
   labels                      = local.labels
-  location                    = var.gcp_bucket_replication
-  storage_class               = var.gcp_bucket_tier
+  location                    = var.location_multi_region
+  storage_class               = var.storage_class
   uniform_bucket_level_access = true
 
   website {

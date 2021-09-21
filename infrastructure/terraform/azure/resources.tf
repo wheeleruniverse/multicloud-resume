@@ -186,8 +186,8 @@ resource "azurerm_resource_group" "this" {
 }
 
 resource "azurerm_storage_account" "app" {
-  account_replication_type = var.azure_bucket_replication
-  account_tier             = var.azure_bucket_tier
+  account_replication_type = var.bucket_replication
+  account_tier             = var.bucket_tier
   allow_blob_public_access = false
   location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
@@ -202,8 +202,8 @@ resource "azurerm_storage_account" "app" {
 }
 
 resource "azurerm_storage_account" "iac" {
-  account_replication_type = var.azure_bucket_replication
-  account_tier             = var.azure_bucket_tier
+  account_replication_type = var.bucket_replication
+  account_tier             = var.bucket_tier
   allow_blob_public_access = true
   location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
@@ -218,8 +218,8 @@ resource "azurerm_storage_account" "iac" {
 }
 
 resource "azurerm_storage_account" "web" {
-  account_replication_type = var.azure_bucket_replication
-  account_tier             = var.azure_bucket_tier
+  account_replication_type = var.bucket_replication
+  account_tier             = var.bucket_tier
   allow_blob_public_access = false
   location                 = azurerm_resource_group.this.location
   min_tls_version          = var.tls_version
