@@ -20,6 +20,9 @@ export class ViewService {
   public skillShouldEnable$ = new BehaviorSubject<boolean>(true);
   public skillShouldRender$ = new BehaviorSubject<boolean>(false);
 
+  public visitorShouldEnable$ = new BehaviorSubject<boolean>(true);
+  public visitorShouldRender$ = new BehaviorSubject<boolean>(true);
+
   public certificationShouldEnable(value: boolean): void {
     this.certificationShouldEnable$.next(value);
   }
@@ -53,5 +56,12 @@ export class ViewService {
   }
   public skillShouldRender(value: boolean): void {
     this.skillShouldRender$.next(value);
+  }
+
+  public visitorShouldEnable(value: boolean): void {
+    this.visitorShouldEnable$.next(value);
+  }
+  public visitorShouldRender(value: boolean): void {
+    this.visitorShouldRender$.next(value);
   }
 }

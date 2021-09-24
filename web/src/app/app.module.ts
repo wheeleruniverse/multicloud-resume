@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { CookieService } from 'ngx-cookie-service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -27,7 +28,14 @@ import { CookieService } from 'ngx-cookie-service';
     SkillComponent,
     VisitorComponent,
   ],
-  imports: [BrowserAnimationsModule, BrowserModule, CoreModule, HttpClientModule, SharedModule],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    CoreModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    SharedModule,
+  ],
   providers: [CookieService, HttpClient],
 })
 export class AppModule {}

@@ -1,11 +1,16 @@
 @import "src/stylesheets/variables";
 
-mat-progress-bar {
-  margin-top: 2em;
+fa-icon {
+  font-size: 40px;
+  padding: 16px;
 }
 
 .large {
-  font-size: large;
+  font-size: 20px;
+}
+
+mat-progress-bar {
+  margin-top: 16px;
 }
 
 @media screen and (max-width: $device-mobile-lg) {
@@ -14,6 +19,6 @@ mat-progress-bar {
   }
 
   .large {
-    font-size: medium;
+    font-size: 16px;
   }
 }

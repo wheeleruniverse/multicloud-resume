@@ -1,13 +1,16 @@
 @import "src/stylesheets/variables";
 
-#visitor {
-  font-size: x-large;
-  margin: 30px 0;
+.number {
+  border: 2px solid #66d9ff;
+  border-radius: 4px;
+  box-shadow: 3px 3px 3px 1px #49caff;
+  font-size: 40px;
+  padding: 24px;
 }
 
-@media screen and (max-width: $device-mobile-lg) {
-  #visitor {
-    font-size: small;
-    margin: 10px 0;
-  }
+.visitor {
+  display: flex;
+  margin: 24px 40px;
+  justify-content: space-between;
+  width: 35%;
 }

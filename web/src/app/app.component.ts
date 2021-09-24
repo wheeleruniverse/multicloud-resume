@@ -4,6 +4,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
 import {environment} from '../environments/environment';
+import {faGithub, faLinkedinIn, IconDefinition} from "@fortawesome/free-brands-svg-icons";
+import {faBlog, faCloud, faUser} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-root',
@@ -46,6 +48,7 @@ export class AppComponent implements OnInit {
     },
   };
 
+
   isMobile = false;
   isTablet = false;
 
@@ -65,6 +68,9 @@ export class AppComponent implements OnInit {
 
   skillShouldEnable = true;
   skillShouldRender = false;
+
+  visitorShouldEnable = true;
+  visitorShouldRender = true;
 
   ngOnInit(): void {
     const mobileBreakPoint = '(max-width: 425px)';
@@ -128,6 +134,35 @@ export class AppComponent implements OnInit {
       this.skillShouldRender = val;
       this.changeDetectorRef.detectChanges();
     });
+
+    this.viewService.visitorShouldEnable$.subscribe((val) => {
+      this.visitorShouldEnable = val;
+      this.changeDetectorRef.detectChanges();
+    });
+    this.viewService.visitorShouldRender$.subscribe((val) => {
+      this.visitorShouldRender = val;
+      this.changeDetectorRef.detectChanges();
+    });
+  }
+
+  get faBlog(): IconDefinition {
+    return faBlog;
+  }
+
+  get faCloud(): IconDefinition {
+    return faCloud;
+  }
+
+  get faGithub(): IconDefinition {
+    return faGithub;
+  }
+
+  get faLinkedinIn(): IconDefinition {
+    return faLinkedinIn;
+  }
+
+  get faUser(): IconDefinition {
+    return faUser;
   }
 
   get provider(): string {
@@ -173,6 +208,12 @@ export class AppComponent implements OnInit {
   toggleSkillShouldRender(): void {
     if (this.skillShouldEnable) {
       this.viewService.skillShouldRender(!this.skillShouldRender);
+    }
+  }
+
+  toggleVisitorShouldRender(): void {
+    if (this.visitorShouldEnable) {
+      this.viewService.visitorShouldRender(!this.visitorShouldRender);
     }
   }
 }

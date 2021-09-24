@@ -9,7 +9,11 @@
   </div>
 </div>
 <div>
-  <mat-card (click)="toggleAboutShouldRender()" (keydown.enter)="toggleAboutShouldRender()" tabindex="0">
+  <mat-card
+    (click)="toggleAboutShouldRender()"
+    (keydown.enter)="toggleAboutShouldRender()"
+    tabindex="0"
+  >
     About
   </mat-card>
   <app-about *ngIf="aboutShouldRender"></app-about>
@@ -69,7 +73,34 @@
   </mat-card>
   <app-education *ngIf="educationShouldRender"></app-education>
 </div>
+<div>
+  <mat-card
+    (click)="toggleVisitorShouldRender()"
+    (keydown.enter)="toggleVisitorShouldRender()"
+    [ngClass]="{ disabled: !visitorShouldEnable }"
+    tabindex="0"
+  >
+    Visitors
+  </mat-card>
+  <app-visitor *ngIf="visitorShouldRender"></app-visitor>
+</div>
 <div class="footer">
   <mat-divider></mat-divider>
-  <app-visitor></app-visitor>
+  <div class="social">
+    <a href="https://learn.acloud.guru/profile/justin-wheeler" target="_blank">
+      <fa-icon [icon]="faCloud" [matTooltip]="'A Cloud Guru'"></fa-icon>
+    </a>
+    <a href="https://dev.to/wheelerswebsites" target="_blank">
+      <fa-icon [icon]="faBlog" [matTooltip]="'Blog'"></fa-icon>
+    </a>
+    <a href="https://github.com/wheelers-websites" target="_blank">
+      <fa-icon [icon]="faGithub" [matTooltip]="'GitHub'"></fa-icon>
+    </a>
+    <a href="https://www.linkedin.com/in/wheelers-websites/" target="_blank">
+      <fa-icon [icon]="faLinkedinIn" [matTooltip]="'LinkedIn'"></fa-icon>
+    </a>
+    <a href="https://app.pluralsight.com/profile/wheeler146" target="_blank">
+      <fa-icon [icon]="faUser" [matTooltip]="'Pluralsight'"></fa-icon>
+    </a>
+  </div>
 </div>

@@ -28,6 +28,11 @@ export class VisitorComponent implements OnInit {
     }
   }
 
+  totalCharAt(position: number): string {
+    const value = ('0000000' + this.total).slice(-7);
+    return position > value.length - 1 ? '0' : value.charAt(position);
+  }
+
   private createVisitor(): void {
     const config = { duration: 3000 };
     const visitor = { id: v4(), name: window.navigator.userAgent };

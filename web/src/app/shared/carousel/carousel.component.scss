@@ -1,17 +1,17 @@
 @import "src/stylesheets/variables";
 
 carousel {
-  margin: 3em auto;
+  margin: 24px auto;
   z-index: 0 !important;
 }
 
 ul {
   margin: 0;
-  padding-left: 10px;
+  padding-left: 16px;
 }
 
 .carousel-cell {
-  border-radius: 1em;
+  border-radius: 8px;
 }
 
 .carousel-cell:hover {
@@ -23,40 +23,40 @@ ul {
 }
 
 .carousel-cell div {
-  margin-left: 0.3em;
-  margin-top: 0.5em;
+  margin-left: 4px;
+  margin-top: 4px;
 }
 
 .carousel-cell span {
   display: block;
-  margin-bottom: 0.2em;
+  margin-bottom: 4px;
 
   :not(.large) {
-    font-size: medium;
+    font-size: 16px;
   }
 }
 
 .carousel-cell-icons {
   float: right;
-  margin-right: 1em;
+  margin-right: 8px;
 
   a {
     color: inherit;
     text-decoration: none;
   }
   mat-icon {
-    margin: 0.1em;
+    margin: 4px;
   }
 }
 
 .carousel-cell-secondary {
   color: #8899a6;
-  padding: 0.5em;
+  padding: 4px;
 }
 
 @media screen and (max-width: $device-mobile-lg) {
   carousel {
-    margin: 1em auto;
+    margin: 8px auto;
   }
 
   #carousel-wrapper {
@@ -66,16 +66,16 @@ ul {
   }
 
   .carousel-cell div {
-    margin-top: 0.3em;
+    margin-top: 4px;
   }
 
   .carousel-cell span {
-    font-size: small;
-    margin-bottom: 0.1em;
+    font-size: 12px;
+    margin-bottom: 4px;
   }
 
   .carousel-cell-icons {
-    margin-right: 0.5em;
+    margin-right: 4px;
   }
 
   .carousel-cell-secondary {
