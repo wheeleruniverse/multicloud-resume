@@ -7,7 +7,7 @@ locals {
 }
 
 variable "domain" {
-  default     = "xxxxxx"
+  default     = "wheelersadvice"
   description = "domain name"
   type        = string
 }
@@ -52,7 +52,7 @@ variable "location_region" {
 }
 
 variable "fqdn" {
-  default     = "xxxxxx.com"
+  default     = "wheelersadvice.com"
   description = "fully qualified domain name"
   type        = string
 }

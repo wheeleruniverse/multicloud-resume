@@ -1,7 +1,7 @@
 
 provider "google" {
   project = var.project
-  region  = "us-central1"
+  region  = lower(var.location_region)
 }
 
 terraform {
@@ -12,7 +12,7 @@ terraform {
     organization = "wheelers-websites"
 
     workspaces {
-      name = "cloudguruchallenge-2108"
+      name = "cloudguruchallenge-2108-services"
     }
   }
   required_providers {
