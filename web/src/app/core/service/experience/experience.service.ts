@@ -5,6 +5,7 @@ import { AppComponent } from '../../../app.component';
 import { tap } from 'rxjs/operators';
 import { MonthYearService } from '../../../shared/service/month-year.service';
 import { ExperienceState } from '../../store/experience/experience.state';
+import {backend} from "../../../shared/utility/backend.utility";
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class ExperienceService {
 
   retrieve(): Observable<ExperienceState> {
     return this.httpClient
-      .get<ExperienceState>(AppComponent.api.experience.retrieve)
+      .get<ExperienceState>(backend.experience.retrieve)
       .pipe(tap((state) => ExperienceService.sort(state)));
   }
 }

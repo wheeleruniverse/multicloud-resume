@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import { MetaData } from '../../../shared/model/meta-data.model';
-import { AppComponent } from '../../../app.component';
-import { Certification, CertificationState } from '../../store/certification/certification.state';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
+import {MetaData} from '../../../shared/model/meta-data.model';
+import {Certification, CertificationState} from '../../store/certification/certification.state';
+import {backend} from "../../../shared/utility/backend.utility";
 
 @Injectable({
   providedIn: 'root',
@@ -45,7 +45,7 @@ export class CertificationService {
 
   retrieve(): Observable<CertificationState> {
     return this.httpClient
-      .get<CertificationState>(AppComponent.api.certification.retrieve)
+      .get<CertificationState>(backend.certification.retrieve)
       .pipe(tap((state) => CertificationService.sort(state)));
   }
 }

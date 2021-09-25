@@ -7,13 +7,13 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { FilterService } from '../shared/service/filter.service';
 import { Skill } from '../core/store/skill/skill.state';
 import { MatDialog } from '@angular/material/dialog';
-import { ProjectDialogComponent } from '../shared/dialog/project-dialog.component';
+import { ProjectDialogComponent } from './dialog/project-dialog.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss', '../shared/carousel/carousel.component.scss'],
+  styleUrls: ['./project.component.scss', '../shared/component/carousel/carousel.component.scss'],
 })
 export class ProjectComponent implements OnDestroy, OnInit {
   constructor(

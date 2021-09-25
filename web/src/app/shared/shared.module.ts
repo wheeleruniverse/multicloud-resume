@@ -15,16 +15,22 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent } from './component/carousel/carousel.component';
 import { LocationPipe } from './pipe/location.pipe';
 import { MonthYearPipe } from './pipe/month-year.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ProjectDialogComponent } from './dialog/project-dialog.component';
+import { ProjectDialogComponent } from '../project/dialog/project-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import {IconRegistryService} from "./service/icon-registry.service";
 
 @NgModule({
-  declarations: [CarouselComponent, ProjectDialogComponent, LocationPipe, MonthYearPipe],
+  declarations: [
+    CarouselComponent,
+    LocationPipe,
+    MonthYearPipe,
+    ProjectDialogComponent,
+  ],
   exports: [
     CarouselComponent,
     CommonModule,

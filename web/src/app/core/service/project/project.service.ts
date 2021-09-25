@@ -5,6 +5,7 @@ import { AppComponent } from '../../../app.component';
 import { tap } from 'rxjs/operators';
 import { MonthYearService } from '../../../shared/service/month-year.service';
 import { ProjectState } from '../../store/project/project.state';
+import {backend} from "../../../shared/utility/backend.utility";
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class ProjectService {
 
   retrieve(): Observable<ProjectState> {
     return this.httpClient
-      .get<ProjectState>(AppComponent.api.project.retrieve)
+      .get<ProjectState>(backend.project.retrieve)
       .pipe(tap((state) => ProjectService.sort(state)));
   }
 }

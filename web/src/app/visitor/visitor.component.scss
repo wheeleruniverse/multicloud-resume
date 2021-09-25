@@ -14,3 +14,31 @@
   justify-content: space-between;
   width: 35%;
 }
+
+@media screen and (max-width: $device-tablet) {
+
+  .number {
+    border: 1.5px solid #66d9ff;
+    box-shadow: 2px 2px 2px 0.5px #49caff;
+    font-size: 24px;
+    padding: 8px;
+  }
+
+  .visitor {
+    margin: 24px auto;
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: $device-mobile-lg) {
+
+  .number {
+    border: 1px solid #66d9ff;
+    font-size: 16px;
+  }
+
+  .visitor {
+    margin: 24px auto;
+    width: 70%;
+  }
+}

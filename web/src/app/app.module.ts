@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SocialComponent } from './social/social.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -25,6 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EducationComponent,
     ExperienceComponent,
     ProjectComponent,
+    SocialComponent,
     SkillComponent,
     VisitorComponent,
   ],

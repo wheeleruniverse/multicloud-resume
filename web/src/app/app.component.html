@@ -1,8 +1,8 @@
 <div class="header">
   <div class="role">
-    <h1 class="header-role" *ngIf="!isMobile && !isTablet"></h1>
-    <h1 class="header-role-mobile" *ngIf="isMobile">Justin Wheeler — Cloud Guru</h1>
-    <h1 class="header-role-tablet" *ngIf="isTablet">Justin Wheeler — Cloud Architect</h1>
+    <h1 class="header-role" *ngIf="Device.Desktop === device"></h1>
+    <h1 class="header-role-mobile" *ngIf="Device.Mobile === device">Justin Wheeler — Cloud Guru</h1>
+    <h1 class="header-role-tablet" *ngIf="Device.Tablet === device">Justin Wheeler — Cloud Architect</h1>
   </div>
   <div class="logo">
     <mat-icon [svgIcon]=provider></mat-icon>
@@ -86,21 +86,5 @@
 </div>
 <div class="footer">
   <mat-divider></mat-divider>
-  <div class="social">
-    <a href="https://learn.acloud.guru/profile/justin-wheeler" target="_blank">
-      <fa-icon [icon]="faCloud" [matTooltip]="'A Cloud Guru'"></fa-icon>
-    </a>
-    <a href="https://dev.to/wheelerswebsites" target="_blank">
-      <fa-icon [icon]="faBlog" [matTooltip]="'Blog'"></fa-icon>
-    </a>
-    <a href="https://github.com/wheelers-websites" target="_blank">
-      <fa-icon [icon]="faGithub" [matTooltip]="'GitHub'"></fa-icon>
-    </a>
-    <a href="https://www.linkedin.com/in/wheelers-websites/" target="_blank">
-      <fa-icon [icon]="faLinkedinIn" [matTooltip]="'LinkedIn'"></fa-icon>
-    </a>
-    <a href="https://app.pluralsight.com/profile/wheeler146" target="_blank">
-      <fa-icon [icon]="faUser" [matTooltip]="'Pluralsight'"></fa-icon>
-    </a>
-  </div>
+  <app-social></app-social>
 </div>

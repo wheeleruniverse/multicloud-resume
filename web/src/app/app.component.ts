@@ -1,11 +1,9 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ViewService } from './shared/service/view.service';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import {MatIconRegistry} from '@angular/material/icon';
-import {DomSanitizer} from '@angular/platform-browser';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ViewService} from './shared/service/view.service';
+import {BreakpointObserver} from '@angular/cdk/layout';
 import {environment} from '../environments/environment';
-import {faGithub, faLinkedinIn, IconDefinition} from "@fortawesome/free-brands-svg-icons";
-import {faBlog, faCloud, faUser} from "@fortawesome/free-solid-svg-icons";
+import {Device} from "./shared/model/device.model";
+import {IconRegistryService} from "./shared/service/icon-registry.service";
 
 @Component({
   selector: 'app-root',
@@ -16,41 +14,13 @@ export class AppComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private changeDetectorRef: ChangeDetectorRef,
+    private iconRegistryService: IconRegistryService,
     private viewService: ViewService,
-    private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
   ) {
-    iconRegistry.addSvgIcon('aws', sanitizer.bypassSecurityTrustResourceUrl('../assets/app/aws.svg'));
-    iconRegistry.addSvgIcon('google', sanitizer.bypassSecurityTrustResourceUrl('../assets/app/google.svg'));
-    iconRegistry.addSvgIcon('microsoft', sanitizer.bypassSecurityTrustResourceUrl('../assets/app/microsoft.svg'));
+    iconRegistryService.init();
   }
 
-  static readonly api = {
-    certification: {
-      retrieve: `${environment.backend}/certification/retrieve`,
-    },
-    education: {
-      retrieve: `${environment.backend}/education/retrieve`,
-    },
-    experience: {
-      retrieve: `${environment.backend}/experience/retrieve`,
-    },
-    project: {
-      retrieve: `${environment.backend}/project/retrieve`,
-    },
-    skill: {
-      retrieve: `${environment.backend}/skill/retrieve`,
-    },
-    visitor: {
-      count: `${environment.backend}/visitor/count`,
-      create: `${environment.backend}/visitor/create`,
-      retrieve: `${environment.backend}/visitor/retrieve`,
-    },
-  };
-
-
-  isMobile = false;
-  isTablet = false;
+  device: Device;
 
   aboutShouldRender = false;
 
@@ -78,14 +48,13 @@ export class AppComponent implements OnInit {
 
     this.breakpointObserver.observe([mobileBreakPoint, tabletBreakPoint]).subscribe((result) => {
       if (result.breakpoints[mobileBreakPoint]) {
-        this.isMobile = true;
-        this.isTablet = false;
-      } else if (result.breakpoints[tabletBreakPoint]) {
-        this.isMobile = false;
-        this.isTablet = true;
-      } else {
-        this.isMobile = false;
-        this.isTablet = false;
+        this.device = Device.Mobile;
+      }
+      else if (result.breakpoints[tabletBreakPoint]) {
+        this.device = Device.Tablet;
+      }
+      else {
+        this.device = Device.Desktop;
       }
       this.closeView();
     });
@@ -145,24 +114,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  get faBlog(): IconDefinition {
-    return faBlog;
-  }
-
-  get faCloud(): IconDefinition {
-    return faCloud;
-  }
-
-  get faGithub(): IconDefinition {
-    return faGithub;
-  }
-
-  get faLinkedinIn(): IconDefinition {
-    return faLinkedinIn;
-  }
-
-  get faUser(): IconDefinition {
-    return faUser;
+  get Device(): typeof Device {
+    return Device;
   }
 
   get provider(): string {

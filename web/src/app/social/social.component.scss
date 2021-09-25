@@ -1,0 +1,24 @@
+@import "src/stylesheets/variables";
+
+fa-icon {
+  font-size: 40px;
+  padding: 16px;
+}
+
+.social {
+  margin: 24px auto 0 auto;
+
+  a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: $device-mobile-lg) {
+
+  fa-icon {
+    font-size: 32px;
+    padding: 8px;
+  }
+}

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../../../app.component';
 import { tap } from 'rxjs/operators';
 import { Skill, SkillState } from '../../store/skill/skill.state';
+import {backend} from "../../../shared/utility/backend.utility";
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class SkillService {
 
   retrieve(): Observable<SkillState> {
     return this.httpClient
-      .get<SkillState>(AppComponent.api.skill.retrieve)
+      .get<SkillState>(backend.skill.retrieve)
       .pipe(tap((state) => SkillService.sort(state)));
   }
 }
