@@ -67,6 +67,7 @@ resource "google_compute_managed_ssl_certificate" "this" {
 
   managed {
     domains = [
+      "${var.fqdn}.",
       "www.${var.fqdn}."
     ]
   }
@@ -85,6 +86,38 @@ resource "google_compute_url_map" "this" {
 
 resource "google_container_registry" "this" {
   location = var.location_multi_region
+}
+
+resource "google_dns_record_set" "api" {
+  managed_zone = var.dns_zone
+  name         = "api.${var.fqdn}."
+  rrdatas      = ["ghs.googlehosted.com."]
+  ttl          = 300
+  type         = "CNAME"
+}
+
+resource "google_dns_record_set" "root" {
+  managed_zone = var.dns_zone
+  name         = "${var.fqdn}."
+  rrdatas      = [google_compute_global_forwarding_rule.this.ip_address]
+  ttl          = 300
+  type         = "A"
+}
+
+resource "google_dns_record_set" "www" {
+  managed_zone = var.dns_zone
+  name         = "www.${var.fqdn}."
+  rrdatas      = [google_compute_global_forwarding_rule.this.ip_address]
+  ttl          = 300
+  type         = "A"
+}
+
+resource "google_sourcerepo_repository" "app" {
+  name = "${var.domain}/app"
+}
+
+resource "google_sourcerepo_repository" "env" {
+  name = "${var.domain}/env"
 }
 
 resource "google_storage_bucket" "this" {

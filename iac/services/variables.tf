@@ -4,6 +4,10 @@ locals {
   services = [
     "domains",
     "dns",
+    "compute",
+    "containerregistry",
+    "run",
+    "sourcerepo"
   ]
 
   timeout = "60m"

@@ -6,6 +6,12 @@ locals {
   }
 }
 
+variable "dns_zone" {
+  default     = "wheelersadvice-com"
+  description = "cloud dns managed zone name"
+  type        = string
+}
+
 variable "domain" {
   default     = "wheelersadvice"
   description = "domain name"
