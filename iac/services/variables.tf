@@ -1,5 +1,17 @@
 
 locals {
+
+  // https://cloud.google.com/iam/docs/understanding-roles
+  // order matters to avoid re-creation
+  roles = [
+    "compute.loadBalancerAdmin",
+    "containerregistry.ServiceAgent",
+    "iam.serviceAccountUser",
+    "run.admin",
+    "storage.admin",
+    "storage.objectAdmin"
+  ]
+
   // order matters to avoid re-creation
   services = [
     "domains",

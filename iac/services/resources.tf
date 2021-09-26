@@ -1,4 +1,10 @@
 
+resource "google_project_iam_member" "this" {
+  count  = length(local.roles)
+  member = "serviceAccount:${google_service_account.this.email}"
+  role   = "roles/${local.roles[count.index]}"
+}
+
 resource "google_project_service" "this" {
   count                      = length(local.services)
   disable_dependent_services = true
