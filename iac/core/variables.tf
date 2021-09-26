@@ -24,6 +24,17 @@ variable "environment" {
   type        = string
 }
 
+variable "fqdn" {
+  default     = "wheelersadvice.com"
+  description = "fully qualified domain name"
+  type        = string
+}
+
+variable "image" {
+  description = "container image"
+  type        = string
+}
+
 variable "location_dual_region" {
   default     = "NAM4"
   description = "a specific pair of regions, such as Tokyo and Osaka"
@@ -57,20 +68,21 @@ variable "location_region" {
   }
 }
 
-variable "fqdn" {
-  default     = "wheelersadvice.com"
-  description = "fully qualified domain name"
-  type        = string
-}
-
-variable "image" {
-  description = "container image"
-  type        = string
-}
-
 variable "project" {
   default     = "cloudguruchallenge-2108"
   description = "project name"
+  type        = string
+}
+
+variable "repository_branch" {
+  default     = "main"
+  description = "cloud source repository branch"
+  type        = string
+}
+
+variable "repository_name" {
+  default     = "github_wheelers-websites_cloudguruchallenge_21.08-app"
+  description = "cloud source repository name"
   type        = string
 }
 
