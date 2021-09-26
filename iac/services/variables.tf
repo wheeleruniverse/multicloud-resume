@@ -1,9 +1,16 @@
 
 locals {
 
+  // https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account
+  // order matters to avoid re-creation
+  build_roles = [
+    "iam.serviceAccountUser",
+    "run.admin",
+  ]
+
   // https://cloud.google.com/iam/docs/understanding-roles
   // order matters to avoid re-creation
-  roles = [
+  core_roles = [
     "compute.loadBalancerAdmin",
     "containerregistry.ServiceAgent",
     "iam.serviceAccountUser",
@@ -45,6 +52,12 @@ variable "location_region" {
 
 variable "project" {
   default     = "cloudguruchallenge-2108"
-  description = "project name"
+  description = "project id"
+  type        = string
+}
+
+variable "project_number" {
+  default     = "98767786228"
+  description = "project number"
   type        = string
 }
