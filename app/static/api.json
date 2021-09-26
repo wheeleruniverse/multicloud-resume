@@ -1,0 +1,20 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "cloudguruchallenge-2108",
+    "description": "api specification for the cloudguruchallenge-2108 project"
+  },
+  "paths": {
+    "/test": {
+      "get": {
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  }
+}
