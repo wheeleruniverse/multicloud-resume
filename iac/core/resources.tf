@@ -1,4 +1,22 @@
 
+data "google_iam_policy" "app" {
+  binding {
+    role = "roles/run.invoker"
+    members = [
+      "allUsers",
+    ]
+  }
+}
+
+data "google_iam_policy" "web" {
+  binding {
+    role = "roles/storage.objectViewer"
+    members = [
+      "allUsers",
+    ]
+  }
+}
+
 resource "google_app_engine_application" "this" {
   /*
    * Note:
@@ -70,6 +88,12 @@ resource "google_cloud_run_service" "this" {
     latest_revision = true
     percent         = 100
   }
+}
+
+resource "google_cloud_run_service_iam_policy" "this" {
+  location    = google_cloud_run_service.this.location
+  policy_data = data.google_iam_policy.app.policy_data
+  service     = google_cloud_run_service.this.name
 }
 
 resource "google_compute_backend_bucket" "this" {
@@ -145,4 +169,9 @@ resource "google_storage_bucket" "this" {
   website {
     main_page_suffix = "index.html"
   }
+}
+
+resource "google_storage_bucket_iam_policy" "this" {
+  bucket      = google_storage_bucket.this.name
+  policy_data = data.google_iam_policy.web.policy_data
 }
