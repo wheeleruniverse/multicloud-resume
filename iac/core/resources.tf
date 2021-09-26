@@ -12,6 +12,17 @@ resource "google_app_engine_application" "this" {
   location_id   = "US-CENTRAL1" == var.location_region ? "us-central" : lower(var.location_region)
 }
 
+resource "google_cloudbuild_trigger" "app" {
+  description = "cloud build trigger for the ${var.domain} app repository"
+  filename    = "app/cloudbuild.yml"
+  name        = "${var.domain}-app"
+
+  trigger_template {
+    branch_name = "main"
+    repo_name   = "github_wheelers-websites_cloudguruchallenge_21.08-app"
+  }
+}
+
 resource "google_cloud_run_domain_mapping" "this" {
   location = google_cloud_run_service.this.location
   name     = "api.${var.fqdn}"
@@ -110,14 +121,6 @@ resource "google_dns_record_set" "www" {
   rrdatas      = [google_compute_global_forwarding_rule.this.ip_address]
   ttl          = 300
   type         = "A"
-}
-
-resource "google_sourcerepo_repository" "app" {
-  name = "${var.domain}/app"
-}
-
-resource "google_sourcerepo_repository" "env" {
-  name = "${var.domain}/env"
 }
 
 resource "google_storage_bucket" "this" {

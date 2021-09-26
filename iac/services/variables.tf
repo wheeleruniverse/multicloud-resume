@@ -7,7 +7,8 @@ locals {
     "compute",
     "containerregistry",
     "run",
-    "sourcerepo"
+    "sourcerepo",
+    "cloudbuild"
   ]
 
   timeout = "60m"
