@@ -1,20 +1,110 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "cloudguruchallenge-2108",
-    "description": "api specification for the cloudguruchallenge-2108 project"
-  },
-  "paths": {
-    "/test": {
-      "get": {
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "success"
-          }
+    "consumes":[
+        "application/json"
+    ],
+    "definitions":{
+        "count":{
+            "properties":{
+                "value":{
+                    "default":0,
+                    "format":"int32",
+                    "type":"integer"
+                }
+            },
+            "type":"object"
         }
-      }
-    }
-  }
+    },
+    "info":{
+        "description":"api specification for the cloudguruchallenge-2108 project",
+        "title":"cloudguruchallenge-2108",
+        "version":"1.0.0"
+    },
+    "name": "swagger-definition",
+    "openapi":"3.0.0",
+    "paths":{
+        "/visitor/count":{
+            "get":{
+                "responses":{
+                    "200":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/definitions/count"
+                                }
+                            }
+                        },
+                        "description":"success"
+                    }
+                },
+                "summary":"retrieve the current visitors count",
+                "tags":[
+                    "visitor"
+                ]
+            }
+        },
+        "/visitor/increment":{
+            "post":{
+                "responses":{
+                    "200":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/definitions/count"
+                                }
+                            }
+                        },
+                        "description":"success"
+                    }
+                },
+                "summary":"increment the current visitors count",
+                "tags":[
+                    "visitor"
+                ]
+            }
+        },
+        "/visitor/load":{
+            "post":{
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                        "schema":{
+                            "$ref":"#/definitions/count"
+                        }
+                    }
+                  },
+                  "description":"request that provides the value to set",
+                  "required": true
+                },
+                "responses":{
+                    "200":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/definitions/count"
+                                }
+                            }
+                        },
+                        "description":"success"
+                    }
+                },
+                "summary":"sets the visitors count to the provided value",
+                "tags":[
+                    "visitor"
+                ]
+            }
+        }
+    },
+    "produces":[
+        "application/json"
+    ],
+    "schemes":[
+        "http",
+        "https"
+    ],
+    "tags":[
+        {
+            "description":"operations for counting website visitors",
+            "name":"visitor"
+        }
+    ]
 }
