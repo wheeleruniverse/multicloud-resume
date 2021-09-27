@@ -34,7 +34,7 @@ def get_count_data():
     return get_count_reference().get().to_dict()
 
 def get_count_reference():
-    return database.collection(u'visitors').document(u'count')
+    return database.collection(u'visitor').document(u'count')
 
 def set_count_data(value):
     get_count_reference().set({u'value': value})
