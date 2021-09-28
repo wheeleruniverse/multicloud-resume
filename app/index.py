@@ -31,7 +31,8 @@ def load():
     return set_count_data(request.get_json().get('value', 0))
 
 def get_count_data():
-    return get_count_reference().get().to_dict()
+    cur_count = get_count_reference().get().to_dict()
+    return {'value': 0} if cur_count is None else cur_count
 
 def get_count_reference():
     return database.collection(u'visitor').document(u'count')
