@@ -11,11 +11,8 @@
     <div class="section">
       <a v-bind:href="resumeUrl" class="resume-link">Resume</a>
     </div>
-    <div class="section">
-      <a v-bind:href="visitorCountApi">{{visitorCountApi}}</a>
-    </div>
-    <div class="section">
-      <a v-bind:href="visitorIncrementApi">{{visitorIncrementApi}}</a>
+    <div class="section visitors">
+      {{count}} Visitors
     </div>
   </div>
 </template>
@@ -29,8 +26,35 @@ export default {
     resumeUrl: String,
     visitorCountApi: String,
     visitorIncrementApi: String
+  },
+  methods: {
+    getCount(){
+      this.axios.get(this.visitorCountApi).then(response => {
+        const value = response?.data?.value;
+        if(value || 0 === value){
+          this.count = value;
+          this.incrementCount();
+        }
+      });
+    },
+    incrementCount(){
+      this.axios.post(this.visitorIncrementApi).then(response => {
+        if(200 === response.status){
+          this.count++;
+        }
+      });
+    }
+  },
+  data () {
+    return {
+      count: 0
+    }
+  },
+  mounted () {
+    this.getCount();
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
