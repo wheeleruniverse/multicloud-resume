@@ -19,11 +19,14 @@ public abstract class AbstractCosmosCountRepository extends AbstractCosmosReposi
 
     public Count count(){
         final String table = getTableName();
-        final String sql = String.format("select %s as name, c.value from %s c where id = 'count'", table, table);
+        final String sql = String.format(
+                "select '%s' as name, c.val from %s c where c.id = 'count'",
+                table, table
+        );
         final CosmosQueryRequestOptions options = cosmosConnector.getQueryOptions();
         return getTable()
                 .queryItems(sql, options, Count.class)
-                .stream().findFirst().orElse(new Count(getTableName(), 0));
+                .stream().findFirst().orElse(new Count(table, 0));
     }
 
     public void increment(){
@@ -31,11 +34,11 @@ public abstract class AbstractCosmosCountRepository extends AbstractCosmosReposi
         current.increment();
 
         final CosmosItemRequestOptions options = cosmosConnector.getItemOptions();
-        getTable().createItem(current, options);
+        getTable().upsertItem(current, options);
     }
 
     public void load(final Integer value){
         final CosmosItemRequestOptions options = cosmosConnector.getItemOptions();
-        getTable().createItem(new Count(getTableName(), value), options);
+        getTable().upsertItem(new Count(getTableName(), value), options);
     }
 }

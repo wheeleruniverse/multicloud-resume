@@ -60,6 +60,6 @@ public abstract class AbstractCosmosModelRepository<T> extends AbstractCosmosRep
     public <I extends Iterable<T>> void saveIterable(I items){
         final CosmosItemRequestOptions options = cosmosConnector.getItemOptions();
         final CosmosContainer table = getTable();
-        items.forEach(i -> table.createItem(i, options));
+        items.forEach(i -> table.upsertItem(i, options));
     }
 }
