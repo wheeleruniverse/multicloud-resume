@@ -1,20 +1,2 @@
 
-.idea
-
-app/*/target
-
-infrastructure/terraform/*/.terraform
-infrastructure/terraform/*/*.tfstate
-infrastructure/terraform/*/*.tfstate.*
-infrastructure/terraform/*/*.tfvars
-infrastructure/terraform/*/*_override.tf
-infrastructure/terraform/*/*_override.tf.json
-infrastructure/terraform/*/override.tf
-infrastructure/terraform/*/override.tf.json
-infrastructure/terraform/*/.terraformrc
-infrastructure/terraform/*/terraform.rc
-
-web/dist
-web/node_modules
-
-*.log
+.idea/
