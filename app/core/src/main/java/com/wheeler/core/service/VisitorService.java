@@ -1,60 +1,51 @@
 package com.wheeler.core.service;
 
-import com.wheeler.core.dao.model.Visitor;
-import com.wheeler.core.dao.repository.CoreRepository;
+import com.wheeler.core.dao.model.Count;
+import com.wheeler.core.dao.repository.CountRepository;
 import com.wheeler.core.exception.BadRequestException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 @Service
 public class VisitorService {
 
-    private final CoreRepository<Visitor> visitorRepository;
+    private final CountRepository visitorRepository;
 
-    public VisitorService(final CoreRepository<Visitor> visitorRepository) {
+    public VisitorService(final CountRepository visitorRepository) {
         this.visitorRepository = visitorRepository;
     }
 
     @Bean
-    public Function<Optional<?>, Integer> visitorCount() {
+    public Function<Optional<?>, Count> visitorCount() {
         return (o) -> visitorRepository.count();
     }
 
     @Bean
-    public Function<Visitor, Optional<?>> visitorCreate() {
-        return visitor -> {
-            validateVisitor(visitor);
-            visitorRepository.save(visitor);
+    public Function<Optional<?>, Optional<?>> visitorIncrement() {
+        return (o) -> {
+            visitorRepository.increment();
             return Optional.empty();
         };
     }
 
     @Bean
-    public Function<String, Optional<?>> visitorLoad() {
-        return (json) -> {
-            visitorRepository.load(json);
+    public Function<Integer, Optional<?>> visitorLoad() {
+        return (value) -> {
+            validateCount(value);
+            visitorRepository.load(value);
             return Optional.empty();
         };
     }
 
-    @Bean
-    public Function<Optional<?>, List<Visitor>> visitorRetrieve() {
-        return (o) -> visitorRepository.findAll();
-    }
-
-    private void validateVisitor(Visitor visitor){
-        if(visitor == null){
-            throw new BadRequestException("visitor is invalid");
+    private void validateCount(final Integer value){
+        if(value == null){
+            throw new BadRequestException("value is invalid");
         }
-        if(visitor.getId() == null || visitor.getId().trim().isEmpty()){
-            throw new BadRequestException("visitor.id is invalid");
-        }
-        if(visitor.getName() == null || visitor.getName().trim().isEmpty()){
-            throw new BadRequestException("visitor.name is invalid");
+        if(value < 0){
+            throw new BadRequestException("value should be greater than 0");
         }
     }
 }

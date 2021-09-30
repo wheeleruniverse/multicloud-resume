@@ -2,9 +2,9 @@ package com.wheeler.core.dao.repository;
 
 import java.util.List;
 
-public interface CoreRepository<T> {
+public interface ModelRepository<T> {
 
-    int count();
+    void delete(final T record);
 
     List<T> findAll();
 

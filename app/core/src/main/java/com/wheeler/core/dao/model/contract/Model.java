@@ -1,6 +1,6 @@
 package com.wheeler.core.dao.model.contract;
 
-public interface Entity {
+public interface Model {
 
     String getId();
 }

@@ -1,21 +1,20 @@
 package com.wheeler.core.service;
 
 import com.wheeler.core.dao.model.Certification;
-import com.wheeler.core.dao.repository.CoreRepository;
+import com.wheeler.core.dao.repository.ModelRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Service
 public class CertificationService {
 
-    private final CoreRepository<Certification> certificationRepository;
+    private final ModelRepository<Certification> certificationRepository;
 
-    public CertificationService(final CoreRepository<Certification> certificationRepository) {
+    public CertificationService(final ModelRepository<Certification> certificationRepository) {
         this.certificationRepository = certificationRepository;
     }
 

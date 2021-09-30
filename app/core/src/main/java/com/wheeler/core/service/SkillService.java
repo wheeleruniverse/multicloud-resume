@@ -1,7 +1,7 @@
 package com.wheeler.core.service;
 
 import com.wheeler.core.dao.model.Skill;
-import com.wheeler.core.dao.repository.CoreRepository;
+import com.wheeler.core.dao.repository.ModelRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +12,9 @@ import java.util.function.Function;
 @Service
 public class SkillService {
 
-    private final CoreRepository<Skill> skillRepository;
+    private final ModelRepository<Skill> skillRepository;
 
-    public SkillService(final CoreRepository<Skill> skillRepository) {
+    public SkillService(final ModelRepository<Skill> skillRepository) {
         this.skillRepository = skillRepository;
     }
 
