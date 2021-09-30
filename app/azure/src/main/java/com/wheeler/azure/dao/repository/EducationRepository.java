@@ -1,14 +1,15 @@
 package com.wheeler.azure.dao.repository;
 
-import com.wheeler.core.dao.model.Education;
-import com.wheeler.core.dao.repository.CoreRepository;
 import com.wheeler.azure.dao.connection.CosmosConnector;
+import com.wheeler.azure.dao.repository.base.AbstractCosmosModelRepository;
+import com.wheeler.core.dao.model.Education;
+import com.wheeler.core.dao.repository.ModelRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class EducationRepository
-        extends AbstractCosmosRepository<Education>
-        implements CoreRepository<Education> {
+        extends AbstractCosmosModelRepository<Education>
+        implements ModelRepository<Education> {
 
     public EducationRepository(final CosmosConnector cosmosConnector) {
         super(cosmosConnector);
@@ -16,7 +17,7 @@ public class EducationRepository
 
     @Override
     public String getTableName() {
-        return "education";
+        return Education.getTableName();
     }
 
     @Override

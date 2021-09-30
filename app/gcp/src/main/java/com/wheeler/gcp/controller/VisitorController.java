@@ -1,6 +1,7 @@
 package com.wheeler.gcp.controller;
 
-import com.wheeler.core.dao.model.Visitor;
+import com.wheeler.core.dao.model.Count;
+import com.wheeler.core.dto.model.CountDto;
 import com.wheeler.core.service.VisitorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,23 +22,23 @@ public class VisitorController {
         this.visitorService = visitorService;
     }
 
-    @PostMapping(value = "/create")
-    public void create(@RequestBody final Visitor visitor, final HttpServletResponse httpResponse){
-        visitorService.visitorCreate().apply(visitor);
+    @GetMapping(value = "/count")
+    @ResponseBody
+    public CountDto count(){
+        final Count data = visitorService.visitorCount().apply(Optional.empty());
+        LOGGER.info("received {} as the visitor count", data.getValue());
+        return new CountDto(data);
+    }
+
+    @PostMapping(value = "/increment")
+    public void increment(final HttpServletResponse httpResponse){
+        visitorService.visitorIncrement().apply(Optional.empty());
         httpResponse.setStatus(204);
     }
 
-    @GetMapping(value = "/count")
-    @ResponseBody
-    public Integer count(){
-        Integer data = visitorService.visitorCount().apply(Optional.empty());
-        LOGGER.info("received {} as the visitor count", data);
-        return data;
-    }
-
     @PostMapping(value = "/load")
-    public void load(@RequestBody final String json, final HttpServletResponse httpResponse){
-        visitorService.visitorLoad().apply(json);
+    public void load(@RequestBody final Integer value, final HttpServletResponse httpResponse){
+        visitorService.visitorLoad().apply(value);
         httpResponse.setStatus(204);
     }
 }

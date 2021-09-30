@@ -1,14 +1,15 @@
 package com.wheeler.gcp.dao.repository;
 
 import com.wheeler.core.dao.model.Project;
-import com.wheeler.core.dao.repository.CoreRepository;
+import com.wheeler.core.dao.repository.ModelRepository;
 import com.wheeler.gcp.dao.connection.FirestoreConnector;
+import com.wheeler.gcp.dao.repository.base.AbstractFirestoreModelRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProjectRepository
-        extends AbstractFirestoreRepository<Project>
-        implements CoreRepository<Project> {
+        extends AbstractFirestoreModelRepository<Project>
+        implements ModelRepository<Project> {
 
     public ProjectRepository(final FirestoreConnector firestoreConnector) {
         super(firestoreConnector);
@@ -16,7 +17,7 @@ public class ProjectRepository
 
     @Override
     public String getTableName() {
-        return "project";
+        return Project.getTableName();
     }
 
     @Override

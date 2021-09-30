@@ -1,14 +1,15 @@
 package com.wheeler.gcp.dao.repository;
 
 import com.wheeler.core.dao.model.Experience;
-import com.wheeler.core.dao.repository.CoreRepository;
+import com.wheeler.core.dao.repository.ModelRepository;
 import com.wheeler.gcp.dao.connection.FirestoreConnector;
+import com.wheeler.gcp.dao.repository.base.AbstractFirestoreModelRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ExperienceRepository
-        extends AbstractFirestoreRepository<Experience>
-        implements CoreRepository<Experience> {
+        extends AbstractFirestoreModelRepository<Experience>
+        implements ModelRepository<Experience> {
 
     public ExperienceRepository(final FirestoreConnector firestoreConnector) {
         super(firestoreConnector);
@@ -16,7 +17,7 @@ public class ExperienceRepository
 
     @Override
     public String getTableName() {
-        return "experience";
+        return Experience.getTableName();
     }
 
     @Override

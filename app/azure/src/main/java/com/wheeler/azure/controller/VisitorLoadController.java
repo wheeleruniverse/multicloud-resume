@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import java.util.Optional;
 
 @Controller
-public class VisitorLoadController extends AzureSpringBootRequestHandler<String, Optional<?>> {
+public class VisitorLoadController extends AzureSpringBootRequestHandler<Integer, Optional<?>> {
 
     /**
      * loads visitor data
@@ -27,11 +27,11 @@ public class VisitorLoadController extends AzureSpringBootRequestHandler<String,
                     methods = {HttpMethod.POST},
                     name = "req",
                     route = "visitor/load")
-                    HttpRequestMessage<Optional<String>> request,
+                    HttpRequestMessage<Optional<Integer>> request,
             final ExecutionContext context) {
 
         try {
-            handleRequest(request.getBody().orElse(null), context);
+            handleRequest(request.getBody().orElse(0), context);
             return request.createResponseBuilder(HttpStatus.valueOf(200)).build();
         }
         catch(Exception e){
