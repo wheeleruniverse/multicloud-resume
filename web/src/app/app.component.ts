@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   device: Device;
 
-  aboutShouldRender = false;
+  aboutShouldRender = true;
 
   certificationShouldEnable = true;
   certificationShouldRender = false;
