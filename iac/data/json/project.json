@@ -166,7 +166,7 @@
             "month":"4",
             "year":"2021"
         },
-        "website":"https://www.wheelercloudguru.com"
+        "website":"https://azure.wheelercloudguru.com"
     },
     {
         "id":"f873ba47-3d3c-4e17-9142-5f7f64dfa748",
@@ -200,5 +200,40 @@
             "year":"2021"
         },
         "website":null
+    },
+    {
+        "id":"0e73c393-613e-4119-8ae7-1c01a70e2cd5",
+        "name":"Aug, 21 #CloudGuruChallenge",
+        "blog":null,
+        "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.08-env",
+        "description":"Create a website to display resume information hosted in GCP. As part of the 'Meta Resume Challenge' project, I decided to build a resume that was hosted on multiple cloud providers at the same time. However, this project required some technology that I did not want to use on the 'Meta Resume Challenge' project, yet I still wanted to gain experience with the technology behind those requirements. I registered a domain name with Cloud Domains and created a Hosted Zone in Cloud DNS. Deployed a sample Vue application to Cloud Storage that was behind an HTTPS Cloud Load Balancer. The Vue app track visitors using a Python API deployed to Cloud Run that stored data in a Firestore database. The infrastructure was created using Terraform and CI/CD for the frontend and backend code was managed by Cloud Build using a GitOps-style approach that leveraged an 'env' repository. Finally, this sample application merely contained a button that redirected to the 'Meta Resume Challenge' domain. The DNS name that I registered specifically for this challenge will be repurposed.",
+        "end":{
+            "month":"9",
+            "year":"2021"
+        },
+        "skills":[
+
+        ],
+        "start":{
+            "month":"8",
+            "year":"2021"
+        },
+        "website":"https://gcp.wheelercloudguru.com"
+    },
+    {
+        "id":"267c7a35-7ec1-49da-91f9-a77b9842002d",
+        "name":"Meta Resume Challenge",
+        "blog":null,
+        "code":"https://github.com/wheelers-websites/Resume",
+        "description":"Create a serverless Resume website hosted on three cloud providers. I chose to use AWS, Azure, and GCP. The frontend code is written in Angular. The backend code is written in Java. Infrastructure is managed by Terraform. CI/CD is managed by GitHub Actions. DNS is managed by AWS Route 53.",
+        "end":null,
+        "skills":[
+
+        ],
+        "start":{
+            "month":"4",
+            "year":"2021"
+        },
+        "website":"https://www.wheelercloudguru.com"
     }
 ]
