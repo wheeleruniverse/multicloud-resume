@@ -17,9 +17,18 @@ public class Count implements Model {
     public String getId() {
         return "count";
     }
-
+    @SuppressWarnings("unused")
     public void setId(String id){
         // suppress firestore warnings
+    }
+    @SuppressWarnings("unused")
+    public Integer getVal() {
+        return value;
+    }
+    @SuppressWarnings("unused")
+    public void setVal(Integer value) {
+        // maps 'val' to 'value' for databases that reserve the word 'value'
+        this.value = value;
     }
 
     public void increment(){
