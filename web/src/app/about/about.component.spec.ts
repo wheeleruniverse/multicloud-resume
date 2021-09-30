@@ -23,8 +23,8 @@ describe('AboutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render #about', () => {
-    const about = fixture.debugElement.query(By.css('#about'));
+  it('should render .about', () => {
+    const about = fixture.debugElement.query(By.css('.about'));
     expect(about).toBeTruthy();
   });
 });
