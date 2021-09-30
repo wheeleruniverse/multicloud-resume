@@ -18,7 +18,6 @@ export const backend = {
   },
   visitor: {
     count: `${environment.backend}/visitor/count`,
-    create: `${environment.backend}/visitor/create`,
-    retrieve: `${environment.backend}/visitor/retrieve`,
+    increment: `${environment.backend}/visitor/increment`,
   },
 };

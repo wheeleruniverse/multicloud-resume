@@ -3,19 +3,19 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { ErrorAction } from '../error/error.actions';
 import { Observable, of } from 'rxjs';
 import { EducationService } from '../../service/education/education.service';
+import {ErrorAction} from "../general/general.actions";
 
 @Injectable()
 export class EducationEffects {
-  constructor(private actions$: Actions, private service: EducationService) {}
+  constructor(private actions$: Actions, private educationService: EducationService) {}
 
   retrieve$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<EducationRetrieveAction>(EducationActionType.Retrieve),
       switchMap(() => {
-        return this.service.retrieve().pipe(
+        return this.educationService.retrieve().pipe(
           map((state) => new EducationRetrieveSuccessAction(state)),
           catchError((error) => of(new ErrorAction(error)))
         );

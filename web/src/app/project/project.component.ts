@@ -19,8 +19,8 @@ export class ProjectComponent implements OnDestroy, OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private dialog: MatDialog,
-    private facade: ProjectFacade,
     private filterService: FilterService,
+    private projectFacade: ProjectFacade,
     private viewService: ViewService
   ) {}
 
@@ -46,7 +46,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
       });
 
     this.viewService.projectShouldEnable(false);
-    this.facade
+    this.projectFacade
       .retrieve()
       .pipe(
         takeUntil(this.destroyed$),

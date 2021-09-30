@@ -11,7 +11,7 @@ import {EducationFacade} from '../core/store/education/education.facade';
   styleUrls: ['./education.component.scss', '../shared/component/carousel/carousel.component.scss'],
 })
 export class EducationComponent implements OnDestroy, OnInit {
-  constructor(private facade: EducationFacade, private viewService: ViewService) {}
+  constructor(private educationFacade: EducationFacade, private viewService: ViewService) {}
 
   destroyed$ = new Subject<void>();
   state: EducationState;
@@ -24,7 +24,7 @@ export class EducationComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.viewService.educationShouldEnable(false);
 
-    this.facade
+    this.educationFacade
       .retrieve()
       .pipe(
         takeUntil(this.destroyed$),

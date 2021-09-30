@@ -8,18 +8,18 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { CertificationService } from '../../service/certification/certification.service';
 import { Action } from '@ngrx/store';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { ErrorAction } from '../error/error.actions';
 import { Observable, of } from 'rxjs';
+import {ErrorAction} from "../general/general.actions";
 
 @Injectable()
 export class CertificationEffects {
-  constructor(private actions$: Actions, private service: CertificationService) {}
+  constructor(private actions$: Actions, private certificationService: CertificationService) {}
 
   retrieve$: Observable<Action> = createEffect(() => {
     return this.actions$.pipe(
       ofType<CertificationRetrieveAction>(CertificationActionType.Retrieve),
       switchMap(() => {
-        return this.service.retrieve().pipe(
+        return this.certificationService.retrieve().pipe(
           map((state) => new CertificationRetrieveSuccessAction(state)),
           catchError((error) => of(new ErrorAction(error)))
         );

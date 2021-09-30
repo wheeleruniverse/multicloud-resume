@@ -1,7 +1,4 @@
-import {ChangeDetectorRef, Injectable} from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import {BreakpointObserver} from "@angular/cdk/layout";
-import {ViewService} from "./view.service";
+import {Injectable} from '@angular/core';
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
 

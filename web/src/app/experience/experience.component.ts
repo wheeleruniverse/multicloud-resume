@@ -11,7 +11,7 @@ import { ExperienceFacade } from '../core/store/experience/experience.facade';
   styleUrls: ['./experience.component.scss', '../shared/component/carousel/carousel.component.scss'],
 })
 export class ExperienceComponent implements OnDestroy, OnInit {
-  constructor(private facade: ExperienceFacade, private viewService: ViewService) {}
+  constructor(private experienceFacade: ExperienceFacade, private viewService: ViewService) {}
 
   destroyed$ = new Subject<void>();
   state: ExperienceState;
@@ -24,7 +24,7 @@ export class ExperienceComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.viewService.experienceShouldEnable(false);
 
-    this.facade
+    this.experienceFacade
       .retrieve()
       .pipe(
         takeUntil(this.destroyed$),

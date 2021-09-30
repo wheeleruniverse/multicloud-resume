@@ -19,7 +19,11 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private facade: SkillFacade, private filterService: FilterService, private viewService: ViewService) {}
+  constructor(
+    private filterService: FilterService,
+    private skillFacade: SkillFacade,
+    private viewService: ViewService
+  ) {}
 
   destroyed$ = new Subject<void>();
   state: SkillState;
@@ -29,7 +33,7 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.viewService.skillShouldEnable(false);
 
-    this.facade
+    this.skillFacade
       .retrieve()
       .pipe(
         takeUntil(this.destroyed$),

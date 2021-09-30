@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { VisitorService } from '../core/service/visitor/visitor.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { CookieService } from 'ngx-cookie-service';
-import { v4 } from 'uuid';
-import { environment } from '../../environments/environment';
+import {Component, OnInit} from '@angular/core';
+import {ViewService} from "../shared/service/view.service";
+import {VisitorFacade} from "../core/store/visitor/visitor.facade";
 
 @Component({
   selector: 'app-visitor',
@@ -12,39 +9,26 @@ import { environment } from '../../environments/environment';
 })
 export class VisitorComponent implements OnInit {
   constructor(
-    private cookieService: CookieService,
-    private service: VisitorService,
-    private snackBar: MatSnackBar) {}
+    private viewService: ViewService,
+    private visitorFacade: VisitorFacade,
+  ) {}
 
-  private readonly cookie = `${environment.provider}-visitor`;
   total: number;
 
   ngOnInit(): void {
-    this.service.count().subscribe((total) => {
+    this.viewService.visitorShouldEnable(false);
+
+    this.visitorFacade.count().subscribe((total) => {
       this.total = total;
+      this.viewService.visitorShouldEnable(true);
     });
-    if (!this.cookieService.check(this.cookie)) {
-      this.createVisitor();
-    }
   }
 
   totalCharAt(position: number): string {
+    if(!this.total){
+      return '0';
+    }
     const value = ('0000000' + this.total).slice(-7);
     return position > value.length - 1 ? '0' : value.charAt(position);
-  }
-
-  private createVisitor(): void {
-    const config = { duration: 3000 };
-    const visitor = { id: v4(), name: window.navigator.userAgent };
-
-    this.service.create(visitor).subscribe((res) => {
-      if ([200, 201, 204].includes(res.status)) {
-        this.cookieService.set(this.cookie, visitor.id, 30);
-        this.snackBar.open('Visitor Created!', null, config);
-        this.total = !!this.total ? this.total + 1 : 1;
-      } else {
-        this.snackBar.open('Visitor Failure!', null, config);
-      }
-    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {faGithub, faLinkedinIn, IconDefinition} from "@fortawesome/free-brands-svg-icons";
 import {faBlog, faCloud, faUser} from "@fortawesome/free-solid-svg-icons";
 
@@ -7,12 +7,7 @@ import {faBlog, faCloud, faUser} from "@fortawesome/free-solid-svg-icons";
   templateUrl: './social.component.html',
   styleUrls: ['./social.component.scss']
 })
-export class SocialComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class SocialComponent {
 
   get faBlog(): IconDefinition {
     return faBlog;
