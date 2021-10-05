@@ -20,16 +20,17 @@ import { LocationPipe } from './pipe/location.pipe';
 import { MonthYearPipe } from './pipe/month-year.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ProjectDialogComponent } from '../project/dialog/project-dialog.component';
+import { ProjectInfoDialogComponent } from '../project/info-dialog/project-info-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
-import {IconRegistryService} from "./service/icon-registry.service";
+import {ProjectArchitectureDialogComponent} from '../project/architecture-dialog/project-architecture-dialog.component';
 
 @NgModule({
   declarations: [
     CarouselComponent,
     LocationPipe,
     MonthYearPipe,
-    ProjectDialogComponent,
+    ProjectArchitectureDialogComponent,
+    ProjectInfoDialogComponent,
   ],
   exports: [
     CarouselComponent,

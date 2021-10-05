@@ -1,4 +1,4 @@
-import {environment} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 
 export const backend = {
   certification: {
@@ -21,3 +21,10 @@ export const backend = {
     increment: `${environment.backend}/visitor/increment`,
   },
 };
+
+export function getStorageUrl(entity: string, id: string, suffix: string): string {
+  if (!entity || !id || !suffix){
+    return undefined;
+  }
+  return `${environment.storage}/${entity}/${id}/${suffix}`;
+}

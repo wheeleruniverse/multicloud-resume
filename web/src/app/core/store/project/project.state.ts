@@ -11,6 +11,7 @@ export interface Project {
   blog: string;
   code: string;
   description: string;
+  diagrams: number;
   end: MonthYear;
   skills: string[];
   start: MonthYear;

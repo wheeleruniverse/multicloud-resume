@@ -1,0 +1,61 @@
+@import "../../../stylesheets/variables";
+
+.dialog {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+}
+
+.dialog-footer {
+  justify-content: space-between;
+
+  button {
+    background-color: #49caff;
+    color: #ffffff;
+  }
+
+  .dialog-lhs {
+    float: left;
+  }
+
+  .dialog-rhs {
+    float: right;
+  }
+}
+
+.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+mat-dialog-content > img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  width: 90%;
+}
+
+mat-divider {
+  margin: 24px 12px;
+}
+
+@media screen and (max-width: $device-mobile-lg) {
+
+  .dialog {
+    width: 96%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  mat-divider {
+    margin: 12px 6px;
+  }
+}

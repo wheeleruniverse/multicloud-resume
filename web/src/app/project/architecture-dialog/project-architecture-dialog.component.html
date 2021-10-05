@@ -1,0 +1,35 @@
+<div class="dialog">
+  <div class="dialog-header">
+    <h1 mat-dialog-title>Project Architecture</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-dialog-content class="mat-typography">
+    <img alt="Architecture Diagram" src="{{storageUrlForIndex}}" />
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions class="dialog-footer">
+    <div class="dialog-lhs">
+      <button mat-button mat-dialog-close>Close</button>
+    </div>
+    <div class="dialog-rhs">
+      <button
+        *ngIf="this.index > 0"
+        (click)="indexBack()"
+        (keydown.enter)="indexBack()"
+        tabIndex="0"
+        mat-button
+      >
+        Back
+      </button>
+      <button
+        *ngIf="this.index < this.data.diagrams - 1"
+        (click)="indexNext()"
+        (keydown.enter)="indexNext()"
+        tabIndex="0"
+        mat-button
+      >
+        Next
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

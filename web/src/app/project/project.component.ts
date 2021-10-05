@@ -1,14 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { ViewService } from '../shared/service/view.service';
-import { ProjectFacade } from '../core/store/project/project.facade';
-import { ProjectCompositeState } from '../core/store/project/project.state';
-import { filter, takeUntil } from 'rxjs/operators';
-import { FilterService } from '../shared/service/filter.service';
-import { Skill } from '../core/store/skill/skill.state';
-import { MatDialog } from '@angular/material/dialog';
-import { ProjectDialogComponent } from './dialog/project-dialog.component';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
+import {ViewService} from '../shared/service/view.service';
+import {ProjectFacade} from '../core/store/project/project.facade';
+import {Project, ProjectCompositeState} from '../core/store/project/project.state';
+import {filter, takeUntil} from 'rxjs/operators';
+import {FilterService} from '../shared/service/filter.service';
+import {Skill} from '../core/store/skill/skill.state';
+import {MatDialog} from '@angular/material/dialog';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {ProjectInfoDialogComponent} from './info-dialog/project-info-dialog.component';
+import {ProjectArchitectureDialogComponent} from './architecture-dialog/project-architecture-dialog.component';
 
 @Component({
   selector: 'app-projects',
@@ -62,9 +63,16 @@ export class ProjectComponent implements OnDestroy, OnInit {
     });
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ProjectDialogComponent);
-    dialogRef.afterClosed().subscribe(() => {});
+  openArchitectureDialog(project: Project): void {
+    const dialogRef = this.dialog.open(ProjectArchitectureDialogComponent, {
+      data: { ...project }
+    });
+    dialogRef.afterClosed().subscribe();
+  }
+
+  openInfoDialog(): void {
+    const dialogRef = this.dialog.open(ProjectInfoDialogComponent);
+    dialogRef.afterClosed().subscribe();
   }
 
   getSkills(ids: string[]): Skill[] {
