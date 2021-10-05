@@ -14,6 +14,7 @@ public class Project implements Model {
     private String blog;
     private String code;
     private String description;
+    private Integer diagrams;
     private MonthYear end;
     private List<String> skills;
     private MonthYear start;

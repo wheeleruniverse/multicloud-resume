@@ -5,6 +5,7 @@
         "blog":"https://dev.to/wheelerswebsites/my-september-cloud-guru-challenge-experience-l2j",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_20.09",
         "description":"Create and automate an ETL processing pipeline for COVID-19 data using Python and AWS. Infrastructure was created and managed by CloudFormation. Data was fetched from a hosted GitHub repository on a schedule managed by EventBridge and transformed using Python code running within a Lambda function. Transformed data was stored in a DynamoDB database and streamed to an S3 bucket. QuickSight was connected to the S3 bucket so COVID-19 data could be displayed on an easy to read dashboard. Code was tracked by Git version control and stored in a GitHub repository.",
+        "diagrams":"1",
         "end":{
             "month":"9",
             "year":"2020"
@@ -33,6 +34,7 @@
         "blog":"https://dev.to/wheelerswebsites/my-october-cloud-guru-challenge-experience-5ecg",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_20.10",
         "description":"Create a Netflix style recommendation engine using SageMaker. Data was loaded from IMDB and uploaded to S3 using Jupyter Notebooks. Jupyter was also used to conduct the machine learning training. Feature engineering was done with Athena and SQL. Machine learning results were exported and used to build a PHP website. The website was fully hosted on AWS. DNS registration and routing was done with Route53. Dynamic content was served by a containerized PHP Lambda using Bref fronted by API Gateway. Static content was served by S3. All content was distributed using CloudFront.",
+        "diagrams":"1",
         "end":{
             "month":"12",
             "year":"2020"
@@ -67,6 +69,7 @@
         "blog":"https://dev.to/wheelerswebsites/january-21-cloudguruchallenge-iaj",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.01",
         "description":"Create an image processing website that utilizes multiple cloud providers. Used AWS, Azure, and GCP to accomplish the goal. For AWS, Route 53 was used for DNS registration and routing, CloudFront for content distribution, API Gateway for HTTP access to Lambda functions, C# and Node.js Lambda functions for business logic, and S3 for website hosting. For Azure, Table Storage was used to store image analysis data in a NoSQL database. For GCP, Cloud Vision was used to conduct image analysis on images uploaded to S3.",
+        "diagrams":"1",
         "end":{
             "month":"1",
             "year":"2021"
@@ -99,6 +102,7 @@
         "blog":"https://dev.to/wheelerswebsites/feb-21-cloudguruchallenge-358d",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.02",
         "description":"Create a verification website in Azure that is continuously integrated and globally performant. The website was written in Ruby on Rails and deployed to App Service using Azure Pipelines. The app servers were setup with auto scaling and secured within a Virtual Network behind Front Door. Data was written to Cosmos DB and binary data was written to Blob storage. Azure Pipelines was executed using a self-hosted agent running on a Virtual Machine with a local SSD disk and public IP address protected by a Network Security Group. All infrastructure was deployed using Resource Manager.",
+        "diagrams":"1",
         "end":{
             "month":"4",
             "year":"2021"
@@ -134,6 +138,7 @@
         "blog":"https://dev.to/wheelerswebsites/apr-21-cloudguruchallenge-3fch",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.04",
         "description":"Create a website to display Resume information hosted in Azure. The frontend uses Angular and NgRx hosted in Azure Blob storage. The backend uses Java hosted in Azure Functions. The frontend sits behind Azure CDN, which is routed to via AWS Route 53. Website data is stored in a serverless Cosmos DB instance. The infrastructure is deployed via Terraform. GitHub Actions provides automatd CI/CD for the frontend and the backend code.",
+        "diagrams":"1",
         "end":{
             "month":"6",
             "year":"2021"
@@ -174,6 +179,7 @@
         "blog":"https://dev.to/wheelerswebsites/jun-21-cloudguruchallenge-2k11",
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.06",
         "description":"Create a Python application that leverages a Redis ElastiCache to improve performance. The website is a Python Flask app hosted on EC2 within a custom VPC. The application interacts with a Redis ElastiCache instance and a PostgreSQL RDS instance. The RDS instance uses a stored procedure that sleeps to simulate slowness. The application caches the result in ElastiCache to demonstrate the dramatic effect caching can have on user experience. Infrastructure is fully managed by Terraform. The application and network infrastructure is managed separately.",
+        "diagrams":"2",
         "end":{
             "month":"8",
             "year":"2021"
@@ -207,12 +213,13 @@
         "blog":null,
         "code":"https://github.com/wheelers-websites/CloudGuruChallenge_21.08-env",
         "description":"Create a website to display resume information hosted in GCP. As part of the 'Meta Resume Challenge' project, I decided to build a resume that was hosted on multiple cloud providers at the same time. However, this project required some technology that I did not want to use on the 'Meta Resume Challenge' project, yet I still wanted to gain experience with the technology behind those requirements. I registered a domain name with Cloud Domains and created a Hosted Zone in Cloud DNS. Deployed a sample Vue application to Cloud Storage that was behind an HTTPS Cloud Load Balancer. The Vue app track visitors using a Python API deployed to Cloud Run that stored data in a Firestore database. The infrastructure was created using Terraform and CI/CD for the frontend and backend code was managed by Cloud Build using a GitOps-style approach that leveraged an 'env' repository. Finally, this sample application merely contained a button that redirected to the 'Meta Resume Challenge' domain. The DNS name that I registered specifically for this challenge will be repurposed.",
+        "diagrams":"2",
         "end":{
             "month":"9",
             "year":"2021"
         },
         "skills":[
-
+            
         ],
         "start":{
             "month":"8",
@@ -226,9 +233,10 @@
         "blog":null,
         "code":"https://github.com/wheelers-websites/Resume",
         "description":"Create a serverless Resume website hosted on three cloud providers. I chose to use AWS, Azure, and GCP. The frontend code is written in Angular. The backend code is written in Java. Infrastructure is managed by Terraform. CI/CD is managed by GitHub Actions. DNS is managed by AWS Route 53.",
+        "diagrams":"1",
         "end":null,
         "skills":[
-
+            
         ],
         "start":{
             "month":"4",
