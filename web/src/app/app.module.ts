@@ -16,6 +16,7 @@ import { CoreModule } from './core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SocialComponent } from './social/social.component';
+import {IvyCarouselModule} from "angular-responsive-carousel";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -30,14 +31,15 @@ import { SocialComponent } from './social/social.component';
     SkillComponent,
     VisitorComponent,
   ],
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    CoreModule,
-    FontAwesomeModule,
-    HttpClientModule,
-    SharedModule,
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        BrowserModule,
+        CoreModule,
+        FontAwesomeModule,
+        HttpClientModule,
+        SharedModule,
+        IvyCarouselModule,
+    ],
   providers: [CookieService, HttpClient],
 })
 export class AppModule {}

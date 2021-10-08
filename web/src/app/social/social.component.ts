@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {faGithub, faLinkedinIn, IconDefinition} from "@fortawesome/free-brands-svg-icons";
-import {faBlog, faCloud, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faGithub, faLinkedinIn, faTwitter, IconDefinition} from '@fortawesome/free-brands-svg-icons';
+import {faAt, faBlog, faCloud, faCoffee, faFilePdf, faUser} from '@fortawesome/free-solid-svg-icons';
+import {getStorageUrl} from "../shared/utility/backend.utility";
 
 @Component({
   selector: 'app-social',
@@ -9,12 +10,24 @@ import {faBlog, faCloud, faUser} from "@fortawesome/free-solid-svg-icons";
 })
 export class SocialComponent {
 
+  get faAt(): IconDefinition {
+    return faAt;
+  }
+
   get faBlog(): IconDefinition {
     return faBlog;
   }
 
   get faCloud(): IconDefinition {
     return faCloud;
+  }
+
+  get faCoffee(): IconDefinition {
+    return faCoffee;
+  }
+
+  get faFilePdf(): IconDefinition {
+    return faFilePdf;
   }
 
   get faGithub(): IconDefinition {
@@ -25,7 +38,15 @@ export class SocialComponent {
     return faLinkedinIn;
   }
 
+  get faTwitter(): IconDefinition {
+    return faTwitter;
+  }
+
   get faUser(): IconDefinition {
     return faUser;
+  }
+
+  get storageUrlForResume(): string {
+    return getStorageUrl('social', '0', 'resume.pdf');
   }
 }

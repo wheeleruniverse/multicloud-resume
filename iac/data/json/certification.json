@@ -111,6 +111,25 @@
         "vendor":"AWS"
     },
     {
+        "id":"ff44f4b1-a3de-40a2-bbfc-2f1d53b60c86",
+        "name":"Data Analytics Specialty",
+        "credential":"L622V9QJEJ41135K",
+        "descriptions":[
+            "Ability to define AWS data analytics services and understand how they integrate with each other",
+            "Ability to explain how AWS data analytics services fit in the data lifecycle of collection, storage, processing, and visualization"
+        ],
+        "expiry":{
+            "month":"8",
+            "year":"2024"
+        },
+        "issued":{
+            "month":"8",
+            "year":"2021"
+        },
+        "level":"SPECIALTY",
+        "vendor":"AWS"
+    },
+    {
         "id":"ca78ab92-6aa2-4334-87ec-dffb3b98edf4",
         "name":"Database Specialty",
         "credential":"9GLXQ97C32QQ1699",

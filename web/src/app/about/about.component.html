@@ -1,6 +1,18 @@
 <div class="about">
   <div class="gallery">
-    <img class="photo" alt="profile photo 0" src="assets/about/profile-0.jpg"/>
+      <div class="content">
+        <img class="photo" alt="profile photo" src="{{photoUrlForIndex}}"/>
+      </div>
+      <div class="nav">
+        <span
+          *ngFor="let i of count"
+          (click)="setIndex(i)"
+          (keydown.enter)="setIndex(i)"
+          [ngClass]="{ active: index === i }"
+          class="dot"
+        >
+        </span>
+      </div>
   </div>
   <div class="details">
     <div class="interchange">

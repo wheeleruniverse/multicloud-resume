@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { filter } from 'rxjs/operators';
+import {Component, Input, OnInit} from '@angular/core';
+import {BreakpointObserver} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-carousel',
