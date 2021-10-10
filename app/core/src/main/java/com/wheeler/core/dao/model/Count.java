@@ -13,24 +13,43 @@ public class Count implements Model {
     private String name;
     private Integer value;
 
+    /**
+     *
+     * @return the constant 'count' as the id
+     */
     @Override
     public String getId() {
         return "count";
     }
-    @SuppressWarnings("unused")
+
+    /**
+     * stub method that only exists to suppress warnings with firestore
+     * @param id doesn't matter
+     */
     public void setId(String id){
-        // suppress firestore warnings
+       // do nothing
     }
-    @SuppressWarnings("unused")
+
+    /**
+     * alias to getValue
+     * @return the value
+     */
     public Integer getVal() {
         return value;
     }
-    @SuppressWarnings("unused")
+
+    /**
+     * alias to setValue
+     * note: maps 'val' to 'value' for databases that reserve the word 'value'
+     * @param value the value to set
+     */
     public void setVal(Integer value) {
-        // maps 'val' to 'value' for databases that reserve the word 'value'
         this.value = value;
     }
 
+    /**
+     * increments the value by one
+     */
     public void increment(){
         if (value == null || value < 0){
             value = 0;
