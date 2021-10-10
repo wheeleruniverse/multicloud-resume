@@ -2,26 +2,26 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CertificationComponent } from './certification.component';
 import { CertificationFacade } from '../core/store/certification/certification.facade';
-import { ViewService } from '../core/service/view/view.service';
 import { of } from 'rxjs';
 import { CertificationState } from '../core/store/certification/certification.state';
 import { MonthYearPipe } from '../shared/pipe/month-year.pipe';
 import SpyObj = jasmine.SpyObj;
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {ViewFacade} from '../core/store/view/view.facade';
 
 describe('CertificationsComponent', () => {
   let component: CertificationComponent;
   let fixture: ComponentFixture<CertificationComponent>;
-  let facadeSpy: SpyObj<CertificationFacade>;
-  let viewServiceSpy: SpyObj<ViewService>;
+  let certificationFacadeSpy: SpyObj<CertificationFacade>;
+  let viewFacadeSpy: SpyObj<ViewFacade>;
 
   beforeEach(async () => {
-    facadeSpy = jasmine.createSpyObj<CertificationFacade>('CertificationFacade', ['retrieve']);
-
-    viewServiceSpy = jasmine.createSpyObj<ViewService>('ViewService', [
-      'certificationShouldEnable',
-      'certificationShouldRender',
-    ]);
+    certificationFacadeSpy = jasmine.createSpyObj<CertificationFacade>(
+      'CertificationFacade', ['retrieve']
+    );
+    viewFacadeSpy = jasmine.createSpyObj<ViewFacade>(
+      'ViewFacade', ['setEnable']
+    );
 
     const state: CertificationState = {
       data: [
@@ -59,13 +59,13 @@ describe('CertificationsComponent', () => {
         ],
       },
     };
-    facadeSpy.retrieve.and.returnValue(of(state));
+    certificationFacadeSpy.retrieve.and.returnValue(of(state));
 
     await TestBed.configureTestingModule({
       declarations: [CertificationComponent, MonthYearPipe],
       providers: [
-        { provide: CertificationFacade, useValue: facadeSpy },
-        { provide: ViewService, useValue: viewServiceSpy },
+        { provide: CertificationFacade, useValue: certificationFacadeSpy },
+        { provide: ViewFacade, useValue: viewFacadeSpy },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();

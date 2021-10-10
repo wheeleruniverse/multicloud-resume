@@ -1,27 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EducationComponent } from './education.component';
-import { ViewService } from '../core/service/view/view.service';
 import { of } from 'rxjs';
 import { EducationFacade } from '../core/store/education/education.facade';
 import { EducationState } from '../core/store/education/education.state';
 import SpyObj = jasmine.SpyObj;
 import { LocationPipe } from '../shared/pipe/location.pipe';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {ViewFacade} from '../core/store/view/view.facade';
 
 describe('EducationComponent', () => {
   let component: EducationComponent;
   let fixture: ComponentFixture<EducationComponent>;
-  let facadeSpy: SpyObj<EducationFacade>;
-  let viewServiceSpy: SpyObj<ViewService>;
+  let educationFacadeSpy: SpyObj<EducationFacade>;
+  let viewFacadeSpy: SpyObj<ViewFacade>;
 
   beforeEach(async () => {
-    facadeSpy = jasmine.createSpyObj<EducationFacade>('EducationFacade', ['retrieve']);
-
-    viewServiceSpy = jasmine.createSpyObj<ViewService>('ViewService', [
-      'educationShouldEnable',
-      'educationShouldRender',
-    ]);
+    educationFacadeSpy = jasmine.createSpyObj<EducationFacade>(
+      'EducationFacade', ['retrieve']
+    );
+    viewFacadeSpy = jasmine.createSpyObj<ViewFacade>(
+      'ViewFacade', ['setEnable']
+    );
 
     const state: EducationState = {
       data: [
@@ -44,13 +44,13 @@ describe('EducationComponent', () => {
         },
       ],
     };
-    facadeSpy.retrieve.and.returnValue(of(state));
+    educationFacadeSpy.retrieve.and.returnValue(of(state));
 
     await TestBed.configureTestingModule({
       declarations: [EducationComponent, LocationPipe],
       providers: [
-        { provide: EducationFacade, useValue: facadeSpy },
-        { provide: ViewService, useValue: viewServiceSpy },
+        { provide: EducationFacade, useValue: educationFacadeSpy },
+        { provide: ViewFacade, useValue: viewFacadeSpy },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
