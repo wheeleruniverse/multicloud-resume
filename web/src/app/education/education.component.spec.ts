@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EducationComponent } from './education.component';
-import { ViewService } from '../shared/service/view.service';
+import { ViewService } from '../core/service/view/view.service';
 import { of } from 'rxjs';
 import { EducationFacade } from '../core/store/education/education.facade';
 import { EducationState } from '../core/store/education/education.state';

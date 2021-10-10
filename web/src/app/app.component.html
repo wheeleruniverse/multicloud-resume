@@ -10,79 +10,80 @@
 </div>
 <div>
   <mat-card
-    (click)="toggleAboutShouldRender()"
-    (keydown.enter)="toggleAboutShouldRender()"
+    (click)="toggleShouldRender('about')"
+    (keydown.enter)="toggleShouldRender('about')"
+    [ngClass]="{ disabled: !view['about']?.enable }"
     tabindex="0"
   >
     About
   </mat-card>
-  <app-about *ngIf="aboutShouldRender"></app-about>
+  <app-about *ngIf="view['about']?.render"></app-about>
 </div>
 <div>
   <mat-card
-    (click)="toggleExperienceShouldRender()"
-    (keydown.enter)="toggleExperienceShouldRender()"
-    [ngClass]="{ disabled: !experienceShouldEnable }"
+    (click)="toggleShouldRender('experience')"
+    (keydown.enter)="toggleShouldRender('experience')"
+    [ngClass]="{ disabled: !view['experience']?.enable }"
     tabindex="0"
   >
     Experience
   </mat-card>
-  <app-experience *ngIf="experienceShouldRender"></app-experience>
+  <app-experience *ngIf="view['experience']?.render"></app-experience>
 </div>
 <div>
   <mat-card
-    (click)="toggleCertificationShouldRender()"
-    (keydown.enter)="toggleCertificationShouldRender()"
-    [ngClass]="{ disabled: !certificationShouldEnable }"
+    (click)="toggleShouldRender('certification')"
+    (keydown.enter)="toggleShouldRender('certification')"
+    [ngClass]="{ disabled: !view['certification']?.enable }"
     tabindex="0"
   >
     Certifications
   </mat-card>
-  <app-certifications *ngIf="certificationShouldRender"></app-certifications>
+  <app-certifications *ngIf="view['certification']?.render"></app-certifications>
 </div>
 <div>
   <mat-card
-    (click)="toggleSkillShouldRender()"
-    (keydown.enter)="toggleSkillShouldRender()"
-    [ngClass]="{ disabled: !skillShouldEnable }"
+    (click)="toggleShouldRender('skill')"
+    (keydown.enter)="toggleShouldRender('skill')"
+    [ngClass]="{ disabled: !view['skill']?.enable }"
     tabindex="0"
   >
     Skills
   </mat-card>
-  <app-skills *ngIf="skillShouldRender"></app-skills>
+  <app-skills *ngIf="view['skill']?.render"></app-skills>
 </div>
 <div>
   <mat-card
-    (click)="toggleProjectShouldRender()"
-    (keydown.enter)="toggleProjectShouldRender()"
-    [ngClass]="{ disabled: !projectShouldEnable }"
+    (click)="toggleShouldRender('project')"
+    (keydown.enter)="toggleShouldRender('project')"
+    [ngClass]="{ disabled: !view['project']?.enable }"
     tabindex="0"
   >
     Projects
   </mat-card>
-  <app-projects *ngIf="projectShouldRender"></app-projects>
+  <app-projects *ngIf="view['project']?.render"></app-projects>
 </div>
 <div>
   <mat-card
-    (click)="toggleEducationShouldRender()"
-    (keydown.enter)="toggleEducationShouldRender()"
-    [ngClass]="{ disabled: !educationShouldEnable }"
+    (click)="toggleShouldRender('education')"
+    (keydown.enter)="toggleShouldRender('education')"
+    [ngClass]="{ disabled: !view['education']?.enable }"
     tabindex="0"
   >
     Education
   </mat-card>
-  <app-education *ngIf="educationShouldRender"></app-education>
+  <app-education *ngIf="view['education']?.render"></app-education>
 </div>
 <div>
   <mat-card
-    (click)="toggleVisitorShouldRender()"
-    (keydown.enter)="toggleVisitorShouldRender()"
-    [ngClass]="{ disabled: !visitorShouldEnable }"
+    (click)="toggleShouldRender('visitor')"
+    (keydown.enter)="toggleShouldRender('visitor')"
+    [ngClass]="{ disabled: !view['visitor']?.enable }"
     tabindex="0"
   >
     Visitors
   </mat-card>
-  <app-visitor *ngIf="visitorShouldRender"></app-visitor>
+  <app-visitor *ngIf="view['visitor']?.render"></app-visitor>
 </div>
 <div class="footer">
   <mat-divider></mat-divider>

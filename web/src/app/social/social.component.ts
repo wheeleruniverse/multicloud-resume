@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {faGithub, faLinkedinIn, faTwitter, IconDefinition} from '@fortawesome/free-brands-svg-icons';
 import {faAt, faBlog, faCloud, faCoffee, faFilePdf, faUser} from '@fortawesome/free-solid-svg-icons';
-import {getStorageUrl} from "../shared/utility/backend.utility";
+import {getStorageUrl} from '../shared/utility/backend.utility';
 
 @Component({
   selector: 'app-social',

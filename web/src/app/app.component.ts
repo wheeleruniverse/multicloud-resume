@@ -1,9 +1,11 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {ViewService} from './shared/service/view.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {environment} from '../environments/environment';
-import {Device} from "./shared/model/device.model";
-import {IconRegistryService} from "./shared/service/icon-registry.service";
+import {Device} from './shared/model/device.model';
+import {IconRegistryService} from './shared/service/icon-registry.service';
+import {ViewFacade} from './core/store/view/view.facade';
+import {View} from './core/store/view/view.state';
+import {Dictionary} from '@ngrx/entity';
 
 @Component({
   selector: 'app-root',
@@ -15,32 +17,13 @@ export class AppComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private changeDetectorRef: ChangeDetectorRef,
     private iconRegistryService: IconRegistryService,
-    private viewService: ViewService,
+    private viewFacade: ViewFacade
   ) {
     iconRegistryService.init();
   }
 
   device: Device;
-
-  aboutShouldRender = true;
-
-  certificationShouldEnable = true;
-  certificationShouldRender = false;
-
-  educationShouldEnable = true;
-  educationShouldRender = false;
-
-  experienceShouldEnable = true;
-  experienceShouldRender = false;
-
-  projectShouldEnable = true;
-  projectShouldRender = false;
-
-  skillShouldEnable = true;
-  skillShouldRender = false;
-
-  visitorShouldEnable = true;
-  visitorShouldRender = true;
+  view: Dictionary<View>;
 
   ngOnInit(): void {
     const mobileBreakPoint = '(max-width: 425px)';
@@ -59,59 +42,10 @@ export class AppComponent implements OnInit {
       this.closeView();
     });
 
-    this.viewService.certificationShouldEnable$.subscribe((val) => {
-      this.certificationShouldEnable = val;
+    this.viewFacade.getAppView().subscribe((view => {
+      this.view = view;
       this.changeDetectorRef.detectChanges();
-    });
-    this.viewService.certificationShouldRender$.subscribe((val) => {
-      this.certificationShouldRender = val;
-      this.changeDetectorRef.detectChanges();
-    });
-
-    this.viewService.educationShouldEnable$.subscribe((val) => {
-      this.educationShouldEnable = val;
-      this.changeDetectorRef.detectChanges();
-    });
-    this.viewService.educationShouldRender$.subscribe((val) => {
-      this.educationShouldRender = val;
-      this.changeDetectorRef.detectChanges();
-    });
-
-    this.viewService.experienceShouldEnable$.subscribe((val) => {
-      this.experienceShouldEnable = val;
-      this.changeDetectorRef.detectChanges();
-    });
-    this.viewService.experienceShouldRender$.subscribe((val) => {
-      this.experienceShouldRender = val;
-      this.changeDetectorRef.detectChanges();
-    });
-
-    this.viewService.projectShouldEnable$.subscribe((val) => {
-      this.projectShouldEnable = val;
-      this.changeDetectorRef.detectChanges();
-    });
-    this.viewService.projectShouldRender$.subscribe((val) => {
-      this.projectShouldRender = val;
-      this.changeDetectorRef.detectChanges();
-    });
-
-    this.viewService.skillShouldEnable$.subscribe((val) => {
-      this.skillShouldEnable = val;
-      this.changeDetectorRef.detectChanges();
-    });
-    this.viewService.skillShouldRender$.subscribe((val) => {
-      this.skillShouldRender = val;
-      this.changeDetectorRef.detectChanges();
-    });
-
-    this.viewService.visitorShouldEnable$.subscribe((val) => {
-      this.visitorShouldEnable = val;
-      this.changeDetectorRef.detectChanges();
-    });
-    this.viewService.visitorShouldRender$.subscribe((val) => {
-      this.visitorShouldRender = val;
-      this.changeDetectorRef.detectChanges();
-    });
+    }));
   }
 
   get Device(): typeof Device {
@@ -123,50 +57,15 @@ export class AppComponent implements OnInit {
   }
 
   closeView(): void {
-    this.viewService.certificationShouldRender(false);
-    this.viewService.educationShouldRender(false);
-    this.viewService.experienceShouldRender(false);
-    this.viewService.projectShouldRender(false);
-    this.viewService.skillShouldRender(false);
-  }
-
-  toggleAboutShouldRender(): void {
-    this.aboutShouldRender = !this.aboutShouldRender;
-  }
-
-  toggleCertificationShouldRender(): void {
-    if (this.certificationShouldEnable) {
-      this.viewService.certificationShouldRender(!this.certificationShouldRender);
+    if (!!this.view) {
+      Object.keys(this.view).forEach((name) => this.viewFacade.setRender(name, false));
     }
   }
 
-  toggleEducationShouldRender(): void {
-    if (this.educationShouldEnable) {
-      this.viewService.educationShouldRender(!this.educationShouldRender);
-    }
-  }
-
-  toggleExperienceShouldRender(): void {
-    if (this.experienceShouldEnable) {
-      this.viewService.experienceShouldRender(!this.experienceShouldRender);
-    }
-  }
-
-  toggleProjectShouldRender(): void {
-    if (this.projectShouldEnable) {
-      this.viewService.projectShouldRender(!this.projectShouldRender);
-    }
-  }
-
-  toggleSkillShouldRender(): void {
-    if (this.skillShouldEnable) {
-      this.viewService.skillShouldRender(!this.skillShouldRender);
-    }
-  }
-
-  toggleVisitorShouldRender(): void {
-    if (this.visitorShouldEnable) {
-      this.viewService.visitorShouldRender(!this.visitorShouldRender);
+  toggleShouldRender(name: string): void {
+    const target = this.view[name];
+    if (target?.enable){
+      this.viewFacade.setRender(name, !target.render);
     }
   }
 }

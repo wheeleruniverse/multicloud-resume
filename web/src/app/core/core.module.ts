@@ -13,8 +13,10 @@ import { projectReducer } from './store/project/project.reducer';
 import { ProjectEffects } from './store/project/project.effects';
 import { SkillEffects } from './store/skill/skill.effects';
 import { skillReducer } from './store/skill/skill.reducer';
-import {VisitorEffects} from "./store/visitor/visitor.effects";
-import {visitorReducer} from "./store/visitor/visitor.reducer";
+import { VisitorEffects } from './store/visitor/visitor.effects';
+import { visitorReducer } from './store/visitor/visitor.reducer';
+import { ViewEffects } from './store/view/view.effects';
+import { viewReducer } from './store/view/view.reducer';
 
 @NgModule({
   imports: [
@@ -24,7 +26,8 @@ import {visitorReducer} from "./store/visitor/visitor.reducer";
       ExperienceEffects,
       ProjectEffects,
       SkillEffects,
-      VisitorEffects
+      ViewEffects,
+      VisitorEffects,
     ]),
     StoreModule.forRoot({
       certification: certificationReducer,
@@ -32,6 +35,7 @@ import {visitorReducer} from "./store/visitor/visitor.reducer";
       experience: experienceReducer,
       project: projectReducer,
       skill: skillReducer,
+      view: viewReducer,
       visitor: visitorReducer
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

@@ -6,9 +6,9 @@ import { FilterService } from '../shared/service/filter.service';
 import { MetaData } from '../shared/model/meta-data.model';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Skill, SkillState } from '../core/store/skill/skill.state';
-import { ViewService } from '../shared/service/view.service';
 import { SkillFacade } from '../core/store/skill/skill.facade';
 import { Subject } from 'rxjs';
+import { ViewFacade } from '../core/store/view/view.facade';
 
 @Component({
   selector: 'app-skills',
@@ -22,7 +22,7 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
   constructor(
     private filterService: FilterService,
     private skillFacade: SkillFacade,
-    private viewService: ViewService
+    private viewFacade: ViewFacade
   ) {}
 
   destroyed$ = new Subject<void>();
@@ -31,7 +31,7 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
   tableSource: MatTableDataSource<Skill>;
 
   ngAfterViewInit(): void {
-    this.viewService.skillShouldEnable(false);
+    this.viewFacade.setEnable('skill', false);
 
     this.skillFacade
       .retrieve()
@@ -44,7 +44,7 @@ export class SkillComponent implements AfterViewInit, OnDestroy {
         this.tableSource = new MatTableDataSource<Skill>(state.data);
         this.tableSource.paginator = this.paginator;
         this.tableSource.sort = this.sort;
-        this.viewService.skillShouldEnable(true);
+        this.viewFacade.setEnable('skill', true);
       });
 
     this.filterService.target$.subscribe((target) => {

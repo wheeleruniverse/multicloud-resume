@@ -4,7 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { MetaData } from '../shared/model/meta-data.model';
 import { CertificationState } from '../core/store/certification/certification.state';
 import { CertificationFacade } from '../core/store/certification/certification.facade';
-import { ViewService } from '../shared/service/view.service';
+import { ViewFacade } from '../core/store/view/view.facade';
 
 @Component({
   selector: 'app-certifications',
@@ -12,7 +12,7 @@ import { ViewService } from '../shared/service/view.service';
   styleUrls: ['./certification.component.scss', '../shared/component/carousel/carousel.component.scss'],
 })
 export class CertificationComponent implements OnDestroy, OnInit {
-  constructor(private certificationFacade: CertificationFacade, private viewService: ViewService) {}
+  constructor(private certificationFacade: CertificationFacade, private viewFacade: ViewFacade) {}
 
   destroyed$ = new Subject<void>();
   state: CertificationState;
@@ -23,7 +23,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.viewService.certificationShouldEnable(false);
+    this.viewFacade.setEnable('certification', false);
 
     this.certificationFacade
       .retrieve()
@@ -33,7 +33,7 @@ export class CertificationComponent implements OnDestroy, OnInit {
       )
       .subscribe((state) => {
         this.state = state;
-        this.viewService.certificationShouldEnable(true);
+        this.viewFacade.setEnable('certification', true);
       });
   }
 

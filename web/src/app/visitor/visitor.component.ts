@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ViewService} from "../shared/service/view.service";
-import {VisitorFacade} from "../core/store/visitor/visitor.facade";
+import {VisitorFacade} from '../core/store/visitor/visitor.facade';
+import {ViewFacade} from '../core/store/view/view.facade';
 
 @Component({
   selector: 'app-visitor',
@@ -9,23 +9,23 @@ import {VisitorFacade} from "../core/store/visitor/visitor.facade";
 })
 export class VisitorComponent implements OnInit {
   constructor(
-    private viewService: ViewService,
+    private viewFacade: ViewFacade,
     private visitorFacade: VisitorFacade,
   ) {}
 
   total: number;
 
   ngOnInit(): void {
-    this.viewService.visitorShouldEnable(false);
+    this.viewFacade.setEnable('visitor', false);
 
     this.visitorFacade.count().subscribe((total) => {
       this.total = total;
-      this.viewService.visitorShouldEnable(true);
+      this.viewFacade.setEnable('visitor', true);
     });
   }
 
   totalCharAt(position: number): string {
-    if(!this.total){
+    if (!this.total){
       return '0';
     }
     const value = ('0000000' + this.total).slice(-7);

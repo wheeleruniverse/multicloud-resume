@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CertificationComponent } from './certification.component';
 import { CertificationFacade } from '../core/store/certification/certification.facade';
-import { ViewService } from '../shared/service/view.service';
+import { ViewService } from '../core/service/view/view.service';
 import { of } from 'rxjs';
 import { CertificationState } from '../core/store/certification/certification.state';
 import { MonthYearPipe } from '../shared/pipe/month-year.pipe';

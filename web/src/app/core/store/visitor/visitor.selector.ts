@@ -7,4 +7,4 @@ const visitorStateSelector = createFeatureSelector<AppState, VisitorState>('visi
 export const visitorValueSelector = createSelector(
   visitorStateSelector,
   (state) => state.value
-)
+);

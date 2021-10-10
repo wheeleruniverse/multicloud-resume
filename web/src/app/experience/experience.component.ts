@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { ExperienceState } from '../core/store/experience/experience.state';
-import { ViewService } from '../shared/service/view.service';
 import { ExperienceFacade } from '../core/store/experience/experience.facade';
+import { ViewFacade } from '../core/store/view/view.facade';
 
 @Component({
   selector: 'app-experience',
@@ -11,7 +11,7 @@ import { ExperienceFacade } from '../core/store/experience/experience.facade';
   styleUrls: ['./experience.component.scss', '../shared/component/carousel/carousel.component.scss'],
 })
 export class ExperienceComponent implements OnDestroy, OnInit {
-  constructor(private experienceFacade: ExperienceFacade, private viewService: ViewService) {}
+  constructor(private experienceFacade: ExperienceFacade, private viewFacade: ViewFacade) {}
 
   destroyed$ = new Subject<void>();
   state: ExperienceState;
@@ -22,7 +22,7 @@ export class ExperienceComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.viewService.experienceShouldEnable(false);
+    this.viewFacade.setEnable('experience', false);
 
     this.experienceFacade
       .retrieve()
@@ -32,7 +32,7 @@ export class ExperienceComponent implements OnDestroy, OnInit {
       )
       .subscribe((state) => {
         this.state = state;
-        this.viewService.experienceShouldEnable(true);
+        this.viewFacade.setEnable('experience', true);
       });
   }
 }

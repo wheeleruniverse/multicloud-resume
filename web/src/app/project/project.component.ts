@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
-import {ViewService} from '../shared/service/view.service';
 import {ProjectFacade} from '../core/store/project/project.facade';
 import {Project, ProjectCompositeState} from '../core/store/project/project.state';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -10,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {ProjectInfoDialogComponent} from './info-dialog/project-info-dialog.component';
 import {ProjectArchitectureDialogComponent} from './architecture-dialog/project-architecture-dialog.component';
+import {ViewFacade} from '../core/store/view/view.facade';
 
 @Component({
   selector: 'app-projects',
@@ -22,7 +22,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
     private dialog: MatDialog,
     private filterService: FilterService,
     private projectFacade: ProjectFacade,
-    private viewService: ViewService
+    private viewFacade: ViewFacade
   ) {}
 
   destroyed$ = new Subject<void>();
@@ -46,7 +46,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
         this.skillLimit = 5;
       });
 
-    this.viewService.projectShouldEnable(false);
+    this.viewFacade.setEnable('project', false);
     this.projectFacade
       .retrieve()
       .pipe(
@@ -55,12 +55,10 @@ export class ProjectComponent implements OnDestroy, OnInit {
       )
       .subscribe((state) => {
         this.state = state;
-        this.viewService.projectShouldEnable(true);
+        this.viewFacade.setEnable('project', true);
       });
 
-    this.viewService.skillShouldRender$.subscribe((val) => {
-      this.skillShouldRender = val;
-    });
+    this.viewFacade.getView('skill').subscribe((view) => this.skillShouldRender = view.render);
   }
 
   openArchitectureDialog(project: Project): void {
@@ -97,7 +95,7 @@ export class ProjectComponent implements OnDestroy, OnInit {
 
   renderSkillView(): void {
     if (!this.skillShouldRender) {
-      this.viewService.skillShouldRender(true);
+      this.viewFacade.setRender('skill', true);
     }
   }
 
@@ -105,9 +103,6 @@ export class ProjectComponent implements OnDestroy, OnInit {
     this.renderSkillView();
     this.skillTarget = null;
 
-    if (!this.skillShouldRender) {
-      this.viewService.skillShouldRender(true);
-    }
     if (this.projectTarget === value) {
       this.projectTarget = null;
       this.filterService.setTarget('');
