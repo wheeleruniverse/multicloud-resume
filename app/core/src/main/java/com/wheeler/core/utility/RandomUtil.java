@@ -42,7 +42,7 @@ public class RandomUtil {
     }
 
     public static String getString(final RandomStringOptions options){
-        LOGGER.info("using options: {}", options);
+        LOGGER.debug("using options: {}", options);
 
         // find length
         int length;
