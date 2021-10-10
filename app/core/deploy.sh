@@ -10,6 +10,15 @@ export ARTIFACTS_AUTH=$(aws codeartifact get-authorization-token \
 --output text)
 
 echo
+echo "$(date) :: mvn test"
+mvn test
+if [[ "$?" -ne 0 ]] ; then
+  echo
+  echo "$(date) :: mvn test failed"
+  exit 1
+fi
+
+echo
 echo "$(date) :: mvn deploy"
 mvn deploy
 if [[ "$?" -ne 0 ]] ; then
