@@ -108,8 +108,13 @@ mat-divider {
     }
   }
 
-  .header-role-tablet {
-    font-size: 32px;
+  .header-role {
+    font-size: 40px;
+
+    &:after {
+      animation: unset;
+      content: unset;
+    }
   }
 
   mat-card {
@@ -140,9 +145,14 @@ mat-divider {
     }
   }
 
-  .header-role-mobile {
+  .header-role {
     font-size: 24px;
     margin: 0 auto;
+
+    &:after {
+      animation: unset;
+      content: unset;
+    }
   }
 
   mat-card {

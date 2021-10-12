@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {ViewFacade} from './core/store/view/view.facade';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {IconRegistryService} from './shared/service/icon-registry.service';
@@ -10,7 +10,8 @@ import {initialViewState, View} from './core/store/view/view.state';
 import {Device} from './shared/model/device.model';
 import {environment} from '../environments/environment';
 import SpyObj = jasmine.SpyObj;
-import {createViewDictionary} from './core/store/view/view.test-util';
+import {createView, createViewDictionary} from './core/store/view/view.test-util';
+import {By} from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -27,14 +28,7 @@ describe('AppComponent', () => {
         'observe'
       ]
     );
-    const breakpoint: BreakpointState = {
-      breakpoints: {
-        '(max-width: 425px)': true,
-        '(max-width: 768px)': true
-      },
-      matches: true
-    };
-    breakpointObserverSpy.observe.and.returnValue(of(breakpoint));
+    mockBreakpointObserver(Device.Desktop);
 
     // IconRegistryService
     iconRegistryServiceSpy = jasmine.createSpyObj<IconRegistryService>(
@@ -134,6 +128,188 @@ describe('AppComponent', () => {
   });
 
   describe('Template', () => {
+    describe('header', () => {
+      const name = 'Justin Wheeler — ';
+      const headerRoleSelector = '.header-role';
 
+      it('should render logo', () => {
+        fixture.detectChanges();
+        const element = fixture.debugElement.query(By.css('.header-logo'));
+        expect(element.properties.svgIcon).toEqual(component.provider);
+      });
+
+      it('should render role for desktop', () => {
+        mockBreakpointObserver(Device.Desktop);
+        fixture.detectChanges();
+
+        const elements = fixture.debugElement.queryAll(By.css(headerRoleSelector));
+        expect(elements.length).toEqual(1);
+
+        // note: the value is set with css animations and @keyframes
+        expect(elements[0].nativeElement.textContent.trim()).toEqual('');
+      });
+
+      it('should render role for mobile', () => {
+        mockBreakpointObserver(Device.Mobile);
+        fixture.detectChanges();
+
+        const elements = fixture.debugElement.queryAll(By.css(headerRoleSelector));
+        expect(elements.length).toEqual(1);
+        expect(elements[0].nativeElement.textContent.trim()).toEqual(`${name}Cloud Guru`);
+      });
+
+      it('should render role for tablet', () => {
+        mockBreakpointObserver(Device.Tablet);
+        fixture.detectChanges();
+
+        const elements = fixture.debugElement.queryAll(By.css(headerRoleSelector));
+        expect(elements.length).toEqual(1);
+        expect(elements[0].nativeElement.textContent.trim()).toEqual(`${name}Cloud Architect`);
+      });
+    });
+
+    describe('body', () => {
+      const sections = [
+        'about',
+        'experience',
+        'certification',
+        'skill',
+        'project',
+        'education',
+        'visitor'
+      ];
+
+      it('should render 7 sections in order', () => {
+        fixture.detectChanges();
+
+        const element = fixture.debugElement.query(By.css('.body'));
+        const children = element.children;
+        const childrenLength = children.length;
+        expect(childrenLength).toEqual(sections.length);
+
+        for (let i = 0; i < childrenLength; i++){
+          const child = children[i];
+          expect(Object.keys(child.classes)[0]).toEqual(`body-${sections[i]}`);
+        }
+      });
+
+      describe('section card', () => {
+        it('should render for every section', () => {
+          fixture.detectChanges();
+          sections.forEach(section => {
+            const card = getSectionCard(section);
+            expect(card.name).toEqual('mat-card');
+            expect(Object.keys(card.classes)).toContain('section-card');
+          });
+        });
+
+        it('should set tabIndex to 0', () => {
+          fixture.detectChanges();
+          sections.forEach(section => {
+            const card = getSectionCard(section);
+            expect(card.nativeElement.tabIndex).toEqual(0);
+          });
+        });
+
+        describe('view enabled', () => {
+          beforeEach(() => {
+            const appView: Dictionary<View> = createViewDictionary(
+              sections.map(section => createView({name: section, enable: true, render: false}))
+            );
+            viewFacadeSpy.getAppView.and.returnValue(of(appView));
+            fixture.detectChanges();
+          });
+
+          it('should classes not contain disabled', () => {
+            sections.forEach(section => {
+              const card = getSectionCard(section);
+              expect(Object.keys(card.classes)).not.toContain('disabled');
+            });
+          });
+
+          it('should click trigger viewFacade#setRender', () => {
+            sections.forEach(section => {
+              const card = getSectionCard(section);
+              card.nativeElement.click();
+            });
+
+            const setRenderCalls = viewFacadeSpy.setRender.calls;
+            expect(setRenderCalls.count()).toEqual(sections.length);
+            for (let i = 0; i < sections.length; i++){
+              expect(setRenderCalls.argsFor(i)).toEqual([sections[i], true]);
+            }
+          });
+
+          it('should keydown.enter trigger viewFacade#setRender', () => {
+            sections.forEach(section => {
+              const card = getSectionCard(section);
+              card.triggerEventHandler('keydown.enter', {});
+            });
+
+            const setRenderCalls = viewFacadeSpy.setRender.calls;
+            expect(setRenderCalls.count()).toEqual(sections.length);
+            for (let i = 0; i < sections.length; i++){
+              expect(setRenderCalls.argsFor(i)).toEqual([sections[i], true]);
+            }
+          });
+        });
+
+        describe('view disabled', () => {
+          beforeEach(() => {
+            const appView: Dictionary<View> = createViewDictionary(
+              sections.map(section => createView({name: section, enable: false, render: false}))
+            );
+            viewFacadeSpy.getAppView.and.returnValue(of(appView));
+            fixture.detectChanges();
+          });
+
+          it('should classes contain disabled', () => {
+            sections.forEach(section => {
+              const card = getSectionCard(section);
+              expect(Object.keys(card.classes)).toContain('disabled');
+            });
+          });
+
+          it('should click not trigger viewFacade#setRender', () => {
+            sections.forEach(section => {
+              const card = getSectionCard(section);
+              card.nativeElement.click();
+            });
+
+            const setRenderCalls = viewFacadeSpy.setRender.calls;
+            expect(setRenderCalls.count()).toEqual(0);
+          });
+
+          it('should keydown.enter not trigger viewFacade#setRender', () => {
+            sections.forEach(section => {
+              const card = getSectionCard(section);
+              card.triggerEventHandler('keydown.enter', {});
+            });
+
+            const setRenderCalls = viewFacadeSpy.setRender.calls;
+            expect(setRenderCalls.count()).toEqual(0);
+          });
+        });
+
+        function getSectionCard(section: string): DebugElement {
+          return fixture.debugElement.query(By.css(`.body-${section}`)).children[0];
+        }
+      });
+    });
+
+    describe('footer', () => {
+
+    });
   });
+
+  function mockBreakpointObserver(device: Device): void {
+    const breakpointState: BreakpointState = {
+      breakpoints: {
+        '(max-width: 425px)': Device.Mobile === device,
+        '(max-width: 768px)': Device.Tablet === device
+      },
+      matches: true
+    };
+    breakpointObserverSpy.observe.and.returnValue(of(breakpointState));
+  }
 });
