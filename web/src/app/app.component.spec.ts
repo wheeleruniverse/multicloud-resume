@@ -71,15 +71,7 @@ describe('AppComponent', () => {
   });
 
   describe('Component', () => {
-    it('Device', () => {
-      expect(component.Device).toEqual(Device);
-    });
-
-    it('provider', () => {
-      expect(component.provider).toEqual(environment.provider);
-    });
-
-    it('closeView', () => {
+    it('should closeView trigger viewFacade#setRender', () => {
       const appView = createViewDictionary([{name: 'v1'}, {name: 'v2'}]);
       viewFacadeSpy.getAppView.and.returnValue(of(appView));
       fixture.detectChanges();
@@ -92,19 +84,15 @@ describe('AppComponent', () => {
       expect(setRenderCalls.argsFor(1)).toEqual(['v2', false]);
     });
 
-    it('toggleShouldRender with enabled matching name', () => {
-      const appView = createViewDictionary([{name: 'v1'}]);
-      viewFacadeSpy.getAppView.and.returnValue(of(appView));
-      fixture.detectChanges();
-
-      component.toggleShouldRender('v1');
-
-      const setRenderCalls = viewFacadeSpy.setRender.calls;
-      expect(setRenderCalls.count()).toEqual(1);
-      expect(setRenderCalls.argsFor(0)).toEqual(['v1', true]);
+    it('should Device match the Device enum', () => {
+      expect(component.Device).toEqual(Device);
     });
 
-    it('toggleShouldRender with disabled matching name', () => {
+    it('should provider return environment.provider', () => {
+      expect(component.provider).toEqual(environment.provider);
+    });
+
+    it('should toggleShouldRender not trigger viewFacade#setRender with disabled matching view', () => {
       const appView = createViewDictionary([{name: 'v2', enable: false}]);
       viewFacadeSpy.getAppView.and.returnValue(of(appView));
       fixture.detectChanges();
@@ -115,7 +103,7 @@ describe('AppComponent', () => {
       expect(setRenderCalls.count()).toEqual(0);
     });
 
-    it('toggleShouldRender with non-matching name', () => {
+    it('should toggleShouldRender not trigger viewFacade#setRender with non-matching view', () => {
       const appView = createViewDictionary([{name: 'v3'}]);
       viewFacadeSpy.getAppView.and.returnValue(of(appView));
       fixture.detectChanges();
@@ -124,6 +112,18 @@ describe('AppComponent', () => {
 
       const setRenderCalls = viewFacadeSpy.setRender.calls;
       expect(setRenderCalls.count()).toEqual(0);
+    });
+
+    it('should toggleShouldRender trigger viewFacade#setRender with enabled matching view', () => {
+      const appView = createViewDictionary([{name: 'v1'}]);
+      viewFacadeSpy.getAppView.and.returnValue(of(appView));
+      fixture.detectChanges();
+
+      component.toggleShouldRender('v1');
+
+      const setRenderCalls = viewFacadeSpy.setRender.calls;
+      expect(setRenderCalls.count()).toEqual(1);
+      expect(setRenderCalls.argsFor(0)).toEqual(['v1', true]);
     });
   });
 
@@ -298,7 +298,11 @@ describe('AppComponent', () => {
     });
 
     describe('footer', () => {
-
+      it('should render mat-divider', () => {
+        fixture.detectChanges();
+        const element = fixture.debugElement.query(By.css('.footer > mat-divider'));
+        expect(element).toBeTruthy();
+      });
     });
   });
 
