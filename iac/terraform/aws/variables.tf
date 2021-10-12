@@ -42,6 +42,12 @@ variable "project" {
   type        = string
 }
 
+variable "tables" {
+  default     = ["certification", "education", "experience", "project", "skill", "visitor"]
+  description = "database tables to create"
+  type        = list(string)
+}
+
 variable "tls_version" {
   default     = "TLSv1.2_2021"
   description = "tls version"

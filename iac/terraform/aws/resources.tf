@@ -98,6 +98,22 @@ resource "aws_codeartifact_repository_permissions_policy" "this" {
 EOF
 }
 
+resource "aws_dynamodb_table" "this" {
+  billing_mode   = "PROVISIONED"
+  count          = length(var.tables)
+  hash_key       = "id"
+  name           = var.tables[count.index]
+  read_capacity  = 1
+  tags           = local.tags
+  write_capacity = 1
+
+  attribute {
+    name = "id"
+    type = "S"
+  }
+}
+
+
 resource "aws_s3_bucket" "app" {
   acl    = "private"
   bucket = "${var.domain}-app"
