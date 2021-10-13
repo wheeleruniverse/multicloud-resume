@@ -1,6 +1,10 @@
 
-gcp:
-  credentials: ${GCP_CREDENTIALS:credentials}
-  project: ${GCP_PROJECT:wheeler-resume}
+com.wheeler:
+  core.module:
+    cors.enabled: true
+    swagger.enabled: true
+  gcp:
+    credentials: ${GCP_CREDENTIALS:credentials}
+    project: ${GCP_PROJECT:wheeler-resume}
 
 server.port: ${PORT:9999}

@@ -1,5 +1,6 @@
 package com.wheeler.core.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@ConditionalOnProperty(
+        havingValue = "true",
+        value="com.wheeler.core.module.swagger.enabled"
+)
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

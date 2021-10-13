@@ -18,15 +18,15 @@ public class FirestoreConnector {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FirestoreConnector.class);
 
-    private final String gcpCredentials;
-    private final String gcpProject;
+    private final String credentials;
+    private final String project;
 
     private Firestore database;
     private FirestoreOptions options;
 
-    public FirestoreConnector(final String gcpCredentials, final String gcpProject){
-        this.gcpCredentials = gcpCredentials;
-        this.gcpProject = gcpProject;
+    public FirestoreConnector(final String credentials, final String project){
+        this.credentials = credentials;
+        this.project = project;
     }
 
     public Firestore getDatabase() {
@@ -39,7 +39,7 @@ public class FirestoreConnector {
     public FirestoreOptions getOptions() {
         if (options == null){
             options = FirestoreOptions.getDefaultInstance().toBuilder()
-                    .setProjectId(gcpProject)
+                    .setProjectId(project)
                     .setCredentials(getCredentials())
                     .build();
         }
@@ -47,7 +47,7 @@ public class FirestoreConnector {
     }
 
     private Credentials getCredentials(){
-        try(final InputStream credentialsStream = new ByteArrayInputStream(gcpCredentials.getBytes())){
+        try(final InputStream credentialsStream = new ByteArrayInputStream(credentials.getBytes())){
             return GoogleCredentials.fromStream(credentialsStream);
         }
         catch(IOException e){
