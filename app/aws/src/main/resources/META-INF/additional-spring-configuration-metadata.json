@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "com.wheeler.aws.auth.access-key",
+      "type": "java.lang.String",
+      "description": "The aws access key to authenticate with."
+    },
+    {
+      "name": "com.wheeler.aws.auth.secret-key",
+      "type": "java.lang.String",
+      "description": "The aws secret key to authenticate with."
+    },
+    {
+      "name": "com.wheeler.aws.region",
+      "type": "java.lang.String",
+      "description": "The aws region to connect to."
+    },
+    {
+      "name": "com.wheeler.core.module.cors.enabled",
+      "type": "java.lang.Boolean",
+      "description": "If the cors configuration should be enabled in the com.wheeler.core package."
+    },
+    {
+      "name": "com.wheeler.core.module.swagger.enabled",
+      "type": "java.lang.Boolean",
+      "description": "If the swagger configuration should be enabled in the com.wheeler.core package."
+    }
+  ]
+}

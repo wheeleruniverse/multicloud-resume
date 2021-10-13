@@ -16,9 +16,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootConfiguration
 @SpringBootTest
 @TestPropertySource(properties = {
-        "cosmos.auth=auth1",
-        "cosmos.host=host1",
-        "cosmos.name=name1"
+        "com.wheeler.azure.cosmos.auth=auth1",
+        "com.wheeler.azure.cosmos.host=host1",
+        "com.wheeler.azure.cosmos.name=name1"
 })
 public class AppConfigTest {
 

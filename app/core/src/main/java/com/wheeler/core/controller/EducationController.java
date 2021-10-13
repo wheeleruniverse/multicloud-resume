@@ -1,4 +1,4 @@
-package com.wheeler.gcp.controller;
+package com.wheeler.core.controller;
 
 import com.wheeler.core.dao.model.Education;
 import com.wheeler.core.dto.model.EducationDto;

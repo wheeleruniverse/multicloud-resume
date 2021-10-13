@@ -4,7 +4,7 @@
 
     <groupId>com.wheeler.core</groupId>
     <artifactId>resume-core</artifactId>
-    <version>2021.10.003</version>
+    <version>2021.10.004</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -41,7 +41,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>2.5.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.5.0</version>
         </dependency>
 
 

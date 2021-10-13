@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "com.wheeler.core.module.cors.enabled",
+      "type": "java.lang.Boolean",
+      "description": "If the cors configuration should be enabled in the com.wheeler.core package."
+    },
+    {
+      "name": "com.wheeler.core.module.swagger.enabled",
+      "type": "java.lang.Boolean",
+      "description": "If the swagger configuration should be enabled in the com.wheeler.core package."
+    },
+    {
+      "name": "com.wheeler.gcp.credentials",
+      "type": "java.lang.String",
+      "description": "The gcp service account json key credentials to authenticate with."
+    },
+    {
+      "name": "com.wheeler.gcp.project",
+      "type": "java.lang.String",
+      "description": "The gcp project to connect to."
+    }
+  ]
+}

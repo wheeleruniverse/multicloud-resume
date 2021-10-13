@@ -1,5 +1,6 @@
-package com.wheeler.gcp.filter;
+package com.wheeler.core.filter;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -10,13 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
+@ConditionalOnProperty(
+        havingValue = "true",
+        value="com.wheeler.core.module.cors.enabled"
+)
 public class CorsFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(
-        final HttpServletRequest request,
-        final HttpServletResponse response,
-        final FilterChain filterChain
+            final HttpServletRequest request,
+            final HttpServletResponse response,
+            final FilterChain filterChain
     ) throws IOException, ServletException {
         response.addHeader("Access-Control-Allow-Credentials", "true");
         response.addHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");

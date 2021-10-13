@@ -9,19 +9,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Value("${gcp.credentials}")
-    private String gcpCredentials;
+    @Value("${com.wheeler.gcp.credentials}")
+    private String credentials;
 
     @Bean
-    public String gcpCredentials(){
-        return gcpCredentials;
+    public String credentials(){
+        return credentials;
     }
 
-    @Value("${gcp.project}")
-    private String gcpProject;
+    @Value("${com.wheeler.gcp.project}")
+    private String project;
 
     @Bean
-    public String gcpProject(){
-        return gcpProject;
+    public String project(){
+        return project;
     }
 }

@@ -1,0 +1,4 @@
+
+com.wheeler.core.module:
+  cors.enabled: false
+  swagger.enabled: false
