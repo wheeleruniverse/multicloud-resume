@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.wheeler.gcp</groupId>
-    <artifactId>resume-gcp</artifactId>
+    <groupId>com.wheeler.aws</groupId>
+    <artifactId>resume-aws</artifactId>
     <version>1.0.0</version>
 
     <packaging>jar</packaging>
@@ -21,34 +21,35 @@
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <start-class>com.wheeler.gcp.Main</start-class>
+        <start-class>com.wheeler.aws.Main</start-class>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.google.cloud</groupId>
-                <artifactId>libraries-bom</artifactId>
-                <version>22.0.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencyManagement>
+	  <dependencies>
+		<dependency>
+		  <groupId>software.amazon.awssdk</groupId>
+		  <artifactId>bom</artifactId>
+		  <version>2.17.57</version>
+		  <type>pom</type>
+		  <scope>import</scope>
+		</dependency>
+	  </dependencies>
+	</dependencyManagement>
+
 
     <dependencies>
         <!-- Core -->
         <dependency>
             <groupId>com.wheeler.core</groupId>
             <artifactId>resume-core</artifactId>
-            <version>2021.10.004</version>
+            <version>2021.10.003</version>
         </dependency>
 
-        <!-- GCP Firestore -->
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud-firestore</artifactId>
-        </dependency>
+        <!-- AWS DynamoDB -->
+		<dependency>
+		  <groupId>software.amazon.awssdk</groupId>
+		  <artifactId>dynamodb</artifactId>
+		</dependency>
 
         <!-- Spring -->
         <dependency>

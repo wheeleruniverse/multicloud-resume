@@ -1,12 +1,12 @@
-package com.wheeler.azure;
+package com.wheeler.aws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResumeAzureMain {
+public class Main {
 
     public static void main(String[] args){
-        SpringApplication.run(ResumeAzureMain.class, args);
+        SpringApplication.run(Main.class, args);
     }
 }

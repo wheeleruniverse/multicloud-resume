@@ -1,0 +1,8 @@
+
+aws:
+  auth:
+    access-key: ${AWS_ACCESS_KEY:access}
+    secret-key: ${AWS_SECRET_KEY:secret}
+  region: ${AWS_REGION:us-east-1}
+
+server.port: ${PORT:9999}
