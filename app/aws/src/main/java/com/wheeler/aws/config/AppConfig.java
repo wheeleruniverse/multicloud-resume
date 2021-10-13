@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Value("${aws.auth.access-key}")
+    @Value("${com.wheeler.aws.auth.access-key}")
     private String accessKey;
 
     @Bean
@@ -17,7 +17,7 @@ public class AppConfig {
         return accessKey;
     }
 
-    @Value("${aws.auth.secret-key}")
+    @Value("${com.wheeler.aws.auth.secret-key}")
     private String secretKey;
 
     @Bean
@@ -25,7 +25,7 @@ public class AppConfig {
         return secretKey;
     }
 
-    @Value("${aws.region}")
+    @Value("${com.wheeler.aws.region}")
     private String region;
 
     @Bean

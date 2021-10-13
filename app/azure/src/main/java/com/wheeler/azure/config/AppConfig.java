@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Value("${cosmos.auth}")
+    @Value("${com.wheeler.azure.cosmos.auth}")
     private String cosmosAuth;
 
     @Bean
@@ -17,7 +17,7 @@ public class AppConfig {
         return cosmosAuth;
     }
 
-    @Value("${cosmos.host}")
+    @Value("${com.wheeler.azure.cosmos.host}")
     private String cosmosHost;
 
     @Bean
@@ -25,7 +25,7 @@ public class AppConfig {
         return cosmosHost;
     }
 
-    @Value("${cosmos.name}")
+    @Value("${com.wheeler.azure.cosmos.name}")
     private String cosmosName;
 
     @Bean

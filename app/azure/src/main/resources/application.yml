@@ -1,5 +1,7 @@
 
-cosmos:
+com.wheeler.azure.cosmos:
   auth: ${COSMOS_AUTH:auth}
   host: ${COSMOS_HOST:host}
   name: ${COSMOS_NAME:name}
+
+server.port: ${PORT:9999}

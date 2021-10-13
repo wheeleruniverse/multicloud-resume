@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.wheeler.core</groupId>
             <artifactId>resume-core</artifactId>
-            <version>2021.10.003</version>
+            <version>2021.10.004</version>
         </dependency>
 
         <!-- AWS DynamoDB -->
@@ -52,6 +52,11 @@
 		</dependency>
 
         <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

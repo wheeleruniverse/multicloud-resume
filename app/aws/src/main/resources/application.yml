@@ -1,8 +1,12 @@
 
-aws:
-  auth:
-    access-key: ${AWS_ACCESS_KEY:access}
-    secret-key: ${AWS_SECRET_KEY:secret}
-  region: ${AWS_REGION:us-east-1}
+com.wheeler:
+  aws:
+    auth:
+      access-key: ${AWS_ACCESS_KEY:access}
+      secret-key: ${AWS_SECRET_KEY:secret}
+    region: ${AWS_REGION:us-east-1}
+  core.module:
+    cors.enabled: true
+    swagger.enabled: true
 
 server.port: ${PORT:9999}

@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "com.wheeler.azure.cosmos.auth",
+      "type": "java.lang.String",
+      "description": "The cosmos database access key to authenticate with."
+    },
+    {
+      "name": "com.wheeler.azure.cosmos.host",
+      "type": "java.lang.String",
+      "description": "The cosmos hostname to connect to."
+    },
+    {
+      "name": "com.wheeler.azure.cosmos.name",
+      "type": "java.lang.String",
+      "description": "The cosmos database to connect to."
+    }
+  ]
+}
