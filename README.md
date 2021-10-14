@@ -1,3 +1,5 @@
+[![app-aws](https://github.com/wheelers-websites/Resume/actions/workflows/app-aws.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-aws.yml)
+
 [![app-azure](https://github.com/wheelers-websites/Resume/actions/workflows/app-azure.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-azure.yml)
 
 [![app-core](https://github.com/wheelers-websites/Resume/actions/workflows/app-core.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-core.yml)
