@@ -113,6 +113,15 @@ resource "aws_dynamodb_table" "this" {
   }
 }
 
+resource "aws_ecr_repository" "this" {
+  image_tag_mutability = "IMMUTABLE"
+  name                 = var.domain
+  tags                 = local.tags
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
 
 resource "aws_s3_bucket" "app" {
   acl    = "private"

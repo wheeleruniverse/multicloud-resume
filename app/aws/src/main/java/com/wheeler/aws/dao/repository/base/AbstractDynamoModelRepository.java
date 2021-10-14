@@ -14,7 +14,7 @@ public abstract class AbstractDynamoModelRepository<T extends Model> extends Abs
     }
 
     public void delete(T item) {
-        dynamoClient.deleteItem(getDeleteItemRequest(item));
+        dynamoClient.deleteItem(createDeleteItemRequest(item.getId()));
     }
 
     public void deleteArray(T[] items){
@@ -30,7 +30,7 @@ public abstract class AbstractDynamoModelRepository<T extends Model> extends Abs
     }
 
     public List<T> findAll() {
-        return fromItems(dynamoClient.scan(getScanRequest()).items());
+        return fromItems(dynamoClient.scan(createScanRequest()).items());
     }
 
     public void load(final String json){
@@ -39,7 +39,7 @@ public abstract class AbstractDynamoModelRepository<T extends Model> extends Abs
     }
 
     public void save(T item) {
-        dynamoClient.putItem(getPutItemRequest(item));
+        putItem(item);
     }
 
     public void saveArray(T[] items){
