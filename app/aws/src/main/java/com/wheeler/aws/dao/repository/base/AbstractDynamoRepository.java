@@ -7,10 +7,7 @@ import com.wheeler.core.utility.ReflectUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
-import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
-import software.amazon.awssdk.services.dynamodb.model.DeleteItemRequest;
-import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
-import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
+import software.amazon.awssdk.services.dynamodb.model.*;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -36,8 +33,45 @@ public abstract class AbstractDynamoRepository<T extends Model> {
     // ________________________________________________________________________________
     // protected methods
 
+
+    protected DeleteItemRequest createDeleteItemRequest(final String id){
+        final FieldDto idField = new FieldDto("id", String.class, id);
+        return DeleteItemRequest.builder()
+                .key(Map.of(idField.getName(), Objects.requireNonNull(toValue(idField))))
+                .tableName(getTableName())
+                .build();
+    }
+
+    protected GetItemRequest createGetItemRequest(final String id){
+        final FieldDto idField = new FieldDto("id", String.class, id);
+        return GetItemRequest.builder()
+                .key(Map.of(idField.getName(), Objects.requireNonNull(toValue(idField))))
+                .tableName(getTableName())
+                .build();
+    }
+
+    protected PutItemRequest createPutItemRequest(final T item){
+        return PutItemRequest.builder()
+                .item(toMap(item))
+                .tableName(getTableName())
+                .build();
+    }
+
+    protected ScanRequest createScanRequest(){
+        return ScanRequest.builder()
+                .tableName(getTableName())
+                .build();
+    }
+
+    protected T fromItem(final Map<String, AttributeValue> item){
+        if(item == null || item.isEmpty()){
+            return null;
+        }
+        return fromMap(item);
+    }
+
     protected List<T> fromItems(final List<Map<String, AttributeValue>> items){
-        return items.stream().map(this::fromMap).collect(Collectors.toList());
+        return items.stream().filter(i -> i != null && !i.isEmpty()).map(this::fromMap).collect(Collectors.toList());
     }
 
     protected Class<T[]> getArrayTableType(){
@@ -45,26 +79,12 @@ public abstract class AbstractDynamoRepository<T extends Model> {
         return (Class<T[]>) array.getClass();
     }
 
-    protected DeleteItemRequest getDeleteItemRequest(final T item){
-        final FieldDto id = new FieldDto("id", String.class, item.getId());
-        return DeleteItemRequest.builder()
-                .key(Map.of(id.getName(), Objects.requireNonNull(toValue(id))))
-                .tableName(getTableName())
-                .build();
+    protected void putItem(final T item){
+        dynamoClient.putItem(createPutItemRequest(item));
     }
 
-    protected PutItemRequest getPutItemRequest(final T item){
-        return PutItemRequest.builder()
-                .item(toMap(item))
-                .tableName(getTableName())
-                .build();
-    }
-
-    protected ScanRequest getScanRequest(){
-        return ScanRequest.builder()
-                .tableName(getTableName())
-                .build();
-    }
+    // ________________________________________________________________________________
+    // private methods
 
     private T fromMap(final Map<String, AttributeValue> attributeMap){
         return fromMap(attributeMap, getTableType());
@@ -78,6 +98,7 @@ public abstract class AbstractDynamoRepository<T extends Model> {
                     final Object value = fromValue(field, attributeMap.get(name));
                     return new AbstractMap.SimpleEntry<>(name, value);
                 })
+                .filter(entry -> entry.getValue() != null)
                 .collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, AbstractMap.SimpleEntry::getValue));
 
         return ReflectUtil.construct(clazz, objectMap);
