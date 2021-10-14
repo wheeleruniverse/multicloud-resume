@@ -15,6 +15,11 @@ echo "${NAME} :: $(date) :: Started"
 echo 
 echo "${NAME} :: $(date) :: With Source '${JSON}'"
 
+echo
+echo "${NAME} :: $(date) :: Load AWS"
+#curl -s -X POST -H "Content-Type: application/json" -d ${JSON} \
+#"http://localhost:9999/${1}/load"
+
 echo 
 echo "${NAME} :: $(date) :: Load Azure"
 curl -s -X POST -H "Content-Type: application/json" -d ${JSON} \

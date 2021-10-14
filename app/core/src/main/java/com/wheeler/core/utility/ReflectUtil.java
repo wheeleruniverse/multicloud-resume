@@ -136,8 +136,13 @@ public class ReflectUtil {
     private static void setPropertyValue(
         final PropertyDescriptor descriptor, final Object instance, final Object value
     ){
+        Object newValue = value;
+        final Class<?> type = descriptor.getPropertyType();
+        if(type.isEnum() && value instanceof String){
+            newValue = Enum.valueOf((Class<Enum>)type, (String)value);
+        }
         try {
-            descriptor.getWriteMethod().invoke(instance, value);
+            descriptor.getWriteMethod().invoke(instance, newValue);
         }
         catch (IllegalAccessException | InvocationTargetException e) {
             final String message = String.format("setPropertyValue(PropertyDescriptor, Object, Object) error: %s", e);

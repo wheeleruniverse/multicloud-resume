@@ -1,0 +1,46 @@
+name: app-aws
+
+on:
+  push:
+    branches: [main]
+    paths:
+    - app/aws/**
+
+  workflow_dispatch:
+
+jobs:
+  aws-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: AWS Auth
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
+      - name: Docker Build
+        shell: bash
+        run: |
+          echo "aws codeartifact get-authorization-token"
+          ARTIFACTS_AUTH=$(aws codeartifact get-authorization-token \
+          --domain wheelercloudguru \
+          --query authorizationToken \
+          --output text)
+
+          echo "aws ecr get-login-password"
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 778263278211.dkr.ecr.us-east-1.amazonaws.com
+
+          echo "docker build app/aws"
+          docker build app/aws \
+          --build-arg ARTIFACTS_AUTH=${ARTIFACTS_AUTH} \
+          --tag wheelercloudguru
+
+      - name: Docker Tag
+        run: docker tag wheelercloudguru:latest 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:latest
+
+      - name: Docker Push
+        run: docker push 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:latest

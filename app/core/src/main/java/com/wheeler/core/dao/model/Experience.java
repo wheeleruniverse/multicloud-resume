@@ -25,14 +25,4 @@ public class Experience implements Model {
     public static String getTableName() {
         return "experience";
     }
-
-    /**
-     * Sets the ExperienceType with a String instead of an enumerator.
-     * @param type the ExperienceType value as a String.
-     */
-    public void setType(final String type){
-        if (type != null) {
-            this.type = ExperienceType.valueOf(type);
-        }
-    }
 }
