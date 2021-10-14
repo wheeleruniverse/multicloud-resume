@@ -18,4 +18,14 @@ public class Skill implements Model {
     public static String getTableName() {
         return "skill";
     }
+
+    /**
+     * Sets the SkillLevel with a String instead of an enumerator.
+     * @param level the SkillLevel value as a String.
+     */
+    public void setLevel(final String level){
+        if (level != null) {
+            this.level = SkillLevel.valueOf(level);
+        }
+    }
 }
