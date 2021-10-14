@@ -7,7 +7,7 @@ public class Location {
 
     private String address;
     private String city;
-    private boolean remote;
+    private Boolean remote;
     private String state;
     private String zip;
 }

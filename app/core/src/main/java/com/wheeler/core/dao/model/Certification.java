@@ -23,4 +23,24 @@ public class Certification implements Model {
     public static String getTableName() {
         return "certification";
     }
+
+    /**
+     * Sets the CertificationLevel with a String instead of an enumerator.
+     * @param level the CertificationLevel value as a String.
+     */
+    public void setLevel(final String level) {
+        if (level != null) {
+            this.level = CertificationLevel.valueOf(level);
+        }
+    }
+
+    /**
+     * Sets the CertificationVendor with a String instead of an enumerator.
+     * @param vendor the CertificationVendor value as a String.
+     */
+    public void setVendor(final String vendor){
+        if (vendor != null) {
+            this.vendor = CertificationVendor.valueOf(vendor);
+        }
+    }
 }
