@@ -12,6 +12,12 @@ locals {
   }
 }
 
+variable "account" {
+  default     = "778263278211"
+  description = "account id"
+  type        = string
+}
+
 variable "domain" {
   default     = "wheelercloudguru"
   description = "domain name"
@@ -30,6 +36,12 @@ variable "fqdn" {
   type        = string
 }
 
+variable "lambda_role" {
+  default     = "arn:aws:iam::778263278211:role/wheelercloudguru-lambda"
+  description = "iam role to assign to the lambda function"
+  type        = string
+}
+
 variable "owner" {
   default     = "justin.wheeler@wheelerswebsites.com"
   description = "owner email address"
@@ -39,6 +51,12 @@ variable "owner" {
 variable "project" {
   default     = "resume"
   description = "project name"
+  type        = string
+}
+
+variable "region" {
+  default     = "us-east-1"
+  description = "region name"
   type        = string
 }
 
