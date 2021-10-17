@@ -48,7 +48,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
   viewer_certificate {
-    acm_certificate_arn            = "arn:aws:acm:us-east-1:778263278211:certificate/5bed8c4a-fb53-4a2e-800d-64740eaf6c7b"
+    acm_certificate_arn            = "arn:aws:acm:${var.region}:${var.account}:certificate/5bed8c4a-fb53-4a2e-800d-64740eaf6c7b"
     cloudfront_default_certificate = false
     minimum_protocol_version       = var.tls_version
     ssl_support_method             = "sni-only"
@@ -114,13 +114,22 @@ resource "aws_dynamodb_table" "this" {
 }
 
 resource "aws_ecr_repository" "this" {
-  image_tag_mutability = "IMMUTABLE"
+  image_tag_mutability = "MUTABLE"
   name                 = var.domain
   tags                 = local.tags
 
   image_scanning_configuration {
     scan_on_push = true
   }
+}
+
+resource "aws_lambda_function" "this" {
+  function_name = var.domain
+  image_uri     = "${var.account}.dkr.ecr.${var.region}.amazonaws.com/${var.domain}:latest"
+  package_type  = "Image"
+  role          = var.lambda_role
+  tags          = local.tags
+  timeout       = 120
 }
 
 resource "aws_s3_bucket" "app" {
