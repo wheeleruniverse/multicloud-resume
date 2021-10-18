@@ -1,339 +1,341 @@
 {
-  "definitions":{
-    "Certification":{
-      "properties":{
-        "id":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
-        },
-        "credential":{
-          "type":"string"
-        },
-        "descriptions":{
-          "items":{
+  "components":{
+    "schemas":{
+      "Certification":{
+        "properties":{
+          "id":{
             "type":"string"
           },
-          "type":"array"
-        },
-        "expiry":{
-          "$ref":"#/definitions/MonthYear"
-        },
-        "issued":{
-          "$ref":"#/definitions/MonthYear"
-        },
-        "level":{
-          "enum":[
-            "ASSOCIATE",
-            "FOUNDATIONAL",
-            "PROFESSIONAL",
-            "SPECIALTY"
-          ],
-          "type":"string"
-        },
-        "vendor":{
-          "enum":[
-            "AWS",
-            "AZURE",
-            "GCP",
-            "ORACLE",
-            "SAFE"
-          ],
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "CertificationDto":{
-      "properties":{
-        "data":{
-          "items":{
-            "$ref":"#/definitions/Certification"
-          },
-          "type":"array"
-        },
-        "meta":{
-          "$ref":"#/definitions/CertificationMetaDto"
-        }
-      },
-      "type":"object"
-    },
-    "CertificationMetaDto":{
-      "properties":{
-        "levels":{
-          "items":{
-            "$ref":"#/definitions/EnumDto"
-          },
-          "type":"array"
-        },
-        "vendors":{
-          "items":{
-            "$ref":"#/definitions/EnumDto"
-          },
-          "type":"array"
-        }
-      },
-      "type":"object"
-    },
-    "CountDto":{
-      "properties":{
-        "name":{
-          "type":"string"
-        },
-        "value":{
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "Education":{
-      "properties":{
-        "id":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
-        },
-        "degree":{
-          "type":"string"
-        },
-        "descriptions":{
-          "items":{
+          "name":{
             "type":"string"
           },
-          "type":"array"
-        },
-        "end":{
-          "type":"integer"
-        },
-        "field":{
-          "type":"string"
-        },
-        "location":{
-          "$ref":"#/definitions/Location"
-        },
-        "start":{
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "EducationDto":{
-      "properties":{
-        "data":{
-          "items":{
-            "$ref":"#/definitions/Education"
-          },
-          "type":"array"
-        }
-      },
-      "type":"object"
-    },
-    "EnumDto":{
-      "properties":{
-        "name":{
-          "type":"string"
-        },
-        "description":{
-          "type":"string"
-        },
-        "display":{
-          "type":"string"
-        },
-        "rank":{
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "Experience":{
-      "properties":{
-        "id":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
-        },
-        "descriptions":{
-          "items":{
+          "credential":{
             "type":"string"
           },
-          "type":"array"
-        },
-        "end":{
-          "$ref":"#/definitions/MonthYear"
-        },
-        "location":{
-          "$ref":"#/definitions/Location"
-        },
-        "project":{
-          "type":"string"
-        },
-        "role":{
-          "type":"string"
-        },
-        "start":{
-          "$ref":"#/definitions/MonthYear"
-        },
-        "title":{
-          "type":"string"
-        },
-        "type":{
-          "enum":[
-            "CONTRACT",
-            "FULLTIME"
-          ],
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "ExperienceDto":{
-      "properties":{
-        "data":{
-          "items":{
-            "$ref":"#/definitions/Experience"
+          "descriptions":{
+            "items":{
+              "type":"string"
+            },
+            "type":"array"
           },
-          "type":"array"
-        }
-      },
-      "type":"object"
-    },
-    "Location":{
-      "properties":{
-        "address":{
-          "type":"string"
-        },
-        "city":{
-          "type":"string"
-        },
-        "remote":{
-          "type":"boolean"
-        },
-        "state":{
-          "type":"string"
-        },
-        "zip":{
-          "type":"string"
-        }
-      },
-      "type":"object"
-    },
-    "MonthYear":{
-      "properties":{
-        "month":{
-          "type":"integer"
-        },
-        "year":{
-          "type":"integer"
-        }
-      },
-      "type":"object"
-    },
-    "Project":{
-      "properties":{
-        "id":{
-          "type":"string"
-        },
-        "name":{
-          "type":"string"
-        },
-        "blog":{
-          "type":"string"
-        },
-        "code":{
-          "type":"string"
-        },
-        "description":{
-          "type":"string"
-        },
-        "diagrams":{
-          "type":"integer"
-        },
-        "end":{
-          "$ref":"#/definitions/MonthYear"
-        },
-        "skills":{
-          "items":{
+          "expiry":{
+            "$ref":"#/components/schemas/MonthYear"
+          },
+          "issued":{
+            "$ref":"#/components/schemas/MonthYear"
+          },
+          "level":{
+            "enum":[
+              "ASSOCIATE",
+              "FOUNDATIONAL",
+              "PROFESSIONAL",
+              "SPECIALTY"
+            ],
             "type":"string"
           },
-          "type":"array"
+          "vendor":{
+            "enum":[
+              "AWS",
+              "AZURE",
+              "GCP",
+              "ORACLE",
+              "SAFE"
+            ],
+            "type":"string"
+          }
         },
-        "start":{
-          "$ref":"#/definitions/MonthYear"
-        },
-        "website":{
-          "type":"string"
-        }
+        "type":"object"
       },
-      "type":"object"
-    },
-    "ProjectDto":{
-      "properties":{
-        "data":{
-          "items":{
-            "$ref":"#/definitions/Project"
+      "CertificationDto":{
+        "properties":{
+          "data":{
+            "items":{
+              "$ref":"#/components/schemas/Certification"
+            },
+            "type":"array"
           },
-          "type":"array"
-        }
+          "meta":{
+            "$ref":"#/components/schemas/CertificationMetaDto"
+          }
+        },
+        "type":"object"
       },
-      "type":"object"
-    },
-    "Skill":{
-      "properties":{
-        "id":{
-          "type":"string"
+      "CertificationMetaDto":{
+        "properties":{
+          "levels":{
+            "items":{
+              "$ref":"#/components/schemas/EnumDto"
+            },
+            "type":"array"
+          },
+          "vendors":{
+            "items":{
+              "$ref":"#/components/schemas/EnumDto"
+            },
+            "type":"array"
+          }
         },
-        "name":{
-          "type":"string"
-        },
-        "level":{
-          "enum":[
-            "COMPETENT",
-            "EXPERT",
-            "MASTER",
-            "NOVICE",
-            "PROFICIENT"
-          ],
-          "type":"string"
-        },
-        "projects":{
-          "items":{
+        "type":"object"
+      },
+      "CountDto":{
+        "properties":{
+          "name":{
             "type":"string"
           },
-          "type":"array"
+          "value":{
+            "type":"integer"
+          }
         },
-        "type":{
-          "type":"string"
-        }
+        "type":"object"
       },
-      "type":"object"
-    },
-    "SkillDto":{
-      "properties":{
-        "data":{
-          "items":{
-            "$ref":"#/definitions/Skill"
+      "Education":{
+        "properties":{
+          "id":{
+            "type":"string"
           },
-          "type":"array"
+          "name":{
+            "type":"string"
+          },
+          "degree":{
+            "type":"string"
+          },
+          "descriptions":{
+            "items":{
+              "type":"string"
+            },
+            "type":"array"
+          },
+          "end":{
+            "type":"integer"
+          },
+          "field":{
+            "type":"string"
+          },
+          "location":{
+            "$ref":"#/components/schemas/Location"
+          },
+          "start":{
+            "type":"integer"
+          }
         },
-        "meta":{
-          "$ref":"#/definitions/SkillMetaDto"
-        }
+        "type":"object"
       },
-      "type":"object"
-    },
-    "SkillMetaDto":{
-      "properties":{
-        "levels":{
-          "items":{
-            "$ref":"#/definitions/EnumDto"
+      "EducationDto":{
+        "properties":{
+          "data":{
+            "items":{
+              "$ref":"#/components/schemas/Education"
+            },
+            "type":"array"
+          }
+        },
+        "type":"object"
+      },
+      "EnumDto":{
+        "properties":{
+          "name":{
+            "type":"string"
           },
-          "type":"array"
-        }
+          "description":{
+            "type":"string"
+          },
+          "display":{
+            "type":"string"
+          },
+          "rank":{
+            "type":"integer"
+          }
+        },
+        "type":"object"
       },
-      "type":"object"
+      "Experience":{
+        "properties":{
+          "id":{
+            "type":"string"
+          },
+          "name":{
+            "type":"string"
+          },
+          "descriptions":{
+            "items":{
+              "type":"string"
+            },
+            "type":"array"
+          },
+          "end":{
+            "$ref":"#/components/schemas/MonthYear"
+          },
+          "location":{
+            "$ref":"#/components/schemas/Location"
+          },
+          "project":{
+            "type":"string"
+          },
+          "role":{
+            "type":"string"
+          },
+          "start":{
+            "$ref":"#/components/schemas/MonthYear"
+          },
+          "title":{
+            "type":"string"
+          },
+          "type":{
+            "enum":[
+              "CONTRACT",
+              "FULLTIME"
+            ],
+            "type":"string"
+          }
+        },
+        "type":"object"
+      },
+      "ExperienceDto":{
+        "properties":{
+          "data":{
+            "items":{
+              "$ref":"#/components/schemas/Experience"
+            },
+            "type":"array"
+          }
+        },
+        "type":"object"
+      },
+      "Location":{
+        "properties":{
+          "address":{
+            "type":"string"
+          },
+          "city":{
+            "type":"string"
+          },
+          "remote":{
+            "type":"boolean"
+          },
+          "state":{
+            "type":"string"
+          },
+          "zip":{
+            "type":"string"
+          }
+        },
+        "type":"object"
+      },
+      "MonthYear":{
+        "properties":{
+          "month":{
+            "type":"integer"
+          },
+          "year":{
+            "type":"integer"
+          }
+        },
+        "type":"object"
+      },
+      "Project":{
+        "properties":{
+          "id":{
+            "type":"string"
+          },
+          "name":{
+            "type":"string"
+          },
+          "blog":{
+            "type":"string"
+          },
+          "code":{
+            "type":"string"
+          },
+          "description":{
+            "type":"string"
+          },
+          "diagrams":{
+            "type":"integer"
+          },
+          "end":{
+            "$ref":"#/components/schemas/MonthYear"
+          },
+          "skills":{
+            "items":{
+              "type":"string"
+            },
+            "type":"array"
+          },
+          "start":{
+            "$ref":"#/components/schemas/MonthYear"
+          },
+          "website":{
+            "type":"string"
+          }
+        },
+        "type":"object"
+      },
+      "ProjectDto":{
+        "properties":{
+          "data":{
+            "items":{
+              "$ref":"#/components/schemas/Project"
+            },
+            "type":"array"
+          }
+        },
+        "type":"object"
+      },
+      "Skill":{
+        "properties":{
+          "id":{
+            "type":"string"
+          },
+          "name":{
+            "type":"string"
+          },
+          "level":{
+            "enum":[
+              "COMPETENT",
+              "EXPERT",
+              "MASTER",
+              "NOVICE",
+              "PROFICIENT"
+            ],
+            "type":"string"
+          },
+          "projects":{
+            "items":{
+              "type":"string"
+            },
+            "type":"array"
+          },
+          "type":{
+            "type":"string"
+          }
+        },
+        "type":"object"
+      },
+      "SkillDto":{
+        "properties":{
+          "data":{
+            "items":{
+              "$ref":"#/components/schemas/Skill"
+            },
+            "type":"array"
+          },
+          "meta":{
+            "$ref":"#/components/schemas/SkillMetaDto"
+          }
+        },
+        "type":"object"
+      },
+      "SkillMetaDto":{
+        "properties":{
+          "levels":{
+            "items":{
+              "$ref":"#/components/schemas/EnumDto"
+            },
+            "type":"array"
+          }
+        },
+        "type":"object"
+      }
     }
   },
   "info":{
@@ -350,7 +352,7 @@
             "application/json":{
               "schema":{
                 "items":{
-                  "$ref":"#/definitions/Certification"
+                  "$ref":"#/components/schemas/Certification"
                 },
                 "type":"array"
               }
@@ -377,7 +379,7 @@
             "content":{
               "application/json":{
                 "schema":{
-                  "$ref":"#/definitions/CertificationDto"
+                  "$ref":"#/components/schemas/CertificationDto"
                 }
               }
             },
@@ -397,7 +399,7 @@
             "application/json":{
               "schema":{
                 "items":{
-                  "$ref":"#/definitions/Education"
+                  "$ref":"#/components/schemas/Education"
                 },
                 "type":"array"
               }
@@ -425,7 +427,7 @@
               "application/json":{
                 "schema":{
                   "items":{
-                    "$ref":"#/definitions/EducationDto"
+                    "$ref":"#/components/schemas/EducationDto"
                   },
                   "type":"array"
                 }
@@ -447,7 +449,7 @@
             "application/json":{
               "schema":{
                 "items":{
-                  "$ref":"#/definitions/Experience"
+                  "$ref":"#/components/schemas/Experience"
                 },
                 "type":"array"
               }
@@ -475,7 +477,7 @@
               "application/json":{
                 "schema":{
                   "items":{
-                    "$ref":"#/definitions/ExperienceDto"
+                    "$ref":"#/components/schemas/ExperienceDto"
                   },
                   "type":"array"
                 }
@@ -497,7 +499,7 @@
             "application/json":{
               "schema":{
                 "items":{
-                  "$ref":"#/definitions/Project"
+                  "$ref":"#/components/schemas/Project"
                 },
                 "type":"array"
               }
@@ -525,7 +527,7 @@
               "application/json":{
                 "schema":{
                   "items":{
-                    "$ref":"#/definitions/ProjectDto"
+                    "$ref":"#/components/schemas/ProjectDto"
                   },
                   "type":"array"
                 }
@@ -547,7 +549,7 @@
             "application/json":{
               "schema":{
                 "items":{
-                  "$ref":"#/definitions/Skill"
+                  "$ref":"#/components/schemas/Skill"
                 },
                 "type":"array"
               }
@@ -575,7 +577,7 @@
               "application/json":{
                 "schema":{
                   "items":{
-                    "$ref":"#/definitions/SkillDto"
+                    "$ref":"#/components/schemas/SkillDto"
                   },
                   "type":"array"
                 }
@@ -598,7 +600,7 @@
               "application/json":{
                 "schema":{
                   "items":{
-                    "$ref":"#/definitions/CountDto"
+                    "$ref":"#/components/schemas/CountDto"
                   },
                   "type":"array"
                 }
@@ -632,7 +634,7 @@
           "content":{
             "application/json":{
               "schema":{
-                "type":"integer"
+                "$ref":"#/components/schemas/CountDto"
               }
             }
           },

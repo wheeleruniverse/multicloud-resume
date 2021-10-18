@@ -1,4 +1,14 @@
 
+resource "aws_api_gateway_rest_api" "this" {
+  body = file("../../swagger/api.json")
+  name = var.domain
+  tags = local.tags
+
+  endpoint_configuration {
+    types = ["EDGE"]
+  }
+}
+
 resource "aws_cloudfront_distribution" "this" {
   aliases             = local.aws_fqdn_list
   enabled             = true
