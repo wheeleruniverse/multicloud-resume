@@ -1,12 +1,39 @@
 
-resource "aws_api_gateway_rest_api" "this" {
-  body = file("../../swagger/api.json")
-  name = var.domain
-  tags = local.tags
+resource "aws_apigatewayv2_api" "this" {
+  /*
+   * Note:
+   *
+   * If the body argument is provided, the OpenAPI specification will be used to configure the integrations and route
+   * for the HTTP API. If this argument is provided, the following resources should not be managed as separate ones,
+   * as updates may cause manual resource updates to be overwritten:
+   * - aws_apigatewayv2_integration
+   * - aws_apigatewayv2_route
+   *
+   * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/apigatewayv2_api
+   */
+  body          = file("../../swagger/api.json")
+  name          = var.domain
+  protocol_type = "HTTP"
+  tags          = local.tags
+}
 
-  endpoint_configuration {
-    types = ["EDGE"]
+resource "aws_apigatewayv2_deployment" "this" {
+  api_id      = aws_apigatewayv2_api.this.id
+  description = var.domain
+  triggers = {
+    redeployment = sha1(jsonencode(aws_apigatewayv2_api.this.body))
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_apigatewayv2_stage" "this" {
+  api_id        = aws_apigatewayv2_api.this.id
+  deployment_id = aws_apigatewayv2_deployment.this.id
+  name          = var.environment
+  tags          = local.tags
 }
 
 resource "aws_cloudfront_distribution" "this" {

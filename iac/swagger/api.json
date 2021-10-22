@@ -336,6 +336,18 @@
         },
         "type":"object"
       }
+    },
+    "x-amazon-apigateway-integrations": {
+      "wheelercloudguru": {
+        "connectionType": "INTERNET",
+        "contentHandling": "CONVERT_TO_TEXT",
+        "httpMethod": "POST",
+        "passthroughBehavior": "when_no_match",
+        "payloadFormatVersion": "1.0",
+        "timeoutInMillis": 5000,
+        "type": "aws_proxy",
+        "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:wheelercloudguru/invocations"
+      }
     }
   },
   "info":{
@@ -369,7 +381,10 @@
         "summary":"truncates and reloads certification data",
         "tags":[
           "certification"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/certification/retrieve":{
@@ -389,7 +404,10 @@
         "summary":"retrieves certification data",
         "tags":[
           "certification"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/education/load":{
@@ -416,7 +434,10 @@
         "summary":"truncates and reloads education data",
         "tags":[
           "education"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/education/retrieve":{
@@ -439,7 +460,10 @@
         "summary":"retrieves education data",
         "tags":[
           "education"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/experience/load":{
@@ -466,7 +490,10 @@
         "summary":"truncates and reloads experience data",
         "tags":[
           "experience"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/experience/retrieve":{
@@ -489,7 +516,10 @@
         "summary":"retrieves experience data",
         "tags":[
           "experience"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/project/load":{
@@ -516,7 +546,10 @@
         "summary":"truncates and reloads project data",
         "tags":[
           "project"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/project/retrieve":{
@@ -539,7 +572,10 @@
         "summary":"retrieves project data",
         "tags":[
           "project"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/skill/load":{
@@ -566,7 +602,10 @@
         "summary":"truncates and reloads skill data",
         "tags":[
           "skill"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/skill/retrieve":{
@@ -589,7 +628,10 @@
         "summary":"retrieves skill data",
         "tags":[
           "skill"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/visitor/count":{
@@ -612,7 +654,10 @@
         "summary":"retrieves the visitor count",
         "tags":[
           "visitor"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/visitor/increment":{
@@ -625,7 +670,10 @@
         "summary":"increments the visitor count",
         "tags":[
           "visitor"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     },
     "/visitor/load":{
@@ -649,7 +697,10 @@
         "summary":"sets the visitor count",
         "tags":[
           "visitor"
-        ]
+        ],
+        "x-amazon-apigateway-integration": {
+          "$ref": "#/components/x-amazon-apigateway-integrations/wheelercloudguru"
+        }
       }
     }
   },
