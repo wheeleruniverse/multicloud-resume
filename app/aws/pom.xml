@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.wheeler.core</groupId>
             <artifactId>resume-core</artifactId>
-            <version>2021.10.006</version>
+            <version>2021.10.007</version>
         </dependency>
 
         <!-- AWS DynamoDB -->
@@ -50,6 +50,18 @@
 		  <groupId>software.amazon.awssdk</groupId>
 		  <artifactId>dynamodb</artifactId>
 		</dependency>
+
+        <!-- AWS Lambda for Java -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-core</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-events</artifactId>
+            <version>3.10.0</version>
+        </dependency>
 
         <!-- Spring -->
         <dependency>
