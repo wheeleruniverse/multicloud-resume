@@ -1,7 +1,5 @@
 ## App AWS
 
-```bash
-mvn package
-docker build -t app-aws:local .
-docker run -p 9000:8080 --rm --name app-aws app-aws:local
-```
+[aws-lambda-java-runtime-interface-client](https://github.com/aws/aws-lambda-java-libs/blob/master/aws-lambda-java-runtime-interface-client/README.md)
+
+

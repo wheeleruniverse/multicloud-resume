@@ -1,20 +1,35 @@
-FROM maven:3.8-jdk-11 as builder
+# Amazon Linux 2 + Corretto 11 as our base
+FROM amazoncorretto:11 as base
 
+# configure the build environment
+FROM base as build
+
+# update Maven settings.xml to authenticate to CodeArtifact
 ARG ARTIFACTS_AUTH
-
-WORKDIR /app/aws
-
 RUN mkdir -p /root/.m2/repository
 COPY settings.xml /root/.m2
 
-COPY src ./src
-COPY pom.xml ./pom.xml
-RUN mvn package -DskipTests
+# install Maven
+RUN yum install -y maven
+WORKDIR /app/aws/src
 
-FROM adoptopenjdk/openjdk11:alpine-jre
+# cache and copy dependencies
+ADD pom.xml .
+RUN mvn dependency:go-offline dependency:copy-dependencies
 
-COPY --from=builder /app/aws/target/resume-aws-1.0.0.jar ./resume-aws-1.0.0.jar
+# compile the function
+ADD . .
+RUN mvn package
 
-ENTRYPOINT ["/usr/bin/java", "-cp", "./*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda"]
+# copy the function artifact and dependencies onto a clean base
+FROM base
+WORKDIR /function
 
-CMD ["com.wheeler.aws.controller.LambdaHandler::handleRequest"]
+COPY --from=build /src/target/dependency/*.jar ./
+COPY --from=build /src/target/*.jar ./
+
+# configure the runtime startup as main
+ENTRYPOINT [ "/usr/bin/java", "-cp", "./*", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
+
+# pass the name of the function handler as an argument to the runtime
+CMD [ "com.wheeler.aws.controller.LambdaHandler::handleRequest" ]
