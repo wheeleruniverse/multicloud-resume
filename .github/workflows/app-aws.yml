@@ -40,7 +40,15 @@ jobs:
           --tag wheelercloudguru
 
       - name: Docker Tag
-        run: docker tag wheelercloudguru:latest 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:latest
+        run: docker tag wheelercloudguru:${GITHUB_SHA} 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:${GITHUB_SHA}
 
       - name: Docker Push
-        run: docker push 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:latest
+        run: docker push 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:${GITHUB_SHA}
+
+      - name: Lambda Deployment
+        run: |
+          echo "aws lambda update-function-code"
+          aws lambda update-function-code \
+          --function-name wheelercloudguru \
+          --image-uri 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:${GITHUB_SHA} \
+          --region us-east-1

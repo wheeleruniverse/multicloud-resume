@@ -151,7 +151,7 @@ resource "aws_dynamodb_table" "this" {
 }
 
 resource "aws_ecr_repository" "this" {
-  image_tag_mutability = "MUTABLE"
+  image_tag_mutability = "IMMUTABLE"
   name                 = var.domain
   tags                 = local.tags
 
@@ -162,11 +162,12 @@ resource "aws_ecr_repository" "this" {
 
 resource "aws_lambda_function" "this" {
   function_name = var.domain
-  image_uri     = "${var.account}.dkr.ecr.${var.region}.amazonaws.com/${var.domain}:latest"
+  image_uri     = "${var.account}.dkr.ecr.${var.region}.amazonaws.com/${var.domain}:${var.image}"
+  memory_size   = 512
   package_type  = "Image"
   role          = var.lambda_role
   tags          = local.tags
-  timeout       = 120
+  timeout       = 15
 }
 
 resource "aws_s3_bucket" "app" {

@@ -53,14 +53,4 @@ jobs:
           gcloud run deploy wheelercloudguru \
           --image gcr.io/wheeler-resume/app-gcp:${GITHUB_SHA} \
           --region us-central1
-
-#      Docker Hub
-#
-#      - name: Docker Login
-#        env:
-#          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-#          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-#        run: docker login -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
-#
-#      - name: Docker Push to Docker Hub
-#        run: docker push wheeler146/resume:gcp-latest
+          

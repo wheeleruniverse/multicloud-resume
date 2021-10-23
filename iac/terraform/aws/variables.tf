@@ -36,6 +36,11 @@ variable "fqdn" {
   type        = string
 }
 
+variable "image" {
+  description = "container image to deploy"
+  type        = string
+}
+
 variable "lambda_role" {
   default     = "arn:aws:iam::778263278211:role/wheelercloudguru-lambda"
   description = "iam role to assign to the lambda function"
