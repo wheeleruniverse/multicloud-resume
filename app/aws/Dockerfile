@@ -8,26 +8,18 @@ FROM base as build
 RUN yum install -y maven
 WORKDIR /app/aws/src
 
-
-RUN mvn help:effective-settings
-
-
 # update Maven settings to authenticate to CodeArtifact
 ARG ARTIFACTS_AUTH
 RUN mkdir -p /root/.m2/repository
-COPY settings.xml /root/.m2
-
-
-RUN mvn help:effective-settings
-
+COPY settings.xml /root/.m2/
 
 # cache and copy dependencies
 COPY pom.xml .
-RUN mvn dependency:go-offline dependency:copy-dependencies
+RUN mvn -X dependency:go-offline dependency:copy-dependencies
 
 # compile the function
 COPY . .
-RUN mvn package
+RUN mvn -X package
 
 # copy the function artifact and dependencies onto a clean base
 FROM base
