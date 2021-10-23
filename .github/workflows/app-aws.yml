@@ -37,7 +37,7 @@ jobs:
           echo "docker build app/aws"
           docker build app/aws \
           --build-arg ARTIFACTS_AUTH=${ARTIFACTS_AUTH} \
-          --tag wheelercloudguru
+          --tag wheelercloudguru:${GITHUB_SHA}
 
       - name: Docker Tag
         run: docker tag wheelercloudguru:${GITHUB_SHA} 778263278211.dkr.ecr.us-east-1.amazonaws.com/wheelercloudguru:${GITHUB_SHA}
