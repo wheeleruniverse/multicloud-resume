@@ -9,7 +9,7 @@ RUN yum install -y maven
 WORKDIR /app/aws/src
 
 
-RUN mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout
+RUN mvn help:effective-settings
 
 
 # update Maven settings to authenticate to CodeArtifact
@@ -17,12 +17,16 @@ ARG ARTIFACTS_AUTH
 RUN mkdir -p /root/.m2/repository
 COPY settings.xml /root/.m2
 
+
+RUN mvn help:effective-settings
+
+
 # cache and copy dependencies
-ADD pom.xml .
+COPY pom.xml .
 RUN mvn dependency:go-offline dependency:copy-dependencies
 
 # compile the function
-ADD . .
+COPY . .
 RUN mvn package
 
 # copy the function artifact and dependencies onto a clean base
