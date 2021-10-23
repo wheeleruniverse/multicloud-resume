@@ -15,10 +15,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 @SuppressWarnings("unused")
-public class StreamHandler implements RequestStreamHandler {
+public class LambdaHandler implements RequestStreamHandler {
 
     private static final SpringBootLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> HANDLER;
-    private static final Logger LOGGER = LoggerFactory.getLogger(StreamHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LambdaHandler.class);
 
     static {
         try {

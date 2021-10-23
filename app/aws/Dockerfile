@@ -13,6 +13,14 @@ RUN mvn package -DskipTests
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 
-COPY --from=builder /app/aws/target/resume-aws-1.0.0.jar /resume-aws-1.0.0.jar
+ADD https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/latest/download/aws-lambda-rie /usr/bin/aws-lambda-rie
+RUN chmod +x /usr/bin/aws-lambda-rie
 
-CMD ["java", "-jar", "/resume-aws-1.0.0.jar"]
+ADD container/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+ENV JAR_DIR="/jar"
+ADD target/* $JAR_DIR/
+
+CMD ["com.wheeler.aws.controller.LambdaHandler::handleRequest"]
