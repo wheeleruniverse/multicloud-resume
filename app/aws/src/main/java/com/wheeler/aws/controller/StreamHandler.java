@@ -23,7 +23,8 @@ public class StreamHandler implements RequestStreamHandler {
     static {
         try {
             HANDLER = SpringBootLambdaContainerHandler.getAwsProxyHandler(Main.class);
-        } catch (ContainerInitializationException e) {
+        }
+        catch (ContainerInitializationException e) {
             final String message = "StreamHandler ContainerInitializationException";
             LOGGER.error(message);
             throw new RuntimeException(message, e);
