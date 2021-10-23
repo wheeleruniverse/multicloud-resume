@@ -21,6 +21,12 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 ENV JAR_DIR="/jar"
+RUN echo "ls -lht" && ls -lht
+RUN echo "ls -lht target" && ls -lht target
+RUN echo "ls -lht /app" && ls -lht /app
+RUN echo "ls -lht /app/aws" && ls -lht /app/aws
+RUN echo "ls -lht /app/aws/target" && ls -lht /app/aws/target
+
 ADD target/* $JAR_DIR/
 
 CMD ["com.wheeler.aws.controller.LambdaHandler::handleRequest"]
