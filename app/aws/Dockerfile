@@ -4,16 +4,18 @@ FROM amazoncorretto:11 as base
 # configure the build environment
 FROM base as build
 
-RUN mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout
-
-# update Maven settings.xml to authenticate to CodeArtifact
-ARG ARTIFACTS_AUTH
-RUN mkdir -p /root/.m2/repository
-COPY settings.xml /root/.m2
-
 # install Maven
 RUN yum install -y maven
 WORKDIR /app/aws/src
+
+
+RUN mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout
+
+
+# update Maven settings to authenticate to CodeArtifact
+ARG ARTIFACTS_AUTH
+RUN mkdir -p /root/.m2/repository
+COPY settings.xml /root/.m2
 
 # cache and copy dependencies
 ADD pom.xml .
