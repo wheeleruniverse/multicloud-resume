@@ -15,11 +15,11 @@ COPY settings.xml /root/.m2/
 
 # cache and copy dependencies
 COPY pom.xml .
-RUN mvn -X dependency:go-offline dependency:copy-dependencies
+RUN mvn -U dependency:go-offline dependency:copy-dependencies
 
 # compile the function
 COPY . .
-RUN mvn -X package
+RUN mvn -U package
 
 # copy the function artifact and dependencies onto a clean base
 FROM base
