@@ -16,7 +16,7 @@ FROM adoptopenjdk/openjdk11:alpine-jre
 ADD https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/latest/download/aws-lambda-rie /usr/bin/aws-lambda-rie
 RUN chmod +x /usr/bin/aws-lambda-rie
 
-ADD container/entrypoint.sh /entrypoint.sh
+ADD entrypoint.sh ./entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
