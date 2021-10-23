@@ -128,6 +128,11 @@
 
     <repositories>
         <repository>
+            <id>central</id>
+            <name>central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
             <id>codeartifact</id>
             <name>codeartifact</name>
             <url>https://wheelercloudguru-778263278211.d.codeartifact.us-east-1.amazonaws.com/maven/resume/</url>
