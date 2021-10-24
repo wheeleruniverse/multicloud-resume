@@ -9,22 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Value("${com.wheeler.aws.auth.access-key}")
-    private String accessKey;
-
-    @Bean
-    public String accessKey() {
-        return accessKey;
-    }
-
-    @Value("${com.wheeler.aws.auth.secret-key}")
-    private String secretKey;
-
-    @Bean
-    public String secretKey() {
-        return secretKey;
-    }
-
     @Value("${com.wheeler.aws.region}")
     private String region;
 
