@@ -9,7 +9,7 @@ COPY settings.xml /root/.m2
 
 COPY src ./src
 COPY pom.xml ./pom.xml
-RUN mvn package -DskipTests
+RUN mvn package
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 
