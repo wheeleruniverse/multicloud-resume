@@ -167,7 +167,7 @@ resource "aws_lambda_function" "this" {
   package_type  = "Image"
   role          = var.lambda_role
   tags          = local.tags
-  timeout       = 15
+  timeout       = 30
 }
 
 resource "aws_s3_bucket" "app" {

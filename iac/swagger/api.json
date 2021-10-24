@@ -344,7 +344,7 @@
         "httpMethod": "POST",
         "passthroughBehavior": "when_no_match",
         "payloadFormatVersion": "1.0",
-        "timeoutInMillis": 5000,
+        "timeoutInMillis": 29000,
         "type": "aws_proxy",
         "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:wheelercloudguru/invocations"
       }
