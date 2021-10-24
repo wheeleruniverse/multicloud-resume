@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.wheeler.core</groupId>
             <artifactId>resume-core</artifactId>
-            <version>2021.10.007</version>
+            <version>2021.10.008</version>
         </dependency>
 
         <!-- AWS DynamoDB -->
