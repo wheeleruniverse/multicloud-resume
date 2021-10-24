@@ -1,7 +1,7 @@
 
 export const environment = {
-  backend: 'https://wheelercloudguru.azurewebsites.net/api',
+  backend: 'https://api.aws.wheelercloudguru.com',
   production: false,
   provider: 'aws',
-  storage: 'https://wheelercloudguruiac.blob.core.windows.net/web',
+  storage: 'https://wheelercloudguru-iac.s3.amazonaws.com/web',
 };
