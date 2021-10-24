@@ -5,7 +5,7 @@ FROM amazoncorretto:11 as base
 FROM base as build
 
 # install Maven
-RUN yum install -y maven
+RUN yum install -y maven && mvn -v
 WORKDIR /app/aws/src
 
 # update Maven settings to authenticate to CodeArtifact
