@@ -14,7 +14,7 @@ FROM adoptopenjdk/openjdk11:alpine-jre
 COPY --from=builder /app/aws/target/resume-aws-1.0.0.jar ./resume-aws-1.0.0.jar
 
 # configure the runtime startup as main
-ENTRYPOINT [ "/usr/bin/java", "-cp", "./resume-aws-1.0.0.jar", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
+ENTRYPOINT [ "java", "-cp", "./resume-aws-1.0.0.jar", "com.amazonaws.services.lambda.runtime.api.client.AWSLambda" ]
 
 # pass the name of the function handler as an argument to the runtime
 CMD [ "com.wheeler.aws.controller.LambdaHandler::handleRequest" ]
