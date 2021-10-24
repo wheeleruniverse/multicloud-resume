@@ -14,9 +14,9 @@ RUN mkdir -p /root/.m2/repository
 COPY settings.xml /root/.m2/
 
 # cache and copy dependencies
-COPY pom.xml .
-RUN mvn -U dependency:go-offline
-RUN mvn -U dependency:copy-dependencies
+#COPY pom.xml .
+#RUN mvn -U dependency:go-offline
+#RUN mvn -U dependency:copy-dependencies
 
 # compile the function
 COPY . .
@@ -26,7 +26,7 @@ RUN mvn -U package
 FROM base
 WORKDIR /function
 
-COPY --from=build /src/target/dependency/*.jar ./
+#COPY --from=build /src/target/dependency/*.jar ./
 COPY --from=build /src/target/*.jar ./
 
 # configure the runtime startup as main
