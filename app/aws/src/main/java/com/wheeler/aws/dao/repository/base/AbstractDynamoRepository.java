@@ -105,12 +105,12 @@ public abstract class AbstractDynamoRepository<T extends Model> {
     }
 
     private Object fromValue(final FieldDto field, final AttributeValue attributeValue){
-        if(attributeValue == null){
-            return null;
-        }
         final Class<?> clazz = field.getType();
         final Object value;
-        if(List.class.equals(clazz)){
+        if(attributeValue == null){
+            value = List.class.equals(clazz) ? Collections.emptyList() : null;
+        }
+        else if(List.class.equals(clazz)){
             value = attributeValue.ss();
         }
         else if(clazz.isEnum()){
