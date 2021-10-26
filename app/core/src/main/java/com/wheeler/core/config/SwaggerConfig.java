@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @ConditionalOnProperty(
-        havingValue = "true",
-        value="com.wheeler.core.module.swagger.enabled"
+    havingValue = "true",
+    value="com.wheeler.core.module.swagger.enabled"
 )
 @Configuration
 @EnableSwagger2

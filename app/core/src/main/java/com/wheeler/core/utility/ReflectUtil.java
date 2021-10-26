@@ -1,6 +1,7 @@
 package com.wheeler.core.utility;
 
 import com.wheeler.core.dto.model.FieldDto;
+import com.wheeler.core.dto.model.helper.Argument;
 import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
@@ -89,6 +91,34 @@ public class ReflectUtil {
                     return new FieldDto(p.getName(), p.getPropertyType(), value);
                 })
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Finds the provided annotation on the instance class.
+     *
+     * @param annotation the annotation to search for.
+     * @param instanceClass the instance class to search.
+     * @param <A> any annotation.
+     * @return the annotation found.
+     */
+    public static <A extends Annotation> A getAnnotation(final Class<A> annotation, final Class<?> instanceClass){
+        ValidationUtil.arguments(
+            new Argument<>("annotation", annotation),
+            new Argument<>("instanceClass", instanceClass)
+        );
+        return instanceClass.getAnnotation(annotation);
+    }
+
+    /**
+     * Finds the provided annotation on the instance class.
+     *
+     * @param annotation the annotation to search for.
+     * @param instance the instance of the class to search.
+     * @param <A> any annotation.
+     * @return the annotation found.
+     */
+    public static <A extends Annotation> A getAnnotation(final Class<A> annotation, final Object instance){
+        return getAnnotation(annotation, instance != null ? instance.getClass() : null);
     }
 
     /**

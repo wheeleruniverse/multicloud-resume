@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class ValidationUtil {
 
     public static void arguments(Argument<?>... args){
-        if(args == null){
+        if (args == null){
             arguments(new Argument<>("'args'", null));
             return;
         }
