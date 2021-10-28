@@ -1,9 +1,11 @@
 package com.wheeler.core.dto.model.partial;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
+@NoArgsConstructor
 public class EnumDto {
 
     private String name;

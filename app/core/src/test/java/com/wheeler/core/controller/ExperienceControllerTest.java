@@ -1,10 +1,7 @@
 package com.wheeler.core.controller;
 
-import com.wheeler.core.dao.constant.ExperienceType;
 import com.wheeler.core.dao.model.Experience;
-import com.wheeler.core.dao.model.Project;
-import com.wheeler.core.dao.model.partial.Location;
-import com.wheeler.core.dao.model.partial.MonthYear;
+import com.wheeler.core.dao.model.ExperienceTest;
 import com.wheeler.core.dto.model.ExperienceDto;
 import com.wheeler.core.service.ExperienceService;
 import com.wheeler.core.utility.JsonUtil;
@@ -20,12 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -54,7 +48,7 @@ public class ExperienceControllerTest {
         mockMvc
             .perform(
                 post("/experience/load")
-                .content(JsonUtil.toString(getDaoRecords()))
+                .content(JsonUtil.toString(ExperienceTest.getInstanceList()))
                 .contentType(MediaType.APPLICATION_JSON)
             )
             .andExpect(
@@ -64,7 +58,7 @@ public class ExperienceControllerTest {
 
     @Test
     public void retrieve() throws Exception {
-        final List<Experience> daoRecords = getDaoRecords();
+        final List<Experience> daoRecords = ExperienceTest.getInstanceList();
         when(experienceService.experienceRetrieve()).thenReturn((optional) -> daoRecords);
 
         final MockHttpServletResponse response = mockMvc
@@ -79,28 +73,5 @@ public class ExperienceControllerTest {
 
         final ExperienceDto dto = JsonUtil.toObject(response.getContentAsString(), ExperienceDto.class);
         assertEquals(daoRecords, dto.getData());
-    }
-
-    private List<Experience> getDaoRecords(){
-        final Location location = new Location();
-        location.setAddress("address");
-        location.setCity("city");
-        location.setRemote(true);
-        location.setState("state");
-        location.setZip("zip");
-
-        final Experience dao = new Experience();
-        dao.setId("id");
-        dao.setName("name");
-        dao.setDescriptions(asList("description0", "description1"));
-        dao.setEnd(new MonthYear(1, 2022));
-        dao.setLocation(location);
-        dao.setProject("project");
-        dao.setRole("role");
-        dao.setStart(new MonthYear(1, 2021));
-        dao.setTitle("title");
-        dao.setType(ExperienceType.CONTRACT);
-
-        return singletonList(dao);
     }
 }

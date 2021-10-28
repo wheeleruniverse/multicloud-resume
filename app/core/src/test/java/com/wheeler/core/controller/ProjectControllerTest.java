@@ -1,7 +1,7 @@
 package com.wheeler.core.controller;
 
 import com.wheeler.core.dao.model.Project;
-import com.wheeler.core.dao.model.partial.MonthYear;
+import com.wheeler.core.dao.model.ProjectTest;
 import com.wheeler.core.dto.model.ProjectDto;
 import com.wheeler.core.service.ProjectService;
 import com.wheeler.core.utility.JsonUtil;
@@ -17,11 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -50,7 +48,7 @@ public class ProjectControllerTest {
         mockMvc
             .perform(
                 post("/project/load")
-                .content(JsonUtil.toString(getDaoRecords()))
+                .content(JsonUtil.toString(ProjectTest.getInstanceList()))
                 .contentType(MediaType.APPLICATION_JSON)
             )
             .andExpect(
@@ -60,7 +58,7 @@ public class ProjectControllerTest {
 
     @Test
     public void retrieve() throws Exception {
-        final List<Project> daoRecords = getDaoRecords();
+        final List<Project> daoRecords = ProjectTest.getInstanceList();
         when(projectService.projectRetrieve()).thenReturn((optional) -> daoRecords);
 
         final MockHttpServletResponse response = mockMvc
@@ -75,20 +73,5 @@ public class ProjectControllerTest {
 
         final ProjectDto dto = JsonUtil.toObject(response.getContentAsString(), ProjectDto.class);
         assertEquals(daoRecords, dto.getData());
-    }
-
-    private List<Project> getDaoRecords(){
-        final Project dao = new Project();
-        dao.setId("id");
-        dao.setName("name");
-        dao.setBlog("blog");
-        dao.setCode("code");
-        dao.setDescription("description");
-        dao.setDiagrams(1);
-        dao.setEnd(new MonthYear(1, 2022));
-        dao.setSkills(Arrays.asList("skill0", "skill1"));
-        dao.setStart(new MonthYear(1, 2021));
-        dao.setWebsite("website");
-        return singletonList(dao);
     }
 }

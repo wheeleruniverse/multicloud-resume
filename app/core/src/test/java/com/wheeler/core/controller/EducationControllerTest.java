@@ -1,7 +1,7 @@
 package com.wheeler.core.controller;
 
 import com.wheeler.core.dao.model.Education;
-import com.wheeler.core.dao.model.partial.Location;
+import com.wheeler.core.dao.model.EducationTest;
 import com.wheeler.core.dto.model.EducationDto;
 import com.wheeler.core.service.EducationService;
 import com.wheeler.core.utility.JsonUtil;
@@ -20,8 +20,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -50,7 +48,7 @@ public class EducationControllerTest {
         mockMvc
             .perform(
                 post("/education/load")
-                .content(JsonUtil.toString(getDaoRecords()))
+                .content(JsonUtil.toString(EducationTest.getInstanceList()))
                 .contentType(MediaType.APPLICATION_JSON)
             )
             .andExpect(
@@ -60,7 +58,7 @@ public class EducationControllerTest {
 
     @Test
     public void retrieve() throws Exception {
-        final List<Education> daoRecords = getDaoRecords();
+        final List<Education> daoRecords = EducationTest.getInstanceList();
         when(educationService.educationRetrieve()).thenReturn((optional) -> daoRecords);
 
         final MockHttpServletResponse response = mockMvc
@@ -75,26 +73,5 @@ public class EducationControllerTest {
 
         final EducationDto dto = JsonUtil.toObject(response.getContentAsString(), EducationDto.class);
         assertEquals(daoRecords, dto.getData());
-    }
-
-    private List<Education> getDaoRecords(){
-        final Location location = new Location();
-        location.setAddress("address");
-        location.setCity("city");
-        location.setRemote(true);
-        location.setState("state");
-        location.setZip("zip");
-
-        final Education dao = new Education();
-        dao.setId("id");
-        dao.setName("name");
-        dao.setDegree("degree");
-        dao.setDescriptions(asList("description0", "description1"));
-        dao.setEnd(2022);
-        dao.setField("field");
-        dao.setLocation(location);
-        dao.setStart(2021);
-
-        return singletonList(dao);
     }
 }

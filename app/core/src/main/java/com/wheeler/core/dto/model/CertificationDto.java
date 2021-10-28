@@ -5,10 +5,12 @@ import com.wheeler.core.dao.constant.CertificationVendor;
 import com.wheeler.core.dao.model.Certification;
 import com.wheeler.core.dto.model.partial.CertificationMetaDto;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class CertificationDto {
 
     private List<Certification> data;

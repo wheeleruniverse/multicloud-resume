@@ -4,7 +4,6 @@ import com.wheeler.core.dao.constant.CertificationLevel;
 import com.wheeler.core.dao.constant.CertificationVendor;
 import com.wheeler.core.dao.model.contract.Model;
 import com.wheeler.core.dao.model.partial.MonthYear;
-import com.wheeler.core.dto.model.CertificationDto;
 import lombok.Data;
 
 import java.util.List;

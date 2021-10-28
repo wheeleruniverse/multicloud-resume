@@ -3,9 +3,7 @@ package com.wheeler.core.controller;
 import com.wheeler.core.dao.constant.CertificationLevel;
 import com.wheeler.core.dao.constant.CertificationVendor;
 import com.wheeler.core.dao.model.Certification;
-import com.wheeler.core.dao.model.Education;
-import com.wheeler.core.dao.model.partial.Location;
-import com.wheeler.core.dao.model.partial.MonthYear;
+import com.wheeler.core.dao.model.CertificationTest;
 import com.wheeler.core.dto.model.CertificationDto;
 import com.wheeler.core.dto.model.partial.CertificationMetaDto;
 import com.wheeler.core.service.CertificationService;
@@ -25,8 +23,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -55,7 +51,7 @@ public class CertificationControllerTest {
         mockMvc
             .perform(
                 post("/certification/load")
-                .content(JsonUtil.toString(getDaoRecords()))
+                .content(JsonUtil.toString(CertificationTest.getInstanceList()))
                 .contentType(MediaType.APPLICATION_JSON)
             )
             .andExpect(
@@ -69,7 +65,7 @@ public class CertificationControllerTest {
             CertificationLevel.dto(),
             CertificationVendor.dto()
         );
-        final List<Certification> daoRecords = getDaoRecords();
+        final List<Certification> daoRecords = CertificationTest.getInstanceList();
         when(certificationService.certificationRetrieve()).thenReturn((optional) -> daoRecords);
 
         final MockHttpServletResponse response = mockMvc
@@ -85,18 +81,5 @@ public class CertificationControllerTest {
         final CertificationDto dto = JsonUtil.toObject(response.getContentAsString(), CertificationDto.class);
         assertEquals(daoRecords, dto.getData());
         assertEquals(meta, dto.getMeta());
-    }
-
-    private List<Certification> getDaoRecords(){
-        final Certification dao = new Certification();
-        dao.setId("id");
-        dao.setName("name");
-        dao.setCredential("credential");
-        dao.setDescriptions(asList("description0", "description1"));
-        dao.setExpiry(new MonthYear(1, 2022));
-        dao.setIssued(new MonthYear(1, 2021));
-        dao.setLevel(CertificationLevel.ASSOCIATE);
-        dao.setVendor(CertificationVendor.AWS);
-        return singletonList(dao);
     }
 }

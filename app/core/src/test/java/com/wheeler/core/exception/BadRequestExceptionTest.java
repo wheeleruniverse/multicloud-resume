@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 public class BadRequestExceptionTest {
 
     @Test
-    public void newBadRequestException(){
+    public void construct(){
         BadRequestException e = new BadRequestException("My Message");
         Assertions.assertEquals("BadRequestException: My Message", e.getMessage());
     }
 
     @Test
-    public void newBadRequestExceptionWithNull(){
+    public void constructWithNull(){
         BadRequestException e = new BadRequestException(null);
         Assertions.assertEquals("BadRequestException: null", e.getMessage());
     }

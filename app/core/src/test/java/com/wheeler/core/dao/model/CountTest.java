@@ -1,6 +1,7 @@
 package com.wheeler.core.dao.model;
 
 import com.wheeler.core.utility.RandomUtil;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,8 +13,14 @@ public class CountTest {
     private Count instance;
 
     @BeforeEach
-    public void beforeEach(){
-        this.instance = new Count();
+    public void beforeEach() {
+        this.instance = getInstance();
+    }
+
+    @Test
+    public void construct(){
+        Assertions.assertEquals("name", instance.getName());
+        Assertions.assertEquals(1, instance.getValue());
     }
 
     @Test
@@ -43,7 +50,6 @@ public class CountTest {
 
     @Test
     public void increment(){
-        instance.setValue(1);
         instance.increment();
         assertEquals(2, instance.getValue());
     }
@@ -57,7 +63,15 @@ public class CountTest {
 
     @Test
     public void incrementNull(){
+        instance.setValue(null);
         instance.increment();
         assertEquals(1, instance.getValue());
+    }
+
+    public static Count getInstance(){
+        final Count instance = new Count();
+        instance.setName("name");
+        instance.setValue(1);
+        return instance;
     }
 }

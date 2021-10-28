@@ -2,6 +2,7 @@ package com.wheeler.core.controller;
 
 import com.wheeler.core.dao.constant.SkillLevel;
 import com.wheeler.core.dao.model.Skill;
+import com.wheeler.core.dao.model.SkillTest;
 import com.wheeler.core.dto.model.SkillDto;
 import com.wheeler.core.dto.model.partial.SkillMetaDto;
 import com.wheeler.core.service.SkillService;
@@ -18,11 +19,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -51,7 +50,7 @@ public class SkillControllerTest {
         mockMvc
             .perform(
                 post("/skill/load")
-                .content(JsonUtil.toString(getDaoRecords()))
+                .content(JsonUtil.toString(SkillTest.getInstanceList()))
                 .contentType(MediaType.APPLICATION_JSON)
             )
             .andExpect(
@@ -62,7 +61,7 @@ public class SkillControllerTest {
     @Test
     public void retrieve() throws Exception {
         final SkillMetaDto meta = new SkillMetaDto(SkillLevel.dto());
-        final List<Skill> daoRecords = getDaoRecords();
+        final List<Skill> daoRecords = SkillTest.getInstanceList();
         when(skillService.skillRetrieve()).thenReturn((optional) -> daoRecords);
 
         final MockHttpServletResponse response = mockMvc
@@ -78,15 +77,5 @@ public class SkillControllerTest {
         final SkillDto dto = JsonUtil.toObject(response.getContentAsString(), SkillDto.class);
         assertEquals(daoRecords, dto.getData());
         assertEquals(meta, dto.getMeta());
-    }
-
-    private List<Skill> getDaoRecords(){
-        final Skill dao = new Skill();
-        dao.setId("id");
-        dao.setName("name");
-        dao.setLevel(SkillLevel.COMPETENT);
-        dao.setProjects(Arrays.asList("project0", "project1"));
-        dao.setType("type");
-        return singletonList(dao);
     }
 }

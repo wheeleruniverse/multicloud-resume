@@ -2,8 +2,10 @@ package com.wheeler.core.dto.model;
 
 import com.wheeler.core.dao.model.Count;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class CountDto {
 
     private String name;
