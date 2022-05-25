@@ -8,7 +8,7 @@
 
 [![web](https://github.com/wheelers-websites/Resume/actions/workflows/web.yml/badge.svg?branch=main)](https://github.com/wheelers-websites/Resume/actions/workflows/web.yml)
 
-# Resume
+# resume
 
 ## AWS
 https://forrestbrazeal.com/2020/04/23/the-cloud-resume-challenge/
