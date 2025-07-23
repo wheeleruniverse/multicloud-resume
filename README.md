@@ -262,9 +262,9 @@ This project fulfills all requirements of the Meta Resume Challenge:
 
 ### Original Challenge References
 - [AWS Cloud Resume Challenge](https://forrestbrazeal.com/2020/04/23/the-cloud-resume-challenge/)
-- [Azure Cloud Resume Challenge](https://acloudguru.com/blog/engineering/cloudguruchallenge-your-resume-in-azure)
-- [GCP Cloud Resume Challenge](https://acloudguru.com/blog/engineering/cloudguruchallenge-your-resume-on-gcp)
-- [Meta Resume Challenge Blog Post](https://dev.to/wheeleruniverse/meta-resume-challenge-5a1a)
+- [Azure Cloud Resume Challenge](https://www.pluralsight.com/resources/blog/cloud/cloudguruchallenge-your-resume-in-azure)
+- [GCP Cloud Resume Challenge](https://www.pluralsight.com/resources/blog/cloud/cloudguruchallenge-your-resume-on-gcp)
+- [Meta Resume Challenge Blog Post](https://blog.wheeleruniverse.com/meta-resume-challenge)
 
 ### Architecture Diagrams
 - [Meta Resume Challenge Architecture](iac/diagrams/MetaResumeChallenge_20210814.png)
