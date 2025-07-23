@@ -1,10 +1,10 @@
 # Multicloud Resume Challenge
 
-[![app-aws](https://github.com/wheelers-websites/Resume/actions/workflows/app-aws.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-aws.yml)
-[![app-azure](https://github.com/wheelers-websites/Resume/actions/workflows/app-azure.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-azure.yml)
-[![app-core](https://github.com/wheelers-websites/Resume/actions/workflows/app-core.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-core.yml)
-[![app-gcp](https://github.com/wheelers-websites/Resume/actions/workflows/app-gcp.yml/badge.svg)](https://github.com/wheelers-websites/Resume/actions/workflows/app-gcp.yml)
-[![web](https://github.com/wheelers-websites/Resume/actions/workflows/web.yml/badge.svg?branch=main)](https://github.com/wheelers-websites/Resume/actions/workflows/web.yml)
+[![app-aws](https://github.com/wheeleruniverse/Resume/actions/workflows/app-aws.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-aws.yml)
+[![app-azure](https://github.com/wheeleruniverse/Resume/actions/workflows/app-azure.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-azure.yml)
+[![app-core](https://github.com/wheeleruniverse/Resume/actions/workflows/app-core.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-core.yml)
+[![app-gcp](https://github.com/wheeleruniverse/Resume/actions/workflows/app-gcp.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-gcp.yml)
+[![web](https://github.com/wheeleruniverse/Resume/actions/workflows/web.yml/badge.svg?branch=main)](https://github.com/wheeleruniverse/Resume/actions/workflows/web.yml)
 
 A comprehensive multicloud serverless resume application built in response to the [Meta Resume Challenge](https://dev.to/wheeleruniverse/meta-resume-challenge-5a1a), demonstrating professional cloud development skills across **AWS**, **Azure**, and **Google Cloud Platform**.
 
@@ -67,7 +67,7 @@ Frontend (Angular) ──► API Gateway ──► Serverless Functions ──�
 
 ```
 multicloud-resume/
-├── app/                    # Backend applications
+├── app/                   # Backend applications
 │   ├── core/              # Shared business logic and models
 │   ├── aws/               # AWS Lambda implementation
 │   ├── azure/             # Azure Functions implementation
@@ -75,12 +75,12 @@ multicloud-resume/
 ├── web/                   # Angular frontend application
 ├── iac/                   # Infrastructure as Code
 │   ├── terraform/         # Terraform configurations
-│   │   ├── aws/          # AWS resources
-│   │   ├── azure/        # Azure resources
-│   │   └── gcp/          # GCP resources
-│   ├── data/             # Resume data (JSON/Excel)
-│   ├── diagrams/         # Architecture diagrams
-│   └── scripts/          # Deployment scripts
+│   │   ├── aws/           # AWS resources
+│   │   ├── azure/         # Azure resources
+│   │   └── gcp/           # GCP resources
+│   ├── data/              # Resume data (JSON/Excel)
+│   ├── diagrams/          # Architecture diagrams
+│   └── scripts/           # Deployment scripts
 └── README.md
 ```
 
@@ -99,7 +99,7 @@ multicloud-resume/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/wheelers-websites/Resume.git
+   git clone https://github.com/wheeleruniverse/multicloud-resume.git
    cd multicloud-resume
    ```
 
@@ -169,11 +169,13 @@ The application supports multiple deployment environments through configuration 
 
 ### Cloud Provider Endpoints
 
-| Provider | Frontend URL | API URL |
-|----------|-------------|---------|
-| **AWS** | `wheelercloudguru.com` | `api.aws.wheelercloudguru.com` |
+| Provider  | Frontend URL                         | API URL                                  |
+|-----------|--------------------------------------|------------------------------------------|
+| **AWS**   | `wheelercloudguru.com`               | `api.aws.wheelercloudguru.com`           |
 | **Azure** | `wheelercloudguru.azurewebsites.net` | `wheelercloudguru.azurewebsites.net/api` |
-| **GCP** | `gcp.wheelercloudguru.com` | `api.gcp.wheelercloudguru.com` |
+| **GCP**   | `gcp.wheelercloudguru.com`           | `api.gcp.wheelercloudguru.com`           |
+
+> _Note: these URLs are not active or registered anymore_
 
 ## 📊 Features
 
@@ -256,14 +258,6 @@ This project fulfills all requirements of the Meta Resume Challenge:
 - [x] **Documentation**: Detailed README, API documentation
 - [x] **Architectural Diagrams**: Visual system representation
 
-## 🎯 Live Demos
-
-Experience the multicloud resume across different platforms:
-
-- **AWS**: [wheelercloudguru.com](https://wheelercloudguru.com)
-- **Azure**: [wheelercloudguru.azurewebsites.net](https://wheelercloudguru.azurewebsites.net)
-- **GCP**: [gcp.wheelercloudguru.com](https://gcp.wheelercloudguru.com)
-
 ## 📚 Additional Resources
 
 ### Original Challenge References
@@ -280,13 +274,9 @@ Experience the multicloud resume across different platforms:
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
 ## 📧 Contact
 
-For questions or collaboration opportunities, please reach out through the contact information available on the live resume sites.
+For questions or collaboration opportunities, please reach out through [LinkedIn](https://linkedin.com/in/wheeleruniverse).
 
 ---
 
