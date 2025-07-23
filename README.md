@@ -1,10 +1,10 @@
 # Multicloud Resume Challenge
 
-[![app-aws](https://github.com/wheeleruniverse/Resume/actions/workflows/app-aws.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-aws.yml)
-[![app-azure](https://github.com/wheeleruniverse/Resume/actions/workflows/app-azure.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-azure.yml)
-[![app-core](https://github.com/wheeleruniverse/Resume/actions/workflows/app-core.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-core.yml)
-[![app-gcp](https://github.com/wheeleruniverse/Resume/actions/workflows/app-gcp.yml/badge.svg)](https://github.com/wheeleruniverse/Resume/actions/workflows/app-gcp.yml)
-[![web](https://github.com/wheeleruniverse/Resume/actions/workflows/web.yml/badge.svg?branch=main)](https://github.com/wheeleruniverse/Resume/actions/workflows/web.yml)
+[![app-aws](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-aws.yml/badge.svg)](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-aws.yml)
+[![app-azure](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-azure.yml/badge.svg)](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-azure.yml)
+[![app-core](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-core.yml/badge.svg)](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-core.yml)
+[![app-gcp](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-gcp.yml/badge.svg)](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/app-gcp.yml)
+[![web](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/web.yml/badge.svg?branch=main)](https://github.com/wheeleruniverse/multicloud-resume/actions/workflows/web.yml)
 
 A comprehensive multicloud serverless resume application built in response to the [Meta Resume Challenge](https://dev.to/wheeleruniverse/meta-resume-challenge-5a1a), demonstrating professional cloud development skills across **AWS**, **Azure**, and **Google Cloud Platform**.
 
